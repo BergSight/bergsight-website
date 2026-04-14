@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BergSight Compound Growth Projector — see how your savings grow over time with the power of compound interest.">
+  <meta property="og:title" content="Compound Growth Projector — BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/compound">
+  <title>Compound Growth Projector — BergSight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --stone:    #f5f2ed;
+      --stone-2:  #ece8e1;
+      --stone-3:  #d8d2c8;
+      --ink:      #1a1916;
+      --ink-2:    #3d3a35;
+      --ink-3:    #7a756c;
+      --alpine:   #2d5a3d;
+      --alpine-2: #3d7a52;
+      --alpine-3: #e8f0eb;
+      --gold:     #8a6d3b;
+      --gold-2:   #f5ead8;
+      --white:    #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+
+    /* ── LANG BAR ── */
+    .lang-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--ink);
+      display: flex; justify-content: flex-end; align-items: center;
+      padding: 0 4rem; height: 34px;
+    }
+    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
+    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
+    .lang-btn:hover { color: var(--white); background: #2a2825; }
+    .lang-btn.active { color: var(--alpine-2); }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--alpine); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--alpine); }
+    .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--ink-3); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-back:hover { color: var(--alpine); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── PAGE HEADER ── */
+    .tool-header {
+      padding: 8rem 4rem 3rem;
+      background: var(--stone);
+      border-bottom: 1px solid var(--stone-3);
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-header-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(45,90,61,0.05) 0%, transparent 60%);
+    }
+    .tool-header-inner { position: relative; max-width: 760px; }
+    .tool-breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--ink-3); margin-bottom: 1.2rem; letter-spacing: 0.04em; }
+    .tool-breadcrumb a { color: var(--alpine); text-decoration: none; }
+    .tool-breadcrumb a:hover { text-decoration: underline; }
+    .tool-breadcrumb span { color: var(--stone-3); }
+    .tool-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--alpine); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem; }
+    .tool-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--alpine); }
+    .tool-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+    .tool-title em { font-style: italic; color: var(--alpine); }
+    .tool-desc { font-size: 1rem; color: var(--ink-3); max-width: 580px; font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem; }
+    .tool-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .tool-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid var(--stone-3); border-radius: 1px; color: var(--ink-3); background: var(--white); }
+
+    /* ── TOOL FRAME ── */
+    .tool-section { padding: 3rem 4rem; background: var(--white); }
+    .tool-frame-wrap {
+      border: 1px solid var(--stone-3);
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--white);
+      min-height: 700px;
+    }
+    .tool-frame-wrap iframe {
+      width: 100%;
+      min-height: 700px;
+      border: none;
+      display: block;
+    }
+    .tool-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 700px;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--ink-3);
+      font-size: 0.9rem;
+    }
+    .loading-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--alpine); display: inline-block; animation: pulse 1.4s ease-in-out infinite; }
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse { 0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { padding: 4rem; background: var(--stone); border-top: 1px solid var(--stone-3); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+    .how-card { background: var(--white); border: 1px solid var(--stone-2); padding: 1.8rem; }
+    .how-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: var(--alpine); line-height: 1; margin-bottom: 0.8rem; }
+    .how-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+    .how-desc { font-size: 0.85rem; color: var(--ink-3); line-height: 1.7; font-weight: 300; }
+
+    /* ── RELATED TOOLS ── */
+    .related-section { padding: 4rem; background: var(--white); border-top: 1px solid var(--stone-3); }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5px; background: var(--stone-3); border: 1.5px solid var(--stone-3); margin-top: 2.5rem; }
+    .related-card { background: var(--white); padding: 2rem; text-decoration: none; color: inherit; transition: background 0.2s; position: relative; display: block; }
+    .related-card:hover { background: var(--stone); }
+    .related-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--alpine); transition: width 0.3s; }
+    .related-card:hover::after { width: 100%; }
+    .related-status { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 1px; display: inline-block; margin-bottom: 0.8rem; background: var(--gold-2); color: var(--gold); }
+    .related-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.2; }
+    .related-desc { font-size: 0.82rem; color: var(--ink-3); line-height: 1.6; font-weight: 300; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer-section { padding: 2rem 4rem; background: var(--stone-2); border-top: 1px solid var(--stone-3); }
+    .disclaimer-text { font-size: 0.75rem; color: var(--ink-3); line-height: 1.7; max-width: 760px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: #9a958e; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--stone); text-decoration: none; }
+    .footer-logo span { color: var(--alpine-2); }
+    .footer-links-row { display: flex; gap: 2rem; list-style: none; }
+    .footer-links-row a { font-size: 0.78rem; color: #6a6560; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--alpine-2); }
+    .footer-copy { font-size: 0.72rem; color: #4a4742; font-family: 'DM Mono', monospace; }
+
+    @media (max-width: 900px) {
+      .lang-bar { padding: 0 1.5rem; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .tool-header { padding: 7rem 1.5rem 2.5rem; }
+      .tool-section { padding: 2rem 1.5rem; }
+      .how-section { padding: 3rem 1.5rem; }
+      .how-grid { grid-template-columns: 1fr; }
+      .related-section { padding: 3rem 1.5rem; }
+      .disclaimer-section { padding: 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .lang-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LANG BAR -->
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools"       data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"        data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/#about"       data-i18n="nav_about">About</a></li>
+      <li><a href="/#newsletter"  data-i18n="nav_cta" style="background:var(--alpine);color:#fff;padding:0.5rem 1.2rem;border-radius:2px;font-weight:500">Stay updated</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="tool-header">
+    <div class="tool-header-bg"></div>
+    <div class="tool-header-inner">
+      <div class="tool-breadcrumb">
+        <a href="/" data-i18n="breadcrumb_home">Home</a>
+        <span>›</span>
+        <a href="/#tools" data-i18n="breadcrumb_tools">Tools</a>
+        <span>›</span>
+        <span data-i18n="page_title">Compound Growth Projector</span>
+      </div>
+      <div class="tool-eyebrow" data-i18n="tool_eyebrow">Planning tool</div>
+      <h1 class="tool-title" data-i18n="tool_h1">Compound Growth<br><em>Projector</em></h1>
+      <p class="tool-desc" data-i18n="tool_desc">See how your savings grow over time with the power of compound interest. Adjust your initial investment, monthly contributions, annual return rate, and time horizon to model your financial future.</p>
+      <div class="tool-tags">
+        <span class="tool-tag" data-i18n="tag1">Investing</span>
+        <span class="tool-tag" data-i18n="tag2">Savings</span>
+        <span class="tool-tag" data-i18n="tag3">Long-term planning</span>
+        <span class="tool-tag">CHF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOL IFRAME -->
+  <div class="tool-section">
+    <div class="tool-frame-wrap" id="tool-wrap">
+      <iframe
+        id="tool-iframe"
+        src="https://tools.bergsight.com/compound/"
+        title="Compound Growth Projector"
+        width="100%"
+        height="750px"
+        style="border:none;display:block;min-height:750px">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section">
+    <div class="tool-eyebrow" data-i18n="how_eyebrow">How it works</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:500;color:var(--ink);margin-top:0.5rem" data-i18n="how_h2">Three inputs, one powerful insight</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-title" data-i18n="how1_title">Set your parameters</div>
+        <div class="how-desc" data-i18n="how1_desc">Enter your starting amount, how much you plan to save each month, your expected annual return, and how many years you want to model.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-title" data-i18n="how2_title">See your growth curve</div>
+        <div class="how-desc" data-i18n="how2_desc">The chart shows three lines: your total portfolio value, your contributions alone, and the real inflation-adjusted value — so you can see what your money is actually worth.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-title" data-i18n="how3_title">Experiment freely</div>
+        <div class="how-desc" data-i18n="how3_desc">Try different scenarios — what if you save CHF 200 more per month? What if returns are 5% instead of 7%? Every change updates instantly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="related-section">
+    <div class="tool-eyebrow" data-i18n="related_eyebrow">Related tools</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:500;color:var(--ink);margin-top:0.5rem" data-i18n="related_h2">Continue planning</h2>
+    <div class="related-grid">
+      <a href="/#newsletter" class="related-card">
+        <div class="related-status" data-i18n="coming_soon">Coming soon</div>
+        <div class="related-name" data-i18n="rel1_name">Retirement Readiness Tracker</div>
+        <div class="related-desc" data-i18n="rel1_desc">Are you on track? Model your projected savings against what you'll actually need at retirement.</div>
+      </a>
+      <a href="/#newsletter" class="related-card">
+        <div class="related-status" data-i18n="coming_soon">Coming soon</div>
+        <div class="related-name" data-i18n="rel2_name">Safe Withdrawal Rate Simulator</div>
+        <div class="related-desc" data-i18n="rel2_desc">How long will your nest egg last? Explore the 4% rule and find your sustainable withdrawal rate.</div>
+      </a>
+      <a href="/#newsletter" class="related-card">
+        <div class="related-status" data-i18n="coming_soon">Coming soon</div>
+        <div class="related-name" data-i18n="rel3_name">Monte Carlo Simulator</div>
+        <div class="related-desc" data-i18n="rel3_desc">Run thousands of scenarios to understand the real probability of reaching your financial goals.</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-section">
+    <p class="disclaimer-text" data-i18n="disclaimer">This tool is provided for illustrative and educational purposes only. The projections shown do not represent guaranteed returns and should not be relied upon as financial advice. Investment returns vary and past performance is not indicative of future results. Always consult a qualified financial adviser before making investment decisions. All values are in CHF unless otherwise stated.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"      data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"       data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/privacy"     data-i18n="footer_privacy">Privacy</a></li>
+      <li><a href="/disclaimer"  data-i18n="footer_disclaimer">Disclaimer</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich</div>
+  </footer>
+
+  <script>
+  const i18n = {
+    en: {
+      nav_tools:`Tools`, nav_blog:`Insights`, nav_about:`About`, nav_cta:`Stay updated`,
+      breadcrumb_home:`Home`, breadcrumb_tools:`Tools`,
+      page_title:`Compound Growth Projector`,
+      tool_eyebrow:`Planning tool`,
+      tool_h1:`Compound Growth<br><em>Projector</em>`,
+      tool_desc:`See how your savings grow over time with the power of compound interest. Adjust your initial investment, monthly contributions, annual return rate, and time horizon to model your financial future.`,
+      tag1:`Investing`, tag2:`Savings`, tag3:`Long-term planning`,
+      loading:`Loading tool...`,
+      how_eyebrow:`How it works`, how_h2:`Three inputs, one powerful insight`,
+      how1_title:`Set your parameters`, how1_desc:`Enter your starting amount, how much you plan to save each month, your expected annual return, and how many years you want to model.`,
+      how2_title:`See your growth curve`, how2_desc:`The chart shows three lines: your total portfolio value, your contributions alone, and the real inflation-adjusted value — so you can see what your money is actually worth.`,
+      how3_title:`Experiment freely`, how3_desc:`Try different scenarios — what if you save CHF 200 more per month? What if returns are 5% instead of 7%? Every change updates instantly.`,
+      related_eyebrow:`Related tools`, related_h2:`Continue planning`,
+      coming_soon:`Coming soon`,
+      rel1_name:`Retirement Readiness Tracker`, rel1_desc:`Are you on track? Model your projected savings against what you'll actually need at retirement.`,
+      rel2_name:`Safe Withdrawal Rate Simulator`, rel2_desc:`How long will your nest egg last? Explore the 4% rule and find your sustainable withdrawal rate.`,
+      rel3_name:`Monte Carlo Simulator`, rel3_desc:`Run thousands of scenarios to understand the real probability of reaching your financial goals.`,
+      disclaimer:`This tool is provided for illustrative and educational purposes only. The projections shown do not represent guaranteed returns and should not be relied upon as financial advice. Investment returns vary and past performance is not indicative of future results. Always consult a qualified financial adviser before making investment decisions. All values are in CHF unless otherwise stated.`,
+      footer_privacy:`Privacy`, footer_disclaimer:`Disclaimer`
+    },
+    de: {
+      nav_tools:`Tools`, nav_blog:`Einblicke`, nav_about:`Über uns`, nav_cta:`Aktuell bleiben`,
+      breadcrumb_home:`Startseite`, breadcrumb_tools:`Tools`,
+      page_title:`Zinseszins-Projektor`,
+      tool_eyebrow:`Planungstool`,
+      tool_h1:`Zinseszins-<br><em>Projektor</em>`,
+      tool_desc:`Sehen Sie, wie Ihre Ersparnisse im Laufe der Zeit durch die Kraft des Zinseszinses wachsen. Passen Sie Ihre Anfangsinvestition, monatliche Beiträge, jährliche Rendite und den Zeithorizont an.`,
+      tag1:`Investieren`, tag2:`Sparen`, tag3:`Langfristige Planung`,
+      loading:`Tool wird geladen...`,
+      how_eyebrow:`So funktioniert es`, how_h2:`Drei Eingaben, eine kraftvolle Erkenntnis`,
+      how1_title:`Parameter festlegen`, how1_desc:`Geben Sie Ihren Startbetrag, Ihre monatlichen Ersparnisse, die erwartete Jahresrendite und den Anlagezeitraum ein.`,
+      how2_title:`Ihre Wachstumskurve sehen`, how2_desc:`Das Diagramm zeigt drei Linien: Ihren Gesamtportfoliowert, nur Ihre Einzahlungen und den inflationsbereinigten Realwert.`,
+      how3_title:`Frei experimentieren`, how3_desc:`Probieren Sie verschiedene Szenarien aus — was wenn Sie CHF 200 mehr pro Monat sparen? Was wenn die Rendite 5% statt 7% beträgt? Jede Änderung wird sofort aktualisiert.`,
+      related_eyebrow:`Verwandte Tools`, related_h2:`Weiter planen`,
+      coming_soon:`Demnächst`,
+      rel1_name:`Altersvorsorge-Tracker`, rel1_desc:`Sind Sie auf dem richtigen Weg? Vergleichen Sie Ihre prognostizierten Ersparnisse mit dem, was Sie im Ruhestand tatsächlich benötigen.`,
+      rel2_name:`Entnahmeraten-Simulator`, rel2_desc:`Wie lange reicht Ihr Vermögen? Erkunden Sie die 4%-Regel und finden Sie Ihre nachhaltige Entnahmerate.`,
+      rel3_name:`Monte-Carlo-Simulator`, rel3_desc:`Führen Sie Tausende von Szenarien durch, um die tatsächliche Wahrscheinlichkeit zu verstehen, Ihre Finanzziele zu erreichen.`,
+      disclaimer:`Dieses Tool dient ausschliesslich zu Illustrations- und Bildungszwecken. Die gezeigten Projektionen stellen keine garantierten Renditen dar und sollten nicht als Finanzberatung herangezogen werden. Bitte konsultieren Sie immer einen qualifizierten Finanzberater, bevor Sie Anlageentscheidungen treffen.`,
+      footer_privacy:`Datenschutz`, footer_disclaimer:`Haftungsausschluss`
+    },
+    fr: {
+      nav_tools:`Outils`, nav_blog:`Analyses`, nav_about:`À propos`, nav_cta:`Rester informé`,
+      breadcrumb_home:`Accueil`, breadcrumb_tools:`Outils`,
+      page_title:`Projecteur de Croissance Composée`,
+      tool_eyebrow:`Outil de planification`,
+      tool_h1:`Projecteur de Croissance<br><em>Composée</em>`,
+      tool_desc:`Voyez comment vos économies croissent avec le temps grâce à la puissance des intérêts composés. Ajustez votre investissement initial, vos contributions mensuelles, votre taux de rendement annuel et votre horizon temporel.`,
+      tag1:`Investissement`, tag2:`Épargne`, tag3:`Planification à long terme`,
+      loading:`Chargement de l'outil...`,
+      how_eyebrow:`Comment ça fonctionne`, how_h2:`Trois paramètres, une vision puissante`,
+      how1_title:`Définir vos paramètres`, how1_desc:`Saisissez votre montant de départ, votre épargne mensuelle prévue, votre rendement annuel attendu et la durée que vous souhaitez modéliser.`,
+      how2_title:`Voir votre courbe de croissance`, how2_desc:`Le graphique montre trois lignes : la valeur totale de votre portefeuille, vos contributions seules et la valeur réelle ajustée à l'inflation.`,
+      how3_title:`Expérimenter librement`, how3_desc:`Essayez différents scénarios — et si vous épargniez CHF 200 de plus par mois? Et si les rendements étaient de 5% au lieu de 7%? Chaque modification se met à jour instantanément.`,
+      related_eyebrow:`Outils connexes`, related_h2:`Continuer à planifier`,
+      coming_soon:`Bientôt disponible`,
+      rel1_name:`Suivi de Préparation à la Retraite`, rel1_desc:`Êtes-vous sur la bonne voie? Comparez vos économies projetées avec ce dont vous aurez réellement besoin à la retraite.`,
+      rel2_name:`Simulateur de Taux de Retrait`, rel2_desc:`Combien de temps durera votre épargne? Explorez la règle des 4% et trouvez votre taux de retrait durable.`,
+      rel3_name:`Simulateur Monte Carlo`, rel3_desc:`Exécutez des milliers de scénarios pour comprendre la probabilité réelle d'atteindre vos objectifs financiers.`,
+      disclaimer:`Cet outil est fourni à des fins illustratives et éducatives uniquement. Les projections affichées ne représentent pas des rendements garantis et ne doivent pas être utilisées comme conseils financiers. Consultez toujours un conseiller financier qualifié avant de prendre des décisions d'investissement.`,
+      footer_privacy:`Confidentialité`, footer_disclaimer:`Avertissement`
+    },
+    it: {
+      nav_tools:`Strumenti`, nav_blog:`Approfondimenti`, nav_about:`Chi siamo`, nav_cta:`Rimani aggiornato`,
+      breadcrumb_home:`Home`, breadcrumb_tools:`Strumenti`,
+      page_title:`Proiettore di Crescita Composta`,
+      tool_eyebrow:`Strumento di pianificazione`,
+      tool_h1:`Proiettore di Crescita<br><em>Composta</em>`,
+      tool_desc:`Scoprite come crescono i vostri risparmi nel tempo grazie alla potenza dell'interesse composto. Regolate il vostro investimento iniziale, i contributi mensili, il tasso di rendimento annuale e l'orizzonte temporale.`,
+      tag1:`Investimento`, tag2:`Risparmio`, tag3:`Pianificazione a lungo termine`,
+      loading:`Caricamento strumento...`,
+      how_eyebrow:`Come funziona`, how_h2:`Tre parametri, una visione potente`,
+      how1_title:`Impostare i parametri`, how1_desc:`Inserite il vostro importo iniziale, il risparmio mensile previsto, il rendimento annuale atteso e il numero di anni che volete modellare.`,
+      how2_title:`Vedere la curva di crescita`, how2_desc:`Il grafico mostra tre linee: il valore totale del vostro portafoglio, solo i vostri contributi e il valore reale corretto per l'inflazione.`,
+      how3_title:`Sperimentare liberamente`, how3_desc:`Provate diversi scenari — e se risparmiaste CHF 200 in più al mese? E se i rendimenti fossero del 5% invece del 7%? Ogni modifica si aggiorna istantaneamente.`,
+      related_eyebrow:`Strumenti correlati`, related_h2:`Continuare a pianificare`,
+      coming_soon:`Prossimamente`,
+      rel1_name:`Tracker di Preparazione alla Pensione`, rel1_desc:`Siete sulla buona strada? Confrontate i risparmi previsti con ciò di cui avrete effettivamente bisogno in pensione.`,
+      rel2_name:`Simulatore di Tasso di Prelievo`, rel2_desc:`Quanto durerà il vostro capitale? Esplorate la regola del 4% e trovate il vostro tasso di prelievo sostenibile.`,
+      rel3_name:`Simulatore Monte Carlo`, rel3_desc:`Eseguite migliaia di scenari per capire la probabilità reale di raggiungere i vostri obiettivi finanziari.`,
+      disclaimer:`Questo strumento è fornito a scopo illustrativo ed educativo. Le proiezioni mostrate non rappresentano rendimenti garantiti e non devono essere utilizzate come consulenza finanziaria. Consultate sempre un consulente finanziario qualificato prima di prendere decisioni d'investimento.`,
+      footer_privacy:`Privacy`, footer_disclaimer:`Dichiarazione di non responsabilità`
+    }
+  };
+
+  let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('bs_lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('btn-' + lang).classList.add('active');
+    const t = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+  });
+
+  setLang(currentLang);
+  </script>
+
+</body>
+</html>
