@@ -1,1 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What is compound growth and why does it matter for Swiss investors? A clear, honest explanation with real CHF examples.">
+  <meta property="og:title" content="Compound Growth Explained — BergSight">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bergsight.com/insights/compound-interest-explained">
+  <title>Compound Growth Explained — BergSight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root { --stone:#f5f2ed; --stone-2:#ece8e1; --stone-3:#d8d2c8; --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c; --alpine:#2d5a3d; --alpine-2:#3d7a52; --alpine-3:#e8f0eb; --gold:#8a6d3b; --gold-2:#f5ead8; --white:#ffffff; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
+    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
+    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
+    .lang-btn:hover { color: var(--white); background: #2a2825; }
+    .lang-btn.active { color: var(--alpine-2); }
+    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--alpine); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--alpine); }
+    .article-header { padding: 9rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
+    .article-header-peaks { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; opacity: 0.12; }
+    .article-header-inner { position: relative; max-width: 760px; }
+    .article-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .article-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; background: rgba(61,122,82,0.3); color: var(--alpine-2); border-radius: 1px; }
+    .article-date { font-size: 0.75rem; color: #6a6560; font-family: 'DM Mono', monospace; }
+    .article-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 500; line-height: 1.15; color: var(--stone); margin-bottom: 1.2rem; letter-spacing: -0.01em; }
+    .article-header h1 em { font-style: italic; color: var(--alpine-2); }
+    .article-standfirst { font-size: 1.1rem; color: #9a958e; max-width: 620px; font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem; }
+    .article-byline { font-size: 0.8rem; color: #6a6560; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .byline-dot { width: 4px; height: 4px; border-radius: 50%; background: #4a4742; }
+    .human-badge { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid #3d3a35; color: #6a6560; border-radius: 1px; }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 4rem 4rem 5rem; }
+    .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 600; color: var(--ink); margin-top: 2.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
+    .article-body p { font-size: 1rem; color: var(--ink-2); line-height: 1.9; font-weight: 300; margin-bottom: 1.4rem; }
+    .article-body strong { font-weight: 500; color: var(--ink); }
+    .article-body em { font-style: italic; }
+    .article-body a { color: var(--alpine); text-decoration: underline; text-decoration-color: rgba(45,90,61,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+    .article-body a:hover { text-decoration-color: var(--alpine); }
+    .example-block { background: var(--white); border: 1px solid var(--stone-3); margin: 2rem 0; overflow: hidden; }
+    .example-block-title { background: var(--ink); color: var(--stone-2); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1.4rem; }
+    .example-table { width: 100%; border-collapse: collapse; }
+    .example-table th { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding: 0.7rem 1.4rem; text-align: left; border-bottom: 1px solid var(--stone-2); background: var(--stone); }
+    .example-table td { font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--ink-2); padding: 0.7rem 1.4rem; border-bottom: 1px solid var(--stone-2); }
+    .example-table tr:last-child td { border-bottom: none; }
+    .example-table td.highlight { color: var(--alpine); font-weight: 500; }
+    .example-table td.muted { color: var(--ink-3); }
+    .callout { background: var(--alpine-3); border-left: 3px solid var(--alpine); padding: 1.2rem 1.5rem; margin: 2rem 0; }
+    .callout p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.7; margin: 0; font-weight: 400; }
+    .callout strong { color: var(--alpine); }
+    .factors-list { list-style: none; margin: 1rem 0 1.4rem; }
+    .factors-list li { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--stone-2); font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; }
+    .factors-list li:last-child { border-bottom: none; }
+    .factors-list li strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+    .factor-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--stone-3); line-height: 1; min-width: 28px; padding-top: 2px; }
+    .tool-cta { background: var(--ink); padding: 2.5rem; margin: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .tool-cta-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--stone); margin-bottom: 0.4rem; }
+    .tool-cta-text p { font-size: 0.88rem; color: #9a958e; font-weight: 300; line-height: 1.6; margin: 0; }
+    .tool-cta-btn { background: var(--alpine); color: var(--white); padding: 0.8rem 1.8rem; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
+    .tool-cta-btn:hover { background: var(--alpine-2); }
+    .steps-list { list-style: none; margin: 1rem 0 1.4rem; counter-reset: steps; }
+    .steps-list li { counter-increment: steps; display: flex; gap: 1.2rem; padding: 0.9rem 0; border-bottom: 1px solid var(--stone-2); font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; align-items: flex-start; }
+    .steps-list li:last-child { border-bottom: none; }
+    .steps-list li::before { content: counter(steps); font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--alpine); line-height: 1; min-width: 28px; padding-top: 2px; }
+    .sign-off { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--stone-3); font-size: 1rem; color: var(--ink-3); font-style: italic; }
+    .article-disclaimer { background: var(--gold-2); border: 1px solid #d4b87a; padding: 1.4rem 1.8rem; margin-top: 3rem; }
+    .article-disclaimer-title { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .article-disclaimer p { font-size: 0.82rem; color: var(--ink-2); line-height: 1.7; font-weight: 300; margin: 0; }
+    footer { background: var(--ink); color: #9a958e; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--stone); text-decoration: none; }
+    .footer-logo span { color: var(--alpine-2); }
+    .footer-links-row { display: flex; gap: 2rem; list-style: none; }
+    .footer-links-row a { font-size: 0.78rem; color: #6a6560; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--alpine-2); }
+    .footer-copy { font-size: 0.72rem; color: #4a4742; font-family: 'DM Mono', monospace; }
+    @media (max-width: 900px) {
+      .lang-bar { padding: 0 1.5rem; } nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .article-header { padding: 7rem 1.5rem 3rem; } .article-wrap { padding: 3rem 1.5rem; }
+      .tool-cta { flex-direction: column; align-items: flex-start; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; } .lang-label { display: none; }
+    }
+  </style>
+</head>
+<body>
 
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"  data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"  data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="article-header">
+    <svg class="article-header-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
+      <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
+    </svg>
+    <div class="article-header-inner">
+      <div class="article-eyebrow">
+        <span class="article-tag" data-i18n="tag">Investing</span>
+        <span class="article-date" data-i18n="date">April 2026</span>
+      </div>
+      <h1 data-i18n="h1">Compound growth — <em>it's not magic,<br>it's mathematics</em></h1>
+      <p class="article-standfirst" data-i18n="standfirst">Compound growth is one of the most talked-about concepts in personal finance — and one of the most misunderstood. Here's a clear-headed look at what it actually is, what it isn't, and why it still matters.</p>
+      <div class="article-byline">
+        <span data-i18n="byline_author">By Lukas</span>
+        <span class="byline-dot"></span>
+        <span data-i18n="byline_read">5 min read</span>
+        <span class="byline-dot"></span>
+        <span class="human-badge" data-i18n="human_badge">Written by a human</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <div class="article-body">
+
+      <p data-i18n="p1"></p>
+      <p data-i18n="p2"></p>
+
+      <h2 data-i18n="h_what"></h2>
+      <p data-i18n="p3"></p>
+
+      <h2 data-i18n="h_how"></h2>
+      <p data-i18n="p4"></p>
+
+      <div class="example-block">
+        <div class="example-block-title" data-i18n="t1_title"></div>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_year"></th>
+              <th data-i18n="th_open"></th>
+              <th data-i18n="th_return"></th>
+              <th data-i18n="th_close"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="muted">1</td><td>CHF 1,000</td><td>CHF 100</td><td class="highlight">CHF 1,100</td></tr>
+            <tr><td class="muted">2</td><td>CHF 1,100</td><td>CHF 110</td><td class="highlight">CHF 1,210</td></tr>
+            <tr><td class="muted">3</td><td>CHF 1,210</td><td>CHF 121</td><td class="highlight">CHF 1,331</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="p5"></p>
+
+      <h2 data-i18n="h_example"></h2>
+      <p data-i18n="p6"></p>
+      <p data-i18n="p7"></p>
+
+      <div class="example-block">
+        <div class="example-block-title" data-i18n="t2_title"></div>
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_investment"></th>
+              <th data-i18n="th_annual"></th>
+              <th data-i18n="th_10yr"></th>
+              <th data-i18n="th_40yr"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="td_savings"></td>
+              <td class="muted">1%</td>
+              <td>CHF 1,105</td>
+              <td>CHF 1,489</td>
+            </tr>
+            <tr>
+              <td data-i18n="td_index"></td>
+              <td class="muted">7.5%</td>
+              <td class="highlight">CHF 2,061</td>
+              <td class="highlight">CHF 18,044</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="p8"></p>
+
+      <div class="callout">
+        <p data-i18n="callout"></p>
+      </div>
+
+      <h2 data-i18n="h_math"></h2>
+      <p data-i18n="p9"></p>
+
+      <ul class="factors-list">
+        <li><span class="factor-num">01</span><div><strong data-i18n="f1_title"></strong><span data-i18n="f1_desc"></span></div></li>
+        <li><span class="factor-num">02</span><div><strong data-i18n="f2_title"></strong><span data-i18n="f2_desc"></span></div></li>
+        <li><span class="factor-num">03</span><div><strong data-i18n="f3_title"></strong><span data-i18n="f3_desc"></span></div></li>
+        <li><span class="factor-num">04</span><div><strong data-i18n="f4_title"></strong><span data-i18n="f4_desc"></span></div></li>
+      </ul>
+
+      <h2 data-i18n="h_tool"></h2>
+      <p data-i18n="p10"></p>
+
+      <ul class="steps-list">
+        <li data-i18n="step1"></li>
+        <li data-i18n="step2"></li>
+        <li data-i18n="step3"></li>
+        <li data-i18n="step4"></li>
+      </ul>
+
+      <p data-i18n="p11"></p>
+      <p data-i18n="p12"></p>
+
+      <div class="tool-cta">
+        <div class="tool-cta-text">
+          <h3 data-i18n="cta_title"></h3>
+          <p data-i18n="cta_sub"></p>
+        </div>
+        <a href="/compound" class="tool-cta-btn" data-i18n="cta_btn"></a>
+      </div>
+
+      <p data-i18n="p13"></p>
+
+      <div class="sign-off" data-i18n="signoff"></div>
+
+      <div class="article-disclaimer">
+        <div class="article-disclaimer-title" data-i18n="disc_title"></div>
+        <p data-i18n="disc_text"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"    data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"     data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"     data-i18n="nav_about">About</a></li>
+      <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+      <li><a href="/privacy"   data-i18n="nav_privacy">Privacy</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+<script>
+const i18n = {
+  en: {
+    nav_tools:`Tools`, nav_blog:`Insights`, nav_about:`About`, nav_disclaimer:`Disclaimer`, nav_privacy:`Privacy`,
+    tag:`Investing`, date:`April 2026`, byline_author:`By Lukas`, byline_read:`5 min read`, human_badge:`Written by a human`,
+    h1:`Compound growth — <em>it's not magic,<br>it's mathematics</em>`,
+    standfirst:`Compound growth is one of the most talked-about concepts in personal finance — and one of the most misunderstood. Here's a clear-headed look at what it actually is, what it isn't, and why it still matters.`,
+    p1:`For anyone with a passing interest in finance and investing, seeing yet another article on compound interest will probably bring you to tears. That reaction is largely justified — the term is overused and over-hyped by financial commentators and <em>finfluencers</em> as some kind of magic solution to building wealth. They often fail to mention that time in the market, fees, inflation, and tax rates also play a critical role in determining how your investments actually perform.`,
+    p2:`Compound interest — or more precisely, compound growth — is a straightforward mathematical concept. Despite its misuse in popular finance content, it is still genuinely worth understanding. In this article, we introduce the concept, its benefits, and its real-world limitations. We also show you how compound growth could affect your investment goals using our free <a href="/compound">Compound Growth Projector</a>.`,
+    h_what:`What is compound growth?`,
+    p3:`Compound growth is earning returns on both your original investment (often called the principal) <em>and</em> on the accumulated gains from previous periods. It is often described as the "snowball effect" — as your money earns money, and that new money earns further money, causing investments to grow at an accelerating rate over time.`,
+    h_how:`How does it work?`,
+    p4:`The mechanics are simple. Imagine you invest CHF 1,000 at a 10% annual return.`,
+    t1_title:`Year-by-year example — CHF 1,000 at 10% annual return`,
+    th_year:`Year`, th_open:`Opening balance`, th_return:`Return (10%)`, th_close:`Closing balance`,
+    p5:`In year two, your 10% return is calculated on CHF 1,100 — not the original CHF 1,000. That extra CHF 10 may seem trivial, but it compounds with every passing year. The longer you hold an investment, the more significant this effect becomes.`,
+    h_example:`A real example`,
+    p6:`Imagine you and a friend each have CHF 1,000 to invest. You keep yours in a savings account with an annual return of 1%. Your friend takes a more growth-oriented approach and invests in a fund tracking a global index — with an average annual return of 7.5%, which is within the range of long-term historical performance for diversified global equity funds.`,
+    p7:`After 10 years, you meet for coffee to compare results.`,
+    t2_title:`CHF 1,000 invested — 10 years vs. 40 years`,
+    th_investment:`Investment`, th_annual:`Annual return`, th_10yr:`After 10 years`, th_40yr:`After 40 years`,
+    td_savings:`Savings account`, td_index:`Global index fund`,
+    p8:`After 10 years, the difference is meaningful. After 40 years, it is dramatic. The same CHF 1,000 starting point produces either CHF 1,489 or CHF 18,044 — depending entirely on the return rate and the time allowed to compound. This is not only a lesson in return rates, but in the power of time. The longer you hold an investment, the more impactful compound growth becomes.`,
+    callout:`<strong>Worth noting:</strong> these figures assume no additional contributions and do not account for inflation, taxes, or investment fees — all of which affect the real value of returns. We cover these factors below.`,
+    h_math:`It's not magic — it's mathematics`,
+    p9:`Compound growth is not wizardry. It is straightforward mathematics. But to use it effectively, you need to be clear-eyed about the factors that shape its real-world impact.`,
+    f1_title:`Time horizon`, f1_desc:`Significant compound growth requires substantial time — often several decades. Starting early matters far more than starting with a large sum.`,
+    f2_title:`Rate of return`, f2_desc:`As the example above shows, the difference between a 1% and a 7.5% return rate is enormous over a long period. Where and how you invest has an outsized effect.`,
+    f3_title:`Inflation`, f3_desc:`Inflation reduces the real purchasing power of your returns. In Switzerland, the average inflation rate between 2000 and 2026 was approximately 0.8–1.5% per year — lower than many other markets, but still meaningful over decades.`,
+    f4_title:`Taxes and fees`, f4_desc:`Platform fees charged by brokers, and taxes on investment gains, can significantly reduce the effective return on your investments. These vary depending on your circumstances and the platform you use.`,
+    h_tool:`Using the Compound Growth Projector`,
+    p10:`BergSight's free <a href="/compound">Compound Growth Projector</a> lets you model how your investments might grow over time, based on your own inputs.`,
+    step1:`Set your initial investment and any regular monthly contributions you plan to make`,
+    step2:`Enter your expected annual return — based on historical rates, or those offered by your bank or broker`,
+    step3:`Set your time horizon — how many years you intend to stay invested`,
+    step4:`Adjust the inflation rate — in Switzerland, 0.8–1.5% is a reasonable starting assumption`,
+    p11:`The tool shows you three projected lines: your total portfolio value, contributions alone, and the real inflation-adjusted value — so you can see not just what your money might be worth, but what it might actually buy.`,
+    p12:`<strong>Note:</strong> the tool does not model taxes or platform fees, as these vary significantly depending on individual circumstances and the broker you use. Factor these in when interpreting the results.`,
+    cta_title:`Try the Compound Growth Projector`,
+    cta_sub:`Free to use. No account required. All calculations happen in your browser.`,
+    cta_btn:`Open the tool →`,
+    p13:`Use it to understand how much you need to invest, and for how long, to reach a goal — whether that is retirement, financial independence, or anything else you are working towards.`,
+    signoff:`All the best,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Disclaimer`,
+    disc_text:`This article is provided for educational and informational purposes only. It does not constitute financial, investment, or any other form of regulated advice. The examples and figures used are illustrative and do not represent guaranteed returns or predictions of future performance. Past performance is not indicative of future results. Always consult a qualified financial adviser before making any investment decisions.`
+  },
+  de: {
+    nav_tools:`Tools`, nav_blog:`Einblicke`, nav_about:`Über uns`, nav_disclaimer:`Haftungsausschluss`, nav_privacy:`Datenschutz`,
+    tag:`Investieren`, date:`April 2026`, byline_author:`Von Lukas`, byline_read:`5 Min. Lesezeit`, human_badge:`Von einem Menschen geschrieben`,
+    h1:`Zinseszins — <em>kein Zauber,<br>nur Mathematik</em>`,
+    standfirst:`Zinseszins ist eines der meistdiskutierten Konzepte der persönlichen Finanzplanung — und eines der am häufigsten missverstandenen. Eine klare Betrachtung dessen, was es wirklich ist, was es nicht ist, und warum es dennoch wichtig bleibt.`,
+    p1:`Wer sich auch nur am Rande für Finanzen und Investitionen interessiert, dem werden beim Anblick eines weiteren Artikels über Zinseszins die Augen feucht. Diese Reaktion ist weitgehend berechtigt — der Begriff wird von Finanzkommentatoren und <em>Finfluencern</em> als magische Lösung zum Vermögensaufbau überstrapaziert. Dabei verschweigen sie oft, dass Investitionsdauer, Gebühren, Inflation und Steuersätze ebenfalls eine entscheidende Rolle für die tatsächliche Anlageperformance spielen.`,
+    p2:`Zinseszins — oder präziser: Zinseszinswachstum — ist ein grundlegendes mathematisches Konzept. Trotz seines Missbrauchs in populären Finanzinhalten lohnt es sich, es zu verstehen. In diesem Artikel stellen wir das Konzept, seine Vorteile und seine Grenzen vor. Wir zeigen Ihnen auch, wie Zinseszinswachstum Ihre Anlageziele beeinflussen könnte — mit unserem kostenlosen <a href="/compound">Zinseszins-Projektor</a>.`,
+    h_what:`Was ist Zinseszinswachstum?`,
+    p3:`Zinseszinswachstum bedeutet, Renditen sowohl auf Ihre ursprüngliche Investition (oft als Kapital bezeichnet) <em>als auch</em> auf die angesammelten Gewinne aus früheren Zeiträumen zu erzielen. Es wird oft als „Schneeballeffekt" beschrieben — da Ihr Geld Geld verdient, und dieses neue Geld weiteres Geld verdient, wodurch Investitionen mit der Zeit exponentiell wachsen.`,
+    h_how:`Wie funktioniert es?`,
+    p4:`Die Mechanik ist einfach. Stellen Sie sich vor, Sie investieren 1.000 CHF bei einer jährlichen Rendite von 10%.`,
+    t1_title:`Jahr-für-Jahr-Beispiel — CHF 1.000 bei 10% Jahresrendite`,
+    th_year:`Jahr`, th_open:`Anfangssaldo`, th_return:`Rendite (10%)`, th_close:`Endsaldo`,
+    p5:`Im zweiten Jahr wird Ihre 10%-Rendite auf 1.100 CHF berechnet — nicht auf die ursprünglichen 1.000 CHF. Diese zusätzlichen 10 CHF mögen trivial erscheinen, aber sie verzinsen sich mit jedem weiteren Jahr. Je länger Sie eine Investition halten, desto bedeutender wird dieser Effekt.`,
+    h_example:`Ein reales Beispiel`,
+    p6:`Stellen Sie sich vor, Sie und ein Freund haben jeweils 1.000 CHF zu investieren. Sie legen Ihres auf einem Sparkonto mit einer Jahresrendite von 1% an. Ihr Freund wählt einen wachstumsorientierteren Ansatz und investiert in einen Fonds, der einen globalen Index abbildet — mit einer durchschnittlichen Jahresrendite von 7,5%, was im Bereich der langfristigen historischen Performance diversifizierter globaler Aktienfonds liegt.`,
+    p7:`Nach 10 Jahren treffen Sie sich bei einem Kaffee, um die Ergebnisse zu vergleichen.`,
+    t2_title:`CHF 1.000 investiert — nach 10 und 40 Jahren`,
+    th_investment:`Anlage`, th_annual:`Jahresrendite`, th_10yr:`Nach 10 Jahren`, th_40yr:`Nach 40 Jahren`,
+    td_savings:`Sparkonto`, td_index:`Globaler Indexfonds`,
+    p8:`Nach 10 Jahren ist der Unterschied bedeutend. Nach 40 Jahren ist er dramatisch. Derselbe Ausgangspunkt von 1.000 CHF ergibt entweder 1.489 CHF oder 18.044 CHF — je nach Rendite und der zugelassenen Zeit für den Zinseszinseffekt. Dies ist nicht nur eine Lektion über Renditen, sondern auch über die Kraft der Zeit. Je länger Sie eine Investition halten, desto wirkungsvoller wird das Zinseszinswachstum.`,
+    callout:`<strong>Wichtiger Hinweis:</strong> Diese Zahlen setzen keine zusätzlichen Einzahlungen voraus und berücksichtigen weder Inflation noch Steuern oder Anlagegebühren — alles Faktoren, die den realen Wert der Renditen beeinflussen. Wir behandeln diese Faktoren weiter unten.`,
+    h_math:`Kein Zauber — nur Mathematik`,
+    p9:`Zinseszins ist keine Zauberei. Es ist schlichte Mathematik. Um ihn effektiv zu nutzen, müssen Sie jedoch die Faktoren kennen, die seinen realen Einfluss bestimmen.`,
+    f1_title:`Anlagehorizont`, f1_desc:`Signifikantes Zinseszinswachstum erfordert viel Zeit — oft mehrere Jahrzehnte. Ein früher Start ist weitaus wichtiger als ein grosser Anfangsbetrag.`,
+    f2_title:`Rendite`, f2_desc:`Wie das obige Beispiel zeigt, ist der Unterschied zwischen einer Rendite von 1% und 7,5% über einen langen Zeitraum enorm. Wo und wie Sie investieren, hat einen überproportionalen Einfluss.`,
+    f3_title:`Inflation`, f3_desc:`Inflation verringert die reale Kaufkraft Ihrer Renditen. In der Schweiz lag die durchschnittliche Inflationsrate zwischen 2000 und 2026 bei etwa 0,8–1,5% pro Jahr — niedriger als in vielen anderen Märkten, aber über Jahrzehnte dennoch bedeutsam.`,
+    f4_title:`Steuern und Gebühren`, f4_desc:`Plattformgebühren von Brokern und Steuern auf Anlagegewinne können die effektive Rendite Ihrer Anlagen erheblich reduzieren. Diese variieren je nach Ihren Umständen und der verwendeten Plattform.`,
+    h_tool:`Den Zinseszins-Projektor verwenden`,
+    p10:`BergSights kostenloser <a href="/compound">Zinseszins-Projektor</a> ermöglicht es Ihnen, auf Basis Ihrer eigenen Eingaben zu modellieren, wie Ihre Investitionen im Laufe der Zeit wachsen könnten.`,
+    step1:`Legen Sie Ihre Anfangsinvestition und etwaige regelmässige monatliche Beiträge fest`,
+    step2:`Geben Sie Ihre erwartete Jahresrendite ein — basierend auf historischen Werten oder den Angeboten Ihrer Bank oder Ihres Brokers`,
+    step3:`Legen Sie Ihren Anlagehorizont fest — wie viele Jahre Sie investiert bleiben möchten`,
+    step4:`Passen Sie die Inflationsrate an — in der Schweiz ist 0,8–1,5% eine vernünftige Ausgangsgrösse`,
+    p11:`Das Tool zeigt Ihnen drei projizierte Linien: Ihren gesamten Portfoliowert, nur Ihre Einzahlungen und den realen inflationsbereinigten Wert — sodass Sie nicht nur sehen, was Ihr Geld wert sein könnte, sondern auch, was es tatsächlich kaufen könnte.`,
+    p12:`<strong>Hinweis:</strong> Das Tool berücksichtigt keine Steuern oder Plattformgebühren, da diese je nach individuellen Umständen und verwendetem Broker erheblich variieren. Beziehen Sie diese Faktoren bei der Interpretation der Ergebnisse ein.`,
+    cta_title:`Zinseszins-Projektor ausprobieren`,
+    cta_sub:`Kostenlos. Kein Konto erforderlich. Alle Berechnungen erfolgen in Ihrem Browser.`,
+    cta_btn:`Tool öffnen →`,
+    p13:`Nutzen Sie es, um zu verstehen, wie viel Sie investieren müssen und wie lange, um ein Ziel zu erreichen — sei es der Ruhestand, finanzielle Unabhängigkeit oder etwas anderes, auf das Sie hinarbeiten.`,
+    signoff:`Mit freundlichen Grüssen,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Haftungsausschluss`,
+    disc_text:`Dieser Artikel dient ausschliesslich zu Bildungs- und Informationszwecken. Er stellt keine Finanz-, Investment- oder sonstige regulierte Beratung dar. Die verwendeten Beispiele und Zahlen sind illustrativ und stellen keine garantierten Renditen oder Zukunftsprognosen dar. Vergangene Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Konsultieren Sie immer einen qualifizierten Finanzberater, bevor Sie Anlageentscheidungen treffen.`
+  },
+  fr: {
+    nav_tools:`Outils`, nav_blog:`Analyses`, nav_about:`À propos`, nav_disclaimer:`Avertissement`, nav_privacy:`Confidentialité`,
+    tag:`Investissement`, date:`Avril 2026`, byline_author:`Par Lukas`, byline_read:`5 min de lecture`, human_badge:`Écrit par un humain`,
+    h1:`La croissance composée — <em>pas de magie,<br>juste des mathématiques</em>`,
+    standfirst:`La croissance composée est l'un des concepts les plus discutés en finances personnelles — et l'un des plus mal compris. Un regard lucide sur ce que c'est vraiment, ce que ce n'est pas, et pourquoi cela reste important.`,
+    p1:`Pour quiconque s'intéresse un tant soit peu aux finances et aux investissements, voir un nouvel article sur les intérêts composés risque de lui arracher des larmes. Cette réaction est largement justifiée — le terme est surutilisé et surexploité par les commentateurs financiers et les <em>finfluenceurs</em> comme une solution magique pour construire sa richesse. Ils omettent souvent de mentionner que le temps investi, les frais, l'inflation et les taux d'imposition jouent également un rôle déterminant dans la performance réelle des investissements.`,
+    p2:`Les intérêts composés — ou plus précisément, la croissance composée — sont un concept mathématique simple. Malgré son usage abusif dans les contenus financiers populaires, il vaut toujours la peine d'être compris. Dans cet article, nous présentons le concept, ses avantages et ses limites réelles. Nous vous montrons également comment la croissance composée pourrait influencer vos objectifs d'investissement grâce à notre <a href="/compound">Projecteur de Croissance Composée</a> gratuit.`,
+    h_what:`Qu'est-ce que la croissance composée ?`,
+    p3:`La croissance composée consiste à générer des rendements à la fois sur votre investissement initial (souvent appelé le capital) <em>et</em> sur les gains accumulés des périodes précédentes. Elle est souvent décrite comme l'effet "boule de neige" — votre argent génère de l'argent, et ce nouvel argent génère davantage d'argent, ce qui fait croître les investissements à un rythme accéléré au fil du temps.`,
+    h_how:`Comment ça fonctionne ?`,
+    p4:`La mécanique est simple. Imaginez que vous investissez CHF 1'000 avec un rendement annuel de 10%.`,
+    t1_title:`Exemple année par année — CHF 1'000 à 10% de rendement annuel`,
+    th_year:`Année`, th_open:`Solde d'ouverture`, th_return:`Rendement (10%)`, th_close:`Solde de clôture`,
+    p5:`En deuxième année, votre rendement de 10% est calculé sur CHF 1'100 — et non sur les CHF 1'000 d'origine. Ces CHF 10 supplémentaires peuvent sembler dérisoires, mais ils se composent d'année en année. Plus longtemps vous détenez un investissement, plus cet effet devient significatif.`,
+    h_example:`Un exemple concret`,
+    p6:`Imaginez que vous et un ami ayez chacun CHF 1'000 à investir. Vous placez le vôtre sur un compte d'épargne avec un rendement annuel de 1%. Votre ami adopte une approche plus orientée croissance et investit dans un fonds répliquant un indice mondial — avec un rendement annuel moyen de 7,5%, ce qui se situe dans la fourchette des performances historiques à long terme des fonds d'actions mondiales diversifiées.`,
+    p7:`Après 10 ans, vous vous retrouvez autour d'un café pour comparer les résultats.`,
+    t2_title:`CHF 1'000 investis — après 10 et 40 ans`,
+    th_investment:`Investissement`, th_annual:`Rendement annuel`, th_10yr:`Après 10 ans`, th_40yr:`Après 40 ans`,
+    td_savings:`Compte d'épargne`, td_index:`Fonds indiciel mondial`,
+    p8:`Après 10 ans, la différence est significative. Après 40 ans, elle est saisissante. Le même point de départ de CHF 1'000 produit soit CHF 1'489, soit CHF 18'044 — selon uniquement le taux de rendement et le temps accordé à la composition. C'est une leçon non seulement sur les taux de rendement, mais aussi sur le pouvoir du temps. Plus longtemps vous détenez un investissement, plus la croissance composée devient percutante.`,
+    callout:`<strong>À noter :</strong> ces chiffres supposent l'absence de contributions supplémentaires et ne tiennent pas compte de l'inflation, des impôts ou des frais d'investissement — autant de facteurs qui affectent la valeur réelle des rendements. Nous abordons ces facteurs ci-dessous.`,
+    h_math:`Pas de magie — juste des mathématiques`,
+    p9:`La croissance composée n'est pas de la sorcellerie. C'est des mathématiques simples. Mais pour l'utiliser efficacement, vous devez avoir une vision claire des facteurs qui déterminent son impact réel.`,
+    f1_title:`Horizon temporel`, f1_desc:`Une croissance composée significative requiert beaucoup de temps — souvent plusieurs décennies. Commencer tôt compte bien plus que commencer avec un capital important.`,
+    f2_title:`Taux de rendement`, f2_desc:`Comme le montre l'exemple ci-dessus, la différence entre un taux de 1% et de 7,5% est énorme sur une longue période. Où et comment vous investissez a un effet considérable.`,
+    f3_title:`Inflation`, f3_desc:`L'inflation réduit le pouvoir d'achat réel de vos rendements. En Suisse, le taux d'inflation moyen entre 2000 et 2026 était d'environ 0,8–1,5% par an — inférieur à de nombreux autres marchés, mais toujours significatif sur des décennies.`,
+    f4_title:`Impôts et frais`, f4_desc:`Les frais de plateforme facturés par les courtiers et les impôts sur les gains d'investissement peuvent réduire considérablement le rendement effectif de vos placements. Ceux-ci varient selon votre situation et la plateforme utilisée.`,
+    h_tool:`Utiliser le Projecteur de Croissance Composée`,
+    p10:`Le <a href="/compound">Projecteur de Croissance Composée</a> gratuit de BergSight vous permet de modéliser la croissance potentielle de vos investissements dans le temps, selon vos propres paramètres.`,
+    step1:`Définissez votre investissement initial et toute contribution mensuelle régulière que vous prévoyez d'effectuer`,
+    step2:`Saisissez votre rendement annuel attendu — basé sur les taux historiques ou ceux proposés par votre banque ou courtier`,
+    step3:`Définissez votre horizon temporel — le nombre d'années pendant lesquelles vous comptez rester investi`,
+    step4:`Ajustez le taux d'inflation — en Suisse, 0,8–1,5% est une hypothèse de départ raisonnable`,
+    p11:`L'outil vous montre trois projections : la valeur totale de votre portefeuille, vos contributions seules et la valeur réelle ajustée à l'inflation — pour voir non seulement ce que pourrait valoir votre argent, mais aussi ce qu'il pourrait réellement acheter.`,
+    p12:`<strong>Remarque :</strong> l'outil ne modélise pas les impôts ni les frais de plateforme, car ceux-ci varient considérablement selon les circonstances individuelles et le courtier utilisé. Tenez-en compte lors de l'interprétation des résultats.`,
+    cta_title:`Essayez le Projecteur de Croissance Composée`,
+    cta_sub:`Gratuit. Sans compte requis. Tous les calculs s'effectuent dans votre navigateur.`,
+    cta_btn:`Ouvrir l'outil →`,
+    p13:`Utilisez-le pour comprendre combien vous devez investir et pendant combien de temps pour atteindre un objectif — qu'il s'agisse de la retraite, de l'indépendance financière ou de tout autre projet.`,
+    signoff:`Bien cordialement,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Avertissement`,
+    disc_text:`Cet article est fourni à des fins éducatives et informatives uniquement. Il ne constitue pas un conseil financier, d'investissement ou toute autre forme de conseil réglementé. Les exemples et chiffres utilisés sont illustratifs et ne représentent pas des rendements garantis ou des prédictions de performance future. Les performances passées ne préjugent pas des résultats futurs. Consultez toujours un conseiller financier qualifié avant de prendre des décisions d'investissement.`
+  },
+  it: {
+    nav_tools:`Strumenti`, nav_blog:`Approfondimenti`, nav_about:`Chi siamo`, nav_disclaimer:`Dichiarazione di non responsabilità`, nav_privacy:`Privacy`,
+    tag:`Investimento`, date:`Aprile 2026`, byline_author:`Di Lukas`, byline_read:`5 min di lettura`, human_badge:`Scritto da un essere umano`,
+    h1:`La crescita composta — <em>non è magia,<br>è matematica</em>`,
+    standfirst:`La crescita composta è uno dei concetti più discussi della finanza personale — e uno dei più fraintesi. Uno sguardo lucido su cosa sia realmente, cosa non sia, e perché rimanga comunque rilevante.`,
+    p1:`Per chiunque abbia un interesse anche superficiale per la finanza e gli investimenti, vedere l'ennesimo articolo sugli interessi composti farà probabilmente venire le lacrime agli occhi. Questa reazione è in gran parte giustificata — il termine è abusato e sopravvalutato dai commentatori finanziari e dai <em>finfluencer</em> come soluzione magica per costruire ricchezza. Spesso dimenticano di menzionare che il tempo investito, le commissioni, l'inflazione e le aliquote fiscali svolgono anch'essi un ruolo fondamentale nel determinare la performance reale degli investimenti.`,
+    p2:`Gli interessi composti — o più precisamente, la crescita composta — sono un concetto matematico diretto. Nonostante il suo abuso nei contenuti finanziari popolari, vale ancora la pena comprenderlo. In questo articolo presentiamo il concetto, i suoi vantaggi e i suoi limiti reali. Vi mostriamo anche come la crescita composta potrebbe influenzare i vostri obiettivi di investimento utilizzando il nostro <a href="/compound">Proiettore di Crescita Composta</a> gratuito.`,
+    h_what:`Cos'è la crescita composta?`,
+    p3:`La crescita composta consiste nel generare rendimenti sia sul vostro investimento iniziale (spesso chiamato capitale) <em>che</em> sui guadagni accumulati nei periodi precedenti. Viene spesso descritta come l'"effetto valanga" — il vostro denaro genera denaro, e questo nuovo denaro genera ulteriore denaro, facendo crescere gli investimenti a un ritmo accelerato nel tempo.`,
+    h_how:`Come funziona?`,
+    p4:`La meccanica è semplice. Immaginate di investire CHF 1.000 con un rendimento annuale del 10%.`,
+    t1_title:`Esempio anno per anno — CHF 1.000 al 10% di rendimento annuale`,
+    th_year:`Anno`, th_open:`Saldo iniziale`, th_return:`Rendimento (10%)`, th_close:`Saldo finale`,
+    p5:`Nel secondo anno, il rendimento del 10% viene calcolato su CHF 1.100 — non sui CHF 1.000 originali. Quei CHF 10 in più possono sembrare insignificanti, ma si moltiplicano con ogni anno che passa. Più a lungo si detiene un investimento, più significativo diventa questo effetto.`,
+    h_example:`Un esempio concreto`,
+    p6:`Immaginate che voi e un amico abbiate ciascuno CHF 1.000 da investire. Voi tenete i vostri su un conto di risparmio con un rendimento annuale dell'1%. Il vostro amico adotta un approccio più orientato alla crescita e investe in un fondo che replica un indice globale — con un rendimento annuale medio del 7,5%, che rientra nell'intervallo delle performance storiche a lungo termine dei fondi azionari globali diversificati.`,
+    p7:`Dopo 10 anni, vi incontrate per un caffè a confrontare i risultati.`,
+    t2_title:`CHF 1.000 investiti — dopo 10 e 40 anni`,
+    th_investment:`Investimento`, th_annual:`Rendimento annuale`, th_10yr:`Dopo 10 anni`, th_40yr:`Dopo 40 anni`,
+    td_savings:`Conto di risparmio`, td_index:`Fondo indicizzato globale`,
+    p8:`Dopo 10 anni, la differenza è significativa. Dopo 40 anni, è drammatica. Lo stesso punto di partenza di CHF 1.000 produce CHF 1.489 oppure CHF 18.044 — dipende interamente dal tasso di rendimento e dal tempo lasciato alla capitalizzazione. Non è solo una lezione sui tassi di rendimento, ma anche sul potere del tempo. Più a lungo si detiene un investimento, più impattante diventa la crescita composta.`,
+    callout:`<strong>Da notare:</strong> queste cifre non prevedono contributi aggiuntivi e non tengono conto di inflazione, tasse o commissioni di investimento — tutti fattori che incidono sul valore reale dei rendimenti. Affrontiamo questi fattori di seguito.`,
+    h_math:`Non è magia — è matematica`,
+    p9:`La crescita composta non è stregoneria. È matematica diretta. Ma per utilizzarla efficacemente, è necessario avere una visione chiara dei fattori che ne determinano l'impatto reale.`,
+    f1_title:`Orizzonte temporale`, f1_desc:`Una crescita composta significativa richiede molto tempo — spesso diversi decenni. Iniziare presto conta molto più che iniziare con una somma elevata.`,
+    f2_title:`Tasso di rendimento`, f2_desc:`Come mostra l'esempio sopra, la differenza tra un tasso dell'1% e del 7,5% è enorme su un lungo periodo. Dove e come si investe ha un effetto sproporzionato.`,
+    f3_title:`Inflazione`, f3_desc:`L'inflazione riduce il potere d'acquisto reale dei vostri rendimenti. In Svizzera, il tasso medio di inflazione tra il 2000 e il 2026 era di circa 0,8–1,5% annuo — inferiore a molti altri mercati, ma comunque significativo nel corso dei decenni.`,
+    f4_title:`Tasse e commissioni`, f4_desc:`Le commissioni di piattaforma addebitate dai broker e le tasse sui guadagni degli investimenti possono ridurre significativamente il rendimento effettivo dei vostri investimenti. Variano a seconda delle circostanze individuali e della piattaforma utilizzata.`,
+    h_tool:`Utilizzare il Proiettore di Crescita Composta`,
+    p10:`Il <a href="/compound">Proiettore di Crescita Composta</a> gratuito di BergSight vi consente di modellare come potrebbero crescere i vostri investimenti nel tempo, in base ai vostri parametri.`,
+    step1:`Impostate il vostro investimento iniziale e qualsiasi contributo mensile regolare che pianificate di effettuare`,
+    step2:`Inserite il vostro rendimento annuale atteso — basato su tassi storici o quelli offerti dalla vostra banca o broker`,
+    step3:`Impostate il vostro orizzonte temporale — quanti anni intendete rimanere investiti`,
+    step4:`Regolate il tasso di inflazione — in Svizzera, 0,8–1,5% è un'ipotesi di partenza ragionevole`,
+    p11:`Lo strumento mostra tre linee proiettate: il valore totale del vostro portafoglio, solo i contributi e il valore reale corretto per l'inflazione — per vedere non solo quanto potrebbe valere il vostro denaro, ma anche cosa potrebbe realmente acquistare.`,
+    p12:`<strong>Nota:</strong> lo strumento non modella le tasse o le commissioni di piattaforma, poiché variano significativamente a seconda delle circostanze individuali e del broker utilizzato. Tenete conto di questi fattori nell'interpretare i risultati.`,
+    cta_title:`Prova il Proiettore di Crescita Composta`,
+    cta_sub:`Gratuito. Nessun account richiesto. Tutti i calcoli avvengono nel vostro browser.`,
+    cta_btn:`Apri lo strumento →`,
+    p13:`Usatelo per capire quanto dovete investire e per quanto tempo per raggiungere un obiettivo — che si tratti della pensione, dell'indipendenza finanziaria o di qualsiasi altra cosa verso cui state lavorando.`,
+    signoff:`Cordiali saluti,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Dichiarazione di non responsabilità`,
+    disc_text:`Questo articolo è fornito esclusivamente a scopo educativo e informativo. Non costituisce consulenza finanziaria, d'investimento o qualsiasi altra forma di consulenza regolamentata. Gli esempi e le cifre utilizzati sono illustrativi e non rappresentano rendimenti garantiti o previsioni di performance futura. Le performance passate non sono indicative dei risultati futuri. Consultate sempre un consulente finanziario qualificato prima di prendere decisioni di investimento.`
+  }
+};
+
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('bs_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('btn-' + lang).classList.add('active');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+});
+
+setLang(currentLang);
+</script>
+
+</body>
+</html>
