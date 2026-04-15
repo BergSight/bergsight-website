@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Disclaimer — BergSight financial planning tools are for illustrative purposes only and do not constitute financial advice.">
+  <meta property="og:title" content="Disclaimer — BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/disclaimer">
+  <title>Disclaimer — BergSight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --stone:#f5f2ed; --stone-2:#ece8e1; --stone-3:#d8d2c8;
+      --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c;
+      --alpine:#2d5a3d; --alpine-2:#3d7a52; --alpine-3:#e8f0eb;
+      --gold:#8a6d3b; --gold-2:#f5ead8; --white:#ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
+    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
+    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
+    .lang-btn:hover { color: var(--white); background: #2a2825; }
+    .lang-btn.active { color: var(--alpine-2); }
+    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--alpine); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--alpine); }
+    .page-header { padding: 9rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
+    .page-header-peaks { position: absolute; bottom: 0; left: 0; right: 0; height: 55%; opacity: 0.12; }
+    .page-header-inner { position: relative; max-width: 760px; }
+    .page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--alpine-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+    .page-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--alpine-2); }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 500; line-height: 1.1; color: var(--stone); margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+    .page-header-sub { font-size: 1.05rem; color: #9a958e; max-width: 560px; font-weight: 300; line-height: 1.8; }
+    .content-wrap { max-width: 760px; margin: 0 auto; padding: 5rem 4rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 0.8rem; margin-top: 2.5rem; }
+    .section-title:first-child { margin-top: 0; }
+    .prose p { font-size: 1rem; color: var(--ink-2); line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .meta-line { font-size: 0.78rem; color: var(--ink-3); font-family: 'DM Mono', monospace; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--stone-3); }
+    footer { background: var(--ink); color: #9a958e; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--stone); text-decoration: none; }
+    .footer-logo span { color: var(--alpine-2); }
+    .footer-links-row { display: flex; gap: 2rem; list-style: none; }
+    .footer-links-row a { font-size: 0.78rem; color: #6a6560; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--alpine-2); }
+    .footer-copy { font-size: 0.72rem; color: #4a4742; font-family: 'DM Mono', monospace; }
+    @media (max-width: 900px) {
+      .lang-bar { padding: 0 1.5rem; } nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .page-header { padding: 7rem 1.5rem 3rem; } .content-wrap { padding: 3rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; } .lang-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"  data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"  data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <svg class="page-header-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
+      <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
+    </svg>
+    <div class="page-header-inner">
+      <div class="page-eyebrow" data-i18n="eyebrow">Legal</div>
+      <h1 data-i18n="h1">Disclaimer</h1>
+      <p class="page-header-sub" data-i18n="header_sub">Please read this disclaimer carefully before using BergSight tools.</p>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+    <div class="meta-line" data-i18n="meta">Last updated: April 2026 · BergSight, Zürich, Switzerland</div>
+
+    <div class="prose">
+
+      <div class="section-title" data-i18n="s1_title">No financial advice</div>
+      <p data-i18n="s1_p1">BergSight is an independent financial information platform. The tools, calculators, articles, and all other content published on this website are provided for illustrative and educational purposes only. Nothing on this website constitutes financial, investment, tax, legal, or any other form of regulated advice.</p>
+      <p data-i18n="s1_p2">BergSight is not a licensed financial adviser, bank, asset manager, or regulated financial services provider. Using this website does not create any advisory relationship between you and BergSight.</p>
+
+      <div class="section-title" data-i18n="s2_title">Projections and assumptions</div>
+      <p data-i18n="s2_p1">The outputs generated by BergSight tools — including projected portfolio values, retirement estimates, and withdrawal rate simulations — are based on user-defined inputs and mathematical models. They represent illustrative scenarios only and are not predictions, guarantees, or forecasts of actual financial outcomes.</p>
+      <p data-i18n="s2_p2">Investment returns vary. Market conditions change. Inflation rates fluctuate. The assumptions built into BergSight tools are reasonable estimates based on historical data and publicly available information, but they may not reflect your actual circumstances, tax situation, or future market conditions. Past performance is not indicative of future results.</p>
+
+      <div class="section-title" data-i18n="s3_title">Your responsibility</div>
+      <p data-i18n="s3_p1">Any financial decisions you make are your own responsibility. BergSight strongly recommends that you consult a qualified and regulated financial adviser before making any investment, retirement planning, or other financial decisions. The tools on this site are intended to help you think through scenarios and ask better questions — not to replace professional advice.</p>
+
+      <div class="section-title" data-i18n="s4_title">Accuracy of information</div>
+      <p data-i18n="s4_p1">BergSight makes reasonable efforts to ensure that the information and tools on this website are accurate and up to date. However, we make no warranty, express or implied, as to the accuracy, completeness, or fitness for purpose of any content. Swiss financial regulations, tax rules, and pension provisions change periodically. Always verify current rules with an authorised source or professional adviser.</p>
+
+      <div class="section-title" data-i18n="s5_title">External links</div>
+      <p data-i18n="s5_p1">BergSight may link to third-party websites for reference purposes. These links do not constitute an endorsement or recommendation of those sites or their content. BergSight has no control over and accepts no responsibility for the content of external websites.</p>
+
+      <div class="section-title" data-i18n="s6_title">Limitation of liability</div>
+      <p data-i18n="s6_p1">To the fullest extent permitted by applicable law, BergSight accepts no liability for any loss, damage, or harm arising directly or indirectly from the use of, or reliance on, any content or tools on this website. This includes but is not limited to financial loss, loss of data, or any other consequential damages.</p>
+
+      <div class="section-title" data-i18n="s7_title">Contact</div>
+      <p data-i18n="s7_p1">If you have any questions about this disclaimer, please contact us at <a href="#" id="contact-link" style="color:var(--alpine)">hello@bergsight.com</a>.</p>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"    data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/about"     data-i18n="nav_about">About</a></li>
+      <li><a href="/privacy"   data-i18n="footer_privacy">Privacy policy</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+  <script>
+  const i18n = {
+    en: {
+      nav_tools:`Tools`, nav_blog:`Insights`, nav_about:`About`,
+      eyebrow:`Legal`, h1:`Disclaimer`,
+      header_sub:`Please read this disclaimer carefully before using BergSight tools.`,
+      meta:`Last updated: April 2026 · BergSight, Zürich, Switzerland`,
+      s1_title:`No financial advice`,
+      s1_p1:`BergSight is an independent financial information platform. The tools, calculators, articles, and all other content published on this website are provided for illustrative and educational purposes only. Nothing on this website constitutes financial, investment, tax, legal, or any other form of regulated advice.`,
+      s1_p2:`BergSight is not a licensed financial adviser, bank, asset manager, or regulated financial services provider. Using this website does not create any advisory relationship between you and BergSight.`,
+      s2_title:`Projections and assumptions`,
+      s2_p1:`The outputs generated by BergSight tools — including projected portfolio values, retirement estimates, and withdrawal rate simulations — are based on user-defined inputs and mathematical models. They represent illustrative scenarios only and are not predictions, guarantees, or forecasts of actual financial outcomes.`,
+      s2_p2:`Investment returns vary. Market conditions change. Inflation rates fluctuate. The assumptions built into BergSight tools are reasonable estimates based on historical data and publicly available information, but they may not reflect your actual circumstances, tax situation, or future market conditions. Past performance is not indicative of future results.`,
+      s3_title:`Your responsibility`,
+      s3_p1:`Any financial decisions you make are your own responsibility. BergSight strongly recommends that you consult a qualified and regulated financial adviser before making any investment, retirement planning, or other financial decisions. The tools on this site are intended to help you think through scenarios and ask better questions — not to replace professional advice.`,
+      s4_title:`Accuracy of information`,
+      s4_p1:`BergSight makes reasonable efforts to ensure that the information and tools on this website are accurate and up to date. However, we make no warranty, express or implied, as to the accuracy, completeness, or fitness for purpose of any content. Swiss financial regulations, tax rules, and pension provisions change periodically. Always verify current rules with an authorised source or professional adviser.`,
+      s5_title:`External links`,
+      s5_p1:`BergSight may link to third-party websites for reference purposes. These links do not constitute an endorsement or recommendation of those sites or their content. BergSight has no control over and accepts no responsibility for the content of external websites.`,
+      s6_title:`Limitation of liability`,
+      s6_p1:`To the fullest extent permitted by applicable law, BergSight accepts no liability for any loss, damage, or harm arising directly or indirectly from the use of, or reliance on, any content or tools on this website. This includes but is not limited to financial loss, loss of data, or any other consequential damages.`,
+      s7_title:`Contact`,
+      s7_p1:`If you have any questions about this disclaimer, please contact us at`,
+      footer_privacy:`Privacy policy`
+    },
+    de: {
+      nav_tools:`Tools`, nav_blog:`Einblicke`, nav_about:`Über uns`,
+      eyebrow:`Rechtliches`, h1:`Haftungsausschluss`,
+      header_sub:`Bitte lesen Sie diesen Haftungsausschluss sorgfältig durch, bevor Sie BergSight-Tools verwenden.`,
+      meta:`Zuletzt aktualisiert: April 2026 · BergSight, Zürich, Schweiz`,
+      s1_title:`Keine Finanzberatung`,
+      s1_p1:`BergSight ist eine unabhängige Finanzinformationsplattform. Die Tools, Rechner, Artikel und alle anderen auf dieser Website veröffentlichten Inhalte dienen ausschliesslich zu Illustrations- und Bildungszwecken. Nichts auf dieser Website stellt eine Finanz-, Investment-, Steuer-, Rechts- oder sonstige regulierte Beratung dar.`,
+      s1_p2:`BergSight ist kein zugelassener Finanzberater, keine Bank, kein Vermögensverwalter und kein regulierter Finanzdienstleister. Die Nutzung dieser Website begründet kein Beratungsverhältnis zwischen Ihnen und BergSight.`,
+      s2_title:`Prognosen und Annahmen`,
+      s2_p1:`Die von BergSight-Tools generierten Ergebnisse — einschliesslich prognostizierter Portfoliowerte, Rentenabschätzungen und Entnahmesimulationen — basieren auf benutzerdefinierten Eingaben und mathematischen Modellen. Sie stellen ausschliesslich illustrative Szenarien dar und sind keine Vorhersagen, Garantien oder Prognosen tatsächlicher finanzieller Ergebnisse.`,
+      s2_p2:`Anlageerträge variieren. Marktbedingungen ändern sich. Inflationsraten schwanken. Die in BergSight-Tools eingebauten Annahmen sind vernünftige Schätzungen auf Basis historischer Daten, spiegeln jedoch möglicherweise nicht Ihre tatsächlichen Umstände wider. Vergangene Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse.`,
+      s3_title:`Ihre Verantwortung`,
+      s3_p1:`Alle finanziellen Entscheidungen, die Sie treffen, liegen in Ihrer eigenen Verantwortung. BergSight empfiehlt dringend, vor Anlage-, Altersvorsorge- oder anderen Finanzentscheidungen einen qualifizierten und regulierten Finanzberater zu konsultieren.`,
+      s4_title:`Richtigkeit der Informationen`,
+      s4_p1:`BergSight bemüht sich, die Informationen und Tools auf dieser Website aktuell und korrekt zu halten. Wir übernehmen jedoch keine Gewähr für die Richtigkeit, Vollständigkeit oder Eignung der Inhalte. Schweizer Finanzvorschriften, Steuerregeln und Rentenbestimmungen ändern sich regelmässig.`,
+      s5_title:`Externe Links`,
+      s5_p1:`BergSight kann zu Referenzzwecken auf Websites Dritter verlinken. Diese Links stellen keine Empfehlung dieser Websites oder ihrer Inhalte dar. BergSight hat keine Kontrolle über externe Websites und übernimmt keine Verantwortung für deren Inhalte.`,
+      s6_title:`Haftungsbeschränkung`,
+      s6_p1:`Im grösstmöglichen gesetzlich zulässigen Umfang übernimmt BergSight keine Haftung für Verluste, Schäden oder Schäden, die direkt oder indirekt aus der Nutzung oder dem Vertrauen auf Inhalte oder Tools dieser Website entstehen.`,
+      s7_title:`Kontakt`,
+      s7_p1:`Bei Fragen zu diesem Haftungsausschluss kontaktieren Sie uns bitte unter`,
+      footer_privacy:`Datenschutz`
+    },
+    fr: {
+      nav_tools:`Outils`, nav_blog:`Analyses`, nav_about:`À propos`,
+      eyebrow:`Mentions légales`, h1:`Avertissement`,
+      header_sub:`Veuillez lire attentivement cet avertissement avant d'utiliser les outils BergSight.`,
+      meta:`Dernière mise à jour : avril 2026 · BergSight, Zurich, Suisse`,
+      s1_title:`Pas de conseil financier`,
+      s1_p1:`BergSight est une plateforme d'information financière indépendante. Les outils, calculateurs, articles et tous les autres contenus publiés sur ce site sont fournis à des fins illustratives et éducatives uniquement. Rien sur ce site ne constitue un conseil financier, d'investissement, fiscal, juridique ou toute autre forme de conseil réglementé.`,
+      s1_p2:`BergSight n'est pas un conseiller financier agréé, une banque, un gestionnaire d'actifs ou un prestataire de services financiers réglementé. L'utilisation de ce site ne crée aucune relation de conseil entre vous et BergSight.`,
+      s2_title:`Projections et hypothèses`,
+      s2_p1:`Les résultats générés par les outils BergSight — y compris les valeurs de portefeuille projetées, les estimations de retraite et les simulations de taux de retrait — sont basés sur des entrées définies par l'utilisateur et des modèles mathématiques. Ils représentent des scénarios illustratifs uniquement et ne constituent pas des prédictions, garanties ou prévisions de résultats financiers réels.`,
+      s2_p2:`Les rendements des investissements varient. Les conditions du marché changent. Les taux d'inflation fluctuent. Les hypothèses intégrées aux outils BergSight sont des estimations raisonnables basées sur des données historiques, mais peuvent ne pas refléter votre situation réelle. Les performances passées ne préjugent pas des résultats futurs.`,
+      s3_title:`Votre responsabilité`,
+      s3_p1:`Toutes les décisions financières que vous prenez sont de votre propre responsabilité. BergSight vous recommande vivement de consulter un conseiller financier qualifié et réglementé avant de prendre toute décision d'investissement, de planification de retraite ou autre décision financière.`,
+      s4_title:`Exactitude des informations`,
+      s4_p1:`BergSight fait des efforts raisonnables pour s'assurer que les informations et outils sur ce site sont exacts et à jour. Cependant, nous ne donnons aucune garantie quant à l'exactitude, l'exhaustivité ou l'adéquation des contenus. Les réglementations financières suisses, les règles fiscales et les dispositions de retraite évoluent régulièrement.`,
+      s5_title:`Liens externes`,
+      s5_p1:`BergSight peut créer des liens vers des sites tiers à titre de référence. Ces liens ne constituent pas une recommandation de ces sites ou de leur contenu. BergSight n'a aucun contrôle sur les sites externes et n'accepte aucune responsabilité pour leur contenu.`,
+      s6_title:`Limitation de responsabilité`,
+      s6_p1:`Dans toute la mesure permise par la loi applicable, BergSight n'accepte aucune responsabilité pour toute perte, dommage ou préjudice découlant directement ou indirectement de l'utilisation ou de la confiance accordée aux contenus ou outils de ce site.`,
+      s7_title:`Contact`,
+      s7_p1:`Pour toute question concernant cet avertissement, veuillez nous contacter à`,
+      footer_privacy:`Politique de confidentialité`
+    },
+    it: {
+      nav_tools:`Strumenti`, nav_blog:`Approfondimenti`, nav_about:`Chi siamo`,
+      eyebrow:`Note legali`, h1:`Dichiarazione di non responsabilità`,
+      header_sub:`Si prega di leggere attentamente questa dichiarazione prima di utilizzare gli strumenti BergSight.`,
+      meta:`Ultimo aggiornamento: aprile 2026 · BergSight, Zurigo, Svizzera`,
+      s1_title:`Nessuna consulenza finanziaria`,
+      s1_p1:`BergSight è una piattaforma di informazione finanziaria indipendente. Gli strumenti, i calcolatori, gli articoli e tutti gli altri contenuti pubblicati su questo sito sono forniti esclusivamente a scopo illustrativo ed educativo. Nulla su questo sito costituisce consulenza finanziaria, d'investimento, fiscale, legale o qualsiasi altra forma di consulenza regolamentata.`,
+      s1_p2:`BergSight non è un consulente finanziario autorizzato, una banca, un gestore patrimoniale o un fornitore di servizi finanziari regolamentato. L'utilizzo di questo sito non crea alcun rapporto di consulenza tra l'utente e BergSight.`,
+      s2_title:`Proiezioni e ipotesi`,
+      s2_p1:`I risultati generati dagli strumenti BergSight — inclusi i valori di portafoglio proiettati, le stime pensionistiche e le simulazioni del tasso di prelievo — si basano su input definiti dall'utente e modelli matematici. Rappresentano scenari illustrativi e non costituiscono previsioni, garanzie o pronostici di risultati finanziari reali.`,
+      s2_p2:`I rendimenti degli investimenti variano. Le condizioni di mercato cambiano. I tassi di inflazione fluttuano. Le ipotesi integrate negli strumenti BergSight sono stime ragionevoli basate su dati storici, ma potrebbero non riflettere la situazione reale dell'utente. Le performance passate non sono indicative dei risultati futuri.`,
+      s3_title:`La vostra responsabilità`,
+      s3_p1:`Qualsiasi decisione finanziaria presa è di vostra esclusiva responsabilità. BergSight raccomanda vivamente di consultare un consulente finanziario qualificato e regolamentato prima di prendere decisioni di investimento, pianificazione pensionistica o altre decisioni finanziarie.`,
+      s4_title:`Accuratezza delle informazioni`,
+      s4_p1:`BergSight si impegna ragionevolmente per garantire che le informazioni e gli strumenti su questo sito siano accurati e aggiornati. Tuttavia, non si fornisce alcuna garanzia riguardo all'accuratezza, completezza o idoneità dei contenuti. Le normative finanziarie svizzere, le regole fiscali e le disposizioni pensionistiche cambiano periodicamente.`,
+      s5_title:`Link esterni`,
+      s5_p1:`BergSight può collegarsi a siti web di terze parti a scopo di riferimento. Questi link non costituiscono un'approvazione o raccomandazione di tali siti o del loro contenuto. BergSight non ha alcun controllo sui siti esterni e non accetta alcuna responsabilità per il loro contenuto.`,
+      s6_title:`Limitazione di responsabilità`,
+      s6_p1:`Nella misura massima consentita dalla legge applicabile, BergSight non accetta alcuna responsabilità per perdite, danni o pregiudizi derivanti direttamente o indirettamente dall'uso o dall'affidamento su contenuti o strumenti di questo sito.`,
+      s7_title:`Contatto`,
+      s7_p1:`Per qualsiasi domanda su questa dichiarazione, contattarci a`,
+      footer_privacy:`Informativa sulla privacy`
+    }
+  };
+
+  let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('bs_lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('btn-' + lang).classList.add('active');
+    const t = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    var cl = document.getElementById('contact-link');
+    if (cl) cl.href = 'mailto:hello@bergsight.com';
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+  });
+
+  (function() {
+    var el = document.getElementById('contact-link');
+    if (el) el.href = 'mailto:' + 'hello' + '@' + 'bergsight.com';
+  })();
+
+  setLang(currentLang);
+  </script>
+
+</body>
+</html>
