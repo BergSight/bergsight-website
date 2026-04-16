@@ -8,6 +8,10 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bergsight.com/insights/compound-interest-explained">
   <title>Compound Growth Explained — BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -47,6 +51,11 @@
     .article-body em { font-style: italic; }
     .article-body a { color: var(--alpine); text-decoration: underline; text-decoration-color: rgba(45,90,61,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
     .article-body a:hover { text-decoration-color: var(--alpine); }
+    .example-block { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    @media (max-width: 600px) {
+      .example-table { min-width: 480px; }
+      .example-table th, .example-table td { padding: 0.6rem 0.9rem; font-size: 0.8rem; }
+    }
     .example-block { background: var(--white); border: 1px solid var(--stone-3); margin: 2rem 0; overflow: hidden; }
     .example-block-title { background: var(--ink); color: var(--stone-2); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1.4rem; }
     .example-table { width: 100%; border-collapse: collapse; }
@@ -66,7 +75,7 @@
     .tool-cta { background: var(--ink); padding: 2.5rem; margin: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
     .tool-cta-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--stone); margin-bottom: 0.4rem; }
     .tool-cta-text p { font-size: 0.88rem; color: #9a958e; font-weight: 300; line-height: 1.6; margin: 0; }
-    .tool-cta-btn { background: var(--alpine); color: var(--white); padding: 0.8rem 1.8rem; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
+    .tool-cta-btn { background: var(--alpine); color: #ffffff !important; padding: 0.8rem 1.8rem; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
     .tool-cta-btn:hover { background: var(--alpine-2); }
     .steps-list { list-style: none; margin: 1rem 0 1.4rem; counter-reset: steps; }
     .steps-list li { counter-increment: steps; display: flex; gap: 1.2rem; padding: 0.9rem 0; border-bottom: 1px solid var(--stone-2); font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; align-items: flex-start; }
@@ -111,7 +120,7 @@
   </nav>
 
   <div class="article-header">
-    <svg class="article-header-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+    <svg class="article-header-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
       <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
     </svg>
@@ -266,7 +275,7 @@ const i18n = {
     h1:`Compound growth — <em>it's not magic, it's simple mathematics</em>`,
     standfirst:`Compound growth is one of the most talked-about concepts in personal finance — and one of the most misunderstood. Here's a clear-headed look at what it actually is, what it isn't, and why it still matters.`,
     p1:`For anyone with a passing interest in finance and investing, seeing yet another article on compound interest will probably bring you to tears. That reaction is largely justified — the term is overused and over-hyped by financial commentators and <em>finfluencers</em> as some kind of magic solution to building wealth. They often fail to mention that time in the market, fees, inflation, and tax rates also play a critical role in determining how your investments actually perform.`,
-    p2:`Compound interest — or more precisely, compound growth — is a straightforward mathematical concept. Despite its misuse in popular finance content, it is still genuinely worth understanding. In this article, we introduce the concept, its benefits, and its real-world limitations. We also show you how compound growth could affect your investment goals using our free <a href="/compound">Compound Growth Projector</a>.`,
+    p2:`Compound interest — or more precisely, compound growth — is a straightforward mathematical concept. Despite its misuse in popular finance content, it is still genuinely worth understanding. In this article, we introduce the concept, its benefits, and its real-world limitations. We also show you how compound growth could affect your investment goals using our free <a href="/compound"><strong>Compound Growth Projector</strong></a>.`,
     h_what:`What is compound growth?`,
     p3:`Compound growth is earning returns on both your original investment (often called the principal) <em>and</em> on the accumulated gains from previous periods. It is often described as the "snowball effect" — as your money earns money, and that new money earns further money, causing investments to grow at an accelerating rate over time.`,
     h_how:`How does it work?`,
@@ -289,7 +298,7 @@ const i18n = {
     f3_title:`Inflation`, f3_desc:`Inflation reduces the real purchasing power of your returns. In Switzerland, the average inflation rate between 2000 and 2026 was approximately 0.8–1.5% per year — lower than many other markets, but still meaningful over decades.`,
     f4_title:`Taxes and fees`, f4_desc:`Platform fees charged by brokers, and taxes on investment gains, can significantly reduce the effective return on your investments. These vary depending on your circumstances and the platform you use.`,
     h_tool:`Using the Compound Growth Projector`,
-    p10:`BergSight's free <a href="/compound">Compound Growth Projector</a> lets you model how your investments might grow over time, based on your own inputs.`,
+    p10:`BergSight's free <a href="/compound"><strong>Compound Growth Projector</strong></a> lets you model how your investments might grow over time, based on your own inputs.`,
     step1:`Set your initial investment and any regular monthly contributions you plan to make`,
     step2:`Enter your expected annual return — based on historical rates, or those offered by your bank or broker`,
     step3:`Set your time horizon — how many years you intend to stay invested`,
@@ -310,7 +319,7 @@ const i18n = {
     h1:`Zinseszins — <em>kein Zauber, nur einfache Mathematik</em>`,
     standfirst:`Zinseszins ist eines der meistdiskutierten Konzepte der persönlichen Finanzplanung — und eines der am häufigsten missverstandenen. Eine klare Betrachtung dessen, was es wirklich ist, was es nicht ist, und warum es dennoch wichtig bleibt.`,
     p1:`Wer sich auch nur am Rande für Finanzen und Investitionen interessiert, dem werden beim Anblick eines weiteren Artikels über Zinseszins die Augen feucht. Diese Reaktion ist weitgehend berechtigt — der Begriff wird von Finanzkommentatoren und <em>Finfluencern</em> als magische Lösung zum Vermögensaufbau überstrapaziert. Dabei verschweigen sie oft, dass Investitionsdauer, Gebühren, Inflation und Steuersätze ebenfalls eine entscheidende Rolle für die tatsächliche Anlageperformance spielen.`,
-    p2:`Zinseszins — oder präziser: Zinseszinswachstum — ist ein grundlegendes mathematisches Konzept. Trotz seines Missbrauchs in populären Finanzinhalten lohnt es sich, es zu verstehen. In diesem Artikel stellen wir das Konzept, seine Vorteile und seine Grenzen vor. Wir zeigen Ihnen auch, wie Zinseszinswachstum Ihre Anlageziele beeinflussen könnte — mit unserem kostenlosen <a href="/compound">Zinseszins-Projektor</a>.`,
+    p2:`Zinseszins — oder präziser: Zinseszinswachstum — ist ein grundlegendes mathematisches Konzept. Trotz seines Missbrauchs in populären Finanzinhalten lohnt es sich, es zu verstehen. In diesem Artikel stellen wir das Konzept, seine Vorteile und seine Grenzen vor. Wir zeigen Ihnen auch, wie Zinseszinswachstum Ihre Anlageziele beeinflussen könnte — mit unserem kostenlosen <a href="/compound"><strong>Zinseszins-Projektor</strong></a>.`,
     h_what:`Was ist Zinseszinswachstum?`,
     p3:`Zinseszinswachstum bedeutet, Renditen sowohl auf Ihre ursprüngliche Investition (oft als Kapital bezeichnet) <em>als auch</em> auf die angesammelten Gewinne aus früheren Zeiträumen zu erzielen. Es wird oft als „Schneeballeffekt" beschrieben — da Ihr Geld Geld verdient, und dieses neue Geld weiteres Geld verdient, wodurch Investitionen mit der Zeit exponentiell wachsen.`,
     h_how:`Wie funktioniert es?`,
@@ -333,7 +342,7 @@ const i18n = {
     f3_title:`Inflation`, f3_desc:`Inflation verringert die reale Kaufkraft Ihrer Renditen. In der Schweiz lag die durchschnittliche Inflationsrate zwischen 2000 und 2026 bei etwa 0,8–1,5% pro Jahr — niedriger als in vielen anderen Märkten, aber über Jahrzehnte dennoch bedeutsam.`,
     f4_title:`Steuern und Gebühren`, f4_desc:`Plattformgebühren von Brokern und Steuern auf Anlagegewinne können die effektive Rendite Ihrer Anlagen erheblich reduzieren. Diese variieren je nach Ihren Umständen und der verwendeten Plattform.`,
     h_tool:`Den Zinseszins-Projektor verwenden`,
-    p10:`BergSights kostenloser <a href="/compound">Zinseszins-Projektor</a> ermöglicht es Ihnen, auf Basis Ihrer eigenen Eingaben zu modellieren, wie Ihre Investitionen im Laufe der Zeit wachsen könnten.`,
+    p10:`BergSights kostenloser <a href="/compound"><strong>Zinseszins-Projektor</strong></a> ermöglicht es Ihnen, auf Basis Ihrer eigenen Eingaben zu modellieren, wie Ihre Investitionen im Laufe der Zeit wachsen könnten.`,
     step1:`Legen Sie Ihre Anfangsinvestition und etwaige regelmässige monatliche Beiträge fest`,
     step2:`Geben Sie Ihre erwartete Jahresrendite ein — basierend auf historischen Werten oder den Angeboten Ihrer Bank oder Ihres Brokers`,
     step3:`Legen Sie Ihren Anlagehorizont fest — wie viele Jahre Sie investiert bleiben möchten`,
@@ -354,7 +363,7 @@ const i18n = {
     h1:`La croissance composée — <em>pas de magie, juste des mathématiques simples</em>`,
     standfirst:`La croissance composée est l'un des concepts les plus discutés en finances personnelles — et l'un des plus mal compris. Un regard lucide sur ce que c'est vraiment, ce que ce n'est pas, et pourquoi cela reste important.`,
     p1:`Pour quiconque s'intéresse un tant soit peu aux finances et aux investissements, voir un nouvel article sur les intérêts composés risque de lui arracher des larmes. Cette réaction est largement justifiée — le terme est surutilisé et surexploité par les commentateurs financiers et les <em>finfluenceurs</em> comme une solution magique pour construire sa richesse. Ils omettent souvent de mentionner que le temps investi, les frais, l'inflation et les taux d'imposition jouent également un rôle déterminant dans la performance réelle des investissements.`,
-    p2:`Les intérêts composés — ou plus précisément, la croissance composée — sont un concept mathématique simple. Malgré son usage abusif dans les contenus financiers populaires, il vaut toujours la peine d'être compris. Dans cet article, nous présentons le concept, ses avantages et ses limites réelles. Nous vous montrons également comment la croissance composée pourrait influencer vos objectifs d'investissement grâce à notre <a href="/compound">Projecteur de Croissance Composée</a> gratuit.`,
+    p2:`Les intérêts composés — ou plus précisément, la croissance composée — sont un concept mathématique simple. Malgré son usage abusif dans les contenus financiers populaires, il vaut toujours la peine d'être compris. Dans cet article, nous présentons le concept, ses avantages et ses limites réelles. Nous vous montrons également comment la croissance composée pourrait influencer vos objectifs d'investissement grâce à notre <a href="/compound"><strong>Projecteur de Croissance Composée</strong></a> gratuit.`,
     h_what:`Qu'est-ce que la croissance composée ?`,
     p3:`La croissance composée consiste à générer des rendements à la fois sur votre investissement initial (souvent appelé le capital) <em>et</em> sur les gains accumulés des périodes précédentes. Elle est souvent décrite comme l'effet "boule de neige" — votre argent génère de l'argent, et ce nouvel argent génère davantage d'argent, ce qui fait croître les investissements à un rythme accéléré au fil du temps.`,
     h_how:`Comment ça fonctionne ?`,
@@ -377,7 +386,7 @@ const i18n = {
     f3_title:`Inflation`, f3_desc:`L'inflation réduit le pouvoir d'achat réel de vos rendements. En Suisse, le taux d'inflation moyen entre 2000 et 2026 était d'environ 0,8–1,5% par an — inférieur à de nombreux autres marchés, mais toujours significatif sur des décennies.`,
     f4_title:`Impôts et frais`, f4_desc:`Les frais de plateforme facturés par les courtiers et les impôts sur les gains d'investissement peuvent réduire considérablement le rendement effectif de vos placements. Ceux-ci varient selon votre situation et la plateforme utilisée.`,
     h_tool:`Utiliser le Projecteur de Croissance Composée`,
-    p10:`Le <a href="/compound">Projecteur de Croissance Composée</a> gratuit de BergSight vous permet de modéliser la croissance potentielle de vos investissements dans le temps, selon vos propres paramètres.`,
+    p10:`Le <a href="/compound"><strong>Projecteur de Croissance Composée</strong></a> gratuit de BergSight vous permet de modéliser la croissance potentielle de vos investissements dans le temps, selon vos propres paramètres.`,
     step1:`Définissez votre investissement initial et toute contribution mensuelle régulière que vous prévoyez d'effectuer`,
     step2:`Saisissez votre rendement annuel attendu — basé sur les taux historiques ou ceux proposés par votre banque ou courtier`,
     step3:`Définissez votre horizon temporel — le nombre d'années pendant lesquelles vous comptez rester investi`,
@@ -398,7 +407,7 @@ const i18n = {
     h1:`La crescita composta — <em>non è magia, è matematica semplice</em>`,
     standfirst:`La crescita composta è uno dei concetti più discussi della finanza personale — e uno dei più fraintesi. Uno sguardo lucido su cosa sia realmente, cosa non sia, e perché rimanga comunque rilevante.`,
     p1:`Per chiunque abbia un interesse anche superficiale per la finanza e gli investimenti, vedere l'ennesimo articolo sugli interessi composti farà probabilmente venire le lacrime agli occhi. Questa reazione è in gran parte giustificata — il termine è abusato e sopravvalutato dai commentatori finanziari e dai <em>finfluencer</em> come soluzione magica per costruire ricchezza. Spesso dimenticano di menzionare che il tempo investito, le commissioni, l'inflazione e le aliquote fiscali svolgono anch'essi un ruolo fondamentale nel determinare la performance reale degli investimenti.`,
-    p2:`Gli interessi composti — o più precisamente, la crescita composta — sono un concetto matematico diretto. Nonostante il suo abuso nei contenuti finanziari popolari, vale ancora la pena comprenderlo. In questo articolo presentiamo il concetto, i suoi vantaggi e i suoi limiti reali. Vi mostriamo anche come la crescita composta potrebbe influenzare i vostri obiettivi di investimento utilizzando il nostro <a href="/compound">Proiettore di Crescita Composta</a> gratuito.`,
+    p2:`Gli interessi composti — o più precisamente, la crescita composta — sono un concetto matematico diretto. Nonostante il suo abuso nei contenuti finanziari popolari, vale ancora la pena comprenderlo. In questo articolo presentiamo il concetto, i suoi vantaggi e i suoi limiti reali. Vi mostriamo anche come la crescita composta potrebbe influenzare i vostri obiettivi di investimento utilizzando il nostro <a href="/compound"><strong>Proiettore di Crescita Composta</strong></a> gratuito.`,
     h_what:`Cos'è la crescita composta?`,
     p3:`La crescita composta consiste nel generare rendimenti sia sul vostro investimento iniziale (spesso chiamato capitale) <em>che</em> sui guadagni accumulati nei periodi precedenti. Viene spesso descritta come l'"effetto valanga" — il vostro denaro genera denaro, e questo nuovo denaro genera ulteriore denaro, facendo crescere gli investimenti a un ritmo accelerato nel tempo.`,
     h_how:`Come funziona?`,
@@ -421,7 +430,7 @@ const i18n = {
     f3_title:`Inflazione`, f3_desc:`L'inflazione riduce il potere d'acquisto reale dei vostri rendimenti. In Svizzera, il tasso medio di inflazione tra il 2000 e il 2026 era di circa 0,8–1,5% annuo — inferiore a molti altri mercati, ma comunque significativo nel corso dei decenni.`,
     f4_title:`Tasse e commissioni`, f4_desc:`Le commissioni di piattaforma addebitate dai broker e le tasse sui guadagni degli investimenti possono ridurre significativamente il rendimento effettivo dei vostri investimenti. Variano a seconda delle circostanze individuali e della piattaforma utilizzata.`,
     h_tool:`Utilizzare il Proiettore di Crescita Composta`,
-    p10:`Il <a href="/compound">Proiettore di Crescita Composta</a> gratuito di BergSight vi consente di modellare come potrebbero crescere i vostri investimenti nel tempo, in base ai vostri parametri.`,
+    p10:`Il <a href="/compound"><strong>Proiettore di Crescita Composta</strong></a> gratuito di BergSight vi consente di modellare come potrebbero crescere i vostri investimenti nel tempo, in base ai vostri parametri.`,
     step1:`Impostate il vostro investimento iniziale e qualsiasi contributo mensile regolare che pianificate di effettuare`,
     step2:`Inserite il vostro rendimento annuale atteso — basato su tassi storici o quelli offerti dalla vostra banca o broker`,
     step3:`Impostate il vostro orizzonte temporale — quanti anni intendete rimanere investiti`,
