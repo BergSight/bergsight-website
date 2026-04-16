@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Retirement in Switzerland — what keeps the Swiss up at night, and what you can do about it. A practical guide to the three-pillar pension system.">
+  <meta property="og:title" content="Retirement in Switzerland — BergSight">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bergsight.com/insights/retirement-planning-switzerland">
+  <title>Retirement in Switzerland — BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root { --stone:#f5f2ed; --stone-2:#ece8e1; --stone-3:#d8d2c8; --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c; --alpine:#2d5a3d; --alpine-2:#3d7a52; --alpine-3:#e8f0eb; --gold:#8a6d3b; --gold-2:#f5ead8; --white:#ffffff; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
+    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
+    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
+    .lang-btn:hover { color: var(--white); background: #2a2825; }
+    .lang-btn.active { color: var(--alpine-2); }
+    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--alpine); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--alpine); }
+    .article-header { padding: 9rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
+    .article-header-peaks { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; opacity: 0.12; }
+    .article-header-inner { position: relative; max-width: 760px; }
+    .article-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .article-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; background: rgba(61,122,82,0.3); color: var(--alpine-2); border-radius: 1px; }
+    .article-date { font-size: 0.75rem; color: #6a6560; font-family: 'DM Mono', monospace; }
+    .article-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 500; line-height: 1.15; color: var(--stone); margin-bottom: 1.2rem; letter-spacing: -0.01em; }
+    .article-header h1 em { font-style: italic; color: var(--alpine-2); }
+    .article-standfirst { font-size: 1.1rem; color: #9a958e; max-width: 620px; font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem; }
+    .article-byline { font-size: 0.8rem; color: #6a6560; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .byline-dot { width: 4px; height: 4px; border-radius: 50%; background: #4a4742; }
+    .human-badge { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid #3d3a35; color: #6a6560; border-radius: 1px; }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 4rem 4rem 5rem; }
+    .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 600; color: var(--ink); margin-top: 2.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
+    .article-body p { font-size: 1rem; color: var(--ink-2); line-height: 1.9; font-weight: 300; margin-bottom: 1.4rem; }
+    .article-body strong { font-weight: 500; color: var(--ink); }
+    .article-body em { font-style: italic; }
+    .article-body a { color: var(--alpine); text-decoration: underline; text-decoration-color: rgba(45,90,61,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+    .article-body a:hover { text-decoration-color: var(--alpine); }
+    /* Data table */
+    .data-block { background: var(--white); border: 1px solid var(--stone-3); margin: 2rem 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .data-block-title { background: var(--ink); color: var(--stone-2); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.6rem 1.4rem; }
+    .data-table { width: 100%; border-collapse: collapse; min-width: 400px; }
+    .data-table th { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding: 0.7rem 1.4rem; text-align: center; border-bottom: 1px solid var(--stone-2); background: var(--stone); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--ink-2); padding: 0.7rem 1.4rem; border-bottom: 1px solid var(--stone-2); text-align: center; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.highlight { color: var(--alpine); font-weight: 500; }
+    /* Pillar cards */
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+    .pillar-card { background: var(--white); border: 1px solid var(--stone-3); padding: 1.5rem; position: relative; overflow: hidden; }
+    .pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--alpine); }
+    .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--alpine); margin-bottom: 0.4rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+    .pillar-abbr { font-size: 0.72rem; color: var(--ink-3); font-family: 'DM Mono', monospace; margin-bottom: 0.6rem; }
+    .pillar-desc { font-size: 0.82rem; color: var(--ink-3); line-height: 1.6; font-weight: 300; }
+    /* Action sections */
+    .action-section { margin: 2rem 0; }
+    .action-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.6rem; }
+    .action-heading::before { content: ''; display: block; width: 12px; height: 2px; background: var(--alpine); flex-shrink: 0; }
+    .action-list { list-style: none; margin: 0; }
+    .action-list li { font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.7; padding: 0.5rem 0 0.5rem 1.2rem; border-bottom: 1px solid var(--stone-2); position: relative; }
+    .action-list li:last-child { border-bottom: none; }
+    .action-list li::before { content: '→'; position: absolute; left: 0; color: var(--alpine); font-size: 0.8rem; top: 0.6rem; }
+    .action-list li strong { color: var(--ink); font-weight: 500; }
+    /* Callout */
+    .callout { background: var(--alpine-3); border-left: 3px solid var(--alpine); padding: 1.2rem 1.5rem; margin: 2rem 0; }
+    .callout p { font-size: 0.95rem; color: var(--ink-2); line-height: 1.7; margin: 0; font-weight: 400; }
+    .callout strong { color: var(--alpine); }
+    /* CTA */
+    .tool-cta { background: var(--ink); padding: 2.5rem; margin: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .tool-cta-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--stone); margin-bottom: 0.4rem; }
+    .tool-cta-text p { font-size: 0.88rem; color: #9a958e; font-weight: 300; line-height: 1.6; margin: 0; }
+    .tool-cta-btn { background: var(--alpine); color: #ffffff !important; padding: 0.8rem 1.8rem; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
+    .tool-cta-btn:hover { background: var(--alpine-2); }
+    /* Footnotes */
+    .footnotes { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--stone-3); }
+    .footnotes-title { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.8rem; }
+    .footnotes p { font-size: 0.78rem; color: var(--ink-3); line-height: 1.6; font-weight: 300; }
+    .footnotes a { color: var(--alpine); }
+    /* Sign off */
+    .sign-off { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--stone-3); font-size: 1rem; color: var(--ink-3); font-style: italic; }
+    /* Disclaimer */
+    .article-disclaimer { background: var(--gold-2); border: 1px solid #d4b87a; padding: 1.4rem 1.8rem; margin-top: 3rem; }
+    .article-disclaimer-title { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .article-disclaimer p { font-size: 0.82rem; color: var(--ink-2); line-height: 1.7; font-weight: 300; margin: 0; }
+    /* Footer */
+    footer { background: var(--ink); color: #9a958e; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--stone); text-decoration: none; }
+    .footer-logo span { color: var(--alpine-2); }
+    .footer-links-row { display: flex; gap: 2rem; list-style: none; }
+    .footer-links-row a { font-size: 0.78rem; color: #6a6560; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--alpine-2); }
+    .footer-copy { font-size: 0.72rem; color: #4a4742; font-family: 'DM Mono', monospace; }
+    @media (max-width: 900px) {
+      .lang-bar { padding: 0 1.5rem; } nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .article-header { padding: 7rem 1.5rem 3rem; } .article-wrap { padding: 3rem 1.5rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .tool-cta { flex-direction: column; align-items: flex-start; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; } .lang-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"  data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"  data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="article-header">
+    <svg class="article-header-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
+      <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
+    </svg>
+    <div class="article-header-inner">
+      <div class="article-eyebrow">
+        <span class="article-tag" data-i18n="tag">Retirement</span>
+        <span class="article-date" data-i18n="date">April 2026</span>
+      </div>
+      <h1 data-i18n="h1">Retirement in Switzerland — <em>Utopia?</em></h1>
+      <p class="article-standfirst" data-i18n="standfirst">Switzerland ranks among the best places in the world to live. But even here, retirement provision keeps people up at night. Here's why — and what you can do about it.</p>
+      <div class="article-byline">
+        <span data-i18n="byline_author">By Lukas</span>
+        <span class="byline-dot"></span>
+        <span data-i18n="byline_read">8 min read</span>
+        <span class="byline-dot"></span>
+        <span class="human-badge" data-i18n="human_badge">Written by a human</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <div class="article-body">
+
+      <p data-i18n="p1"></p>
+      <p data-i18n="p2"></p>
+
+      <h2 data-i18n="h_worry"></h2>
+      <p data-i18n="p3"></p>
+      <p data-i18n="p4"></p>
+
+      <div class="data-block">
+        <div class="data-block-title" data-i18n="table_title"></div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_year">Year</th>
+              <th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="td_label"></td>
+              <td class="highlight">39%</td>
+              <td>32%</td><td>29%</td><td>29%</td><td>30%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p data-i18n="p5"></p>
+
+      <h2 data-i18n="h_causes"></h2>
+      <p data-i18n="p6"></p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-num" data-i18n="pillar1_num">Pillar 1</div>
+          <div class="pillar-title" data-i18n="pillar1_title">State pension</div>
+          <div class="pillar-abbr">AHV / OASI</div>
+          <div class="pillar-desc" data-i18n="pillar1_desc">Mandatory state pension funded by contributions from employees, employers, and the government. Provides a basic income in retirement.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num" data-i18n="pillar2_num">Pillar 2</div>
+          <div class="pillar-title" data-i18n="pillar2_title">Occupational pension</div>
+          <div class="pillar-abbr">BVG / LPP</div>
+          <div class="pillar-desc" data-i18n="pillar2_desc">Employer-based pension fund. Together with Pillar 1, aims to provide around 60% of your final gross salary in retirement.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num" data-i18n="pillar3_num">Pillar 3</div>
+          <div class="pillar-title" data-i18n="pillar3_title">Private provision</div>
+          <div class="pillar-abbr">3a (tied) / 3b (flexible)</div>
+          <div class="pillar-desc" data-i18n="pillar3_desc">Voluntary private savings, partially tax-deductible (3a). The most flexible lever for closing the gap between Pillars 1+2 and your retirement goals.</div>
+        </div>
+      </div>
+
+      <h2 data-i18n="h_what"></h2>
+
+      <div class="action-section">
+        <div class="action-heading" data-i18n="action1_heading">Strengthen your Pillar 1</div>
+        <ul class="action-list">
+          <li data-i18n="a1_1"></li>
+          <li data-i18n="a1_2"></li>
+          <li data-i18n="a1_3"></li>
+          <li data-i18n="a1_4"></li>
+        </ul>
+      </div>
+
+      <div class="action-section">
+        <div class="action-heading" data-i18n="action2_heading">Optimise your Pillar 2</div>
+        <ul class="action-list">
+          <li data-i18n="a2_1"></li>
+          <li data-i18n="a2_2"></li>
+        </ul>
+      </div>
+
+      <div class="action-section">
+        <div class="action-heading" data-i18n="action3_heading">Maximise your Pillar 3a</div>
+        <ul class="action-list">
+          <li data-i18n="a3_1"></li>
+          <li data-i18n="a3_2"></li>
+          <li data-i18n="a3_3"></li>
+        </ul>
+      </div>
+
+      <div class="action-section">
+        <div class="action-heading" data-i18n="action4_heading">Strategic planning</div>
+        <ul class="action-list">
+          <li data-i18n="a4_1"></li>
+          <li data-i18n="a4_2"></li>
+          <li data-i18n="a4_3"></li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <p data-i18n="callout"></p>
+      </div>
+
+      <div class="tool-cta">
+        <div class="tool-cta-text">
+          <h3 data-i18n="cta_title"></h3>
+          <p data-i18n="cta_sub"></p>
+        </div>
+        <a href="/" class="tool-cta-btn" data-i18n="cta_btn"></a>
+      </div>
+
+      <div class="sign-off" data-i18n="signoff"></div>
+
+      <div class="footnotes">
+        <div class="footnotes-title" data-i18n="sources_title">Sources</div>
+        <p>[1] <a href="https://www.eiu.com/n/campaigns/global-liveability-index/" target="_blank" rel="noopener">EIU Global Liveability Index</a>; <a href="https://monocle.com/film/affairs/quality-of-life-survey/" target="_blank" rel="noopener">Monocle Quality of Life Survey</a>; <a href="https://www.mercer.com/insights/total-rewards/talent-mobility-insights/quality-of-living-city-ranking/" target="_blank" rel="noopener">Mercer Quality of Living City Ranking 2024</a> — Zurich #1, Geneva #3, Bern #9, Basel #10.</p>
+        <p style="margin-top:0.5rem">[2] <a href="https://www.ubs.com/ch/en/microsites/worry-barometer.html" target="_blank" rel="noopener">UBS Worry Barometer</a>, annual surveys 2021–2025.</p>
+      </div>
+
+      <div class="article-disclaimer">
+        <div class="article-disclaimer-title" data-i18n="disc_title"></div>
+        <p data-i18n="disc_text"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"    data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"     data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"     data-i18n="nav_about">About</a></li>
+      <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+      <li><a href="/privacy"   data-i18n="nav_privacy">Privacy</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+<script>
+const i18n = {
+  en: {
+    nav_tools:`Tools`, nav_blog:`Blog & Insights`, nav_about:`About`, nav_disclaimer:`Disclaimer`, nav_privacy:`Privacy`,
+    tag:`Retirement`, date:`April 2026`, byline_author:`By Lukas`, byline_read:`8 min read`, human_badge:`Written by a human`,
+    h1:`Retirement in Switzerland — <em>Utopia?</em>`,
+    standfirst:`Switzerland ranks among the best places in the world to live. But even here, retirement provision keeps people up at night. Here's why — and what you can do about it.`,
+    p1:`Switzerland is often touted as the envy of the western world, and for good reason. Exceptional quality of life, economic stability, and world-class infrastructure all illustrate a nation that seems to have done things right. The country's major cities — Bern, Basel, Geneva, and Zurich — regularly feature in the top 10 for quality of life, with high life expectancy, low crime rates, and, of course, punctual trains.<sup>[1]</sup>`,
+    p2:`So, if Switzerland is such a utopia, then surely the Swiss have not a care in the world? Well, that's not entirely true.`,
+    h_worry:`What keeps the Swiss up at night?`,
+    p3:`At the end of the day, the Swiss still worry about many of the same things that concern residents of other countries. According to the <a href="https://www.ubs.com/ch/en/microsites/worry-barometer.html" target="_blank" rel="noopener">UBS Worry Barometer</a>,<sup>[2]</sup> the Swiss believe health insurance costs, environmental issues, retirement provision, and immigration are some of the most important problems facing the country.`,
+    p4:`One concern that stands out is <strong>state pension (OASI) and retirement provision</strong>. This topic has remained in 3rd place as the most important problem since 2021, with roughly one third of Swiss residents mentioning it as a key issue.`,
+    table_title:`% of Swiss residents citing OASI / retirement provision as a top-five concern`,
+    th_year:``, td_label:`% mentioning`,
+    p5:`At the centre of this topic is a fundamental question: <em>will my pension pot be enough to live on once I retire?</em>`,
+    h_causes:`What's causing retirement concerns?`,
+    p6:`Worries surrounding retirement provision in Switzerland are largely driven by four factors. An ageing population means fewer workers are contributing to the state system (AHV/OASI) while the number of retirees grows. Lower financial market returns reduce what pension funds can pay out (Pillar 2, BVG). Part-time work, career breaks, childcare, and periods spent outside Switzerland can create significant gaps in both state and occupational provision. And the cost of living — including rising healthcare costs — means that the 60% of final gross income typically provided by Pillars 1 and 2 combined is often seen as insufficient for a genuinely comfortable retirement. To understand the system, it helps to know how the three pillars fit together.`,
+    pillar1_num:`Pillar 1`, pillar1_title:`State pension`, pillar1_desc:`Mandatory state pension (AHV/OASI) funded by contributions from employees, employers, and the government. Provides a basic income in retirement.`,
+    pillar2_num:`Pillar 2`, pillar2_title:`Occupational pension`, pillar2_desc:`Employer-based pension fund (BVG/LPP). Together with Pillar 1, aims to replace around 60% of your final gross salary in retirement.`,
+    pillar3_num:`Pillar 3`, pillar3_title:`Private provision`, pillar3_desc:`Voluntary private savings — Pillar 3a is tax-deductible (tied savings), Pillar 3b is flexible. The most powerful lever for bridging the gap.`,
+    h_what:`What can you do about it?`,
+    action1_heading:`Strengthen your Pillar 1`,
+    a1_1:`<strong>Check for gaps</strong> in your AHV account statement — request it from your local compensation office (Ausgleichskasse).`,
+    a1_2:`<strong>Fill contribution gaps</strong> by making back-payments within 5 years to avoid a permanent reduction in your pension.`,
+    a1_3:`<strong>Stay in Switzerland</strong> where possible, or continue paying voluntary AHV contributions if you move abroad.`,
+    a1_4:`<strong>Consider delaying retirement</strong> — each year you defer increases your monthly AHV pension amount.`,
+    action2_heading:`Optimise your Pillar 2`,
+    a2_1:`<strong>Make voluntary buy-in payments</strong> if you have contribution gaps — these are tax-deductible and can significantly boost your retirement capital.`,
+    a2_2:`<strong>Review your annual pension statement</strong> to ensure projected benefits align with your retirement goals.`,
+    action3_heading:`Maximise your Pillar 3a`,
+    a3_1:`<strong>Maximise your annual contributions</strong> to reduce your taxable income each year.`,
+    a3_2:`<strong>Use multiple 3a accounts</strong> to stagger payouts over several years at retirement, reducing the tax impact through progression.`,
+    a3_3:`<strong>For longer time horizons</strong>, consider equity-based 3a investment funds — historically these have outperformed standard savings accounts over the long term.`,
+    action4_heading:`Strategic planning`,
+    a4_1:`<strong>Create a retirement budget</strong> and use <a href="/"><strong>BergSight's free tools</strong></a> to model your savings needs and investment trajectory.`,
+    a4_2:`<strong>Consider additional investment options</strong> — Pillar 3b, or a trading broker account for broader investment exposure.`,
+    a4_3:`<strong>Seek professional advice</strong> if you need a tailored plan — but be mindful that financial advice in Switzerland can be costly.`,
+    callout:`<strong>The most important thing?</strong> Start thinking about retirement as early as possible. The earlier you begin, the more time compound growth has to work in your favour — and the smaller the adjustments you'll need to make along the way.`,
+    cta_title:`Plan your retirement with BergSight`,
+    cta_sub:`Free tools built for Switzerland. Model your savings, understand compound growth, and see where you stand.`,
+    cta_btn:`Explore the tools →`,
+    signoff:`All the best,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    sources_title:`Sources`,
+    disc_title:`Disclaimer`,
+    disc_text:`This article is provided for educational and informational purposes only. It does not constitute financial, investment, pension, tax, or legal advice. The information reflects general principles of the Swiss pension system and may not apply to your individual circumstances. Pension rules and contribution limits change periodically — always verify current information with the relevant Swiss authorities or a qualified adviser. Always consult a qualified financial or pension adviser before making any decisions related to your retirement planning.`
+  },
+  de: {
+    nav_tools:`Tools`, nav_blog:`Blog & Einblicke`, nav_about:`Über uns`, nav_disclaimer:`Haftungsausschluss`, nav_privacy:`Datenschutz`,
+    tag:`Altersvorsorge`, date:`April 2026`, byline_author:`Von Lukas`, byline_read:`8 Min. Lesezeit`, human_badge:`Von einem Menschen geschrieben`,
+    h1:`Altersvorsorge in der Schweiz — <em>Utopie?</em>`,
+    standfirst:`Die Schweiz zählt zu den besten Ländern der Welt. Doch selbst hier bereitet die Altersvorsorge vielen Menschen schlaflose Nächte. Warum — und was Sie dagegen tun können.`,
+    p1:`Die Schweiz gilt oft als der Neid der westlichen Welt, und das aus gutem Grund. Aussergewöhnliche Lebensqualität, wirtschaftliche Stabilität und erstklassige Infrastruktur kennzeichnen ein Land, das vieles richtig gemacht zu haben scheint. Die grossen Städte — Bern, Basel, Genf und Zürich — belegen regelmässig Spitzenpositionen in weltweiten Lebensqualitätsrankings, mit hoher Lebenserwartung, niedriger Kriminalitätsrate und natürlich pünktlichen Zügen.<sup>[1]</sup>`,
+    p2:`Wenn die Schweiz also eine solche Utopie ist, haben die Schweizer dann keine Sorgen? Nun, das stimmt nicht ganz.`,
+    h_worry:`Was hält die Schweizer nachts wach?`,
+    p3:`Die Schweizer sorgen sich letztlich um viele der gleichen Dinge wie Menschen in anderen Ländern. Laut dem <a href="https://www.ubs.com/ch/en/microsites/worry-barometer.html" target="_blank" rel="noopener">UBS Sorgenbarometer</a><sup>[2]</sup> gehören Krankenkassenprämien, Umweltprobleme, die Altersvorsorge und Einwanderung zu den wichtigsten Problemen des Landes.`,
+    p4:`Ein besonders auffälliges Thema ist die <strong>staatliche Rente (AHV/OASI) und die Altersvorsorge</strong>. Dieses Thema ist seit 2021 auf Platz 3 der wichtigsten Probleme geblieben, wobei rund ein Drittel der Schweizer es als zentrales Anliegen nennt.`,
+    table_title:`% der Schweizer, die AHV/Altersvorsorge unter den Top-5-Problemen nennen`,
+    th_year:``, td_label:`% Nennungen`,
+    p5:`Im Mittelpunkt steht eine grundlegende Frage: <em>Wird mein Rententopf ausreichen, um davon zu leben?</em>`,
+    h_causes:`Was verursacht die Altersvorsorgesorgen?`,
+    p6:`Die Sorgen rund um die Altersvorsorge in der Schweiz sind hauptsächlich auf vier Faktoren zurückzuführen. Eine alternde Bevölkerung bedeutet, dass weniger Arbeitnehmer in das staatliche System (AHV) einzahlen. Niedrigere Finanzmarktrenditen reduzieren die Auszahlungen der Pensionskassen (2. Säule). Teilzeitarbeit, Karrierepausen und Auslandsaufenthalte können erhebliche Lücken in der Vorsorge verursachen. Und die Lebenshaltungskosten — einschliesslich steigender Gesundheitskosten — machen die 60% des letzten Bruttogehalts, die die ersten beiden Säulen bieten sollen, oft unzureichend für einen sorgenfreien Ruhestand.`,
+    pillar1_num:`1. Säule`, pillar1_title:`Staatliche Rente`, pillar1_desc:`Obligatorische Staatsrente (AHV/OASI), finanziert durch Beiträge von Arbeitnehmern, Arbeitgebern und dem Staat. Bietet ein Grundeinkommen im Alter.`,
+    pillar2_num:`2. Säule`, pillar2_title:`Berufliche Vorsorge`, pillar2_desc:`Arbeitgeberbasierter Pensionsfonds (BVG/LPP). Zusammen mit der 1. Säule soll er rund 60% des letzten Bruttogehalts im Ruhestand ersetzen.`,
+    pillar3_num:`3. Säule`, pillar3_title:`Private Vorsorge`, pillar3_desc:`Freiwillige private Ersparnisse — Säule 3a ist steuerlich absetzbar (gebundene Vorsorge), Säule 3b ist flexibel. Der wirksamste Hebel zur Schliessung der Vorsorgelücke.`,
+    h_what:`Was können Sie dagegen tun?`,
+    action1_heading:`1. Säule stärken`,
+    a1_1:`<strong>Lücken im AHV-Auszug prüfen</strong> — fordern Sie diesen bei Ihrer lokalen Ausgleichskasse an.`,
+    a1_2:`<strong>Beitragslücken schliessen</strong> — Nachzahlungen innerhalb von 5 Jahren sind möglich, um eine dauerhafte Rentenkürzung zu vermeiden.`,
+    a1_3:`<strong>In der Schweiz bleiben</strong> oder bei einem Umzug ins Ausland freiwillige AHV-Beiträge weiterführen.`,
+    a1_4:`<strong>Renteneintritt verschieben</strong> — jedes zusätzliche Jahr erhöht Ihre monatliche AHV-Rente.`,
+    action2_heading:`2. Säule optimieren`,
+    a2_1:`<strong>Freiwillige Einkäufe tätigen</strong>, wenn Sie Beitragslücken haben — diese sind steuerlich absetzbar und können das Alterskapital erheblich steigern.`,
+    a2_2:`<strong>Jährliche Pensionskassenabrechnung prüfen</strong>, um sicherzustellen, dass die projizierten Leistungen mit Ihren Rentenzielen übereinstimmen.`,
+    action3_heading:`3. Säule (3a) maximieren`,
+    a3_1:`<strong>Jährliche Beiträge maximieren</strong>, um das steuerbare Einkommen zu reduzieren.`,
+    a3_2:`<strong>Mehrere 3a-Konten verwenden</strong>, um Auszahlungen bei der Pensionierung über mehrere Jahre zu staffeln und die Steuerbelastung zu senken.`,
+    a3_3:`<strong>Bei längerem Anlagehorizont</strong> Wertschriften-3a-Fonds in Betracht ziehen — historisch gesehen übertreffen diese langfristig Sparkonten.`,
+    action4_heading:`Strategische Planung`,
+    a4_1:`<strong>Rentenbudget erstellen</strong> und die <a href="/"><strong>kostenlosen BergSight-Tools</strong></a> nutzen, um Sparbedarf und Anlageentwicklung zu modellieren.`,
+    a4_2:`<strong>Weitere Anlageoptionen in Betracht ziehen</strong> — Säule 3b oder ein Broker-Konto für breiteren Anlagezugang.`,
+    a4_3:`<strong>Professionelle Beratung einholen</strong>, wenn ein massgeschneiderter Plan benötigt wird — beachten Sie jedoch, dass Finanzberatung in der Schweiz kostspielig sein kann.`,
+    callout:`<strong>Das Wichtigste?</strong> So früh wie möglich mit der Altersvorsorge beginnen. Je früher Sie anfangen, desto mehr Zeit hat der Zinseszinseffekt, für Sie zu arbeiten — und desto geringer sind die Anpassungen, die Sie später vornehmen müssen.`,
+    cta_title:`Planen Sie Ihre Altersvorsorge mit BergSight`,
+    cta_sub:`Kostenlose Tools für die Schweiz. Modellieren Sie Ihre Ersparnisse und sehen Sie, wo Sie stehen.`,
+    cta_btn:`Tools entdecken →`,
+    signoff:`Mit freundlichen Grüssen,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    sources_title:`Quellen`,
+    disc_title:`Haftungsausschluss`,
+    disc_text:`Dieser Artikel dient ausschliesslich zu Bildungs- und Informationszwecken. Er stellt keine Finanz-, Anlage-, Renten-, Steuer- oder Rechtsberatung dar. Die Informationen spiegeln allgemeine Grundsätze des Schweizer Vorsorgesystems wider und gelten möglicherweise nicht für Ihre individuelle Situation. Bestimmungen können sich ändern — überprüfen Sie stets aktuelle Informationen bei den zuständigen Behörden oder einem qualifizierten Berater.`
+  },
+  fr: {
+    nav_tools:`Outils`, nav_blog:`Blog & Analyses`, nav_about:`À propos`, nav_disclaimer:`Avertissement`, nav_privacy:`Confidentialité`,
+    tag:`Retraite`, date:`Avril 2026`, byline_author:`Par Lukas`, byline_read:`8 min de lecture`, human_badge:`Écrit par un humain`,
+    h1:`La retraite en Suisse — <em>Utopie ?</em>`,
+    standfirst:`La Suisse figure parmi les meilleurs endroits au monde où vivre. Mais même ici, la prévoyance retraite empêche les gens de dormir. Voici pourquoi — et ce que vous pouvez faire.`,
+    p1:`La Suisse est souvent présentée comme l'envie du monde occidental, et pour cause. Une qualité de vie exceptionnelle, une stabilité économique et des infrastructures de classe mondiale illustrent une nation qui semble avoir tout bien fait. Les grandes villes — Berne, Bâle, Genève et Zurich — figurent régulièrement dans le top 10 mondial de la qualité de vie, avec une espérance de vie élevée, des taux de criminalité bas et, bien sûr, des trains ponctuels.<sup>[1]</sup>`,
+    p2:`Alors, si la Suisse est une telle utopie, les Suisses n'ont-ils aucun souci ? Eh bien, ce n'est pas tout à fait vrai.`,
+    h_worry:`Ce qui empêche les Suisses de dormir`,
+    p3:`En fin de compte, les Suisses s'inquiètent de beaucoup des mêmes choses que les habitants d'autres pays. Selon le <a href="https://www.ubs.com/ch/en/microsites/worry-barometer.html" target="_blank" rel="noopener">Baromètre des préoccupations UBS</a>,<sup>[2]</sup> les Suisses considèrent que les coûts de l'assurance maladie, les problèmes environnementaux, la prévoyance vieillesse et l'immigration sont parmi les problèmes les plus importants du pays.`,
+    p4:`Une préoccupation se distingue particulièrement : la <strong>rente d'État (AVS/OASI) et la prévoyance retraite</strong>. Ce sujet est resté en 3e position des problèmes les plus importants depuis 2021, environ un tiers des résidents suisses le mentionnant comme un enjeu majeur.`,
+    table_title:`% de résidents suisses citant l'AVS / la prévoyance retraite parmi leurs cinq principales préoccupations`,
+    th_year:``, td_label:`% des mentions`,
+    p5:`Au cœur de ce sujet se trouve une question fondamentale : <em>ma pension sera-t-elle suffisante pour vivre une fois à la retraite ?</em>`,
+    h_causes:`Qu'est-ce qui cause ces inquiétudes ?`,
+    p6:`Les inquiétudes concernant la prévoyance retraite en Suisse sont principalement dues à quatre facteurs. Le vieillissement de la population signifie que moins de travailleurs contribuent au système étatique (AVS) alors que le nombre de retraités augmente. Des rendements financiers plus faibles réduisent ce que les caisses de pension peuvent verser (2e pilier). Le travail à temps partiel, les interruptions de carrière et les périodes passées à l'étranger peuvent créer des lacunes importantes. Et le coût de la vie — y compris la hausse des coûts de santé — rend souvent insuffisants les 60% du dernier salaire brut que les deux premiers piliers sont censés fournir.`,
+    pillar1_num:`1er pilier`, pillar1_title:`Rente d'État`, pillar1_desc:`Rente d'État obligatoire (AVS/OASI) financée par les cotisations des employés, des employeurs et de l'État. Fournit un revenu de base à la retraite.`,
+    pillar2_num:`2e pilier`, pillar2_title:`Prévoyance professionnelle`, pillar2_desc:`Caisse de pension basée sur l'employeur (LPP/BVG). Combiné avec le 1er pilier, vise à remplacer environ 60% du dernier salaire brut à la retraite.`,
+    pillar3_num:`3e pilier`, pillar3_title:`Prévoyance privée`, pillar3_desc:`Épargne privée volontaire — le pilier 3a est déductible fiscalement (épargne liée), le 3b est flexible. Le levier le plus puissant pour combler l'écart.`,
+    h_what:`Que pouvez-vous faire ?`,
+    action1_heading:`Renforcer votre 1er pilier`,
+    a1_1:`<strong>Vérifiez les lacunes</strong> dans votre relevé AVS — demandez-le à votre caisse de compensation locale.`,
+    a1_2:`<strong>Comblez les lacunes de cotisation</strong> par des rétropaiements dans les 5 ans pour éviter une réduction permanente de votre pension.`,
+    a1_3:`<strong>Restez en Suisse</strong> si possible, ou continuez à payer des cotisations AVS volontaires si vous partez à l'étranger.`,
+    a1_4:`<strong>Envisagez de reporter la retraite</strong> — chaque année supplémentaire augmente votre rente AVS mensuelle.`,
+    action2_heading:`Optimiser votre 2e pilier`,
+    a2_1:`<strong>Effectuez des rachats volontaires</strong> si vous avez des lacunes — ils sont déductibles fiscalement et peuvent considérablement augmenter votre capital retraite.`,
+    a2_2:`<strong>Examinez votre relevé annuel de prévoyance</strong> pour vous assurer que les prestations projetées correspondent à vos objectifs de retraite.`,
+    action3_heading:`Maximiser votre pilier 3a`,
+    a3_1:`<strong>Maximisez vos cotisations annuelles</strong> pour réduire votre revenu imposable chaque année.`,
+    a3_2:`<strong>Utilisez plusieurs comptes 3a</strong> pour échelonner les versements sur plusieurs années à la retraite, réduisant ainsi l'impact fiscal par progression.`,
+    a3_3:`<strong>Pour des horizons plus longs</strong>, envisagez des fonds 3a en actions — ils ont historiquement surperformé les comptes d'épargne sur le long terme.`,
+    action4_heading:`Planification stratégique`,
+    a4_1:`<strong>Créez un budget retraite</strong> et utilisez les <a href="/"><strong>outils gratuits de BergSight</strong></a> pour modéliser vos besoins d'épargne.`,
+    a4_2:`<strong>Envisagez d'autres options d'investissement</strong> — pilier 3b ou un compte de courtage pour une exposition plus large.`,
+    a4_3:`<strong>Consultez un professionnel</strong> si vous avez besoin d'un plan personnalisé — mais sachez que les conseils financiers en Suisse peuvent être coûteux.`,
+    callout:`<strong>Le plus important ?</strong> Commencez à penser à la retraite le plus tôt possible. Plus vous commencez tôt, plus la croissance composée a le temps de jouer en votre faveur — et moins les ajustements nécessaires seront importants.`,
+    cta_title:`Planifiez votre retraite avec BergSight`,
+    cta_sub:`Outils gratuits pour la Suisse. Modélisez votre épargne et voyez où vous en êtes.`,
+    cta_btn:`Explorer les outils →`,
+    signoff:`Bien cordialement,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    sources_title:`Sources`,
+    disc_title:`Avertissement`,
+    disc_text:`Cet article est fourni à des fins éducatives et informatives uniquement. Il ne constitue pas un conseil financier, d'investissement, de retraite, fiscal ou juridique. Les informations reflètent les principes généraux du système de prévoyance suisse et peuvent ne pas s'appliquer à votre situation individuelle. Les règles peuvent changer — vérifiez toujours les informations actuelles auprès des autorités compétentes ou d'un conseiller qualifié.`
+  },
+  it: {
+    nav_tools:`Strumenti`, nav_blog:`Blog & Approfondimenti`, nav_about:`Chi siamo`, nav_disclaimer:`Dichiarazione`, nav_privacy:`Privacy`,
+    tag:`Pensione`, date:`Aprile 2026`, byline_author:`Di Lukas`, byline_read:`8 min di lettura`, human_badge:`Scritto da un essere umano`,
+    h1:`La pensione in Svizzera — <em>Utopia?</em>`,
+    standfirst:`La Svizzera è tra i migliori posti al mondo dove vivere. Ma anche qui, la previdenza pensionistica toglie il sonno. Ecco perché — e cosa si può fare.`,
+    p1:`La Svizzera è spesso citata come l'invidia del mondo occidentale, e per buone ragioni. Un'eccezionale qualità della vita, stabilità economica e infrastrutture di livello mondiale illustrano una nazione che sembra aver fatto le cose per bene. Le principali città — Berna, Basilea, Ginevra e Zurigo — figurano regolarmente tra le prime 10 al mondo per qualità della vita, con un'elevata aspettativa di vita, bassi tassi di criminalità e, ovviamente, treni puntuali.<sup>[1]</sup>`,
+    p2:`Quindi, se la Svizzera è un'utopia, i Svizzeri non hanno preoccupazioni? Beh, non è del tutto vero.`,
+    h_worry:`Cosa tiene svegli i Svizzeri di notte?`,
+    p3:`In fondo, i Svizzeri si preoccupano di molte delle stesse cose che preoccupano i residenti di altri paesi. Secondo il <a href="https://www.ubs.com/ch/en/microsites/worry-barometer.html" target="_blank" rel="noopener">Barometro delle preoccupazioni UBS</a>,<sup>[2]</sup> i Svizzeri ritengono che i costi dell'assicurazione sanitaria, i problemi ambientali, la previdenza pensionistica e l'immigrazione siano tra i problemi più importanti del paese.`,
+    p4:`Una preoccupazione che spicca è la <strong>pensione statale (AVS/OASI) e la previdenza pensionistica</strong>. Questo argomento è rimasto al 3° posto tra i problemi più importanti dal 2021, con circa un terzo dei residenti svizzeri che lo cita come questione chiave.`,
+    table_title:`% di residenti svizzeri che citano AVS / previdenza pensionistica tra i cinque problemi principali`,
+    th_year:``, td_label:`% menzioni`,
+    p5:`Al centro di questo argomento c'è una domanda fondamentale: <em>il mio capitale pensionistico sarà sufficiente per vivere una volta in pensione?</em>`,
+    h_causes:`Cosa causa le preoccupazioni pensionistiche?`,
+    p6:`Le preoccupazioni sulla previdenza pensionistica in Svizzera sono principalmente dovute a quattro fattori. Una popolazione che invecchia significa che meno lavoratori contribuiscono al sistema statale (AVS) mentre il numero di pensionati cresce. Rendimenti finanziari più bassi riducono i pagamenti dei fondi pensione (2° pilastro). Il lavoro part-time, le interruzioni di carriera e i periodi trascorsi all'estero possono creare lacune significative. E il costo della vita — inclusi i crescenti costi sanitari — rende spesso insufficiente il 60% dell'ultimo salario lordo che i primi due pilastri dovrebbero fornire.`,
+    pillar1_num:`1° pilastro`, pillar1_title:`Pensione statale`, pillar1_desc:`Pensione statale obbligatoria (AVS/OASI) finanziata dai contributi di dipendenti, datori di lavoro e Stato. Fornisce un reddito di base in pensione.`,
+    pillar2_num:`2° pilastro`, pillar2_title:`Previdenza professionale`, pillar2_desc:`Fondo pensione basato sul datore di lavoro (LPP/BVG). Insieme al 1° pilastro, mira a sostituire circa il 60% dell'ultimo salario lordo in pensione.`,
+    pillar3_num:`3° pilastro`, pillar3_title:`Previdenza privata`, pillar3_desc:`Risparmio privato volontario — il pilastro 3a è deducibile fiscalmente (risparmio vincolato), il 3b è flessibile. La leva più potente per colmare il divario.`,
+    h_what:`Cosa si può fare?`,
+    action1_heading:`Rafforzare il 1° pilastro`,
+    a1_1:`<strong>Verificare le lacune</strong> nel proprio estratto AVS — richiederlo alla cassa di compensazione locale.`,
+    a1_2:`<strong>Colmare le lacune contributive</strong> con pagamenti arretrati entro 5 anni per evitare una riduzione permanente della pensione.`,
+    a1_3:`<strong>Restare in Svizzera</strong> dove possibile, o continuare a pagare contributi AVS volontari se ci si trasferisce all'estero.`,
+    a1_4:`<strong>Considerare il rinvio del pensionamento</strong> — ogni anno aggiuntivo aumenta la rendita AVS mensile.`,
+    action2_heading:`Ottimizzare il 2° pilastro`,
+    a2_1:`<strong>Effettuare riscatti volontari</strong> se si hanno lacune contributive — sono deducibili fiscalmente e possono aumentare significativamente il capitale pensionistico.`,
+    a2_2:`<strong>Rivedere l'estratto annuale della cassa pensioni</strong> per assicurarsi che le prestazioni proiettate corrispondano agli obiettivi pensionistici.`,
+    action3_heading:`Massimizzare il pilastro 3a`,
+    a3_1:`<strong>Massimizzare i contributi annuali</strong> per ridurre il reddito imponibile ogni anno.`,
+    a3_2:`<strong>Utilizzare più conti 3a</strong> per scaglionare i prelievi su più anni al momento del pensionamento, riducendo l'impatto fiscale per progressione.`,
+    a3_3:`<strong>Per orizzonti temporali più lunghi</strong>, considerare fondi 3a azionari — storicamente hanno sovraperformato i conti di risparmio nel lungo termine.`,
+    action4_heading:`Pianificazione strategica`,
+    a4_1:`<strong>Creare un budget pensionistico</strong> e utilizzare i <a href="/"><strong>strumenti gratuiti di BergSight</strong></a> per modellare le esigenze di risparmio.`,
+    a4_2:`<strong>Considerare altre opzioni di investimento</strong> — pilastro 3b o un conto di intermediazione per un'esposizione più ampia.`,
+    a4_3:`<strong>Cercare una consulenza professionale</strong> se si ha bisogno di un piano personalizzato — ma tenere presente che la consulenza finanziaria in Svizzera può essere costosa.`,
+    callout:`<strong>La cosa più importante?</strong> Iniziare a pensare alla pensione il prima possibile. Prima si inizia, più tempo ha la crescita composta per lavorare a proprio vantaggio — e minori saranno gli aggiustamenti necessari lungo la strada.`,
+    cta_title:`Pianifica la tua pensione con BergSight`,
+    cta_sub:`Strumenti gratuiti per la Svizzera. Modella i tuoi risparmi e scopri dove ti trovi.`,
+    cta_btn:`Esplora gli strumenti →`,
+    signoff:`Cordiali saluti,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    sources_title:`Fonti`,
+    disc_title:`Dichiarazione di non responsabilità`,
+    disc_text:`Questo articolo è fornito esclusivamente a scopo educativo e informativo. Non costituisce consulenza finanziaria, d'investimento, pensionistica, fiscale o legale. Le informazioni riflettono i principi generali del sistema previdenziale svizzero e potrebbero non applicarsi alla situazione individuale. Le norme possono cambiare — verificare sempre le informazioni aggiornate presso le autorità competenti o un consulente qualificato.`
+  }
+};
+
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('bs_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('btn-' + lang).classList.add('active');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+});
+
+setLang(currentLang);
+</script>
+
+</body>
+</html>
