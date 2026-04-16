@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BergSight collects no personal or financial data. All calculations happen in your browser. No account required, no data stored or shared.">
+  <meta property="og:title" content="Privacy Policy | BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/privacy">
+  <title>Privacy Policy | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --stone:#f5f2ed; --stone-2:#ece8e1; --stone-3:#d8d2c8;
+      --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c;
+      --alpine:#2d5a3d; --alpine-2:#3d7a52; --alpine-3:#e8f0eb;
+      --gold:#8a6d3b; --gold-2:#f5ead8; --white:#ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
+    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
+    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
+    .lang-btn:hover { color: var(--white); background: #2a2825; }
+    .lang-btn.active { color: var(--alpine-2); }
+    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--alpine); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--alpine); }
+    .page-header { padding: 9rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
+    .page-header-peaks { position: absolute; bottom: 0; left: 0; right: 0; height: 55%; opacity: 0.12; }
+    .page-header-inner { position: relative; max-width: 760px; }
+    .page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--alpine-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+    .page-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--alpine-2); }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 500; line-height: 1.1; color: var(--stone); margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+    .page-header-sub { font-size: 1.05rem; color: #9a958e; max-width: 560px; font-weight: 300; line-height: 1.8; }
+    .content-wrap { max-width: 760px; margin: 0 auto; padding: 5rem 4rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 0.8rem; margin-top: 2.5rem; }
+    .section-title:first-child { margin-top: 0; }
+    .prose p { font-size: 1rem; color: var(--ink-2); line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .highlight-box { background: var(--alpine-3); border: 1px solid #c8d9cc; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+    .highlight-box p { font-size: 1rem; color: var(--ink-2); line-height: 1.8; font-weight: 400; margin: 0; }
+    .highlight-box strong { color: var(--alpine); font-weight: 500; }
+    .meta-line { font-size: 0.78rem; color: var(--ink-3); font-family: 'DM Mono', monospace; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--stone-3); }
+    footer { background: var(--ink); color: #9a958e; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--stone); text-decoration: none; }
+    .footer-logo span { color: var(--alpine-2); }
+    .footer-links-row { display: flex; gap: 2rem; list-style: none; }
+    .footer-links-row a { font-size: 0.78rem; color: #6a6560; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--alpine-2); }
+    .footer-copy { font-size: 0.72rem; color: #4a4742; font-family: 'DM Mono', monospace; }
+    @media (max-width: 900px) {
+      .lang-bar { padding: 0 1.5rem; } nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .page-header { padding: 7rem 1.5rem 3rem; } .content-wrap { padding: 3rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; } .lang-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"  data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"  data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <svg class="page-header-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
+      <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
+    </svg>
+    <div class="page-header-inner">
+      <div class="page-eyebrow" data-i18n="eyebrow">Legal</div>
+      <h1 data-i18n="h1">Privacy Policy</h1>
+      <p class="page-header-sub" data-i18n="header_sub">BergSight is built on a simple principle: your financial data is yours. We don't collect it, store it, or share it.</p>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+    <div class="meta-line" data-i18n="meta">Last updated: April 2026 · BergSight, Zürich, Switzerland</div>
+
+    <div class="highlight-box">
+      <p data-i18n="highlight"><strong>The short version:</strong> BergSight does not collect, store, or transmit any personal or financial data you enter into our tools. All calculations happen entirely in your browser. When you close the page, nothing is retained.</p>
+    </div>
+
+    <div class="prose">
+
+      <div class="section-title" data-i18n="s1_title">Who we are</div>
+      <p data-i18n="s1_p1">BergSight is an independent financial information platform based in Zürich, Switzerland. This privacy policy explains how we handle information in connection with your use of bergsight.com.</p>
+
+      <div class="section-title" data-i18n="s2_title">Data we do not collect</div>
+      <p data-i18n="s2_p1">When you use BergSight planning tools — such as the Compound Growth Projector — all inputs and calculations are processed locally in your browser. No financial figures, personal details, or calculation results are transmitted to BergSight or any third party. We have no visibility into what numbers you enter or what results you receive.</p>
+      <p data-i18n="s2_p2">BergSight does not require you to create an account, register, or provide any personal information to use any tool on this site.</p>
+
+      <div class="section-title" data-i18n="s3_title">Data we may collect</div>
+      <p data-i18n="s3_p1">BergSight uses standard web analytics to understand how visitors use the site in aggregate. This may include anonymised data such as pages visited, time spent on the site, browser type, and approximate geographic location at country level. This data is used solely to improve the site and cannot be used to identify individual users.</p>
+      <p data-i18n="s3_p2">BergSight uses Cloudflare to deliver and protect the website. Cloudflare may process certain connection data as part of its network infrastructure. You can read Cloudflare's privacy policy at cloudflare.com/privacypolicy.</p>
+
+      <div class="section-title" data-i18n="s4_title">Cookies</div>
+      <p data-i18n="s4_p1">BergSight uses a single functional cookie to remember your language preference. This cookie stores only your selected language (e.g. "en", "de", "fr", or "it") and contains no personal data. It is stored locally in your browser and is not shared with any third party.</p>
+      <p data-i18n="s4_p2">No advertising, tracking, or analytics cookies are set by BergSight.</p>
+
+      <div class="section-title" data-i18n="s5_title">Third-party services</div>
+      <p data-i18n="s5_p1">BergSight uses Google Fonts to load typefaces. This means your browser makes a request to Google's servers when loading the site, which may transmit your IP address to Google. You can read Google's privacy policy at policies.google.com/privacy.</p>
+      <p data-i18n="s5_p2">The interactive tools on BergSight are hosted on a dedicated server. No personal or financial data entered into the tools is stored on this server.</p>
+
+      <div class="section-title" data-i18n="s6_title">Your rights</div>
+      <p data-i18n="s6_p1">As BergSight does not collect or store personal data, there is typically nothing to access, correct, or delete. If you have a specific concern or request, please contact us at the address below and we will respond promptly.</p>
+
+      <div class="section-title" data-i18n="s7_title">Changes to this policy</div>
+      <p data-i18n="s7_p1">We may update this privacy policy from time to time. The date at the top of this page indicates when it was last revised. Continued use of the site after any changes constitutes acceptance of the updated policy.</p>
+
+      <div class="section-title" data-i18n="s8_title">Contact</div>
+      <p data-i18n="s8_p1">For any questions about this privacy policy, please contact us at <a href="#" id="contact-link" style="color:var(--alpine)">hello@bergsight.com</a>.</p>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"      data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/about"       data-i18n="nav_about">About</a></li>
+      <li><a href="/disclaimer"  data-i18n="footer_disclaimer">Disclaimer</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+  <script>
+  const i18n = {
+    en: {
+      nav_tools:`Tools`, nav_blog:`Insights`, nav_about:`About`,
+      eyebrow:`Legal`, h1:`Privacy Policy`,
+      header_sub:`BergSight is built on a simple principle: your financial data is yours. We don't collect it, store it, or share it.`,
+      meta:`Last updated: April 2026 · BergSight, Zürich, Switzerland`,
+      highlight:`<strong>The short version:</strong> BergSight does not collect, store, or transmit any personal or financial data you enter into our tools. All calculations happen entirely in your browser. When you close the page, nothing is retained.`,
+      s1_title:`Who we are`, s1_p1:`BergSight is an independent financial information platform based in Zürich, Switzerland. This privacy policy explains how we handle information in connection with your use of bergsight.com.`,
+      s2_title:`Data we do not collect`,
+      s2_p1:`When you use BergSight planning tools, all inputs and calculations are processed locally in your browser. No financial figures, personal details, or calculation results are transmitted to BergSight or any third party. We have no visibility into what numbers you enter or what results you receive.`,
+      s2_p2:`BergSight does not require you to create an account, register, or provide any personal information to use any tool on this site.`,
+      s3_title:`Data we may collect`,
+      s3_p1:`BergSight uses standard web analytics to understand how visitors use the site in aggregate. This may include anonymised data such as pages visited, time spent on the site, browser type, and approximate geographic location at country level. This data cannot be used to identify individual users.`,
+      s3_p2:`BergSight uses Cloudflare to deliver and protect the website. Cloudflare may process certain connection data as part of its network infrastructure. You can read Cloudflare's privacy policy at cloudflare.com/privacypolicy.`,
+      s4_title:`Cookies`,
+      s4_p1:`BergSight uses a single functional cookie to remember your language preference. This cookie stores only your selected language and contains no personal data. It is not shared with any third party.`,
+      s4_p2:`No advertising, tracking, or analytics cookies are set by BergSight.`,
+      s5_title:`Third-party services`,
+      s5_p1:`BergSight uses Google Fonts to load typefaces. This means your browser makes a request to Google's servers when loading the site, which may transmit your IP address to Google. You can read Google's privacy policy at policies.google.com/privacy.`,
+      s5_p2:`The interactive tools on BergSight are hosted on a dedicated server. No personal or financial data entered into the tools is stored on this server.`,
+      s6_title:`Your rights`,
+      s6_p1:`As BergSight does not collect or store personal data, there is typically nothing to access, correct, or delete. If you have a specific concern, please contact us and we will respond promptly.`,
+      s7_title:`Changes to this policy`,
+      s7_p1:`We may update this privacy policy from time to time. The date at the top of this page indicates when it was last revised. Continued use of the site after any changes constitutes acceptance of the updated policy.`,
+      s8_title:`Contact`, s8_p1:`For any questions about this privacy policy, please contact us at`,
+      footer_disclaimer:`Disclaimer`
+    },
+    de: {
+      nav_tools:`Tools`, nav_blog:`Einblicke`, nav_about:`Über uns`,
+      eyebrow:`Rechtliches`, h1:`Datenschutzerklärung`,
+      header_sub:`BergSight basiert auf einem einfachen Prinzip: Ihre Finanzdaten gehören Ihnen. Wir erfassen, speichern oder teilen sie nicht.`,
+      meta:`Zuletzt aktualisiert: April 2026 · BergSight, Zürich, Schweiz`,
+      highlight:`<strong>Kurzfassung:</strong> BergSight erfasst, speichert oder überträgt keine persönlichen oder finanziellen Daten, die Sie in unsere Tools eingeben. Alle Berechnungen erfolgen vollständig in Ihrem Browser. Wenn Sie die Seite schliessen, werden keine Daten gespeichert.`,
+      s1_title:`Wer wir sind`, s1_p1:`BergSight ist eine unabhängige Finanzinformationsplattform mit Sitz in Zürich, Schweiz. Diese Datenschutzerklärung erläutert, wie wir Informationen im Zusammenhang mit Ihrer Nutzung von bergsight.com verwalten.`,
+      s2_title:`Daten, die wir nicht erfassen`,
+      s2_p1:`Wenn Sie BergSight-Planungstools verwenden, werden alle Eingaben und Berechnungen lokal in Ihrem Browser verarbeitet. Keine Finanzdaten, persönlichen Angaben oder Berechnungsergebnisse werden an BergSight oder Dritte übermittelt.`,
+      s2_p2:`BergSight erfordert keine Kontoerstellung, Registrierung oder persönliche Angaben zur Nutzung der Tools.`,
+      s3_title:`Daten, die wir möglicherweise erfassen`,
+      s3_p1:`BergSight verwendet Standard-Webanalysen, um zu verstehen, wie Besucher die Website nutzen. Dies kann anonymisierte Daten wie besuchte Seiten, Verweildauer, Browsertyp und ungefähren geografischen Standort auf Länderebene umfassen. Diese Daten können nicht zur Identifizierung einzelner Nutzer verwendet werden.`,
+      s3_p2:`BergSight verwendet Cloudflare zur Bereitstellung und zum Schutz der Website. Cloudflare kann bestimmte Verbindungsdaten als Teil seiner Netzwerkinfrastruktur verarbeiten.`,
+      s4_title:`Cookies`,
+      s4_p1:`BergSight verwendet ein einziges funktionales Cookie, um Ihre Sprachpräferenz zu speichern. Dieses Cookie enthält nur Ihre gewählte Sprache und keine persönlichen Daten. Es wird nicht mit Dritten geteilt.`,
+      s4_p2:`BergSight setzt keine Werbe-, Tracking- oder Analyse-Cookies.`,
+      s5_title:`Drittanbieterdienste`,
+      s5_p1:`BergSight verwendet Google Fonts zum Laden von Schriftarten. Ihr Browser sendet dabei eine Anfrage an Google-Server, wobei Ihre IP-Adresse übertragen werden kann. Die Datenschutzrichtlinie von Google finden Sie unter policies.google.com/privacy.`,
+      s5_p2:`Die interaktiven Tools auf BergSight werden auf einem dedizierten Server gehostet. Keine persönlichen oder finanziellen Daten werden auf diesem Server gespeichert.`,
+      s6_title:`Ihre Rechte`,
+      s6_p1:`Da BergSight keine personenbezogenen Daten erfasst oder speichert, gibt es in der Regel nichts abzurufen, zu korrigieren oder zu löschen. Bei spezifischen Anliegen kontaktieren Sie uns bitte.`,
+      s7_title:`Änderungen dieser Richtlinie`,
+      s7_p1:`Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Das Datum oben auf dieser Seite zeigt an, wann sie zuletzt überarbeitet wurde.`,
+      s8_title:`Kontakt`, s8_p1:`Bei Fragen zu dieser Datenschutzerklärung kontaktieren Sie uns bitte unter`,
+      footer_disclaimer:`Haftungsausschluss`
+    },
+    fr: {
+      nav_tools:`Outils`, nav_blog:`Analyses`, nav_about:`À propos`,
+      eyebrow:`Mentions légales`, h1:`Politique de confidentialité`,
+      header_sub:`BergSight repose sur un principe simple : vos données financières vous appartiennent. Nous ne les collectons pas, ne les stockons pas et ne les partageons pas.`,
+      meta:`Dernière mise à jour : avril 2026 · BergSight, Zurich, Suisse`,
+      highlight:`<strong>En bref :</strong> BergSight ne collecte, ne stocke ni ne transmet aucune donnée personnelle ou financière que vous saisissez dans nos outils. Tous les calculs s'effectuent entièrement dans votre navigateur. Lorsque vous fermez la page, rien n'est conservé.`,
+      s1_title:`Qui nous sommes`, s1_p1:`BergSight est une plateforme d'information financière indépendante basée à Zurich, en Suisse. Cette politique de confidentialité explique comment nous traitons les informations liées à votre utilisation de bergsight.com.`,
+      s2_title:`Données que nous ne collectons pas`,
+      s2_p1:`Lorsque vous utilisez les outils de planification BergSight, toutes les entrées et tous les calculs sont traités localement dans votre navigateur. Aucune donnée financière, information personnelle ou résultat de calcul n'est transmis à BergSight ou à des tiers.`,
+      s2_p2:`BergSight ne vous demande pas de créer un compte, de vous inscrire ou de fournir des informations personnelles pour utiliser les outils du site.`,
+      s3_title:`Données que nous pouvons collecter`,
+      s3_p1:`BergSight utilise des analyses web standard pour comprendre comment les visiteurs utilisent le site de manière agrégée. Cela peut inclure des données anonymisées telles que les pages visitées, le temps passé sur le site, le type de navigateur et la localisation géographique approximative au niveau du pays.`,
+      s3_p2:`BergSight utilise Cloudflare pour délivrer et protéger le site. Cloudflare peut traiter certaines données de connexion dans le cadre de son infrastructure réseau.`,
+      s4_title:`Cookies`,
+      s4_p1:`BergSight utilise un seul cookie fonctionnel pour mémoriser votre préférence linguistique. Ce cookie ne stocke que votre langue sélectionnée et ne contient aucune donnée personnelle. Il n'est pas partagé avec des tiers.`,
+      s4_p2:`BergSight ne dépose aucun cookie publicitaire, de suivi ou d'analyse.`,
+      s5_title:`Services tiers`,
+      s5_p1:`BergSight utilise Google Fonts pour charger les polices de caractères. Cela signifie que votre navigateur envoie une requête aux serveurs de Google lors du chargement du site, ce qui peut transmettre votre adresse IP à Google.`,
+      s5_p2:`Les outils interactifs de BergSight sont hébergés sur un serveur dédié. Aucune donnée personnelle ou financière saisie dans les outils n'est stockée sur ce serveur.`,
+      s6_title:`Vos droits`,
+      s6_p1:`BergSight ne collectant ni ne stockant de données personnelles, il n'y a généralement rien à consulter, corriger ou supprimer. Pour toute préoccupation spécifique, veuillez nous contacter.`,
+      s7_title:`Modifications de cette politique`,
+      s7_p1:`Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. La date en haut de cette page indique la date de la dernière révision.`,
+      s8_title:`Contact`, s8_p1:`Pour toute question concernant cette politique de confidentialité, veuillez nous contacter à`,
+      footer_disclaimer:`Avertissement`
+    },
+    it: {
+      nav_tools:`Strumenti`, nav_blog:`Approfondimenti`, nav_about:`Chi siamo`,
+      eyebrow:`Note legali`, h1:`Informativa sulla privacy`,
+      header_sub:`BergSight si basa su un principio semplice: i vostri dati finanziari sono vostri. Non li raccogliamo, non li conserviamo e non li condividiamo.`,
+      meta:`Ultimo aggiornamento: aprile 2026 · BergSight, Zurigo, Svizzera`,
+      highlight:`<strong>In breve:</strong> BergSight non raccoglie, conserva o trasmette alcun dato personale o finanziario inserito nei nostri strumenti. Tutti i calcoli avvengono interamente nel vostro browser. Quando chiudete la pagina, nulla viene conservato.`,
+      s1_title:`Chi siamo`, s1_p1:`BergSight è una piattaforma di informazione finanziaria indipendente con sede a Zurigo, in Svizzera. Questa informativa sulla privacy spiega come gestiamo le informazioni relative all'utilizzo di bergsight.com.`,
+      s2_title:`Dati che non raccogliamo`,
+      s2_p1:`Quando si utilizzano gli strumenti di pianificazione BergSight, tutti gli input e i calcoli vengono elaborati localmente nel browser. Nessun dato finanziario, informazione personale o risultato di calcolo viene trasmesso a BergSight o a terzi.`,
+      s2_p2:`BergSight non richiede la creazione di un account, la registrazione o la fornitura di informazioni personali per utilizzare gli strumenti del sito.`,
+      s3_title:`Dati che potremmo raccogliere`,
+      s3_p1:`BergSight utilizza analisi web standard per capire come i visitatori utilizzano il sito in forma aggregata. Ciò può includere dati anonimi come le pagine visitate, il tempo trascorso sul sito, il tipo di browser e la posizione geografica approssimativa a livello di paese.`,
+      s3_p2:`BergSight utilizza Cloudflare per erogare e proteggere il sito. Cloudflare può elaborare alcuni dati di connessione come parte della sua infrastruttura di rete.`,
+      s4_title:`Cookie`,
+      s4_p1:`BergSight utilizza un unico cookie funzionale per ricordare la preferenza linguistica. Questo cookie memorizza solo la lingua selezionata e non contiene dati personali. Non viene condiviso con terzi.`,
+      s4_p2:`BergSight non imposta cookie pubblicitari, di tracciamento o analitici.`,
+      s5_title:`Servizi di terze parti`,
+      s5_p1:`BergSight utilizza Google Fonts per caricare i caratteri tipografici. Ciò significa che il browser invia una richiesta ai server di Google durante il caricamento del sito, il che può trasmettere il vostro indirizzo IP a Google.`,
+      s5_p2:`Gli strumenti interattivi di BergSight sono ospitati su un server dedicato. Nessun dato personale o finanziario inserito negli strumenti viene memorizzato su questo server.`,
+      s6_title:`I vostri diritti`,
+      s6_p1:`Poiché BergSight non raccoglie né conserva dati personali, di norma non c'è nulla da consultare, correggere o eliminare. Per qualsiasi preoccupazione specifica, contattarci.`,
+      s7_title:`Modifiche a questa informativa`,
+      s7_p1:`Potremmo aggiornare questa informativa sulla privacy di tanto in tanto. La data in cima a questa pagina indica quando è stata rivista l'ultima volta.`,
+      s8_title:`Contatto`, s8_p1:`Per qualsiasi domanda su questa informativa sulla privacy, contattarci a`,
+      footer_disclaimer:`Dichiarazione di non responsabilità`
+    }
+  };
+
+  let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('bs_lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('btn-' + lang).classList.add('active');
+    const t = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    var cl = document.getElementById('contact-link');
+    if (cl) cl.href = 'mailto:' + 'hello' + '@' + 'bergsight.com';
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+  });
+
+  (function() {
+    var el = document.getElementById('contact-link');
+    if (el) el.href = 'mailto:' + 'hello' + '@' + 'bergsight.com';
+  })();
+
+  setLang(currentLang);
+  </script>
+
+</body>
+</html>
