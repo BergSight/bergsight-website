@@ -1,0 +1,8 @@
+/compound    /compound.html    200
+/salary      /salary.html      200
+/about       /about.html       200
+/disclaimer  /disclaimer.html  200
+/privacy     /privacy.html     200
+/insights/compound-interest-explained      /insights/compound-interest-explained.html      200
+/insights/retirement-planning-switzerland  /insights/retirement-planning-switzerland.html  200
+/insights/comparison-thief-of-joy         /insights/comparison-thief-of-joy.html          200
