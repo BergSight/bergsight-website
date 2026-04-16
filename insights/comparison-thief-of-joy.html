@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How does your salary compare to the Swiss average? We explain the national median and mean figures and what really drives pay differences in Switzerland.">
+  <meta property="og:title" content="Average Salary in Switzerland: How Does Yours Compare? | BergSight">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bergsight.com/insights/comparison-thief-of-joy">
+  <title>Average Salary in Switzerland: How Does Yours Compare? | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root { --stone:#f5f2ed; --stone-2:#ece8e1; --stone-3:#d8d2c8; --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c; --alpine:#2d5a3d; --alpine-2:#3d7a52; --alpine-3:#e8f0eb; --gold:#8a6d3b; --gold-2:#f5ead8; --white:#ffffff; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
+    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
+    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
+    .lang-btn:hover { color: var(--white); background: #2a2825; }
+    .lang-btn.active { color: var(--alpine-2); }
+    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--alpine); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--alpine); }
+    .article-header { padding: 9rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
+    .article-header-peaks { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; opacity: 0.12; }
+    .article-header-inner { position: relative; max-width: 760px; }
+    .article-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .article-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; background: rgba(61,122,82,0.3); color: var(--alpine-2); border-radius: 1px; }
+    .article-date { font-size: 0.75rem; color: #6a6560; font-family: 'DM Mono', monospace; }
+    .article-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 500; line-height: 1.15; color: var(--stone); margin-bottom: 1.2rem; letter-spacing: -0.01em; }
+    .article-header h1 em { font-style: italic; color: var(--alpine-2); }
+    .article-standfirst { font-size: 1.1rem; color: #9a958e; max-width: 620px; font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem; }
+    .article-byline { font-size: 0.8rem; color: #6a6560; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .byline-dot { width: 4px; height: 4px; border-radius: 50%; background: #4a4742; }
+    .human-badge { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid #3d3a35; color: #6a6560; border-radius: 1px; }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 4rem 4rem 5rem; }
+    .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 600; color: var(--ink); margin-top: 2.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
+    .article-body p { font-size: 1rem; color: var(--ink-2); line-height: 1.9; font-weight: 300; margin-bottom: 1.4rem; }
+    .article-body strong { font-weight: 500; color: var(--ink); }
+    .article-body em { font-style: italic; }
+    .article-body a { color: var(--alpine); text-decoration: underline; text-decoration-color: rgba(45,90,61,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+    .article-body a:hover { text-decoration-color: var(--alpine); }
+    /* Pull quote */
+    .pull-quote { border-left: 3px solid var(--alpine-2); margin: 2.5rem 0; padding: 0.8rem 1.6rem; }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.5; margin: 0; }
+    .pull-quote cite { display: block; font-size: 0.78rem; color: var(--ink-3); font-style: normal; margin-top: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    /* Salary comparison table */
+    .salary-table-wrap { margin: 2rem 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .salary-table { width: 100%; border-collapse: collapse; }
+    .salary-table th { background: var(--ink); color: var(--stone-2); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.8rem 1.4rem; text-align: left; }
+    .salary-table td { padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--stone-2); vertical-align: top; background: var(--white); }
+    .salary-table tr:last-child td { border-bottom: none; }
+    .salary-figure { font-family: 'DM Mono', monospace; font-size: 1.8rem; font-weight: 500; color: var(--alpine); display: block; margin-bottom: 0.4rem; }
+    .salary-desc { font-size: 0.82rem; color: var(--ink-3); line-height: 1.6; font-weight: 300; }
+    .salary-footnote { font-size: 0.72rem; color: var(--ink-3); margin-top: 0.5rem; font-style: italic; font-family: 'DM Mono', monospace; }
+    /* Factors list */
+    .factors-list { list-style: none; margin: 1rem 0 1.4rem; }
+    .factors-list li { display: flex; gap: 0.8rem; padding: 0.7rem 0; border-bottom: 1px solid var(--stone-2); font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.6; align-items: flex-start; }
+    .factors-list li:last-child { border-bottom: none; }
+    .factors-list li::before { content: '→'; color: var(--alpine); font-size: 0.82rem; flex-shrink: 0; padding-top: 0.1rem; }
+    /* Tool CTA */
+    .tool-cta { background: var(--ink); padding: 2.5rem; margin: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .tool-cta-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--stone); margin-bottom: 0.4rem; }
+    .tool-cta-text p { font-size: 0.88rem; color: #9a958e; font-weight: 300; line-height: 1.6; margin: 0; }
+    .tool-cta-btn { background: var(--alpine); color: #ffffff !important; padding: 0.8rem 1.8rem; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
+    .tool-cta-btn:hover { background: var(--alpine-2); }
+    /* Sign off */
+    .sign-off { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--stone-3); font-size: 1rem; color: var(--ink-3); font-style: italic; }
+    /* Disclaimer */
+    .article-disclaimer { background: var(--gold-2); border: 1px solid #d4b87a; padding: 1.4rem 1.8rem; margin-top: 3rem; }
+    .article-disclaimer-title { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .article-disclaimer p { font-size: 0.82rem; color: var(--ink-2); line-height: 1.7; font-weight: 300; margin: 0; }
+    /* Footer */
+    footer { background: var(--ink); color: #9a958e; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--stone); text-decoration: none; }
+    .footer-logo span { color: var(--alpine-2); }
+    .footer-links-row { display: flex; gap: 2rem; list-style: none; }
+    .footer-links-row a { font-size: 0.78rem; color: #6a6560; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--alpine-2); }
+    .footer-copy { font-size: 0.72rem; color: #4a4742; font-family: 'DM Mono', monospace; }
+    @media (max-width: 900px) {
+      .lang-bar { padding: 0 1.5rem; } nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .article-header { padding: 7rem 1.5rem 3rem; } .article-wrap { padding: 3rem 1.5rem; }
+      .tool-cta { flex-direction: column; align-items: flex-start; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; } .lang-label { display: none; }
+    }
+  </style>
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KPHRGJL1WW');
+  </script>
+</head>
+<body>
+
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"  data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"  data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="article-header">
+    <svg class="article-header-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
+      <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
+    </svg>
+    <div class="article-header-inner">
+      <div class="article-eyebrow">
+        <span class="article-tag" data-i18n="tag">Salaries</span>
+        <span class="article-date" data-i18n="date">April 2026</span>
+      </div>
+      <h1 data-i18n="h1">Comparison is <em>the thief of joy</em></h1>
+      <p class="article-standfirst" data-i18n="standfirst">We know we shouldn't compare ourselves to others. But when it comes to salary, a little context can be genuinely useful — here's how to use it wisely.</p>
+      <div class="article-byline">
+        <span data-i18n="byline_author">By Lukas</span>
+        <span class="byline-dot"></span>
+        <span data-i18n="byline_read">4 min read</span>
+        <span class="byline-dot"></span>
+        <span class="human-badge" data-i18n="human_badge">Written by a human</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <div class="article-body">
+
+      <div class="pull-quote">
+        <p data-i18n="quote">"Comparison is the thief of joy."</p>
+        <cite data-i18n="quote_attr">— Attributed to Theodore Roosevelt</cite>
+      </div>
+
+      <p data-i18n="p1"></p>
+      <p data-i18n="p2"></p>
+      <p data-i18n="p3"></p>
+
+      <h2 data-i18n="h_national"></h2>
+      <p data-i18n="p4"></p>
+
+      <div class="salary-table-wrap">
+        <table class="salary-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_median"></th>
+              <th data-i18n="th_mean"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="salary-figure">CHF 7,024</span>
+                <span class="salary-desc" data-i18n="td_median_desc"></span>
+              </td>
+              <td>
+                <span class="salary-figure">CHF 7,950</span>
+                <span class="salary-desc" data-i18n="td_mean_desc"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="salary-footnote" data-i18n="table_footnote"></div>
+      </div>
+
+      <h2 data-i18n="h_factors"></h2>
+      <p data-i18n="p5"></p>
+
+      <ul class="factors-list">
+        <li data-i18n="f1"></li>
+        <li data-i18n="f2"></li>
+        <li data-i18n="f3"></li>
+        <li data-i18n="f4"></li>
+        <li data-i18n="f5"></li>
+        <li data-i18n="f6"></li>
+        <li data-i18n="f7"></li>
+      </ul>
+
+      <div class="tool-cta">
+        <div class="tool-cta-text">
+          <h3 data-i18n="cta_title"></h3>
+          <p data-i18n="cta_sub"></p>
+        </div>
+        <a href="/salary" class="tool-cta-btn" data-i18n="cta_btn"></a>
+      </div>
+
+      <div class="sign-off" data-i18n="signoff"></div>
+
+      <div class="article-disclaimer">
+        <div class="article-disclaimer-title" data-i18n="disc_title"></div>
+        <p data-i18n="disc_text"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"     data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/#blog"      data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"      data-i18n="nav_about">About</a></li>
+      <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+      <li><a href="/privacy"    data-i18n="nav_privacy">Privacy</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+<script>
+const i18n = {
+  en: {
+    nav_tools:`Tools`, nav_blog:`Blog & Insights`, nav_about:`About`, nav_disclaimer:`Disclaimer`, nav_privacy:`Privacy`,
+    tag:`Salaries`, date:`April 2026`, byline_author:`By Lukas`, byline_read:`4 min read`, human_badge:`Written by a human`,
+    h1:`Comparison is <em>the thief of joy</em>`,
+    standfirst:`We know we shouldn't compare ourselves to others. But when it comes to salary, a little context can be genuinely useful — here's how to use it wisely.`,
+    quote:`"Comparison is the thief of joy."`,
+    quote_attr:`— Attributed to Theodore Roosevelt`,
+    p1:`Theodore Roosevelt once said that "comparison is the thief of joy", highlighting that comparing one's own life to others can lead to envy and a loss of contentment. And for our own sanity, he has a point. Your family, friends, and colleagues have all followed different paths — different upbringings, educations, careers, and a fair amount of luck along the way. No two people have experienced the same combination of opportunities and obstacles that life puts in front of us.`,
+    p2:`That said, it is still useful to understand whether you are paid fairly by your employer. The word "fair" is subjective, of course — it implies impartiality and equality, and as many of us have experienced, the world of work is not always fair. Despite the apparent injustices we might encounter as we progress through our careers, we can use public data to get a meaningful indication of where our income sits relative to the broader Swiss working population.`,
+    p3:`Rather than worrying about "fair" pay in the abstract, let's work with something more concrete: how does your salary compare to the average for your region of Switzerland?`,
+    h_national:`The national picture`,
+    p4:`Salaries vary significantly by region and canton across Switzerland. But at the national level, here is what the latest data shows for full-time employees.`,
+    th_median:`Monthly median gross salary<br>(full-time employment)`,
+    th_mean:`Monthly mean gross salary<br>(full-time employment)`,
+    td_median_desc:`The "middle" value — half of people in Switzerland earn more, half earn less. This figure is less affected by very high salaries.`,
+    td_mean_desc:`The total of all salaries in Switzerland divided by the number of employees. This value is pulled upward by very high earners.`,
+    table_footnote:`¹ Source: Swiss Federal Statistical Office, Earnings Structure Survey (LSE) 2024.`,
+    h_factors:`What determines your salary?`,
+    p5:`Before drawing any conclusions from the figures above, it is worth remembering that salary comparisons have real limits. Many factors shape what any individual earns — and national averages cannot account for all of them.`,
+    f1:`Your experience, education, and skills`,
+    f2:`Your location and the local cost of living — people in cities tend to earn more`,
+    f3:`The industry and sector you work in — finance and technology tend to pay above average`,
+    f4:`Your level of responsibility and seniority`,
+    f5:`Supply and demand in your particular field`,
+    f6:`The size and financial health of your employer`,
+    f7:`Your individual performance and the value you bring to your role`,
+    cta_title:`Compare your salary with the Swiss average`,
+    cta_sub:`BergSight's free Swiss Salary Comparator lets you see where your income sits in the regional distribution — by region, monthly or annually.`,
+    cta_btn:`Try the tool →`,
+    signoff:`All the best,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Disclaimer`,
+    disc_text:`This article is provided for educational and informational purposes only. Salary figures are based on the FSO Earnings Structure Survey (LSE) 2024 and represent gross full-time equivalent salaries. Individual circumstances vary significantly. This article does not constitute financial, legal, or employment advice. Always consider your individual situation when interpreting salary data.`
+  },
+  de: {
+    nav_tools:`Tools`, nav_blog:`Blog & Einblicke`, nav_about:`Über uns`, nav_disclaimer:`Haftungsausschluss`, nav_privacy:`Datenschutz`,
+    tag:`Gehälter`, date:`April 2026`, byline_author:`Von Lukas`, byline_read:`4 Min. Lesezeit`, human_badge:`Von einem Menschen geschrieben`,
+    h1:`Vergleich ist <em>der Dieb der Freude</em>`,
+    standfirst:`Wir wissen, dass wir uns nicht mit anderen vergleichen sollten. Aber beim Gehalt kann ein wenig Kontext wirklich nützlich sein — hier erfahren Sie, wie Sie es sinnvoll nutzen.`,
+    quote:`„Vergleich ist der Dieb der Freude."`,
+    quote_attr:`— Theodore Roosevelt zugeschrieben`,
+    p1:`Theodore Roosevelt sagte einmal, dass „Vergleich der Dieb der Freude" sei — ein Hinweis darauf, dass das Vergleichen des eigenen Lebens mit anderen zu Neid und Unzufriedenheit führen kann. Für unsere eigene Gelassenheit hat er damit einen Punkt. Unsere Familie, Freunde und Kollegen haben alle unterschiedliche Wege genommen — unterschiedliche Kindheiten, Ausbildungen, Karrieren und eine Portion Glück. Keine zwei Menschen haben dieselbe Kombination von Chancen und Hindernissen erlebt.`,
+    p2:`Dennoch ist es nützlich zu verstehen, ob man von seinem Arbeitgeber fair bezahlt wird. Das Wort „fair" ist natürlich subjektiv — es impliziert Unparteilichkeit und Gleichheit, und wie viele von uns erfahren haben, ist die Arbeitswelt nicht immer fair. Trotz der offensichtlichen Ungerechtigkeiten, denen wir begegnen können, können wir öffentliche Daten nutzen, um einen aussagekräftigen Anhaltspunkt dafür zu erhalten, wo unser Einkommen im Verhältnis zur allgemeinen Schweizer Bevölkerung steht.`,
+    p3:`Anstatt uns abstrakt über „fairen" Lohn Gedanken zu machen, arbeiten wir mit etwas Konkreterem: Wie verhält sich Ihr Gehalt zum Durchschnitt Ihrer Region in der Schweiz?`,
+    h_national:`Das nationale Bild`,
+    p4:`Die Gehälter variieren in der Schweiz erheblich nach Region und Kanton. Auf nationaler Ebene zeigen die neuesten Daten für Vollzeitbeschäftigte folgendes Bild.`,
+    th_median:`Monatlicher Brutto-Medianlohn<br>(Vollzeitbeschäftigung)`,
+    th_mean:`Monatlicher Brutto-Durchschnittslohn<br>(Vollzeitbeschäftigung)`,
+    td_median_desc:`Der „mittlere" Wert — die Hälfte der Menschen in der Schweiz verdient mehr, die andere Hälfte weniger. Weniger beeinflusst durch sehr hohe Gehälter.`,
+    td_mean_desc:`Die Summe aller Gehälter in der Schweiz geteilt durch die Anzahl der Beschäftigten. Dieser Wert wird durch sehr hohe Verdiener nach oben gezogen.`,
+    table_footnote:`¹ Quelle: Bundesamt für Statistik, Lohnstrukturerhebung (LSE) 2024.`,
+    h_factors:`Was bestimmt Ihr Gehalt?`,
+    p5:`Bevor Schlussfolgerungen aus den obigen Zahlen gezogen werden, ist es wichtig zu bedenken, dass Gehaltsvergleiche echte Grenzen haben. Viele Faktoren beeinflussen das individuelle Einkommen — nationale Durchschnittswerte können nicht alle berücksichtigen.`,
+    f1:`Ihre Erfahrung, Ausbildung und Fähigkeiten`,
+    f2:`Ihr Standort und die lokalen Lebenshaltungskosten — Menschen in Städten verdienen tendenziell mehr`,
+    f3:`Die Branche, in der Sie tätig sind — Finanzen und Technologie zahlen oft überdurchschnittlich`,
+    f4:`Ihre Verantwortungsebene und Seniorität`,
+    f5:`Angebot und Nachfrage in Ihrem spezifischen Bereich`,
+    f6:`Grösse und finanzielle Gesundheit Ihres Arbeitgebers`,
+    f7:`Ihre individuelle Leistung und der Mehrwert, den Sie in Ihrer Rolle schaffen`,
+    cta_title:`Vergleichen Sie Ihr Gehalt mit dem Schweizer Durchschnitt`,
+    cta_sub:`BergSights kostenloser Schweizer Gehaltsvergleich zeigt, wo Ihr Einkommen in der regionalen Verteilung liegt — nach Region, monatlich oder jährlich.`,
+    cta_btn:`Tool öffnen →`,
+    signoff:`Mit freundlichen Grüssen,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Haftungsausschluss`,
+    disc_text:`Dieser Artikel dient ausschliesslich zu Bildungs- und Informationszwecken. Die Gehaltsangaben basieren auf der BFS-Lohnstrukturerhebung (LSE) 2024 und stellen Brutto-Vollzeitäquivalentgehälter dar. Individuelle Umstände variieren erheblich. Dieser Artikel stellt keine Finanz-, Rechts- oder Arbeitsberatung dar.`
+  },
+  fr: {
+    nav_tools:`Outils`, nav_blog:`Blog & Analyses`, nav_about:`À propos`, nav_disclaimer:`Avertissement`, nav_privacy:`Confidentialité`,
+    tag:`Salaires`, date:`Avril 2026`, byline_author:`Par Lukas`, byline_read:`4 min de lecture`, human_badge:`Écrit par un humain`,
+    h1:`La comparaison est <em>le voleur de joie</em>`,
+    standfirst:`Nous savons que nous ne devrions pas nous comparer aux autres. Mais en matière de salaire, un peu de contexte peut être vraiment utile — voici comment l'utiliser judicieusement.`,
+    quote:`« La comparaison est le voleur de joie. »`,
+    quote_attr:`— Attribué à Theodore Roosevelt`,
+    p1:`Theodore Roosevelt a dit un jour que « la comparaison est le voleur de joie », soulignant que comparer sa propre vie à celle des autres peut mener à l'envie et à la perte de contentement. Pour notre propre tranquillité d'esprit, il a raison. Notre famille, nos amis et nos collègues ont tous suivi des chemins différents — des éducations, des carrières et une bonne part de chance différentes. Aucun être humain n'a vécu la même combinaison d'opportunités et d'obstacles.`,
+    p2:`Cela dit, il reste utile de savoir si vous êtes payé équitablement par votre employeur. Le mot « équitable » est bien sûr subjectif — il implique impartialité et égalité, et comme beaucoup d'entre nous l'ont vécu, le monde du travail n'est pas toujours juste. Malgré les injustices apparentes que nous pouvons rencontrer, nous pouvons utiliser des données publiques pour obtenir une indication significative de la position de notre revenu par rapport à la population active suisse.`,
+    p3:`Plutôt que de nous préoccuper d'un salaire « juste » dans l'abstrait, travaillons avec quelque chose de plus concret : comment votre salaire se compare-t-il à la moyenne de votre région en Suisse ?`,
+    h_national:`La situation nationale`,
+    p4:`Les salaires varient considérablement selon les régions et cantons en Suisse. Au niveau national, voici ce que montrent les dernières données pour les employés à temps plein.`,
+    th_median:`Salaire brut médian mensuel<br>(emploi à temps plein)`,
+    th_mean:`Salaire brut moyen mensuel<br>(emploi à temps plein)`,
+    td_median_desc:`La valeur « médiane » — la moitié des personnes en Suisse gagne plus, l'autre moitié moins. Moins affectée par les très hauts salaires.`,
+    td_mean_desc:`La somme de tous les salaires en Suisse divisée par le nombre d'employés. Cette valeur est tirée vers le haut par les très hauts revenus.`,
+    table_footnote:`¹ Source : Office fédéral de la statistique, Enquête sur la structure des salaires (ESS) 2024.`,
+    h_factors:`Qu'est-ce qui détermine votre salaire ?`,
+    p5:`Avant de tirer des conclusions des chiffres ci-dessus, il convient de rappeler que les comparaisons salariales ont des limites réelles. De nombreux facteurs déterminent ce que gagne un individu — et les moyennes nationales ne peuvent pas en tenir compte.`,
+    f1:`Votre expérience, votre formation et vos compétences`,
+    f2:`Votre lieu de résidence et le coût de la vie local — les personnes en ville ont tendance à gagner plus`,
+    f3:`Le secteur dans lequel vous travaillez — la finance et la technologie paient souvent au-dessus de la moyenne`,
+    f4:`Votre niveau de responsabilité et d'ancienneté`,
+    f5:`L'offre et la demande dans votre domaine spécifique`,
+    f6:`La taille et la santé financière de votre employeur`,
+    f7:`Votre performance individuelle et la valeur que vous apportez à votre rôle`,
+    cta_title:`Comparez votre salaire avec la moyenne suisse`,
+    cta_sub:`Le comparateur de salaires suisse gratuit de BergSight vous permet de voir où se situe votre revenu dans la distribution régionale — par région, mensuellement ou annuellement.`,
+    cta_btn:`Essayer l'outil →`,
+    signoff:`Bien cordialement,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Avertissement`,
+    disc_text:`Cet article est fourni à des fins éducatives et informatives uniquement. Les chiffres salariaux sont basés sur l'ESS FSO 2024 et représentent des salaires bruts équivalents temps plein. Les circonstances individuelles varient considérablement. Cet article ne constitue pas un conseil financier, juridique ou en matière d'emploi.`
+  },
+  it: {
+    nav_tools:`Strumenti`, nav_blog:`Blog & Approfondimenti`, nav_about:`Chi siamo`, nav_disclaimer:`Dichiarazione`, nav_privacy:`Privacy`,
+    tag:`Stipendi`, date:`Aprile 2026`, byline_author:`Di Lukas`, byline_read:`4 min di lettura`, human_badge:`Scritto da un essere umano`,
+    h1:`Il confronto è <em>il ladro della gioia</em>`,
+    standfirst:`Sappiamo che non dovremmo paragonarci agli altri. Ma quando si tratta di stipendi, un po' di contesto può essere davvero utile — ecco come usarlo saggiamente.`,
+    quote:`«Il confronto è il ladro della gioia.»`,
+    quote_attr:`— Attribuito a Theodore Roosevelt`,
+    p1:`Theodore Roosevelt disse una volta che «il confronto è il ladro della gioia», sottolineando che confrontare la propria vita con quella degli altri può portare all'invidia e alla perdita di contentezza. Per la nostra tranquillità mentale, ha ragione. La nostra famiglia, i nostri amici e colleghi hanno tutti seguito percorsi diversi — educazioni, carriere e una buona dose di fortuna diverse. Nessun essere umano ha vissuto la stessa combinazione di opportunità e ostacoli.`,
+    p2:`Detto questo, è comunque utile capire se si viene pagati equamente dal proprio datore di lavoro. La parola «equo» è naturalmente soggettiva — implica imparzialità ed uguaglianza, e come molti di noi hanno sperimentato, il mondo del lavoro non è sempre giusto. Nonostante le ingiustizie apparenti che possiamo incontrare, possiamo utilizzare dati pubblici per ottenere un'indicazione significativa di dove si colloca il nostro reddito rispetto alla popolazione lavorativa svizzera.`,
+    p3:`Invece di preoccuparci di una retribuzione «equa» in astratto, lavoriamo con qualcosa di più concreto: come si confronta il vostro stipendio con la media della vostra regione in Svizzera?`,
+    h_national:`Il quadro nazionale`,
+    p4:`Gli stipendi variano significativamente per regione e cantone in Svizzera. A livello nazionale, ecco cosa mostrano i dati più recenti per i dipendenti a tempo pieno.`,
+    th_median:`Stipendio lordo mediano mensile<br>(impiego a tempo pieno)`,
+    th_mean:`Stipendio lordo medio mensile<br>(impiego a tempo pieno)`,
+    td_median_desc:`Il valore «mediano» — metà delle persone in Svizzera guadagna di più, l'altra metà di meno. Meno influenzato dagli stipendi molto alti.`,
+    td_mean_desc:`La somma di tutti gli stipendi in Svizzera divisa per il numero di dipendenti. Questo valore è tirato verso l'alto dai redditi molto elevati.`,
+    table_footnote:`¹ Fonte: Ufficio federale di statistica, Indagine sulla struttura dei salari (LSE) 2024.`,
+    h_factors:`Cosa determina il vostro stipendio?`,
+    p5:`Prima di trarre conclusioni dai dati sopra, vale la pena ricordare che i confronti salariali hanno limiti reali. Molti fattori determinano il guadagno individuale — e le medie nazionali non possono tener conto di tutti.`,
+    f1:`La vostra esperienza, formazione e competenze`,
+    f2:`La vostra posizione geografica e il costo della vita locale — le persone nelle città tendono a guadagnare di più`,
+    f3:`Il settore in cui lavorate — finanza e tecnologia tendono a pagare al di sopra della media`,
+    f4:`Il vostro livello di responsabilità e anzianità`,
+    f5:`Domanda e offerta nel vostro campo specifico`,
+    f6:`Le dimensioni e la salute finanziaria del vostro datore di lavoro`,
+    f7:`La vostra prestazione individuale e il valore che apportate al vostro ruolo`,
+    cta_title:`Confrontate il vostro stipendio con la media svizzera`,
+    cta_sub:`Il comparatore di stipendi svizzero gratuito di BergSight vi permette di vedere dove si colloca il vostro reddito nella distribuzione regionale — per regione, mensile o annuale.`,
+    cta_btn:`Prova lo strumento →`,
+    signoff:`Cordiali saluti,<br><strong style="font-style:normal;color:var(--ink-2)">Lukas</strong>`,
+    disc_title:`Dichiarazione di non responsabilità`,
+    disc_text:`Questo articolo è fornito esclusivamente a scopo educativo e informativo. I dati salariali si basano sull'indagine LSE UST 2024 e rappresentano stipendi lordi equivalenti a tempo pieno. Le circostanze individuali variano significativamente. Questo articolo non costituisce consulenza finanziaria, legale o in materia di lavoro.`
+  }
+};
+
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('bs_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('btn-' + lang).classList.add('active');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+});
+
+setLang(currentLang);
+</script>
+
+</body>
+</html>
