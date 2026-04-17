@@ -1,1 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How long will it take to become a millionaire in Switzerland? Free calculator — inflation-adjusted CHF 1M target with personalised tips to get there faster.">
+  <meta property="og:title" content="Swiss Millionaire Calculator — How Long Until CHF 1M? | BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/millionaire">
+  <title>Swiss Millionaire Calculator — How Long Until CHF 1M? | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KPHRGJL1WW');</script>
+  <style>
+    :root {
+      --stone:#f5f2ed; --stone-2:#ece8e1; --stone-3:#d8d2c8;
+      --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c;
+      --alpine:#2d5a3d; --alpine-2:#3d7a52; --alpine-3:#e8f0eb;
+      --gold:#8a6d3b; --gold-2:#f5ead8;
+      --white:#ffffff;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--ink);overflow-x:hidden;min-height:100vh;}
 
+    /* Lang bar */
+    .lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--ink);display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:44px;border-bottom:1px solid #2a2825;}
+    .lang-label{font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#8a857e;font-weight:400;}
+    .lang-btn{background:none;border:none;color:#8a857e;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:0 1.1rem;height:44px;border-right:1px solid #2a2825;transition:color 0.15s,background 0.15s;}
+    .lang-btn:first-of-type{border-left:1px solid #2a2825;}
+    .lang-btn:hover{color:var(--white);background:#252320;}
+    .lang-btn.active{color:var(--alpine-2);background:rgba(61,122,82,0.1);font-weight:600;}
+
+    /* Nav */
+    nav{position:fixed;top:44px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(245,242,237,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone-3);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--ink);text-decoration:none;}
+    .nav-logo span{color:var(--alpine);}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;font-weight:400;color:var(--ink-2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--alpine);}
+
+    /* Hero */
+    .tool-hero{padding:9.5rem 4rem 3rem;background:var(--ink);position:relative;overflow:hidden;}
+    .hero-peaks{position:absolute;bottom:0;left:0;right:0;height:50%;opacity:0.12;}
+    .hero-inner{position:relative;max-width:720px;}
+    .breadcrumb{font-size:0.72rem;color:#4a4742;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+    .breadcrumb a{color:#6a6560;text-decoration:none;}
+    .breadcrumb span{color:#3a3835;}
+    .tool-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:500;color:var(--stone);line-height:1.15;margin-bottom:0.7rem;}
+    .tool-hero h1 em{font-style:italic;color:#d4af6a;}
+    .tool-hero p{font-size:0.92rem;color:#9a958e;font-weight:300;max-width:540px;line-height:1.7;}
+    .tool-meta{display:flex;align-items:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap;}
+    .meta-badge{font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:1px;}
+    .badge-live{background:rgba(61,122,82,0.3);color:var(--alpine-2);}
+    .badge-free{background:rgba(255,255,255,0.06);color:#9a958e;}
+
+    /* Tool body */
+    .tool-body{max-width:1060px;margin:0 auto;padding:3rem 4rem 5rem;display:grid;grid-template-columns:300px 1fr;gap:2rem;align-items:start;}
+
+    /* Input panel */
+    .inputs-panel{background:var(--white);border:1px solid var(--stone-3);padding:1.6rem;position:sticky;top:120px;}
+    .panel-title{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--alpine);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.5rem;}
+    .panel-title::before{content:'';display:block;width:14px;height:1px;background:var(--alpine);}
+    .input-group{margin-bottom:1.1rem;}
+    .input-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-3);margin-bottom:0.32rem;display:block;}
+    .input-row{display:flex;align-items:stretch;border:1px solid var(--stone-3);}
+    .input-prefix{background:var(--ink);color:var(--stone-2);font-family:'DM Mono',monospace;font-size:0.78rem;padding:0 0.8rem;display:flex;align-items:center;flex-shrink:0;}
+    .input-suffix{background:var(--stone-2);color:var(--ink-3);font-size:0.78rem;padding:0 0.8rem;display:flex;align-items:center;flex-shrink:0;border-left:1px solid var(--stone-3);}
+    .input-row input[type="number"]{border:none;outline:none;background:var(--stone);font-family:'DM Mono',monospace;font-size:0.95rem;font-weight:500;color:var(--alpine);padding:0.55rem 0.7rem;width:100%;flex:1;}
+    .input-row input[type="number"]:focus{background:var(--white);}
+    .slider-wrap{margin-top:0.4rem;}
+    input[type="range"]{width:100%;accent-color:var(--alpine);height:4px;cursor:pointer;}
+    .slider-labels{display:flex;justify-content:space-between;font-size:0.66rem;color:var(--ink-3);margin-top:0.22rem;font-family:'DM Mono',monospace;}
+    .calc-btn{width:100%;background:var(--alpine);color:var(--white);border:none;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:0.9rem;cursor:pointer;margin-top:0.8rem;transition:background 0.2s;}
+    .calc-btn:hover{background:var(--alpine-2);}
+    .source-note{font-size:0.67rem;color:var(--ink-3);font-family:'DM Mono',monospace;margin-top:1rem;border-top:1px solid var(--stone-3);padding-top:0.6rem;line-height:1.5;}
+
+    /* Results */
+    .results-area{display:flex;flex-direction:column;gap:1.2rem;}
+    .prompt-box{background:var(--white);border:1px solid var(--stone-3);padding:3.5rem 2rem;text-align:center;color:var(--ink-3);font-size:0.9rem;font-weight:300;line-height:1.7;}
+    .prompt-icon{font-size:2.2rem;margin-bottom:0.8rem;}
+
+    /* Verdict */
+    .verdict{background:var(--ink);padding:2rem 2.2rem;border-left:4px solid #d4af6a;display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;}
+    .verdict-left{}
+    .verdict-eyebrow{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#6a6560;margin-bottom:0.5rem;}
+    .verdict-years{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:500;color:#d4af6a;line-height:1;}
+    .verdict-years-label{font-size:0.8rem;color:#9a958e;margin-top:0.3rem;}
+    .verdict-date{font-family:'DM Mono',monospace;font-size:0.9rem;color:#6a6560;margin-top:0.4rem;}
+    .verdict-right{text-align:right;}
+    .verdict-target-label{font-size:0.66rem;text-transform:uppercase;letter-spacing:0.1em;color:#6a6560;margin-bottom:0.3rem;}
+    .verdict-target{font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:500;color:var(--stone);}
+    .verdict-real{font-size:0.75rem;color:#6a6560;margin-top:0.2rem;}
+
+    /* Stats row */
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stone-3);border:1px solid var(--stone-3);}
+    .stat-card{background:var(--white);padding:1rem 1.2rem;}
+    .stat-label{font-size:0.64rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);margin-bottom:0.2rem;}
+    .stat-value{font-family:'DM Mono',monospace;font-size:1.05rem;font-weight:500;color:var(--ink);}
+    .stat-value.green{color:var(--alpine);}
+    .stat-sub{font-size:0.66rem;color:var(--ink-3);margin-top:0.1rem;}
+
+    /* Chart */
+    .chart-panel{background:var(--white);border:1px solid var(--stone-3);padding:1.4rem;}
+    .chart-panel-title{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--alpine);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+    .chart-panel-title::before{content:'';display:block;width:14px;height:1px;background:var(--alpine);}
+    .chart-container{position:relative;height:260px;}
+
+    /* Tips */
+    .tips-section{}
+    .tips-header{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--alpine);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+    .tips-header::before{content:'';display:block;width:14px;height:1px;background:var(--alpine);}
+    .tip-card{background:var(--white);border:1px solid var(--stone-3);border-left:3px solid;padding:1.2rem 1.4rem;margin-bottom:1px;}
+    .tip-card.t1{border-left-color:var(--alpine);}
+    .tip-card.t2{border-left-color:#2d4a6a;}
+    .tip-card.t3{border-left-color:var(--gold);}
+    .tip-card.t4{border-left-color:#6a3d6a;}
+    .tip-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.4rem;}
+    .tip-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);}
+    .tip-saving{font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:500;color:var(--alpine);white-space:nowrap;}
+    .tip-body{font-size:0.83rem;color:var(--ink-3);line-height:1.65;font-weight:300;}
+
+    /* Disclaimer */
+    .disclaimer{background:var(--stone-2);border-left:2px solid var(--stone-3);padding:0.8rem 1rem;font-size:0.74rem;color:var(--ink-3);line-height:1.55;}
+    .disclaimer strong{color:var(--ink-2);font-weight:500;}
+
+    /* Share */
+    .share-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .share-label{font-size:0.75rem;color:var(--ink-3);font-weight:300;}
+    .share-btn{background:var(--alpine-3);border:1px solid var(--stone-3);color:var(--alpine);font-size:0.78rem;font-weight:500;padding:0.5rem 1rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;}
+    .share-btn:hover{background:var(--alpine);color:var(--white);}
+
+    /* Footer */
+    footer{background:var(--ink);color:#9a958e;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid #2a2825;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--stone);text-decoration:none;}
+    .footer-logo span{color:var(--alpine-2);}
+    .footer-links-row{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+    .footer-links-row a{font-size:0.78rem;color:#6a6560;text-decoration:none;transition:color 0.2s;}
+    .footer-links-row a:hover{color:var(--alpine-2);}
+    .footer-copy{font-size:0.72rem;color:#4a4742;font-family:'DM Mono',monospace;}
+
+    @media(max-width:960px){
+      .lang-bar{padding:0 1.5rem;} .lang-label{display:none;}
+      nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+      .tool-hero{padding:7.5rem 1.5rem 2.5rem;}
+      .tool-body{grid-template-columns:1fr;padding:2rem 1.5rem 4rem;}
+      .inputs-panel{position:static;}
+      .stats-row{grid-template-columns:1fr 1fr;}
+      .verdict{flex-direction:column;} .verdict-right{text-align:left;}
+      footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang-bar">
+    <div style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="color:#4a4742;font-size:0.9rem;">🌐</span>
+      <span class="lang-label" data-i18n="select_lang">Select language</span>
+    </div>
+    <div style="display:flex;height:100%;">
+      <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+      <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+      <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    </div>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools"   data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights" data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"    data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="tool-hero">
+    <svg class="hero-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
+      <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="/" data-i18n="bc_home">Home</a><span>→</span>
+        <a href="/#tools" data-i18n="bc_tools">Tools</a><span>→</span>
+        <span data-i18n="bc_this">Millionaire Calculator</span>
+      </div>
+      <h1 data-i18n="h1">How long until you reach <em>CHF 1 million?</em></h1>
+      <p data-i18n="desc">Enter your salary, savings, and investment return. See your timeline to CHF 1M — inflation-adjusted for Switzerland — and discover what changes would get you there faster.</p>
+      <div class="tool-meta">
+        <span class="meta-badge badge-live" data-i18n="badge_live">Live now</span>
+        <span class="meta-badge badge-free" data-i18n="badge_free">Free · No account required</span>
+        <span class="meta-badge badge-free" data-i18n="badge_inflation">Inflation-adjusted · 1.5% CHF</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-body">
+    <!-- Inputs -->
+    <div class="inputs-panel">
+      <div class="panel-title" data-i18n="your_details">Your details</div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_salary">Monthly gross salary (CHF)</label>
+        <div class="input-row">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="inp-salary" value="7000" min="1000" max="99999" step="100">
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-salary" min="2000" max="30000" step="100" value="7000">
+          <div class="slider-labels"><span>2k</span><span>10k</span><span>20k</span><span>30k</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_savings_current">Current savings &amp; investments (CHF)</label>
+        <div class="input-row">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="inp-current" value="20000" min="0" max="999999" step="1000">
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-current" min="0" max="500000" step="1000" value="20000">
+          <div class="slider-labels"><span>0</span><span>100k</span><span>300k</span><span>500k</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_monthly_save">Monthly amount saved &amp; invested (CHF)</label>
+        <div class="input-row">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="inp-monthly" value="1500" min="0" max="20000" step="50">
+          <span class="input-suffix" id="save-pct">—</span>
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-monthly" min="0" max="10000" step="50" value="1500">
+          <div class="slider-labels"><span>0</span><span>2k</span><span>5k</span><span>10k</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_return">Expected annual investment return</label>
+        <div class="input-row">
+          <input type="number" id="inp-return" value="5" min="0" max="15" step="0.5" style="border:none;outline:none;background:var(--stone);font-family:'DM Mono',monospace;font-size:0.95rem;font-weight:500;color:var(--alpine);padding:0.55rem 0.7rem;width:100%;">
+          <span class="input-suffix">%</span>
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-return" min="0" max="12" step="0.5" value="5">
+          <div class="slider-labels"><span>0%</span><span>4%</span><span>8%</span><span>12%</span></div>
+        </div>
+      </div>
+
+      <button class="calc-btn" onclick="calculate()" data-i18n="calc_btn">Calculate</button>
+
+      <div class="source-note" data-i18n="source_note">Swiss inflation: 1.5%/yr · Target in today's CHF terms · Investment returns shown net of inflation</div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-area" id="results">
+      <div class="prompt-box">
+        <div class="prompt-icon">💰</div>
+        <div data-i18n="prompt">Enter your details and click Calculate to see your path to CHF 1 million.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"     data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights"   data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"      data-i18n="nav_about">About</a></li>
+      <li><a href="/contact"    data-i18n="nav_contact">Contact</a></li>
+      <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+// ── i18n ──────────────────────────────────────────────────────────────────────
+const i18n = {
+  en: {
+    select_lang:`Select language`, nav_tools:`Tools`, nav_blog:`Insights`, nav_about:`About`, nav_contact:`Contact`, nav_disclaimer:`Disclaimer`,
+    bc_home:`Home`, bc_tools:`Tools`, bc_this:`Millionaire Calculator`,
+    h1:`How long until you reach <em>CHF 1 million?</em>`,
+    desc:`Enter your salary, savings, and investment return. See your timeline to CHF 1M — inflation-adjusted for Switzerland — and discover what changes would get you there faster.`,
+    badge_live:`Live now`, badge_free:`Free · No account required`, badge_inflation:`Inflation-adjusted · 1.5% CHF`,
+    your_details:`Your details`,
+    lbl_salary:`Monthly gross salary (CHF)`,
+    lbl_savings_current:`Current savings & investments (CHF)`,
+    lbl_monthly_save:`Monthly amount saved & invested (CHF)`,
+    lbl_return:`Expected annual investment return`,
+    calc_btn:`Calculate`,
+    source_note:`Swiss inflation: 1.5%/yr · Target in today's CHF terms · Returns shown real (net of inflation)`,
+    prompt:`Enter your details and click Calculate to see your path to CHF 1 million.`,
+    verdict_eyebrow:`Your millionaire timeline`,
+    years_label: y => y === 1 ? `year` : `years`,
+    arrive_label:`You reach CHF 1M in`,
+    never_label:`At current savings rate, CHF 1M is not reached within 60 years`,
+    real_label:`In today's purchasing power`,
+    target_label:`Inflation-adjusted target`,
+    target_note: y => `CHF 1M today = CHF ${fmt(1000000 * Math.pow(1.015, y))} in ${y} years nominal`,
+    stat1_label:`Total invested`, stat1_sub:`Over the full period`,
+    stat2_label:`Investment growth`, stat2_sub:`Compound returns`,
+    stat3_label:`Savings rate`, stat3_sub:`Of gross salary`,
+    chart_title:`Wealth growth to CHF 1M`,
+    chart_savings:`Contributions`, chart_growth:`Investment growth`,
+    chart_milestone:`CHF 1M target`,
+    tips_header:`How to get there faster`,
+    tip1_title:`Increase your monthly investment`,
+    tip1_body: (n, y) => `Adding CHF ${fmt(n)} more per month reduces your timeline by approximately ${y} year${y===1?'':'s'}. Even small increases compound significantly over time.`,
+    tip1_saving: y => `Save ~${y} yr${y===1?'':'s'}`,
+    tip2_title:`Maximise your Pillar 3a`,
+    tip2_body: `Contributing the full CHF 7,258 annual maximum to Pillar 3a (CHF 605/month) reduces your tax bill by CHF 1,200–2,400 per year — money that can be reinvested directly. It also grows tax-free until withdrawal.`,
+    tip2_saving:`Tax saving: CHF 1,200–2,400/yr`,
+    tip3_title:`Optimise your investment return`,
+    tip3_body: (curr, hi, diff) => `Shifting from ${curr}% to ${hi}% annual return — for example by moving from a savings account to a low-cost global index fund — could reduce your timeline by approximately ${diff} year${diff===1?'':'s'}. Swiss providers like VIAC and Finpension offer equity-heavy 3a funds.`,
+    tip3_saving: y => `Save ~${y} yr${y===1?'':'s'}`,
+    tip4_title:`Start earlier, not harder`,
+    tip4_body:`Compound growth is non-linear. Starting 5 years earlier with the same contributions is more powerful than contributing significantly more for a shorter period. The first years of compounding matter most.`,
+    tip4_saving:`Time is the biggest variable`,
+    share_label:`Share your result:`,
+    share_btn:`Copy result`,
+    share_copied:`Copied!`,
+    disclaimer_text:`This calculator provides illustrative estimates only. It assumes a constant investment return and constant savings rate. Actual results will vary. It does not constitute financial advice. Consult a qualified adviser for personalised planning.`,
+    save_pct_label: p => `${p}% of salary`
+  },
+  de: {
+    select_lang:`Sprache wählen`, nav_tools:`Tools`, nav_blog:`Einblicke`, nav_about:`Über uns`, nav_contact:`Kontakt`, nav_disclaimer:`Haftungsausschluss`,
+    bc_home:`Startseite`, bc_tools:`Tools`, bc_this:`Millionärs-Rechner`,
+    h1:`Wann erreichen Sie <em>CHF 1 Million?</em>`,
+    desc:`Geben Sie Gehalt, Ersparnisse und Rendite ein. Sehen Sie Ihren Weg zu CHF 1 Mio. — inflationsbereinigt für die Schweiz — und was Sie schneller dorthin bringt.`,
+    badge_live:`Jetzt live`, badge_free:`Kostenlos · Kein Konto`, badge_inflation:`Inflationsbereinigt · 1,5% CHF`,
+    your_details:`Ihre Angaben`,
+    lbl_salary:`Monatliches Bruttogehalt (CHF)`,
+    lbl_savings_current:`Aktuelle Ersparnisse & Anlagen (CHF)`,
+    lbl_monthly_save:`Monatlich gesparter & investierter Betrag (CHF)`,
+    lbl_return:`Erwartete jährliche Anlagerendite`,
+    calc_btn:`Berechnen`,
+    source_note:`Schweizer Inflation: 1,5%/Jahr · Ziel in heutigem CHF · Renditen real (nach Inflation)`,
+    prompt:`Geben Sie Ihre Daten ein und klicken Sie auf Berechnen.`,
+    verdict_eyebrow:`Ihr Millionärs-Zeitplan`,
+    years_label: y => y === 1 ? `Jahr` : `Jahre`,
+    arrive_label:`Sie erreichen CHF 1 Mio. in`,
+    never_label:`Zum aktuellen Sparplan wird CHF 1 Mio. in 60 Jahren nicht erreicht`,
+    real_label:`In heutiger Kaufkraft`,
+    target_label:`Inflationsbereinigtes Ziel`,
+    target_note: y => `CHF 1 Mio. heute = CHF ${fmt(1000000 * Math.pow(1.015, y))} in ${y} Jahren nominal`,
+    stat1_label:`Gesamteinzahlungen`, stat1_sub:`Über den gesamten Zeitraum`,
+    stat2_label:`Anlagewachstum`, stat2_sub:`Zinseszins-Renditen`,
+    stat3_label:`Sparquote`, stat3_sub:`Vom Bruttogehalt`,
+    chart_title:`Vermögenswachstum bis CHF 1 Mio.`,
+    chart_savings:`Einzahlungen`, chart_growth:`Anlagewachstum`,
+    chart_milestone:`CHF 1 Mio. Ziel`,
+    tips_header:`So erreichen Sie es schneller`,
+    tip1_title:`Monatliche Investition erhöhen`,
+    tip1_body: (n, y) => `CHF ${fmt(n)} mehr pro Monat verkürzt Ihren Zeitplan um ca. ${y} Jahr${y===1?'':'e'}. Selbst kleine Erhöhungen werden durch Zinseszinsen erheblich.`,
+    tip1_saving: y => `~${y} Jahr${y===1?'':'e'} sparen`,
+    tip2_title:`Säule 3a maximieren`,
+    tip2_body:`Den vollen Jahresbeitrag von CHF 7.258 in die Säule 3a einzuzahlen (CHF 605/Monat) reduziert Ihre Steuerlast um CHF 1.200–2.400 pro Jahr — Geld, das direkt reinvestiert werden kann.`,
+    tip2_saving:`Steuerersparnis: CHF 1.200–2.400/Jahr`,
+    tip3_title:`Anlagerendite optimieren`,
+    tip3_body: (curr, hi, diff) => `Ein Wechsel von ${curr}% auf ${hi}% Jahresrendite — z.B. von einem Sparkonto zu einem kostengünstigen globalen Indexfonds — könnte Ihren Zeitplan um ca. ${diff} Jahr${diff===1?'':'e'} verkürzen.`,
+    tip3_saving: y => `~${y} Jahr${y===1?'':'e'} sparen`,
+    tip4_title:`Früher anfangen, nicht mehr sparen`,
+    tip4_body:`Zinseszins ist nichtlinear. 5 Jahre früher zu beginnen ist wirkungsvoller als deutlich mehr für einen kürzeren Zeitraum einzuzahlen.`,
+    tip4_saving:`Zeit ist die wichtigste Variable`,
+    share_label:`Ergebnis teilen:`, share_btn:`Ergebnis kopieren`, share_copied:`Kopiert!`,
+    disclaimer_text:`Dieser Rechner liefert nur illustrative Schätzungen. Er setzt konstante Rendite und Sparrate voraus. Tatsächliche Ergebnisse werden abweichen. Dies stellt keine Finanzberatung dar.`,
+    save_pct_label: p => `${p}% des Gehalts`
+  },
+  fr: {
+    select_lang:`Choisir la langue`, nav_tools:`Outils`, nav_blog:`Analyses`, nav_about:`À propos`, nav_contact:`Contact`, nav_disclaimer:`Avertissement`,
+    bc_home:`Accueil`, bc_tools:`Outils`, bc_this:`Calculateur millionnaire`,
+    h1:`Dans combien de temps atteindrez-vous <em>CHF 1 million ?</em>`,
+    desc:`Saisissez votre salaire, vos économies et votre rendement. Voyez votre calendrier vers CHF 1M — ajusté à l'inflation suisse — et ce qui vous y amènerait plus vite.`,
+    badge_live:`En ligne`, badge_free:`Gratuit · Sans compte`, badge_inflation:`Ajusté inflation · 1,5% CHF`,
+    your_details:`Vos informations`,
+    lbl_salary:`Salaire brut mensuel (CHF)`,
+    lbl_savings_current:`Épargne & investissements actuels (CHF)`,
+    lbl_monthly_save:`Montant mensuel épargné & investi (CHF)`,
+    lbl_return:`Rendement annuel attendu`,
+    calc_btn:`Calculer`,
+    source_note:`Inflation suisse : 1,5%/an · Objectif en CHF actuels · Rendements réels (nets d'inflation)`,
+    prompt:`Saisissez vos informations et cliquez sur Calculer.`,
+    verdict_eyebrow:`Votre calendrier millionnaire`,
+    years_label: y => y <= 1 ? `an` : `ans`,
+    arrive_label:`Vous atteignez CHF 1M en`,
+    never_label:`Au rythme actuel, CHF 1M n'est pas atteint en 60 ans`,
+    real_label:`En pouvoir d'achat d'aujourd'hui`,
+    target_label:`Objectif ajusté à l'inflation`,
+    target_note: y => `CHF 1M aujourd'hui = CHF ${fmt(1000000 * Math.pow(1.015, y))} dans ${y} ans en nominal`,
+    stat1_label:`Total investi`, stat1_sub:`Sur toute la période`,
+    stat2_label:`Croissance des placements`, stat2_sub:`Rendements composés`,
+    stat3_label:`Taux d'épargne`, stat3_sub:`Du salaire brut`,
+    chart_title:`Croissance du patrimoine vers CHF 1M`,
+    chart_savings:`Versements`, chart_growth:`Croissance des placements`,
+    chart_milestone:`Objectif CHF 1M`,
+    tips_header:`Comment y arriver plus vite`,
+    tip1_title:`Augmenter votre investissement mensuel`,
+    tip1_body: (n, y) => `Ajouter CHF ${fmt(n)} de plus par mois réduit votre délai d'environ ${y} an${y<=1?'':'s'}. Même de petites augmentations se cumulent significativement.`,
+    tip1_saving: y => `Gagner ~${y} an${y<=1?'':'s'}`,
+    tip2_title:`Maximiser votre pilier 3a`,
+    tip2_body:`Verser le maximum annuel de CHF 7'258 au pilier 3a (CHF 605/mois) réduit votre facture fiscale de CHF 1'200–2'400 par an — de l'argent qui peut être réinvesti directement.`,
+    tip2_saving:`Économie fiscale : CHF 1'200–2'400/an`,
+    tip3_title:`Optimiser votre rendement`,
+    tip3_body: (curr, hi, diff) => `Passer de ${curr}% à ${hi}% de rendement annuel pourrait réduire votre délai d'environ ${diff} an${diff<=1?'':'s'}.`,
+    tip3_saving: y => `Gagner ~${y} an${y<=1?'':'s'}`,
+    tip4_title:`Commencer plus tôt, pas plus dur`,
+    tip4_body:`Les intérêts composés sont non linéaires. Commencer 5 ans plus tôt est plus puissant que d'investir beaucoup plus pendant moins longtemps.`,
+    tip4_saving:`Le temps est la variable clé`,
+    share_label:`Partager votre résultat :`, share_btn:`Copier le résultat`, share_copied:`Copié !`,
+    disclaimer_text:`Ce calculateur fournit des estimations illustratives uniquement. Il suppose un rendement et un taux d'épargne constants. Les résultats réels varieront. Ceci ne constitue pas un conseil financier.`,
+    save_pct_label: p => `${p}% du salaire`
+  },
+  it: {
+    select_lang:`Seleziona lingua`, nav_tools:`Strumenti`, nav_blog:`Approfondimenti`, nav_about:`Chi siamo`, nav_contact:`Contatto`, nav_disclaimer:`Dichiarazione`,
+    bc_home:`Home`, bc_tools:`Strumenti`, bc_this:`Calcolatore milionario`,
+    h1:`Quanto tempo ci vuole per raggiungere <em>CHF 1 milione?</em>`,
+    desc:`Inserite salario, risparmi e rendimento. Vedete il vostro percorso verso CHF 1M — adeguato all'inflazione svizzera — e cosa vi porterebbe lì più velocemente.`,
+    badge_live:`Disponibile`, badge_free:`Gratuito · Senza account`, badge_inflation:`Adeguato inflazione · 1,5% CHF`,
+    your_details:`I vostri dati`,
+    lbl_salary:`Stipendio lordo mensile (CHF)`,
+    lbl_savings_current:`Risparmi & investimenti attuali (CHF)`,
+    lbl_monthly_save:`Importo mensile risparmiato & investito (CHF)`,
+    lbl_return:`Rendimento annuale atteso`,
+    calc_btn:`Calcola`,
+    source_note:`Inflazione svizzera: 1,5%/anno · Obiettivo in CHF attuali · Rendimenti reali (al netto dell'inflazione)`,
+    prompt:`Inserite i vostri dati e fate clic su Calcola.`,
+    verdict_eyebrow:`Il vostro calendario da milionario`,
+    years_label: y => y === 1 ? `anno` : `anni`,
+    arrive_label:`Raggiungete CHF 1M in`,
+    never_label:`Al ritmo attuale, CHF 1M non viene raggiunto in 60 anni`,
+    real_label:`In potere d'acquisto odierno`,
+    target_label:`Obiettivo adeguato all'inflazione`,
+    target_note: y => `CHF 1M oggi = CHF ${fmt(1000000 * Math.pow(1.015, y))} tra ${y} anni in termini nominali`,
+    stat1_label:`Totale investito`, stat1_sub:`Sull'intero periodo`,
+    stat2_label:`Crescita degli investimenti`, stat2_sub:`Rendimenti composti`,
+    stat3_label:`Tasso di risparmio`, stat3_sub:`Del salario lordo`,
+    chart_title:`Crescita del patrimonio verso CHF 1M`,
+    chart_savings:`Versamenti`, chart_growth:`Crescita investimenti`,
+    chart_milestone:`Obiettivo CHF 1M`,
+    tips_header:`Come arrivarci più velocemente`,
+    tip1_title:`Aumentare l'investimento mensile`,
+    tip1_body: (n, y) => `Aggiungere CHF ${fmt(n)} in più al mese riduce il vostro orizzonte di circa ${y} ${y===1?'anno':'anni'}. Anche piccoli aumenti si accumulano significativamente.`,
+    tip1_saving: y => `Risparmiare ~${y} ${y===1?'anno':'anni'}`,
+    tip2_title:`Massimizzare il pilastro 3a`,
+    tip2_body:`Versare il massimo annuale di CHF 7'258 nel pilastro 3a (CHF 605/mese) riduce il carico fiscale di CHF 1'200–2'400 all'anno — denaro che può essere reinvestito direttamente.`,
+    tip2_saving:`Risparmio fiscale: CHF 1'200–2'400/anno`,
+    tip3_title:`Ottimizzare il rendimento`,
+    tip3_body: (curr, hi, diff) => `Passare da ${curr}% a ${hi}% di rendimento annuale potrebbe ridurre il vostro orizzonte di circa ${diff} ${diff===1?'anno':'anni'}.`,
+    tip3_saving: y => `Risparmiare ~${y} ${y===1?'anno':'anni'}`,
+    tip4_title:`Iniziare prima, non di più`,
+    tip4_body:`Gli interessi composti sono non lineari. Iniziare 5 anni prima è più potente che investire molto di più per un periodo più breve.`,
+    tip4_saving:`Il tempo è la variabile più importante`,
+    share_label:`Condividi il risultato:`, share_btn:`Copia risultato`, share_copied:`Copiato!`,
+    disclaimer_text:`Questo calcolatore fornisce stime illustrative unicamente. Presuppone un rendimento e un tasso di risparmio costanti. I risultati reali varieranno. Non costituisce consulenza finanziaria.`,
+    save_pct_label: p => `${p}% dello stipendio`
+  }
+};
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+const fmt = n => new Intl.NumberFormat('de-CH').format(Math.round(n));
+const INFLATION = 0.015;
+const TARGET_REAL = 1_000_000; // CHF 1M in today's money
+
+// ── Slider sync ───────────────────────────────────────────────────────────────
+['salary','current','monthly','return'].forEach(id => {
+  const sl = document.getElementById('sl-'+id);
+  const inp = document.getElementById('inp-'+id);
+  sl.addEventListener('input', () => { inp.value = sl.value; updatePct(); });
+  inp.addEventListener('input', () => { sl.value = inp.value; updatePct(); });
+});
+
+function updatePct() {
+  const salary  = +document.getElementById('inp-salary').value;
+  const monthly = +document.getElementById('inp-monthly').value;
+  const pct = salary > 0 ? Math.round(monthly / salary * 100) : 0;
+  document.getElementById('save-pct').textContent = i18n[currentLang].save_pct_label(pct);
+}
+
+// ── Core maths ────────────────────────────────────────────────────────────────
+function yearsToMillion(current, monthly, returnRate) {
+  // Real return = (1 + nominal) / (1 + inflation) - 1
+  const realReturn = (1 + returnRate) - (1 + INFLATION) - 1 + 1;
+  // Simplified: use real return directly
+  const r = realReturn / 12; // monthly real rate
+  if (r <= 0 && monthly <= 0) return { years: Infinity, data: [] };
+
+  let balance = current;
+  const data = [balance];
+  for (let m = 1; m <= 60 * 12; m++) {
+    balance = balance * (1 + r) + monthly;
+    if (m % 12 === 0) data.push(balance);
+    if (balance >= TARGET_REAL) return { years: m / 12, data };
+  }
+  return { years: Infinity, data };
+}
+
+// ── Calculate ─────────────────────────────────────────────────────────────────
+let chartInstance = null;
+
+function calculate() {
+  const t       = i18n[currentLang];
+  const salary  = +document.getElementById('inp-salary').value;
+  const current = +document.getElementById('inp-current').value;
+  const monthly = +document.getElementById('inp-monthly').value;
+  const ret     = +document.getElementById('inp-return').value / 100;
+  const savePct = salary > 0 ? Math.round(monthly / salary * 100) : 0;
+
+  const { years, data } = yearsToMillion(current, monthly, ret);
+  const yrs = Math.ceil(years);
+  const reached = yrs <= 60;
+
+  // Stats
+  const totalContribs = current + monthly * 12 * (reached ? yrs : 60);
+  const totalGrowth   = reached ? TARGET_REAL - totalContribs : null;
+
+  // Tips calculations
+  // Tip 1: add CHF 500/month
+  const boost500 = yearsToMillion(current, monthly + 500, ret);
+  const tip1Saving = reached ? Math.max(0, Math.ceil(years - boost500.years)) : null;
+
+  // Tip 3: boost return by 2%
+  const boostReturn = yearsToMillion(current, monthly, ret + 0.02);
+  const tip3Saving = reached ? Math.max(0, Math.ceil(years - boostReturn.years)) : null;
+
+  // Build chart data (yearly balances for both scenarios)
+  const contribLine = [];
+  let bal = current;
+  for (let y = 0; y <= Math.min(yrs, 60); y++) {
+    contribLine.push(current + monthly * 12 * y);
+  }
+  const years_axis = Array.from({ length: data.length }, (_, i) => i);
+
+  // Render
+  const el = document.getElementById('results');
+  el.innerHTML = `
+    <div class="verdict">
+      <div class="verdict-left">
+        <div class="verdict-eyebrow">${t.verdict_eyebrow}</div>
+        ${reached
+          ? `<div class="verdict-years">${yrs}</div>
+             <div class="verdict-years-label">${t.years_label(yrs)} · ${t.arrive_label} ${new Date().getFullYear() + yrs}</div>
+             <div class="verdict-date">${t.target_note(yrs)}</div>`
+          : `<div class="verdict-years" style="font-size:2rem;color:#9a958e;">60+</div>
+             <div class="verdict-years-label" style="color:#6a6560;">${t.never_label}</div>`
+        }
+      </div>
+      <div class="verdict-right">
+        <div class="verdict-target-label">${t.target_label}</div>
+        <div class="verdict-target">CHF 1,000,000</div>
+        <div class="verdict-real">${t.real_label}</div>
+      </div>
+    </div>
+
+    ${reached ? `
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">${t.stat1_label}</div>
+        <div class="stat-value">CHF ${fmt(totalContribs)}</div>
+        <div class="stat-sub">${t.stat1_sub}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">${t.stat2_label}</div>
+        <div class="stat-value green">CHF ${fmt(totalGrowth)}</div>
+        <div class="stat-sub">${t.stat2_sub}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">${t.stat3_label}</div>
+        <div class="stat-value">${savePct}%</div>
+        <div class="stat-sub">${t.stat3_sub}</div>
+      </div>
+    </div>` : ''}
+
+    <div class="chart-panel">
+      <div class="chart-panel-title">${t.chart_title}</div>
+      <div class="chart-container"><canvas id="millChart"></canvas></div>
+    </div>
+
+    <div class="tips-section">
+      <div class="tips-header">${t.tips_header}</div>
+
+      <div class="tip-card t1">
+        <div class="tip-top">
+          <div class="tip-title">${t.tip1_title}</div>
+          <div class="tip-saving">${tip1Saving !== null ? t.tip1_saving(tip1Saving) : '—'}</div>
+        </div>
+        <div class="tip-body">${t.tip1_body(500, tip1Saving || '?')}</div>
+      </div>
+
+      <div class="tip-card t2">
+        <div class="tip-top">
+          <div class="tip-title">${t.tip2_title}</div>
+          <div class="tip-saving">${t.tip2_saving}</div>
+        </div>
+        <div class="tip-body">${t.tip2_body}</div>
+      </div>
+
+      <div class="tip-card t3">
+        <div class="tip-top">
+          <div class="tip-title">${t.tip3_title}</div>
+          <div class="tip-saving">${tip3Saving !== null ? t.tip3_saving(tip3Saving) : '—'}</div>
+        </div>
+        <div class="tip-body">${t.tip3_body(Math.round(ret*100), Math.round(ret*100)+2, tip3Saving || '?')}</div>
+      </div>
+
+      <div class="tip-card t4">
+        <div class="tip-top">
+          <div class="tip-title">${t.tip4_title}</div>
+          <div class="tip-saving">${t.tip4_saving}</div>
+        </div>
+        <div class="tip-body">${t.tip4_body}</div>
+      </div>
+    </div>
+
+    <div class="share-row">
+      <span class="share-label">${t.share_label}</span>
+      <button class="share-btn" id="share-btn" onclick="copyResult(${yrs}, ${savePct})">${t.share_btn}</button>
+    </div>
+
+    <div class="disclaimer"><strong>Note:</strong> ${t.disclaimer_text}</div>
+  `;
+
+  drawChart(years_axis, data, contribLine, t, yrs, reached);
+}
+
+function drawChart(years, balanceData, contribData, t, targetYr, reached) {
+  if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+  const ctx = document.getElementById('millChart').getContext('2d');
+  const fmtK = v => v >= 1000000 ? 'CHF ' + (v/1000000).toFixed(2)+'M' : 'CHF ' + Math.round(v/1000)+'k';
+  const labels = years.map(y => `Yr ${y}`);
+
+  const datasets = [
+    {
+      label: t.chart_savings,
+      data: contribData.slice(0, balanceData.length),
+      borderColor: '#d8d2c8',
+      backgroundColor: 'rgba(216,210,200,0.3)',
+      fill: true, tension: 0.2, pointRadius: 0, borderWidth: 1.5
+    },
+    {
+      label: t.chart_growth,
+      data: balanceData,
+      borderColor: '#2d5a3d',
+      backgroundColor: 'rgba(45,90,61,0.12)',
+      fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2.5
+    }
+  ];
+
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: true, position: 'bottom', labels: { color: '#7a756c', font: { size: 11 }, boxWidth: 12 } },
+        tooltip: { callbacks: { label: c => ' ' + c.dataset.label + ': ' + fmtK(c.raw) } },
+        annotation: reached ? {
+          annotations: {
+            line1: {
+              type: 'line', yMin: 1000000, yMax: 1000000,
+              borderColor: '#d4af6a', borderWidth: 1.5, borderDash: [6, 4],
+              label: { display: true, content: t.chart_milestone, position: 'end', color: '#d4af6a', font: { size: 10 } }
+            }
+          }
+        } : {}
+      },
+      scales: {
+        x: { grid: { color: '#ece8e1' }, ticks: { color: '#7a756c', font: { size: 10 }, maxTicksLimit: 10 } },
+        y: { grid: { color: '#ece8e1' }, ticks: { color: '#7a756c', font: { size: 10 }, callback: fmtK }, beginAtZero: true }
+      }
+    }
+  });
+}
+
+function copyResult(yrs, savePct) {
+  const t = i18n[currentLang];
+  const text = `BergSight Swiss Millionaire Calculator: At ${savePct}% savings rate, I reach CHF 1M in ${yrs} years. Try it: bergsight.com/millionaire`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('share-btn');
+    btn.textContent = t.share_copied;
+    setTimeout(() => btn.textContent = t.share_btn, 2000);
+  });
+}
+
+// ── Language ───────────────────────────────────────────────────────────────────
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('bs_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined && typeof t[k] === 'string') el.innerHTML = t[k];
+  });
+  updatePct();
+}
+document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+setLang(currentLang);
+</script>
+</body>
+</html>
