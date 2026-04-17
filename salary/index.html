@@ -185,7 +185,7 @@
   </div>
 
   <div class="tool-frame-wrap">
-    <iframe id="tool-iframe" src="https://tools.bergsight.com/salary/" title="Swiss Salary Comparator"
+    <iframe id="tool-iframe" src="" title="Swiss Salary Comparator"
             style="border:none;display:block;width:100%;height:620px;min-height:500px;max-height:900px;"></iframe>
   </div>
   <footer>
@@ -209,8 +209,6 @@
     }
     var currentLang = localStorage.getItem('bs_lang') || 'en';
     document.getElementById('btn-' + currentLang).classList.add('active');
-    // Set initial iframe src with lang
-    document.getElementById('tool-iframe').src = 'https://tools.bergsight.com/salary/?lang=' + currentLang;
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => setLang(btn.dataset.lang));
     });
