@@ -1,1 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free Swiss rent vs buy calculator. See when buying becomes cheaper than renting and compare total costs over your time horizon. Built for Switzerland.">
+  <meta property="og:title" content="Rent vs Buy Calculator Switzerland — Free Tool | BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/rent-vs-buy">
+  <title>Rent vs Buy Calculator Switzerland — Free Tool | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KPHRGJL1WW');</script>
+  <style>
+    :root {
+      --stone:#f5f2ed; --stone-2:#ece8e1; --stone-3:#d8d2c8;
+      --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c;
+      --alpine:#2d5a3d; --alpine-2:#3d7a52; --alpine-3:#e8f0eb;
+      --gold:#8a6d3b; --gold-2:#f5ead8;
+      --buy:#2d4a6a; --buy-light:#e8eef5;
+      --rent:#8a6d3b; --rent-light:#f5ead8;
+      --white:#ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); overflow-x: hidden; min-height: 100vh; }
 
+    /* ── Lang bar ── */
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: space-between; align-items: center; padding: 0 4rem; height: 44px; border-bottom: 1px solid #2a2825; }
+    .lang-label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8a857e; font-weight: 400; }
+    .lang-btn { background: none; border: none; color: #8a857e; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; padding: 0 1.1rem; height: 44px; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
+    .lang-btn:hover { color: var(--white); background: #252320; }
+    .lang-btn.active { color: var(--alpine-2); background: rgba(61,122,82,0.1); font-weight: 600; }
+
+    /* ── Nav ── */
+    nav { position: fixed; top: 44px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--alpine); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--alpine); }
+
+    /* ── Hero ── */
+    .tool-hero { padding: 9.5rem 4rem 2.5rem; background: var(--ink); }
+    .breadcrumb { font-size: 0.72rem; color: #4a4742; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .breadcrumb a { color: #6a6560; text-decoration: none; }
+    .breadcrumb span { color: #3a3835; }
+    .tool-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 500; color: var(--stone); line-height: 1.15; margin-bottom: 0.6rem; }
+    .tool-hero h1 em { font-style: italic; color: var(--alpine-2); }
+    .tool-hero p { font-size: 0.92rem; color: #9a958e; font-weight: 300; max-width: 580px; line-height: 1.7; }
+    .tool-meta { display: flex; align-items: center; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
+    .meta-badge { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 1px; }
+    .badge-live { background: rgba(61,122,82,0.3); color: var(--alpine-2); }
+    .badge-free { background: rgba(255,255,255,0.06); color: #9a958e; }
+
+    /* ── Tool layout ── */
+    .tool-body { max-width: 1100px; margin: 0 auto; padding: 3rem 4rem 5rem; display: grid; grid-template-columns: 320px 1fr; gap: 2rem; align-items: start; }
+
+    /* ── Inputs panel ── */
+    .inputs-panel { background: var(--white); border: 1px solid var(--stone-3); padding: 1.6rem; position: sticky; top: 120px; }
+    .panel-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--alpine); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 0.5rem; }
+    .panel-title::before { content:''; display:block; width:14px; height:1px; background:var(--alpine); }
+    .input-group { margin-bottom: 1.2rem; }
+    .input-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); margin-bottom: 0.35rem; display: block; }
+    .input-row { display: flex; align-items: stretch; border: 1px solid var(--stone-3); }
+    .input-prefix { background: var(--ink); color: var(--stone-2); font-family: 'DM Mono', monospace; font-size: 0.78rem; padding: 0 0.8rem; display: flex; align-items: center; flex-shrink: 0; }
+    .input-suffix { background: var(--stone-2); color: var(--ink-3); font-size: 0.78rem; padding: 0 0.8rem; display: flex; align-items: center; flex-shrink: 0; border-left: 1px solid var(--stone-3); }
+    .input-row input[type="number"] { border: none; outline: none; background: var(--stone); font-family: 'DM Mono', monospace; font-size: 0.95rem; font-weight: 500; color: var(--alpine); padding: 0.55rem 0.7rem; width: 100%; flex: 1; }
+    .input-row input[type="number"]:focus { background: var(--white); }
+    .slider-wrap { margin-top: 0.4rem; }
+    input[type="range"] { width: 100%; accent-color: var(--alpine); height: 4px; cursor: pointer; }
+    .slider-labels { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--ink-3); margin-top: 0.25rem; font-family: 'DM Mono', monospace; }
+    .calc-btn { width: 100%; background: var(--alpine); color: var(--white); border: none; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.9rem; cursor: pointer; margin-top: 0.6rem; transition: background 0.2s; }
+    .calc-btn:hover { background: var(--alpine-2); }
+    .source-note { font-size: 0.68rem; color: var(--ink-3); font-family: 'DM Mono', monospace; margin-top: 1rem; border-top: 1px solid var(--stone-3); padding-top: 0.6rem; line-height: 1.5; }
+
+    /* ── Results ── */
+    .results-area { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    /* Verdict card */
+    .verdict-card { padding: 1.8rem 2rem; border: 2px solid; }
+    .verdict-card.rent-wins { border-color: var(--rent); background: var(--rent-light); }
+    .verdict-card.buy-wins  { border-color: var(--buy);  background: var(--buy-light); }
+    .verdict-card.neutral   { border-color: var(--stone-3); background: var(--white); }
+    .verdict-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .verdict-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .verdict-label.rent { color: var(--rent); }
+    .verdict-label.buy  { color: var(--buy); }
+    .verdict-label.neutral { color: var(--ink-3); }
+    .verdict-headline { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); line-height: 1.25; }
+    .verdict-breakeven { text-align: right; }
+    .breakeven-num { font-family: 'DM Mono', monospace; font-size: 2.2rem; font-weight: 500; line-height: 1; }
+    .breakeven-num.rent { color: var(--rent); }
+    .breakeven-num.buy  { color: var(--buy); }
+    .breakeven-lbl { font-size: 0.7rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+    .verdict-body { font-size: 0.88rem; color: var(--ink-2); line-height: 1.7; font-weight: 300; margin-top: 0.8rem; }
+
+    /* Cost comparison cards */
+    .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--stone-3); border: 1px solid var(--stone-3); }
+    .cost-card { background: var(--white); padding: 1.4rem 1.6rem; border-top: 3px solid; }
+    .cost-card.buy-card  { border-top-color: var(--buy); }
+    .cost-card.rent-card { border-top-color: var(--rent); }
+    .cost-card-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.8rem; }
+    .cost-line { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--stone-2); font-size: 0.85rem; }
+    .cost-line:last-child { border-bottom: none; font-weight: 500; color: var(--ink); padding-top: 0.6rem; }
+    .cost-line-label { color: var(--ink-3); font-weight: 300; }
+    .cost-line-value { font-family: 'DM Mono', monospace; font-size: 0.88rem; }
+
+    /* Chart */
+    .chart-panel { background: var(--white); border: 1px solid var(--stone-3); padding: 1.4rem; }
+    .chart-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--alpine); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .chart-title::before { content:''; display:block; width:14px; height:1px; background:var(--alpine); }
+    .chart-container { position: relative; height: 280px; }
+    canvas { width: 100% !important; height: 100% !important; }
+    .chart-legend { display: flex; gap: 1.5rem; margin-top: 0.8rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--ink-3); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Assumptions note */
+    .assumptions { background: var(--stone-2); border-left: 2px solid var(--stone-3); padding: 0.8rem 1rem; font-size: 0.75rem; color: var(--ink-3); line-height: 1.6; }
+    .assumptions strong { color: var(--ink-2); font-weight: 500; }
+
+    /* Prompt */
+    .prompt-box { background: var(--white); border: 1px solid var(--stone-3); padding: 3rem 2rem; text-align: center; color: var(--ink-3); font-size: 0.9rem; font-weight: 300; line-height: 1.7; }
+    .prompt-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+
+    /* Footer */
+    footer { background: var(--ink); color: #9a958e; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--stone); text-decoration: none; }
+    .footer-logo span { color: var(--alpine-2); }
+    .footer-links-row { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links-row a { font-size: 0.78rem; color: #6a6560; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--alpine-2); }
+    .footer-copy { font-size: 0.72rem; color: #4a4742; font-family: 'DM Mono', monospace; }
+
+    @media (max-width: 960px) {
+      .lang-bar { padding: 0 1.5rem; }
+      .lang-label { display: none; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .tool-hero { padding: 7.5rem 1.5rem 2rem; }
+      .tool-body { grid-template-columns: 1fr; padding: 2rem 1.5rem 4rem; }
+      .inputs-panel { position: static; }
+      .cost-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang-bar">
+    <div style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="color:#4a4742;font-size:0.9rem;">🌐</span>
+      <span class="lang-label" data-i18n="select_lang">Select language</span>
+    </div>
+    <div style="display:flex;height:100%;">
+      <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+      <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+      <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    </div>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools"   data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights" data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"    data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="tool-hero">
+    <div class="breadcrumb">
+      <a href="/" data-i18n="bc_home">Home</a><span>→</span>
+      <a href="/#tools" data-i18n="bc_tools">Tools</a><span>→</span>
+      <span data-i18n="bc_this">Rent vs Buy</span>
+    </div>
+    <h1 data-i18n="h1">Should you rent or buy <em>in Switzerland?</em></h1>
+    <p data-i18n="desc">Compare the true cost of renting versus buying over your time horizon — including the break-even point where buying becomes cheaper.</p>
+    <div class="tool-meta">
+      <span class="meta-badge badge-live" data-i18n="badge_live">Live now</span>
+      <span class="meta-badge badge-free" data-i18n="badge_free">Free · No account required</span>
+      <span class="meta-badge badge-free" data-i18n="badge_swiss">Swiss market assumptions</span>
+    </div>
+  </div>
+
+  <div class="tool-body">
+
+    <!-- Inputs -->
+    <div class="inputs-panel">
+      <div class="panel-title" data-i18n="your_details">Your details</div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_price">Property purchase price</label>
+        <div class="input-row">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="inp-price" value="800000" min="100000" max="5000000" step="10000">
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-price" min="200000" max="3000000" step="10000" value="800000">
+          <div class="slider-labels"><span>200k</span><span>1M</span><span>2M</span><span>3M</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_down">Down payment</label>
+        <div class="input-row">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="inp-down" value="200000" min="0" max="2000000" step="5000">
+          <span class="input-suffix" id="down-pct">25%</span>
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-down" min="0.1" max="0.5" step="0.01" value="0.25">
+          <div class="slider-labels"><span>10%</span><span>20%</span><span>35%</span><span>50%</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_rate">Mortgage interest rate</label>
+        <div class="input-row">
+          <input type="number" id="inp-rate" value="1.8" min="0.5" max="8" step="0.1" style="border:none;outline:none;background:var(--stone);font-family:'DM Mono',monospace;font-size:0.95rem;font-weight:500;color:var(--alpine);padding:0.55rem 0.7rem;width:100%;">
+          <span class="input-suffix">%</span>
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-rate" min="0.5" max="6" step="0.1" value="1.8">
+          <div class="slider-labels"><span>0.5%</span><span>2%</span><span>4%</span><span>6%</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_rent">Monthly rent (comparable property)</label>
+        <div class="input-row">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="inp-rent" value="2500" min="500" max="15000" step="50">
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-rent" min="500" max="8000" step="50" value="2500">
+          <div class="slider-labels"><span>500</span><span>2k</span><span>5k</span><span>8k</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" data-i18n="lbl_horizon">Time horizon</label>
+        <div class="input-row">
+          <input type="number" id="inp-horizon" value="15" min="1" max="40" step="1" style="border:none;outline:none;background:var(--stone);font-family:'DM Mono',monospace;font-size:0.95rem;font-weight:500;color:var(--alpine);padding:0.55rem 0.7rem;width:100%;">
+          <span class="input-suffix" data-i18n="years_suffix">years</span>
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="sl-horizon" min="1" max="40" step="1" value="15">
+          <div class="slider-labels"><span>1</span><span>10</span><span>25</span><span>40</span></div>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calc-btn" onclick="calculate()" data-i18n="calc_btn">Calculate</button>
+
+      <div class="source-note" data-i18n="source_note">Assumptions: 1% annual property appreciation · 1% annual rent increase · 1% annual maintenance cost · 0.5% transaction costs on purchase · 3% annual return on invested down payment alternative</div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-area" id="results">
+      <div class="prompt-box">
+        <div class="prompt-icon">🏠</div>
+        <div data-i18n="prompt">Enter your details and click Calculate to see the rent vs buy comparison.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools"     data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights"   data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about"      data-i18n="nav_about">About</a></li>
+      <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+      <li><a href="/privacy"    data-i18n="nav_privacy">Privacy</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+<script>
+// ── i18n ────────────────────────────────────────────────────────────────────
+const i18n = {
+  en: {
+    select_lang:`Select language`, nav_tools:`Tools`, nav_blog:`Insights`, nav_about:`About`,
+    nav_disclaimer:`Disclaimer`, nav_privacy:`Privacy`,
+    bc_home:`Home`, bc_tools:`Tools`, bc_this:`Rent vs Buy`,
+    h1:`Should you rent or buy <em>in Switzerland?</em>`,
+    desc:`Compare the true cost of renting versus buying over your time horizon — including the break-even point where buying becomes cheaper.`,
+    badge_live:`Live now`, badge_free:`Free · No account required`, badge_swiss:`Swiss market assumptions`,
+    your_details:`Your details`,
+    lbl_price:`Property purchase price`, lbl_down:`Down payment`,
+    lbl_rate:`Mortgage interest rate`, lbl_rent:`Monthly rent (comparable property)`,
+    lbl_horizon:`Time horizon`, years_suffix:`years`, calc_btn:`Calculate`,
+    source_note:`Assumptions: 1% annual property appreciation · 1% annual rent increase · 1% annual maintenance · 0.5% transaction costs · 3% annual return on invested down payment alternative`,
+    prompt:`Enter your details and click Calculate to see the rent vs buy comparison.`,
+    verdict_rent_label:`Verdict: Renting wins`,
+    verdict_buy_label:`Verdict: Buying wins`,
+    verdict_neutral_label:`Very close call`,
+    breakeven_label:`Break-even year`,
+    never_breaks_even:`Buying never cheaper in horizon`,
+    already_cheaper:`Buying cheaper from year 1`,
+    verdict_rent_body: (yr, horizon, diff) => `Over your ${horizon}-year horizon, renting is the cheaper option by CHF ${fmt(diff)}. Buying only becomes financially advantageous after year ${yr}${yr > horizon ? ' — beyond your time horizon' : ''}.`,
+    verdict_buy_body:  (yr, horizon, diff) => `Over your ${horizon}-year horizon, buying is the cheaper option by CHF ${fmt(diff)}. The break-even point — where buying overtakes renting in cumulative cost — was year ${yr}.`,
+    verdict_neutral_body: (diff) => `The difference over your time horizon is just CHF ${fmt(Math.abs(diff))}. The decision is essentially a draw — other factors like flexibility, stability, and personal preference should guide you.`,
+    cost_buy_title:`Total cost of buying`, cost_rent_title:`Total cost of renting`,
+    row_mortgage:`Mortgage interest paid`, row_down:`Down payment (capital deployed)`,
+    row_maintenance:`Maintenance (est. 1%/yr)`, row_transaction:`Transaction costs`,
+    row_opp:`Less: property appreciation`,
+    row_total:`Total net cost`,
+    row_rent_paid:`Rent paid`, row_rent_opp:`Less: return on invested deposit`,
+    chart_title:`Cumulative cost over time`,
+    chart_rent:`Renting`, chart_buy:`Buying`,
+    note_title:`Important assumptions`,
+    note_body:`This tool uses simplified assumptions: 1% annual property appreciation (Swiss long-run average), 1% annual rent increase, 1% annual maintenance cost on property value, 0.5% one-off transaction costs, and 3% annual return on the alternative investment of your down payment. Individual results will vary. This is for illustration only and does not constitute financial or legal advice.`,
+    related_label:`Thinking about retirement too?`,
+    related_link:`Try the Retirement Readiness Calculator →`
+  },
+  de: {
+    select_lang:`Sprache wählen`, nav_tools:`Tools`, nav_blog:`Einblicke`, nav_about:`Über uns`,
+    nav_disclaimer:`Haftungsausschluss`, nav_privacy:`Datenschutz`,
+    bc_home:`Startseite`, bc_tools:`Tools`, bc_this:`Mieten vs. Kaufen`,
+    h1:`Soll ich in der Schweiz <em>mieten oder kaufen?</em>`,
+    desc:`Vergleichen Sie die wahren Kosten von Mieten und Kaufen über Ihren Zeithorizont — einschliesslich des Break-even-Punkts, ab dem Kaufen günstiger wird.`,
+    badge_live:`Jetzt live`, badge_free:`Kostenlos · Kein Konto`, badge_swiss:`Schweizer Marktannahmen`,
+    your_details:`Ihre Angaben`,
+    lbl_price:`Kaufpreis der Immobilie`, lbl_down:`Eigenkapital (Anzahlung)`,
+    lbl_rate:`Hypothekenzinssatz`, lbl_rent:`Monatliche Miete (vergleichbare Immobilie)`,
+    lbl_horizon:`Zeithorizont`, years_suffix:`Jahre`, calc_btn:`Berechnen`,
+    source_note:`Annahmen: 1% jährliche Wertsteigerung · 1% jährliche Mieterhöhung · 1% Unterhaltskosten · 0,5% Transaktionskosten · 3% jährliche Rendite auf alternative Anlage der Anzahlung`,
+    prompt:`Geben Sie Ihre Daten ein und klicken Sie auf Berechnen.`,
+    verdict_rent_label:`Ergebnis: Mieten günstiger`,
+    verdict_buy_label:`Ergebnis: Kaufen günstiger`,
+    verdict_neutral_label:`Nahezu unentschieden`,
+    breakeven_label:`Break-even-Jahr`,
+    never_breaks_even:`Kaufen im Zeithorizont nie günstiger`,
+    already_cheaper:`Kaufen ab Jahr 1 günstiger`,
+    verdict_rent_body: (yr, horizon, diff) => `Über Ihren ${horizon}-Jahres-Horizont ist Mieten um CHF ${fmt(diff)} günstiger. Kaufen wird erst nach Jahr ${yr} finanziell vorteilhafter${yr > horizon ? ' — ausserhalb Ihres Zeithorizonts' : ''}.`,
+    verdict_buy_body:  (yr, horizon, diff) => `Über Ihren ${horizon}-Jahres-Horizont ist Kaufen um CHF ${fmt(diff)} günstiger. Der Break-even-Punkt lag bei Jahr ${yr}.`,
+    verdict_neutral_body: (diff) => `Der Unterschied beträgt nur CHF ${fmt(Math.abs(diff))}. Andere Faktoren wie Flexibilität und persönliche Präferenz sollten ausschlaggebend sein.`,
+    cost_buy_title:`Gesamtkosten Kaufen`, cost_rent_title:`Gesamtkosten Mieten`,
+    row_mortgage:`Gezahlte Hypothekenzinsen`, row_down:`Eigenkapital (eingesetztes Kapital)`,
+    row_maintenance:`Unterhalt (ca. 1%/Jahr)`, row_transaction:`Transaktionskosten`,
+    row_opp:`Abzgl. Wertsteigerung der Immobilie`,
+    row_total:`Netto-Gesamtkosten`,
+    row_rent_paid:`Gezahlte Miete`, row_rent_opp:`Abzgl. Rendite auf alternative Anlage`,
+    chart_title:`Kumulative Kosten über Zeit`,
+    chart_rent:`Mieten`, chart_buy:`Kaufen`,
+    note_title:`Wichtige Annahmen`,
+    note_body:`Dieses Tool verwendet vereinfachte Annahmen: 1% jährliche Wertsteigerung (Schweizer Langfristdurchschnitt), 1% jährliche Mieterhöhung, 1% Unterhaltskosten, 0,5% Transaktionskosten und 3% jährliche Rendite auf die Alternativanlage Ihrer Anzahlung. Individuelle Ergebnisse können abweichen. Dies ist nur zur Veranschaulichung und stellt keine Finanz- oder Rechtsberatung dar.`,
+    related_label:`Auch an die Rente denken?`,
+    related_link:`Altersvorsorge-Rechner ausprobieren →`
+  },
+  fr: {
+    select_lang:`Choisir la langue`, nav_tools:`Outils`, nav_blog:`Analyses`, nav_about:`À propos`,
+    nav_disclaimer:`Avertissement`, nav_privacy:`Confidentialité`,
+    bc_home:`Accueil`, bc_tools:`Outils`, bc_this:`Louer vs Acheter`,
+    h1:`Faut-il louer ou acheter <em>en Suisse ?</em>`,
+    desc:`Comparez le coût réel de la location et de l'achat sur votre horizon temporel — y compris le point mort où l'achat devient moins cher.`,
+    badge_live:`En ligne`, badge_free:`Gratuit · Sans compte`, badge_swiss:`Hypothèses marché suisse`,
+    your_details:`Vos informations`,
+    lbl_price:`Prix d'achat du bien`, lbl_down:`Apport personnel`,
+    lbl_rate:`Taux d'intérêt hypothécaire`, lbl_rent:`Loyer mensuel (bien comparable)`,
+    lbl_horizon:`Horizon temporel`, years_suffix:`ans`, calc_btn:`Calculer`,
+    source_note:`Hypothèses : appréciation annuelle 1% · hausse loyer 1%/an · entretien 1%/an · frais de transaction 0,5% · rendement alternatif 3%/an`,
+    prompt:`Saisissez vos informations et cliquez sur Calculer.`,
+    verdict_rent_label:`Résultat : louer est préférable`,
+    verdict_buy_label:`Résultat : acheter est préférable`,
+    verdict_neutral_label:`Résultat très serré`,
+    breakeven_label:`Année du point mort`,
+    never_breaks_even:`L'achat ne devient jamais moins cher`,
+    already_cheaper:`L'achat est moins cher dès l'année 1`,
+    verdict_rent_body: (yr, horizon, diff) => `Sur votre horizon de ${horizon} ans, la location est moins chère de CHF ${fmt(diff)}. L'achat ne devient financièrement avantageux qu'après l'année ${yr}${yr > horizon ? ' — au-delà de votre horizon' : ''}.`,
+    verdict_buy_body:  (yr, horizon, diff) => `Sur votre horizon de ${horizon} ans, l'achat est moins cher de CHF ${fmt(diff)}. Le point mort a été atteint à l'année ${yr}.`,
+    verdict_neutral_body: (diff) => `La différence est seulement CHF ${fmt(Math.abs(diff))}. D'autres facteurs comme la flexibilité et les préférences personnelles devraient guider votre décision.`,
+    cost_buy_title:`Coût total de l'achat`, cost_rent_title:`Coût total de la location`,
+    row_mortgage:`Intérêts hypothécaires payés`, row_down:`Apport (capital mobilisé)`,
+    row_maintenance:`Entretien (env. 1%/an)`, row_transaction:`Frais de transaction`,
+    row_opp:`Moins : plus-value immobilière`,
+    row_total:`Coût net total`,
+    row_rent_paid:`Loyers payés`, row_rent_opp:`Moins : rendement placement apport`,
+    chart_title:`Coût cumulatif dans le temps`,
+    chart_rent:`Location`, chart_buy:`Achat`,
+    note_title:`Hypothèses importantes`,
+    note_body:`Cet outil utilise des hypothèses simplifiées : appréciation annuelle de 1% (moyenne suisse long terme), hausse de loyer de 1%/an, frais d'entretien de 1%, frais de transaction de 0,5% et rendement de 3%/an sur le placement alternatif de l'apport. Les résultats individuels varient. Ceci est uniquement à titre illustratif et ne constitue pas un conseil financier ou juridique.`,
+    related_label:`Pensez aussi à la retraite ?`,
+    related_link:`Essayer le calculateur de retraite →`
+  },
+  it: {
+    select_lang:`Seleziona lingua`, nav_tools:`Strumenti`, nav_blog:`Approfondimenti`, nav_about:`Chi siamo`,
+    nav_disclaimer:`Dichiarazione`, nav_privacy:`Privacy`,
+    bc_home:`Home`, bc_tools:`Strumenti`, bc_this:`Affitto vs Acquisto`,
+    h1:`Conviene affittare o comprare <em>in Svizzera?</em>`,
+    desc:`Confrontate il costo reale dell'affitto rispetto all'acquisto sul vostro orizzonte temporale — incluso il punto di pareggio in cui acquistare diventa meno costoso.`,
+    badge_live:`Disponibile`, badge_free:`Gratuito · Senza account`, badge_swiss:`Ipotesi mercato svizzero`,
+    your_details:`I vostri dati`,
+    lbl_price:`Prezzo di acquisto dell'immobile`, lbl_down:`Acconto (capitale proprio)`,
+    lbl_rate:`Tasso d'interesse ipotecario`, lbl_rent:`Affitto mensile (immobile comparabile)`,
+    lbl_horizon:`Orizzonte temporale`, years_suffix:`anni`, calc_btn:`Calcola`,
+    source_note:`Ipotesi: apprezzamento annuo 1% · aumento affitto 1%/anno · manutenzione 1%/anno · costi di transazione 0,5% · rendimento alternativo 3%/anno`,
+    prompt:`Inserite i vostri dati e fate clic su Calcola.`,
+    verdict_rent_label:`Risultato: affittare conviene`,
+    verdict_buy_label:`Risultato: comprare conviene`,
+    verdict_neutral_label:`Risultato molto equilibrato`,
+    breakeven_label:`Anno del pareggio`,
+    never_breaks_even:`Acquistare non diventa mai meno costoso`,
+    already_cheaper:`Acquistare meno costoso dall'anno 1`,
+    verdict_rent_body: (yr, horizon, diff) => `Sul vostro orizzonte di ${horizon} anni, affittare è meno costoso di CHF ${fmt(diff)}. Acquistare diventa finanziariamente vantaggioso solo dopo l'anno ${yr}${yr > horizon ? ' — oltre il vostro orizzonte' : ''}.`,
+    verdict_buy_body:  (yr, horizon, diff) => `Sul vostro orizzonte di ${horizon} anni, acquistare è meno costoso di CHF ${fmt(diff)}. Il punto di pareggio è stato l'anno ${yr}.`,
+    verdict_neutral_body: (diff) => `La differenza è solo CHF ${fmt(Math.abs(diff))}. La flessibilità e le preferenze personali dovrebbero guidare la decisione.`,
+    cost_buy_title:`Costo totale dell'acquisto`, cost_rent_title:`Costo totale dell'affitto`,
+    row_mortgage:`Interessi ipotecari pagati`, row_down:`Acconto (capitale impiegato)`,
+    row_maintenance:`Manutenzione (ca. 1%/anno)`, row_transaction:`Costi di transazione`,
+    row_opp:`Meno: apprezzamento immobiliare`,
+    row_total:`Costo netto totale`,
+    row_rent_paid:`Affitti pagati`, row_rent_opp:`Meno: rendimento investimento alternativo`,
+    chart_title:`Costo cumulativo nel tempo`,
+    chart_rent:`Affitto`, chart_buy:`Acquisto`,
+    note_title:`Ipotesi importanti`,
+    note_body:`Questo strumento utilizza ipotesi semplificate: apprezzamento annuo dell'1% (media svizzera a lungo termine), aumento dell'affitto dell'1%/anno, costi di manutenzione dell'1%, costi di transazione dello 0,5% e rendimento del 3%/anno sull'investimento alternativo dell'acconto. I risultati individuali variano. Solo a scopo illustrativo, non costituisce consulenza finanziaria o legale.`,
+    related_label:`Pensate anche alla pensione?`,
+    related_link:`Prova il calcolatore pensionistico →`
+  }
+};
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+const fmt  = n => new Intl.NumberFormat('de-CH').format(Math.round(n));
+const fmtK = n => 'CHF ' + fmt(n);
+
+// ── Sync sliders ↔ inputs ────────────────────────────────────────────────────
+function syncSlider(slId, inpId, transform) {
+  const sl = document.getElementById(slId);
+  const inp = document.getElementById(inpId);
+  sl.addEventListener('input', () => {
+    inp.value = transform ? transform(+sl.value) : sl.value;
+    updateDownPct();
+  });
+  inp.addEventListener('input', () => {
+    sl.value = transform ? reverseTransform(inpId, +inp.value) : inp.value;
+    updateDownPct();
+  });
+}
+
+function updateDownPct() {
+  const price = +document.getElementById('inp-price').value;
+  const down  = +document.getElementById('inp-down').value;
+  if (price > 0) {
+    document.getElementById('down-pct').textContent = Math.round(down/price*100) + '%';
+    document.getElementById('sl-down').value = Math.min(0.5, Math.max(0.1, down/price));
+  }
+}
+
+// Down payment slider controls % of price
+document.getElementById('sl-price').addEventListener('input', function() {
+  const price = +this.value;
+  document.getElementById('inp-price').value = price;
+  const pct = +document.getElementById('sl-down').value;
+  document.getElementById('inp-down').value = Math.round(price * pct / 1000) * 1000;
+  updateDownPct();
+});
+document.getElementById('inp-price').addEventListener('input', function() {
+  document.getElementById('sl-price').value = this.value;
+  updateDownPct();
+});
+document.getElementById('sl-down').addEventListener('input', function() {
+  const price = +document.getElementById('inp-price').value;
+  const down = Math.round(price * +this.value / 1000) * 1000;
+  document.getElementById('inp-down').value = down;
+  updateDownPct();
+});
+document.getElementById('inp-down').addEventListener('input', updateDownPct);
+
+['rate','rent','horizon'].forEach(id => {
+  document.getElementById('sl-'+id).addEventListener('input', function() {
+    document.getElementById('inp-'+id).value = this.value;
+  });
+  document.getElementById('inp-'+id).addEventListener('input', function() {
+    document.getElementById('sl-'+id).value = this.value;
+  });
+});
+
+// ── Core calculation ──────────────────────────────────────────────────────────
+function calculate() {
+  const t = i18n[currentLang];
+
+  const price    = +document.getElementById('inp-price').value;
+  const down     = +document.getElementById('inp-down').value;
+  const rate     = +document.getElementById('inp-rate').value / 100;
+  const rent     = +document.getElementById('inp-rent').value;
+  const horizon  = +document.getElementById('inp-horizon').value;
+
+  const mortgage = price - down;
+
+  // Assumptions
+  const PROP_GROWTH  = 0.01;   // 1% annual property appreciation
+  const RENT_GROWTH  = 0.01;   // 1% annual rent increase
+  const MAINTENANCE  = 0.01;   // 1% of property value per year
+  const TRANSACTION  = 0.005;  // 0.5% one-off on purchase
+  const OPP_RETURN   = 0.03;   // 3% annual return on invested down payment
+
+  // Build year-by-year cumulative costs
+  const buyYearly  = [];
+  const rentYearly = [];
+  let cumBuy  = 0;
+  let cumRent = 0;
+  let propVal = price;
+  let initOppValue = down; // alternative investment of down payment
+  let rentAmt = rent;
+  let breakEvenYear = null;
+
+  // One-off transaction cost at purchase
+  const transactionCost = price * TRANSACTION;
+
+  for (let yr = 1; yr <= Math.max(horizon, 40); yr++) {
+    // Buy costs this year
+    const interestAmt   = mortgage * rate;          // simplified interest (IO)
+    const maintenanceAmt = propVal * MAINTENANCE;
+    const buyThisYear   = interestAmt + maintenanceAmt + (yr === 1 ? transactionCost : 0);
+
+    // Property appreciation offsets cost
+    const appreciation = propVal * PROP_GROWTH;
+    propVal *= (1 + PROP_GROWTH);
+
+    // Net buy cost = costs minus appreciation gain
+    const netBuyThisYear = buyThisYear - appreciation;
+    cumBuy += netBuyThisYear;
+
+    // Rent costs this year
+    const rentThisYear = rentAmt * 12;
+    // Opportunity return on down payment (growing investment)
+    const oppReturn = initOppValue * OPP_RETURN;
+    initOppValue *= (1 + OPP_RETURN);
+    // Net rent cost = rent paid minus investment return
+    const netRentThisYear = rentThisYear - oppReturn;
+    cumRent += netRentThisYear;
+
+    // Also include opportunity cost of down payment principal
+    // (already captured via oppReturn above)
+
+    rentAmt *= (1 + RENT_GROWTH);
+
+    if (yr <= 40) {
+      buyYearly.push(cumBuy + down);   // include down payment as sunk cost for total
+      rentYearly.push(cumRent);
+    }
+
+    if (breakEvenYear === null && cumBuy + down < cumRent) {
+      breakEvenYear = yr;
+    }
+  }
+
+  // Total costs at horizon (including down payment deployment)
+  const totalBuy  = buyYearly[horizon - 1];
+  const totalRent = rentYearly[horizon - 1];
+  const diff = totalRent - totalBuy;
+
+  // Detailed breakdown at horizon
+  let propValAtHorizon = price * Math.pow(1 + PROP_GROWTH, horizon);
+  let totalInterest  = mortgage * rate * horizon;
+  let totalMaintenance = 0;
+  let pv = price;
+  for (let y = 1; y <= horizon; y++) { totalMaintenance += pv * MAINTENANCE; pv *= (1+PROP_GROWTH); }
+  let totalAppreciation = propValAtHorizon - price;
+
+  let totalRentPaid = 0;
+  let r = rent;
+  for (let y = 1; y <= horizon; y++) { totalRentPaid += r * 12; r *= (1+RENT_GROWTH); }
+  let totalOppReturn = down * (Math.pow(1+OPP_RETURN, horizon) - 1);
+
+  // Render results
+  const years = Array.from({length: horizon}, (_, i) => i + 1);
+  const buyData  = buyYearly.slice(0, horizon);
+  const rentData = rentYearly.slice(0, horizon);
+
+  renderResults({
+    t, breakEvenYear, horizon, diff, totalBuy, totalRent,
+    totalInterest, down, totalMaintenance, transactionCost, totalAppreciation,
+    totalRentPaid, totalOppReturn,
+    years, buyData, rentData
+  });
+}
+
+function renderResults(d) {
+  const { t, breakEvenYear, horizon, diff } = d;
+
+  // Verdict
+  let verdictClass, verdictLabel, verdictBody, beNum, beLbl, beClass;
+  if (breakEvenYear === null || breakEvenYear > horizon) {
+    // Renting wins over horizon
+    verdictClass = 'verdict-card rent-wins';
+    verdictLabel = `<span class="verdict-label rent">${t.verdict_rent_label}</span>`;
+    verdictBody  = t.verdict_rent_body(breakEvenYear || horizon+1, horizon, Math.abs(diff));
+    beNum   = breakEvenYear ? `Yr ${breakEvenYear}` : '—';
+    beLbl   = breakEvenYear ? t.breakeven_label : t.never_breaks_even;
+    beClass = 'breakeven-num rent';
+  } else if (diff > 0) {
+    // Buying wins
+    verdictClass = 'verdict-card buy-wins';
+    verdictLabel = `<span class="verdict-label buy">${t.verdict_buy_label}</span>`;
+    verdictBody  = t.verdict_buy_body(breakEvenYear, horizon, Math.abs(diff));
+    beNum   = `Yr ${breakEvenYear}`;
+    beLbl   = t.breakeven_label;
+    beClass = 'breakeven-num buy';
+  } else {
+    verdictClass = 'verdict-card neutral';
+    verdictLabel = `<span class="verdict-label neutral">${t.verdict_neutral_label}</span>`;
+    verdictBody  = t.verdict_neutral_body(diff);
+    beNum   = breakEvenYear ? `Yr ${breakEvenYear}` : '—';
+    beLbl   = t.breakeven_label;
+    beClass = 'breakeven-num';
+  }
+
+  const resultsEl = document.getElementById('results');
+  resultsEl.innerHTML = `
+    <div class="${verdictClass}">
+      <div class="verdict-top">
+        <div>
+          ${verdictLabel}
+          <div class="verdict-headline">${diff >= 0 ? fmtK(Math.abs(diff)) + ' cheaper to buy' : fmtK(Math.abs(diff)) + ' cheaper to rent'}</div>
+        </div>
+        <div class="verdict-breakeven">
+          <div class="${beClass}">${beNum}</div>
+          <div class="breakeven-lbl">${beLbl}</div>
+        </div>
+      </div>
+      <div class="verdict-body">${verdictBody}</div>
+    </div>
+
+    <div class="cost-grid">
+      <div class="cost-card buy-card">
+        <div class="cost-card-label">${t.cost_buy_title}</div>
+        <div class="cost-line"><span class="cost-line-label">${t.row_mortgage}</span><span class="cost-line-value">${fmtK(d.totalInterest)}</span></div>
+        <div class="cost-line"><span class="cost-line-label">${t.row_down}</span><span class="cost-line-value">${fmtK(d.down)}</span></div>
+        <div class="cost-line"><span class="cost-line-label">${t.row_maintenance}</span><span class="cost-line-value">${fmtK(d.totalMaintenance)}</span></div>
+        <div class="cost-line"><span class="cost-line-label">${t.row_transaction}</span><span class="cost-line-value">${fmtK(d.transactionCost)}</span></div>
+        <div class="cost-line"><span class="cost-line-label">${t.row_opp}</span><span class="cost-line-value" style="color:var(--alpine)">- ${fmtK(d.totalAppreciation)}</span></div>
+        <div class="cost-line"><span>${t.row_total}</span><span class="cost-line-value">${fmtK(d.totalBuy)}</span></div>
+      </div>
+      <div class="cost-card rent-card">
+        <div class="cost-card-label">${t.cost_rent_title}</div>
+        <div class="cost-line"><span class="cost-line-label">${t.row_rent_paid}</span><span class="cost-line-value">${fmtK(d.totalRentPaid)}</span></div>
+        <div class="cost-line"><span class="cost-line-label">${t.row_rent_opp}</span><span class="cost-line-value" style="color:var(--alpine)">- ${fmtK(d.totalOppReturn)}</span></div>
+        <div class="cost-line"><span></span><span></span></div>
+        <div class="cost-line"><span></span><span></span></div>
+        <div class="cost-line"><span></span><span></span></div>
+        <div class="cost-line"><span>${t.row_total}</span><span class="cost-line-value">${fmtK(d.totalRent)}</span></div>
+      </div>
+    </div>
+
+    <div class="chart-panel">
+      <div class="chart-title">${t.chart_title}</div>
+      <div class="chart-container"><canvas id="costChart"></canvas></div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#2d4a6a"></div>${t.chart_buy}</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#8a6d3b"></div>${t.chart_rent}</div>
+      </div>
+    </div>
+
+    <div class="assumptions">
+      <strong>${t.note_title}:</strong> ${t.note_body}
+    </div>
+
+    <div style="background:var(--alpine-3);border-left:3px solid var(--alpine);padding:1rem 1.2rem;font-size:0.88rem;color:var(--ink-2);line-height:1.6;">
+      ${t.related_label} <a href="/retirement" style="color:var(--alpine);font-weight:500;">${t.related_link}</a>
+    </div>
+  `;
+
+  // Draw chart
+  drawChart(d.years, d.buyData, d.rentData, t.chart_buy, t.chart_rent);
+}
+
+let chartInstance = null;
+function drawChart(years, buyData, rentData, buyLabel, rentLabel) {
+  if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+  const ctx = document.getElementById('costChart').getContext('2d');
+  const fmtAxis = v => 'CHF ' + (v >= 1000000 ? (v/1000000).toFixed(1)+'M' : Math.round(v/1000)+'k');
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: years,
+      datasets: [
+        { label: buyLabel,  data: buyData,  borderColor:'#2d4a6a', backgroundColor:'rgba(45,74,106,0.08)', fill:true, tension:0.3, pointRadius:0, borderWidth:2.5 },
+        { label: rentLabel, data: rentData, borderColor:'#8a6d3b', backgroundColor:'rgba(138,109,59,0.08)',  fill:true, tension:0.3, pointRadius:0, borderWidth:2.5 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode:'index', intersect:false },
+      plugins: {
+        legend: { display:false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ' ' + ctx.dataset.label + ': CHF ' + new Intl.NumberFormat('de-CH').format(Math.round(ctx.raw))
+          }
+        }
+      },
+      scales: {
+        x: { grid: { color:'#ece8e1' }, ticks: { color:'#7a756c', font:{size:10} }, title:{display:true, text:'Year', color:'#7a756c', font:{size:10}} },
+        y: { grid: { color:'#ece8e1' }, ticks: { color:'#7a756c', font:{size:10}, callback: fmtAxis }, beginAtZero:true }
+      }
+    }
+  });
+}
+
+// ── Language ──────────────────────────────────────────────────────────────────
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('bs_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+}
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+setLang(currentLang);
+</script>
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</body>
+</html>
