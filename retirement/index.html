@@ -1,1 +1,91 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free Swiss retirement readiness calculator. See your projected retirement income vs what you need — including AHV, pension fund, and Pillar 3a. No account required.">
+  <title>Retirement Readiness Calculator Switzerland — Free Tool | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KPHRGJL1WW');</script>
+  <style>
+    :root{--stone:#f5f2ed;--stone-3:#d8d2c8;--ink:#1a1916;--ink-2:#3d3a35;--ink-3:#7a756c;--alpine:#2d5a3d;--alpine-2:#3d7a52;--white:#ffffff;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--ink);overflow-x:hidden;}
+    .lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--ink);display:flex;justify-content:flex-end;align-items:center;padding:0 4rem;height:34px;}
+    .lang-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#6a6560;margin-right:1rem;}
+    .lang-btn{background:none;border:none;color:#9a958e;font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;padding:0 0.8rem;height:100%;border-right:1px solid #2a2825;transition:color 0.15s,background 0.15s;}
+    .lang-btn:first-of-type{border-left:1px solid #2a2825;}.lang-btn:hover{color:var(--white);background:#2a2825;}.lang-btn.active{color:var(--alpine-2);}
+    nav{position:fixed;top:34px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(245,242,237,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone-3);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--ink);text-decoration:none;}.nav-logo span{color:var(--alpine);}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;font-weight:400;color:var(--ink-2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}.nav-links a:hover{color:var(--alpine);}
+    .tool-hero{padding:6rem 4rem 2rem;background:var(--ink);}
+    .breadcrumb{font-size:0.72rem;color:#4a4742;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+    .breadcrumb a{color:#6a6560;text-decoration:none;}.breadcrumb span{color:#3a3835;}
+    .tool-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:500;color:var(--stone);line-height:1.15;margin-bottom:0.6rem;}
+    .tool-hero h1 span{color:var(--alpine-2);}
+    .tool-hero p{font-size:0.9rem;color:#9a958e;font-weight:300;max-width:540px;line-height:1.7;}
+    .tool-meta{display:flex;align-items:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap;}
+    .meta-badge{font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:1px;}
+    .badge-live{background:rgba(61,122,82,0.3);color:var(--alpine-2);}.badge-free{background:rgba(255,255,255,0.06);color:#9a958e;}
+    iframe{border:none;display:block;width:100%;height:840px;min-height:600px;}
+    footer{background:var(--ink);color:#9a958e;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid #2a2825;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--stone);text-decoration:none;}.footer-logo span{color:var(--alpine-2);}
+    .footer-links-row{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+    .footer-links-row a{font-size:0.78rem;color:#6a6560;text-decoration:none;transition:color 0.2s;}.footer-links-row a:hover{color:var(--alpine-2);}
+    .footer-copy{font-size:0.72rem;color:#4a4742;font-family:'DM Mono',monospace;}
+    @media(max-width:900px){.lang-bar{padding:0 1.5rem;}nav{padding:1rem 1.5rem;}.nav-links{display:none;}.tool-hero{padding:5rem 1.5rem 1.5rem;}footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}.lang-label{display:none;}}
+  </style>
+</head>
+<body>
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights" data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about" data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+  <div class="tool-hero">
+    <div class="breadcrumb"><a href="/" data-i18n="bc_home">Home</a><span>→</span><a href="/#tools" data-i18n="bc_tools">Tools</a><span>→</span><span data-i18n="bc_this">Retirement Readiness</span></div>
+    <h1 data-i18n="h1">Retirement <span>Readiness</span> Calculator</h1>
+    <p data-i18n="desc">See your projected retirement income against what you will actually need — across all three pillars. Built for Swiss residents and expats.</p>
+    <div class="tool-meta">
+      <span class="meta-badge badge-live" data-i18n="badge_live">Live now</span>
+      <span class="meta-badge badge-free" data-i18n="badge_free">Free · No account required</span>
+      <span class="meta-badge badge-free" data-i18n="badge_data">2026 Swiss pension figures</span>
+    </div>
+  </div>
+  <iframe id="tool-iframe" src="https://tools.bergsight.com/retirement/" title="Retirement Readiness Calculator"></iframe>
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights" data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about" data-i18n="nav_about">About</a></li>
+      <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+      <li><a href="/privacy" data-i18n="nav_privacy">Privacy</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+<script>
+const i18n={en:{nav_tools:`Tools`,nav_blog:`Insights`,nav_about:`About`,nav_disclaimer:`Disclaimer`,nav_privacy:`Privacy`,bc_home:`Home`,bc_tools:`Tools`,bc_this:`Retirement Readiness`,h1:`Retirement <span>Readiness</span> Calculator`,desc:`See your projected retirement income against what you will actually need — across all three pillars. Built for Swiss residents and expats.`,badge_live:`Live now`,badge_free:`Free · No account required`,badge_data:`2026 Swiss pension figures`},de:{nav_tools:`Tools`,nav_blog:`Einblicke`,nav_about:`Über uns`,nav_disclaimer:`Haftungsausschluss`,nav_privacy:`Datenschutz`,bc_home:`Startseite`,bc_tools:`Tools`,bc_this:`Altersvorsorge`,h1:`Altersvorsorge-<span>Rechner</span>`,desc:`Sehen Sie Ihr voraussichtliches Renteneinkommen im Vergleich zu Ihrem tatsächlichen Bedarf — über alle drei Säulen.`,badge_live:`Jetzt live`,badge_free:`Kostenlos · Kein Konto`,badge_data:`Schweizer Rentenzahlen 2026`},fr:{nav_tools:`Outils`,nav_blog:`Analyses`,nav_about:`À propos`,nav_disclaimer:`Avertissement`,nav_privacy:`Confidentialité`,bc_home:`Accueil`,bc_tools:`Outils`,bc_this:`Retraite`,h1:`Calculateur de <span>Retraite</span>`,desc:`Voyez votre revenu de retraite projeté par rapport à ce dont vous aurez réellement besoin — sur les trois piliers.`,badge_live:`En ligne`,badge_free:`Gratuit · Sans compte`,badge_data:`Chiffres 2026`},it:{nav_tools:`Strumenti`,nav_blog:`Approfondimenti`,nav_about:`Chi siamo`,nav_disclaimer:`Dichiarazione`,nav_privacy:`Privacy`,bc_home:`Home`,bc_tools:`Strumenti`,bc_this:`Pensione`,h1:`Calcolatore di <span>Prontezza</span> Pensionistica`,desc:`Vedere il reddito pensionistico previsto rispetto a ciò di cui avrete realmente bisogno — su tutti e tre i pilastri.`,badge_live:`Disponibile`,badge_free:`Gratuito · Senza account`,badge_data:`Dati 2026`}};
+let currentLang=localStorage.getItem('bs_lang')||'en';
+function setLang(lang){currentLang=lang;localStorage.setItem('bs_lang',lang);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.getElementById('btn-'+lang).classList.add('active');const t=i18n[lang];document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});document.getElementById('tool-iframe').src='https://tools.bergsight.com/retirement/?lang='+lang;}
+document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
+setLang(currentLang);
+</script>
+</body>
+</html>
