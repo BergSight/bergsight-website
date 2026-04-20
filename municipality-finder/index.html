@@ -1,1 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/municipality-finder">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Where should you live in Switzerland? Compare municipalities by taxes, rent, transport, schools, nature and more. Find your perfect Swiss municipality.">
+  <meta property="og:title" content="Where Should You Live in Switzerland? | BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/municipality-finder">
+  <title>Where Should You Live in Switzerland? | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KPHRGJL1WW');</script>
+  <style>
+    :root{--stone:#f5f2ed;--stone-2:#ece8e1;--stone-3:#d8d2c8;--ink:#1a1916;--ink-2:#3d3a35;--ink-3:#7a756c;--alpine:#2d5a3d;--alpine-2:#3d7a52;--alpine-3:#e8f0eb;--gold:#8a6d3b;--gold-2:#f5ead8;--white:#ffffff;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--ink);overflow-x:hidden;}
+    .lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--ink);display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:44px;border-bottom:1px solid #2a2825;}
+    .lang-label{font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#8a857e;}
+    .lang-btn{background:none;border:none;color:#8a857e;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:0 1.1rem;height:44px;border-right:1px solid #2a2825;transition:color 0.15s,background 0.15s;}
+    .lang-btn:first-of-type{border-left:1px solid #2a2825;}
+    .lang-btn:hover{color:var(--white);background:#252320;}
+    .lang-btn.active{color:var(--alpine-2);background:rgba(61,122,82,0.1);font-weight:600;}
+    nav{position:fixed;top:44px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(245,242,237,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone-3);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--ink);text-decoration:none;}
+    .nav-logo span{color:var(--alpine);}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;font-weight:400;color:var(--ink-2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--alpine);}
+    /* Hero */
+    .tool-hero{padding:9.5rem 4rem 3rem;background:var(--ink);position:relative;overflow:hidden;}
+    .hero-peaks{position:absolute;bottom:0;left:0;right:0;height:50%;opacity:0.12;pointer-events:none;}
+    .hero-inner{position:relative;max-width:800px;}
+    .breadcrumb{font-size:0.72rem;color:#4a4742;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+    .breadcrumb a{color:#6a6560;text-decoration:none;}
+    .tool-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:500;color:var(--stone);line-height:1.15;margin-bottom:0.7rem;}
+    .tool-hero h1 em{font-style:italic;color:var(--alpine-2);}
+    .tool-hero p{font-size:0.95rem;color:#9a958e;font-weight:300;max-width:600px;line-height:1.75;}
+    .tool-meta{display:flex;align-items:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap;}
+    .meta-badge{font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:1px;}
+    .badge-live{background:rgba(61,122,82,0.3);color:var(--alpine-2);}
+    .badge-free{background:rgba(255,255,255,0.06);color:#9a958e;}
+    /* Tool body */
+    .tool-body{max-width:1100px;margin:0 auto;padding:2.5rem 3rem 5rem;}
+    /* Filter bar */
+    .filter-section{background:var(--white);border:1px solid var(--stone-3);padding:1.4rem 1.6rem;margin-bottom:1.5rem;}
+    .filter-title{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--alpine);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+    .filter-title::before{content:'';display:block;width:14px;height:1px;background:var(--alpine);}
+    .filter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.6rem;margin-bottom:1rem;}
+    .filter-chip{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.8rem;border:1px solid var(--stone-3);background:var(--stone);cursor:pointer;font-size:0.8rem;color:var(--ink-3);transition:all 0.15s;user-select:none;}
+    .filter-chip input{accent-color:var(--alpine);width:14px;height:14px;flex-shrink:0;}
+    .filter-chip:hover{border-color:var(--alpine-2);color:var(--ink);}
+    .filter-chip.active{border-color:var(--alpine);background:var(--alpine-3);color:var(--alpine);font-weight:500;}
+    /* Search + sort row */
+    .controls-row{display:flex;gap:0.8rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;}
+    .search-wrap{flex:1;min-width:200px;position:relative;}
+    .search-wrap input{width:100%;border:1px solid var(--stone-3);background:var(--stone);font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--ink);padding:0.6rem 0.8rem 0.6rem 2.2rem;outline:none;}
+    .search-wrap input:focus{border-color:var(--alpine);background:var(--white);}
+    .search-icon{position:absolute;left:0.7rem;top:50%;transform:translateY(-50%);color:var(--ink-3);font-size:0.85rem;pointer-events:none;}
+    .canton-select,.lang-select,.type-select{border:1px solid var(--stone-3);background:var(--stone);font-family:'DM Sans',sans-serif;font-size:0.82rem;color:var(--ink-2);padding:0.6rem 2rem 0.6rem 0.8rem;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a756c'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.7rem center;}
+    .results-count{font-size:0.78rem;color:var(--ink-3);font-family:'DM Mono',monospace;white-space:nowrap;}
+    /* Results grid */
+    .results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;background:var(--stone-3);border:1px solid var(--stone-3);}
+    .muni-card{background:var(--white);padding:1.4rem 1.6rem;cursor:pointer;transition:background 0.15s;position:relative;}
+    .muni-card:hover{background:var(--stone);}
+    .muni-card.expanded{background:var(--alpine-3);border-left:3px solid var(--alpine);}
+    .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:0.8rem;margin-bottom:0.8rem;}
+    .card-rank{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--ink-3);flex-shrink:0;padding-top:0.2rem;}
+    .card-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--ink);line-height:1.2;}
+    .card-canton{font-size:0.72rem;color:var(--ink-3);margin-top:0.1rem;}
+    .card-score-wrap{text-align:right;flex-shrink:0;}
+    .card-score{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;line-height:1;color:var(--alpine);}
+    .card-score-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);}
+    .card-bars{display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;}
+    .bar-row{display:flex;align-items:center;gap:0.5rem;}
+    .bar-label{font-size:0.65rem;color:var(--ink-3);width:60px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.04em;}
+    .bar-bg{flex:1;height:4px;background:var(--stone-2);border-radius:2px;overflow:hidden;}
+    .bar-fill{height:100%;border-radius:2px;transition:width 0.3s;}
+    .bar-fill.tax{background:#2d4a6a;}
+    .bar-fill.rent{background:var(--gold);}
+    .bar-fill.transport{background:var(--alpine);}
+    .bar-fill.schools{background:#6a3d6a;}
+    .bar-fill.nature{background:#3d7a52;}
+    .bar-fill.city{background:#c0392b;}
+    .bar-fill.expat{background:#e67e22;}
+    .bar-val{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--ink-3);width:28px;text-align:right;flex-shrink:0;}
+    /* Expanded detail */
+    .card-detail{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--stone-3);}
+    .muni-card.expanded .card-detail{display:block;}
+    .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.8rem;}
+    .detail-stat{background:var(--white);padding:0.6rem 0.8rem;border:1px solid var(--stone-3);}
+    .detail-stat-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);margin-bottom:0.15rem;}
+    .detail-stat-value{font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:500;color:var(--ink);}
+    .detail-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;}
+    .detail-tag{font-size:0.65rem;padding:0.2rem 0.5rem;border-radius:1px;font-weight:500;letter-spacing:0.05em;}
+    .tag-de{background:#e8eef5;color:#2d4a6a;}
+    .tag-fr{background:#fde8e8;color:#7a2020;}
+    .tag-it{background:#e8f5e9;color:#1b5e20;}
+    .tag-city{background:var(--stone-2);color:var(--ink-3);}
+    .tag-agglom{background:var(--alpine-3);color:var(--alpine);}
+    .tag-rural{background:var(--gold-2);color:var(--gold);}
+    /* Empty state */
+    .empty-state{background:var(--white);border:1px solid var(--stone-3);padding:3rem;text-align:center;color:var(--ink-3);font-size:0.9rem;font-weight:300;}
+    /* Disclaimer */
+    .disclaimer{background:var(--stone-2);border-left:2px solid var(--stone-3);padding:0.8rem 1rem;font-size:0.72rem;color:var(--ink-3);line-height:1.6;margin-top:1.5rem;}
+    /* Footer */
+    footer{background:var(--ink);color:#9a958e;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid #2a2825;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--stone);text-decoration:none;}
+    .footer-logo span{color:var(--alpine-2);}
+    .footer-links-row{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+    .footer-links-row a{font-size:0.78rem;color:#6a6560;text-decoration:none;transition:color 0.2s;}
+    .footer-links-row a:hover{color:var(--alpine-2);}
+    .footer-copy{font-size:0.72rem;color:#4a4742;font-family:'DM Mono',monospace;}
+    @media(max-width:900px){
+      .lang-bar{padding:0 1.5rem;}.lang-label{display:none;}
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .tool-hero{padding:7.5rem 1.5rem 2.5rem;}
+      .tool-body{padding:1.5rem 1rem 4rem;}
+      .results-grid{grid-template-columns:1fr;}
+      .detail-grid{grid-template-columns:1fr 1fr;}
+      footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-bar">
+    <div style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="color:#4a4742;font-size:0.9rem;">🌐</span>
+      <span class="lang-label">Select language</span>
+    </div>
+    <div style="display:flex;height:100%;">
+      <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+      <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+      <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    </div>
+  </div>
+  <nav>
+    <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights" data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/about" data-i18n="nav_about">About</a></li>
+    </ul>
+  </nav>
+  <div class="tool-hero">
+    <svg class="hero-peaks" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 300 L0 200 L120 160 L240 180 L360 120 L480 145 L600 95 L720 120 L840 80 L960 105 L1080 70 L1200 95 L1320 75 L1440 90 L1440 300 Z" fill="#4a7a5a"/>
+      <path d="M0 300 L0 240 L100 215 L200 228 L320 195 L440 210 L560 178 L680 195 L800 165 L920 182 L1040 155 L1160 172 L1280 158 L1440 168 L1440 300 Z" fill="#2d5a3d"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="breadcrumb"><a href="/">Home</a><span>→</span><a href="/#tools" data-i18n="nav_tools">Tools</a><span>→</span><span data-i18n="bc_this">Municipality Finder</span></div>
+      <h1 data-i18n="h1">Where should you live <em>in Switzerland?</em></h1>
+      <p data-i18n="desc">Compare 105 Swiss municipalities across taxes, rent, transport, schools, nature, city access, and expat-friendliness. Filter by what matters to you — find your ideal place to live.</p>
+      <div class="tool-meta">
+        <span class="meta-badge badge-live">Live now</span>
+        <span class="meta-badge badge-free">Free · No account required</span>
+        <span class="meta-badge badge-free" data-i18n="badge_data">105 municipalities · 7 dimensions</span>
+      </div>
+    </div>
+  </div>
 
+  <div class="tool-body">
+    <!-- Filters -->
+    <div class="filter-section">
+      <div class="filter-title" data-i18n="filter_title">Filter by what matters to you</div>
+      <div class="filter-grid" id="filter-chips">
+        <label class="filter-chip active" data-dim="tax_score"><input type="checkbox" checked> <span data-i18n="dim_tax">Low taxes</span></label>
+        <label class="filter-chip active" data-dim="rent_score"><input type="checkbox" checked> <span data-i18n="dim_rent">Affordable rent</span></label>
+        <label class="filter-chip active" data-dim="transport_score"><input type="checkbox" checked> <span data-i18n="dim_transport">Transport</span></label>
+        <label class="filter-chip active" data-dim="schools_score"><input type="checkbox" checked> <span data-i18n="dim_schools">Schools</span></label>
+        <label class="filter-chip active" data-dim="nature_score"><input type="checkbox" checked> <span data-i18n="dim_nature">Nature & outdoors</span></label>
+        <label class="filter-chip active" data-dim="city_score"><input type="checkbox" checked> <span data-i18n="dim_city">City proximity</span></label>
+        <label class="filter-chip active" data-dim="expat_score"><input type="checkbox" checked> <span data-i18n="dim_expat">Expat-friendly</span></label>
+      </div>
+      <div class="controls-row">
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input type="text" id="search-input" placeholder="Search municipality..." data-i18n-placeholder="search_placeholder">
+        </div>
+        <select class="canton-select" id="canton-filter">
+          <option value="">All cantons</option>
+        </select>
+        <select class="lang-select" id="lang-filter">
+          <option value="">All languages</option>
+          <option value="de" data-i18n="lang_de">German</option>
+          <option value="fr" data-i18n="lang_fr">French</option>
+          <option value="it" data-i18n="lang_it">Italian</option>
+        </select>
+        <select class="type-select" id="type-filter">
+          <option value="">All sizes</option>
+          <option value="1" data-i18n="type_city">City</option>
+          <option value="2" data-i18n="type_agglom">Agglomeration</option>
+          <option value="3" data-i18n="type_rural">Rural / resort</option>
+        </select>
+        <span class="results-count" id="results-count"></span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div style="background:var(--gold-2);border:1px solid #d4b87a;padding:1.2rem 1.6rem;margin-bottom:1.2rem;">
+  <div style="font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;display:flex;align-items:center;gap:0.5rem;">
+    <span style="display:block;width:14px;height:1px;background:var(--gold);flex-shrink:0;"></span>
+    <span data-i18n="assumptions_title">Assumptions & how scores work</span>
+  </div>
+  <p style="font-size:0.82rem;color:var(--ink-2);font-weight:300;line-height:1.7;margin-bottom:0.8rem;" data-i18n="assumptions_body">All scores are based on a <strong>single adult</strong> profile. Tax burden uses a gross income of <strong>CHF 100,000/year</strong> — adjust your expectations up or down if your income differs significantly. Rent is the average for a <strong>3.5-room apartment</strong>. Scores are relative rankings within this dataset of 104 municipalities — a score of 100 means best in dataset, not perfect.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.5rem;">
+    <div style="background:rgba(255,255,255,0.6);padding:0.6rem 0.8rem;font-size:0.78rem;line-height:1.55;">
+      <strong style="color:var(--ink);display:block;margin-bottom:0.15rem;" data-i18n="g_tax_title">🏦 Low taxes</strong>
+      <span style="color:var(--ink-3);" data-i18n="g_tax_body">Effective income tax burden in CHF for a single adult earning CHF 100k gross/year, including federal, cantonal, and municipal tax. Lower = higher score.</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.6);padding:0.6rem 0.8rem;font-size:0.78rem;line-height:1.55;">
+      <strong style="color:var(--ink);display:block;margin-bottom:0.15rem;" data-i18n="g_rent_title">🏠 Affordable rent</strong>
+      <span style="color:var(--ink-3);" data-i18n="g_rent_body">Average monthly rent for a 3.5-room apartment (approx. 2 bedrooms). Source: FSO structural rent survey 2024. Lower rent = higher score.</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.6);padding:0.6rem 0.8rem;font-size:0.78rem;line-height:1.55;">
+      <strong style="color:var(--ink);display:block;margin-bottom:0.15rem;" data-i18n="g_transport_title">🚆 Transport</strong>
+      <span style="color:var(--ink-3);" data-i18n="g_transport_body">Public transport quality class (ARE ÖV-Güteklassen). Class A = intercity rail every 15 min or better. Class F = bus once per hour or less. Better connections = higher score.</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.6);padding:0.6rem 0.8rem;font-size:0.78rem;line-height:1.55;">
+      <strong style="color:var(--ink);display:block;margin-bottom:0.15rem;" data-i18n="g_schools_title">🎓 Schools</strong>
+      <span style="color:var(--ink-3);" data-i18n="g_schools_body">Composite score based on number of schools per capita, proximity to a Gymnasium (upper secondary), and access to vocational training. Public schooling in Switzerland is free and high quality.</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.6);padding:0.6rem 0.8rem;font-size:0.78rem;line-height:1.55;">
+      <strong style="color:var(--ink);display:block;margin-bottom:0.15rem;" data-i18n="g_nature_title">🏔 Nature & outdoors</strong>
+      <span style="color:var(--ink-3);" data-i18n="g_nature_body">Access to lakes, forests, mountains, and open landscape. Based on ARE recreation accessibility index and elevation. Higher = more outdoor activity options on your doorstep.</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.6);padding:0.6rem 0.8rem;font-size:0.78rem;line-height:1.55;">
+      <strong style="color:var(--ink);display:block;margin-bottom:0.15rem;" data-i18n="g_city_title">🏙 City proximity</strong>
+      <span style="color:var(--ink-3);" data-i18n="g_city_body">Travel time in minutes by public transport to the nearest major city centre (Zurich, Geneva, Basel, Bern, Lausanne, Lucerne, St. Gallen). Under 10 minutes scores near 100.</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.6);padding:0.6rem 0.8rem;font-size:0.78rem;line-height:1.55;">
+      <strong style="color:var(--ink);display:block;margin-bottom:0.15rem;" data-i18n="g_expat_title">🌍 Expat-friendly</strong>
+      <span style="color:var(--ink-3);" data-i18n="g_expat_body">Proportion of foreign residents in the municipality. A higher share generally signals a more international community, greater English language presence, and more diverse services. Source: FSO 2024.</span>
+    </div>
+  </div>
+</div>
+<div class="results-grid" id="results-grid"></div>
+    <div class="empty-state" id="empty-state" style="display:none;" data-i18n="no_results">No municipalities match your filters. Try adjusting your search.</div>
+
+    <div class="disclaimer" data-i18n="disclaimer">Data sources: Tax burden — Federal Tax Administration 2024 effective rates · Rent — FSO structural rent survey 2024 · Transport — ARE ÖV-Güteklassen 2024 · Schools, nature and expat scores are composite indices derived from FSO municipal statistics. All scores are relative rankings within this dataset. This tool is for guidance only.</div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+    <ul class="footer-links-row">
+      <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+      <li><a href="/insights" data-i18n="nav_blog">Insights</a></li>
+      <li><a href="/contact" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 BergSight · Zürich, Switzerland</div>
+  </footer>
+
+<script>
+const MUNIS = [{"id": 5192, "name": "Lugano", "canton": "TI", "pop": 62315, "tax": 25200, "rent": 1650, "transport": 6, "schools": 80, "nature": 80, "city_min": 0, "foreign_pct": 38, "urban": 1, "lang": "it", "tax_score": 18, "rent_score": 68, "transport_score": 100, "schools_score": 80, "nature_score": 80, "city_score": 100, "expat_score": 68, "composite": 73}, {"id": 5586, "name": "Lausanne", "canton": "VD", "pop": 139111, "tax": 26200, "rent": 1850, "transport": 6, "schools": 88, "nature": 68, "city_min": 0, "foreign_pct": 42, "urban": 1, "lang": "fr", "tax_score": 12, "rent_score": 55, "transport_score": 100, "schools_score": 88, "nature_score": 68, "city_score": 100, "expat_score": 79, "composite": 72}, {"id": 6266, "name": "Sion", "canton": "VS", "pop": 34800, "tax": 23200, "rent": 1380, "transport": 5, "schools": 72, "nature": 88, "city_min": 0, "foreign_pct": 28, "urban": 1, "lang": "fr", "tax_score": 28, "rent_score": 85, "transport_score": 80, "schools_score": 72, "nature_score": 88, "city_score": 100, "expat_score": 42, "composite": 71}, {"id": 1061, "name": "Lucerne", "canton": "LU", "pop": 82645, "tax": 22800, "rent": 1650, "transport": 6, "schools": 82, "nature": 78, "city_min": 0, "foreign_pct": 24, "urban": 1, "lang": "de", "tax_score": 30, "rent_score": 68, "transport_score": 100, "schools_score": 82, "nature_score": 78, "city_score": 100, "expat_score": 32, "composite": 70}, {"id": 3203, "name": "St. Gallen", "canton": "SG", "pop": 75833, "tax": 22500, "rent": 1580, "transport": 6, "schools": 80, "nature": 70, "city_min": 0, "foreign_pct": 27, "urban": 1, "lang": "de", "tax_score": 32, "rent_score": 72, "transport_score": 100, "schools_score": 80, "nature_score": 70, "city_score": 100, "expat_score": 39, "composite": 70}, {"id": 2701, "name": "Basel", "canton": "BS", "pop": 177827, "tax": 24200, "rent": 1850, "transport": 6, "schools": 88, "nature": 55, "city_min": 0, "foreign_pct": 36, "urban": 1, "lang": "de", "tax_score": 23, "rent_score": 55, "transport_score": 100, "schools_score": 88, "nature_score": 55, "city_score": 100, "expat_score": 63, "composite": 69}, {"id": 6621, "name": "Geneva", "canton": "GE", "pop": 201818, "tax": 28500, "rent": 2200, "transport": 6, "schools": 90, "nature": 58, "city_min": 0, "foreign_pct": 48, "urban": 1, "lang": "fr", "tax_score": 0, "rent_score": 32, "transport_score": 100, "schools_score": 90, "nature_score": 58, "city_score": 100, "expat_score": 95, "composite": 68}, {"id": 3901, "name": "Chur", "canton": "GR", "pop": 37458, "tax": 22200, "rent": 1480, "transport": 5, "schools": 72, "nature": 88, "city_min": 0, "foreign_pct": 22, "urban": 1, "lang": "de", "tax_score": 34, "rent_score": 79, "transport_score": 80, "schools_score": 72, "nature_score": 88, "city_score": 100, "expat_score": 26, "composite": 68}, {"id": 56, "name": "Opfikon", "canton": "ZH", "pop": 12800, "tax": 18200, "rent": 1780, "transport": 5, "schools": 65, "nature": 45, "city_min": 10, "foreign_pct": 42, "urban": 2, "lang": "de", "tax_score": 55, "rent_score": 59, "transport_score": 80, "schools_score": 65, "nature_score": 45, "city_score": 85, "expat_score": 79, "composite": 67}, {"id": 5591, "name": "Renens", "canton": "VD", "pop": 22500, "tax": 24500, "rent": 1620, "transport": 5, "schools": 65, "nature": 52, "city_min": 6, "foreign_pct": 45, "urban": 2, "lang": "fr", "tax_score": 21, "rent_score": 70, "transport_score": 80, "schools_score": 65, "nature_score": 52, "city_score": 91, "expat_score": 87, "composite": 67}, {"id": 2196, "name": "Fribourg", "canton": "FR", "pop": 38604, "tax": 23800, "rent": 1480, "transport": 5, "schools": 75, "nature": 68, "city_min": 0, "foreign_pct": 28, "urban": 1, "lang": "fr", "tax_score": 25, "rent_score": 79, "transport_score": 80, "schools_score": 75, "nature_score": 68, "city_score": 100, "expat_score": 42, "composite": 67}, {"id": 6458, "name": "Neuchâtel", "canton": "NE", "pop": 43200, "tax": 25800, "rent": 1420, "transport": 5, "schools": 78, "nature": 70, "city_min": 0, "foreign_pct": 30, "urban": 1, "lang": "fr", "tax_score": 14, "rent_score": 83, "transport_score": 80, "schools_score": 78, "nature_score": 70, "city_score": 100, "expat_score": 47, "composite": 67}, {"id": 2901, "name": "Schaffhausen", "canton": "SH", "pop": 36800, "tax": 22500, "rent": 1450, "transport": 5, "schools": 72, "nature": 68, "city_min": 0, "foreign_pct": 26, "urban": 1, "lang": "de", "tax_score": 32, "rent_score": 81, "transport_score": 80, "schools_score": 72, "nature_score": 68, "city_score": 100, "expat_score": 37, "composite": 67}, {"id": 261, "name": "Zurich", "canton": "ZH", "pop": 434335, "tax": 21800, "rent": 2350, "transport": 6, "schools": 90, "nature": 55, "city_min": 0, "foreign_pct": 33, "urban": 1, "lang": "de", "tax_score": 36, "rent_score": 23, "transport_score": 100, "schools_score": 90, "nature_score": 55, "city_score": 100, "expat_score": 55, "composite": 66}, {"id": 351, "name": "Bern", "canton": "BE", "pop": 133883, "tax": 26800, "rent": 1700, "transport": 6, "schools": 88, "nature": 68, "city_min": 0, "foreign_pct": 24, "urban": 1, "lang": "de", "tax_score": 9, "rent_score": 65, "transport_score": 100, "schools_score": 88, "nature_score": 68, "city_score": 100, "expat_score": 32, "composite": 66}, {"id": 1711, "name": "Zug", "canton": "ZG", "pop": 30934, "tax": 12800, "rent": 2150, "transport": 5, "schools": 78, "nature": 78, "city_min": 22, "foreign_pct": 28, "urban": 1, "lang": "de", "tax_score": 84, "rent_score": 35, "transport_score": 80, "schools_score": 78, "nature_score": 78, "city_score": 66, "expat_score": 42, "composite": 66}, {"id": 1704, "name": "Baar", "canton": "ZG", "pop": 24800, "tax": 12200, "rent": 1980, "transport": 5, "schools": 72, "nature": 72, "city_min": 18, "foreign_pct": 24, "urban": 2, "lang": "de", "tax_score": 87, "rent_score": 46, "transport_score": 80, "schools_score": 72, "nature_score": 72, "city_score": 72, "expat_score": 32, "composite": 66}, {"id": 4001, "name": "Aarau", "canton": "AG", "pop": 22800, "tax": 22100, "rent": 1550, "transport": 5, "schools": 75, "nature": 62, "city_min": 0, "foreign_pct": 26, "urban": 1, "lang": "de", "tax_score": 34, "rent_score": 74, "transport_score": 80, "schools_score": 75, "nature_score": 62, "city_score": 100, "expat_score": 37, "composite": 66}, {"id": 6134, "name": "Martigny", "canton": "VS", "pop": 19800, "tax": 22500, "rent": 1350, "transport": 5, "schools": 65, "nature": 88, "city_min": 25, "foreign_pct": 30, "urban": 1, "lang": "fr", "tax_score": 32, "rent_score": 87, "transport_score": 80, "schools_score": 65, "nature_score": 88, "city_score": 62, "expat_score": 47, "composite": 66}, {"id": 1059, "name": "Kriens", "canton": "LU", "pop": 27200, "tax": 21900, "rent": 1520, "transport": 5, "schools": 68, "nature": 75, "city_min": 5, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 35, "rent_score": 76, "transport_score": 80, "schools_score": 68, "nature_score": 75, "city_score": 92, "expat_score": 26, "composite": 65}, {"id": 1063, "name": "Emmen", "canton": "LU", "pop": 31500, "tax": 21200, "rent": 1480, "transport": 5, "schools": 68, "nature": 65, "city_min": 8, "foreign_pct": 25, "urban": 2, "lang": "de", "tax_score": 39, "rent_score": 79, "transport_score": 80, "schools_score": 68, "nature_score": 65, "city_score": 88, "expat_score": 34, "composite": 65}, {"id": 1706, "name": "Cham", "canton": "ZG", "pop": 16500, "tax": 12500, "rent": 2000, "transport": 5, "schools": 70, "nature": 75, "city_min": 18, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 86, "rent_score": 45, "transport_score": 80, "schools_score": 70, "nature_score": 75, "city_score": 72, "expat_score": 26, "composite": 65}, {"id": 6640, "name": "Vernier", "canton": "GE", "pop": 36800, "tax": 27500, "rent": 1800, "transport": 5, "schools": 68, "nature": 52, "city_min": 6, "foreign_pct": 50, "urban": 2, "lang": "fr", "tax_score": 5, "rent_score": 58, "transport_score": 80, "schools_score": 68, "nature_score": 52, "city_score": 91, "expat_score": 100, "composite": 65}, {"id": 198, "name": "Dietikon", "canton": "ZH", "pop": 28500, "tax": 19800, "rent": 1750, "transport": 5, "schools": 68, "nature": 55, "city_min": 15, "foreign_pct": 35, "urban": 2, "lang": "de", "tax_score": 47, "rent_score": 61, "transport_score": 80, "schools_score": 68, "nature_score": 55, "city_score": 77, "expat_score": 61, "composite": 64}, {"id": 1091, "name": "Ebikon", "canton": "LU", "pop": 13200, "tax": 20800, "rent": 1550, "transport": 5, "schools": 65, "nature": 68, "city_min": 6, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 41, "rent_score": 74, "transport_score": 80, "schools_score": 65, "nature_score": 68, "city_score": 91, "expat_score": 26, "composite": 64}, {"id": 1372, "name": "Freienbach", "canton": "SZ", "pop": 17800, "tax": 11200, "rent": 1850, "transport": 5, "schools": 65, "nature": 80, "city_min": 28, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 93, "rent_score": 55, "transport_score": 80, "schools_score": 65, "nature_score": 80, "city_score": 57, "expat_score": 16, "composite": 64}, {"id": 1311, "name": "Küssnacht", "canton": "SZ", "pop": 13200, "tax": 13800, "rent": 1580, "transport": 4, "schools": 62, "nature": 85, "city_min": 15, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 79, "rent_score": 72, "transport_score": 60, "schools_score": 62, "nature_score": 85, "city_score": 77, "expat_score": 16, "composite": 64}, {"id": 2762, "name": "Allschwil", "canton": "BL", "pop": 22100, "tax": 21800, "rent": 1680, "transport": 5, "schools": 70, "nature": 62, "city_min": 6, "foreign_pct": 28, "urban": 2, "lang": "de", "tax_score": 36, "rent_score": 66, "transport_score": 80, "schools_score": 70, "nature_score": 62, "city_score": 91, "expat_score": 42, "composite": 64}, {"id": 6633, "name": "Meyrin", "canton": "GE", "pop": 26800, "tax": 27200, "rent": 1850, "transport": 5, "schools": 70, "nature": 55, "city_min": 8, "foreign_pct": 48, "urban": 2, "lang": "fr", "tax_score": 7, "rent_score": 55, "transport_score": 80, "schools_score": 70, "nature_score": 55, "city_score": 88, "expat_score": 95, "composite": 64}, {"id": 5005, "name": "Bellinzona", "canton": "TI", "pop": 45200, "tax": 24800, "rent": 1450, "transport": 5, "schools": 72, "nature": 78, "city_min": 22, "foreign_pct": 32, "urban": 1, "lang": "it", "tax_score": 20, "rent_score": 81, "transport_score": 80, "schools_score": 72, "nature_score": 78, "city_score": 66, "expat_score": 53, "composite": 64}, {"id": 6436, "name": "La Chaux-de-Fonds", "canton": "NE", "pop": 38200, "tax": 25500, "rent": 1280, "transport": 5, "schools": 72, "nature": 68, "city_min": 18, "foreign_pct": 30, "urban": 1, "lang": "fr", "tax_score": 16, "rent_score": 92, "transport_score": 80, "schools_score": 72, "nature_score": 68, "city_score": 72, "expat_score": 47, "composite": 64}, {"id": 2601, "name": "Solothurn", "canton": "SO", "pop": 16900, "tax": 24200, "rent": 1380, "transport": 5, "schools": 70, "nature": 65, "city_min": 0, "foreign_pct": 22, "urban": 1, "lang": "de", "tax_score": 23, "rent_score": 85, "transport_score": 80, "schools_score": 70, "nature_score": 65, "city_score": 100, "expat_score": 26, "composite": 64}, {"id": 1509, "name": "Stans", "canton": "NW", "pop": 8800, "tax": 16800, "rent": 1450, "transport": 4, "schools": 60, "nature": 88, "city_min": 12, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 63, "rent_score": 81, "transport_score": 60, "schools_score": 60, "nature_score": 88, "city_score": 82, "expat_score": 16, "composite": 64}, {"id": 1095, "name": "Horw", "canton": "LU", "pop": 14800, "tax": 21500, "rent": 1580, "transport": 5, "schools": 65, "nature": 82, "city_min": 8, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 37, "rent_score": 72, "transport_score": 80, "schools_score": 65, "nature_score": 82, "city_score": 88, "expat_score": 16, "composite": 63}, {"id": 1362, "name": "Wollerau", "canton": "SZ", "pop": 5800, "tax": 9800, "rent": 2200, "transport": 4, "schools": 58, "nature": 82, "city_min": 22, "foreign_pct": 28, "urban": 2, "lang": "de", "tax_score": 100, "rent_score": 32, "transport_score": 60, "schools_score": 58, "nature_score": 82, "city_score": 66, "expat_score": 42, "composite": 63}, {"id": 2829, "name": "Reinach", "canton": "BL", "pop": 19800, "tax": 21200, "rent": 1620, "transport": 5, "schools": 68, "nature": 65, "city_min": 10, "foreign_pct": 24, "urban": 2, "lang": "de", "tax_score": 39, "rent_score": 70, "transport_score": 80, "schools_score": 68, "nature_score": 65, "city_score": 85, "expat_score": 32, "composite": 63}, {"id": 5192, "name": "Montreux", "canton": "VD", "pop": 26800, "tax": 25200, "rent": 1750, "transport": 5, "schools": 72, "nature": 90, "city_min": 28, "foreign_pct": 35, "urban": 1, "lang": "fr", "tax_score": 18, "rent_score": 61, "transport_score": 80, "schools_score": 72, "nature_score": 90, "city_score": 57, "expat_score": 61, "composite": 63}, {"id": 6252, "name": "Sierre", "canton": "VS", "pop": 16800, "tax": 22200, "rent": 1320, "transport": 4, "schools": 62, "nature": 85, "city_min": 18, "foreign_pct": 28, "urban": 2, "lang": "fr", "tax_score": 34, "rent_score": 89, "transport_score": 60, "schools_score": 62, "nature_score": 85, "city_score": 72, "expat_score": 42, "composite": 63}, {"id": 1201, "name": "Altdorf", "canton": "UR", "pop": 9800, "tax": 16500, "rent": 1280, "transport": 4, "schools": 58, "nature": 92, "city_min": 22, "foreign_pct": 16, "urban": 2, "lang": "de", "tax_score": 64, "rent_score": 92, "transport_score": 60, "schools_score": 58, "nature_score": 92, "city_score": 66, "expat_score": 11, "composite": 63}, {"id": 230, "name": "Winterthur", "canton": "ZH", "pop": 116906, "tax": 23100, "rent": 1850, "transport": 6, "schools": 82, "nature": 62, "city_min": 25, "foreign_pct": 29, "urban": 1, "lang": "de", "tax_score": 29, "rent_score": 55, "transport_score": 100, "schools_score": 82, "nature_score": 62, "city_score": 62, "expat_score": 45, "composite": 62}, {"id": 191, "name": "Dübendorf", "canton": "ZH", "pop": 30200, "tax": 20400, "rent": 1820, "transport": 5, "schools": 70, "nature": 58, "city_min": 12, "foreign_pct": 28, "urban": 2, "lang": "de", "tax_score": 43, "rent_score": 57, "transport_score": 80, "schools_score": 70, "nature_score": 58, "city_score": 82, "expat_score": 42, "composite": 62}, {"id": 211, "name": "Kloten", "canton": "ZH", "pop": 22400, "tax": 18900, "rent": 1680, "transport": 5, "schools": 65, "nature": 50, "city_min": 18, "foreign_pct": 32, "urban": 2, "lang": "de", "tax_score": 51, "rent_score": 66, "transport_score": 80, "schools_score": 65, "nature_score": 50, "city_score": 72, "expat_score": 53, "composite": 62}, {"id": 131, "name": "Adliswil", "canton": "ZH", "pop": 18500, "tax": 18200, "rent": 1950, "transport": 5, "schools": 68, "nature": 72, "city_min": 12, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 55, "rent_score": 48, "transport_score": 80, "schools_score": 68, "nature_score": 72, "city_score": 82, "expat_score": 26, "composite": 62}, {"id": 135, "name": "Kilchberg", "canton": "ZH", "pop": 9800, "tax": 15800, "rent": 2500, "transport": 5, "schools": 72, "nature": 82, "city_min": 10, "foreign_pct": 24, "urban": 2, "lang": "de", "tax_score": 68, "rent_score": 13, "transport_score": 80, "schools_score": 72, "nature_score": 82, "city_score": 85, "expat_score": 32, "composite": 62}, {"id": 3204, "name": "Gossau", "canton": "SG", "pop": 19200, "tax": 21200, "rent": 1480, "transport": 5, "schools": 65, "nature": 68, "city_min": 12, "foreign_pct": 20, "urban": 2, "lang": "de", "tax_score": 39, "rent_score": 79, "transport_score": 80, "schools_score": 65, "nature_score": 68, "city_score": 82, "expat_score": 21, "composite": 62}, {"id": 5746, "name": "Nyon", "canton": "VD", "pop": 22800, "tax": 24800, "rent": 1850, "transport": 5, "schools": 72, "nature": 78, "city_min": 25, "foreign_pct": 38, "urban": 1, "lang": "fr", "tax_score": 20, "rent_score": 55, "transport_score": 80, "schools_score": 72, "nature_score": 78, "city_score": 62, "expat_score": 68, "composite": 62}, {"id": 6630, "name": "Lancy", "canton": "GE", "pop": 35200, "tax": 27800, "rent": 1950, "transport": 5, "schools": 72, "nature": 52, "city_min": 5, "foreign_pct": 45, "urban": 2, "lang": "fr", "tax_score": 4, "rent_score": 48, "transport_score": 80, "schools_score": 72, "nature_score": 52, "city_score": 92, "expat_score": 87, "composite": 62}, {"id": 6628, "name": "Carouge", "canton": "GE", "pop": 22500, "tax": 27200, "rent": 1950, "transport": 5, "schools": 70, "nature": 55, "city_min": 4, "foreign_pct": 42, "urban": 2, "lang": "fr", "tax_score": 7, "rent_score": 48, "transport_score": 80, "schools_score": 70, "nature_score": 55, "city_score": 94, "expat_score": 79, "composite": 62}, {"id": 5161, "name": "Mendrisio", "canton": "TI", "pop": 14800, "tax": 24200, "rent": 1480, "transport": 4, "schools": 65, "nature": 75, "city_min": 22, "foreign_pct": 38, "urban": 2, "lang": "it", "tax_score": 23, "rent_score": 79, "transport_score": 60, "schools_score": 65, "nature_score": 75, "city_score": 66, "expat_score": 68, "composite": 62}, {"id": 2939, "name": "Neuhausen am Rheinfall", "canton": "SH", "pop": 10800, "tax": 21800, "rent": 1380, "transport": 4, "schools": 62, "nature": 70, "city_min": 4, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 36, "rent_score": 85, "transport_score": 60, "schools_score": 62, "nature_score": 70, "city_score": 94, "expat_score": 26, "composite": 62}, {"id": 173, "name": "Thalwil", "canton": "ZH", "pop": 18200, "tax": 17200, "rent": 2100, "transport": 5, "schools": 70, "nature": 80, "city_min": 16, "foreign_pct": 21, "urban": 2, "lang": "de", "tax_score": 60, "rent_score": 39, "transport_score": 80, "schools_score": 70, "nature_score": 80, "city_score": 75, "expat_score": 24, "composite": 61}, {"id": 118, "name": "Bülach", "canton": "ZH", "pop": 22500, "tax": 19200, "rent": 1650, "transport": 5, "schools": 68, "nature": 58, "city_min": 22, "foreign_pct": 27, "urban": 2, "lang": "de", "tax_score": 50, "rent_score": 68, "transport_score": 80, "schools_score": 68, "nature_score": 58, "city_score": 66, "expat_score": 39, "composite": 61}, {"id": 176, "name": "Urdorf", "canton": "ZH", "pop": 10200, "tax": 17900, "rent": 1700, "transport": 4, "schools": 62, "nature": 58, "city_min": 14, "foreign_pct": 30, "urban": 2, "lang": "de", "tax_score": 57, "rent_score": 65, "transport_score": 60, "schools_score": 62, "nature_score": 58, "city_score": 78, "expat_score": 47, "composite": 61}, {"id": 136, "name": "Rüschlikon", "canton": "ZH", "pop": 6200, "tax": 14800, "rent": 2450, "transport": 5, "schools": 70, "nature": 80, "city_min": 12, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 73, "rent_score": 16, "transport_score": 80, "schools_score": 70, "nature_score": 80, "city_score": 82, "expat_score": 26, "composite": 61}, {"id": 1708, "name": "Risch", "canton": "ZG", "pop": 10200, "tax": 11800, "rent": 2050, "transport": 4, "schools": 65, "nature": 80, "city_min": 25, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 89, "rent_score": 42, "transport_score": 60, "schools_score": 65, "nature_score": 80, "city_score": 62, "expat_score": 26, "composite": 61}, {"id": 1709, "name": "Steinhausen", "canton": "ZG", "pop": 10800, "tax": 12100, "rent": 1950, "transport": 4, "schools": 65, "nature": 70, "city_min": 20, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 88, "rent_score": 48, "transport_score": 60, "schools_score": 65, "nature_score": 70, "city_score": 69, "expat_score": 26, "composite": 61}, {"id": 2702, "name": "Riehen", "canton": "BS", "pop": 21200, "tax": 23800, "rent": 1950, "transport": 5, "schools": 75, "nature": 68, "city_min": 8, "foreign_pct": 28, "urban": 2, "lang": "de", "tax_score": 25, "rent_score": 48, "transport_score": 80, "schools_score": 75, "nature_score": 68, "city_score": 88, "expat_score": 42, "composite": 61}, {"id": 2786, "name": "Muttenz", "canton": "BL", "pop": 17200, "tax": 21500, "rent": 1650, "transport": 5, "schools": 68, "nature": 60, "city_min": 8, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 37, "rent_score": 68, "transport_score": 80, "schools_score": 68, "nature_score": 60, "city_score": 88, "expat_score": 26, "composite": 61}, {"id": 4033, "name": "Baden", "canton": "AG", "pop": 20200, "tax": 21800, "rent": 1580, "transport": 5, "schools": 70, "nature": 65, "city_min": 18, "foreign_pct": 24, "urban": 1, "lang": "de", "tax_score": 36, "rent_score": 72, "transport_score": 80, "schools_score": 70, "nature_score": 65, "city_score": 72, "expat_score": 32, "composite": 61}, {"id": 4096, "name": "Wettingen", "canton": "AG", "pop": 20800, "tax": 21200, "rent": 1550, "transport": 5, "schools": 68, "nature": 60, "city_min": 20, "foreign_pct": 26, "urban": 2, "lang": "de", "tax_score": 39, "rent_score": 74, "transport_score": 80, "schools_score": 68, "nature_score": 60, "city_score": 69, "expat_score": 37, "composite": 61}, {"id": 4061, "name": "Rheinfelden", "canton": "AG", "pop": 14200, "tax": 20800, "rent": 1480, "transport": 5, "schools": 65, "nature": 65, "city_min": 18, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 41, "rent_score": 79, "transport_score": 80, "schools_score": 65, "nature_score": 65, "city_score": 72, "expat_score": 26, "composite": 61}, {"id": 5607, "name": "Morges", "canton": "VD", "pop": 17200, "tax": 24800, "rent": 1750, "transport": 5, "schools": 68, "nature": 72, "city_min": 18, "foreign_pct": 32, "urban": 2, "lang": "fr", "tax_score": 20, "rent_score": 61, "transport_score": 80, "schools_score": 68, "nature_score": 72, "city_score": 72, "expat_score": 53, "composite": 61}, {"id": 6638, "name": "Thônex", "canton": "GE", "pop": 14200, "tax": 26800, "rent": 1850, "transport": 5, "schools": 65, "nature": 58, "city_min": 6, "foreign_pct": 38, "urban": 2, "lang": "fr", "tax_score": 9, "rent_score": 55, "transport_score": 80, "schools_score": 65, "nature_score": 58, "city_score": 91, "expat_score": 68, "composite": 61}, {"id": 1632, "name": "Glarus", "canton": "GL", "pop": 13200, "tax": 17500, "rent": 1280, "transport": 4, "schools": 60, "nature": 92, "city_min": 35, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 59, "rent_score": 92, "transport_score": 60, "schools_score": 60, "nature_score": 92, "city_score": 46, "expat_score": 16, "composite": 61}, {"id": 6700, "name": "Delémont", "canton": "JU", "pop": 12800, "tax": 25200, "rent": 1250, "transport": 4, "schools": 62, "nature": 70, "city_min": 0, "foreign_pct": 22, "urban": 1, "lang": "fr", "tax_score": 18, "rent_score": 94, "transport_score": 60, "schools_score": 62, "nature_score": 70, "city_score": 100, "expat_score": 26, "composite": 61}, {"id": 243, "name": "Küsnacht", "canton": "ZH", "pop": 14200, "tax": 16200, "rent": 2650, "transport": 5, "schools": 80, "nature": 78, "city_min": 14, "foreign_pct": 25, "urban": 2, "lang": "de", "tax_score": 66, "rent_score": 3, "transport_score": 80, "schools_score": 80, "nature_score": 78, "city_score": 78, "expat_score": 34, "composite": 60}, {"id": 155, "name": "Horgen", "canton": "ZH", "pop": 24100, "tax": 17800, "rent": 2050, "transport": 5, "schools": 70, "nature": 80, "city_min": 20, "foreign_pct": 20, "urban": 2, "lang": "de", "tax_score": 57, "rent_score": 42, "transport_score": 80, "schools_score": 70, "nature_score": 80, "city_score": 69, "expat_score": 21, "composite": 60}, {"id": 532, "name": "Köniz", "canton": "BE", "pop": 43200, "tax": 25200, "rent": 1580, "transport": 5, "schools": 72, "nature": 72, "city_min": 8, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 18, "rent_score": 72, "transport_score": 80, "schools_score": 72, "nature_score": 72, "city_score": 88, "expat_score": 16, "composite": 60}, {"id": 572, "name": "Ostermundigen", "canton": "BE", "pop": 17800, "tax": 25800, "rent": 1450, "transport": 5, "schools": 65, "nature": 60, "city_min": 6, "foreign_pct": 24, "urban": 2, "lang": "de", "tax_score": 14, "rent_score": 81, "transport_score": 80, "schools_score": 65, "nature_score": 60, "city_score": 91, "expat_score": 32, "composite": 60}, {"id": 408, "name": "Thun", "canton": "BE", "pop": 44500, "tax": 24800, "rent": 1480, "transport": 5, "schools": 75, "nature": 85, "city_min": 28, "foreign_pct": 20, "urban": 1, "lang": "de", "tax_score": 20, "rent_score": 79, "transport_score": 80, "schools_score": 75, "nature_score": 85, "city_score": 57, "expat_score": 21, "composite": 60}, {"id": 4132, "name": "Zofingen", "canton": "AG", "pop": 12800, "tax": 21500, "rent": 1450, "transport": 5, "schools": 65, "nature": 62, "city_min": 15, "foreign_pct": 20, "urban": 2, "lang": "de", "tax_score": 37, "rent_score": 81, "transport_score": 80, "schools_score": 65, "nature_score": 62, "city_score": 77, "expat_score": 21, "composite": 60}, {"id": 4566, "name": "Frauenfeld", "canton": "TG", "pop": 26500, "tax": 20800, "rent": 1480, "transport": 5, "schools": 70, "nature": 65, "city_min": 28, "foreign_pct": 22, "urban": 1, "lang": "de", "tax_score": 41, "rent_score": 79, "transport_score": 80, "schools_score": 70, "nature_score": 65, "city_score": 57, "expat_score": 26, "composite": 60}, {"id": 4461, "name": "Kreuzlingen", "canton": "TG", "pop": 22800, "tax": 20500, "rent": 1420, "transport": 5, "schools": 65, "nature": 68, "city_min": 35, "foreign_pct": 26, "urban": 1, "lang": "de", "tax_score": 43, "rent_score": 83, "transport_score": 80, "schools_score": 65, "nature_score": 68, "city_score": 46, "expat_score": 37, "composite": 60}, {"id": 5002, "name": "Locarno", "canton": "TI", "pop": 16800, "tax": 24500, "rent": 1520, "transport": 4, "schools": 68, "nature": 88, "city_min": 35, "foreign_pct": 35, "urban": 1, "lang": "it", "tax_score": 21, "rent_score": 76, "transport_score": 60, "schools_score": 68, "nature_score": 88, "city_score": 46, "expat_score": 61, "composite": 60}, {"id": 2304, "name": "Bulle", "canton": "FR", "pop": 26800, "tax": 22800, "rent": 1420, "transport": 4, "schools": 68, "nature": 80, "city_min": 28, "foreign_pct": 28, "urban": 1, "lang": "fr", "tax_score": 30, "rent_score": 83, "transport_score": 60, "schools_score": 68, "nature_score": 80, "city_score": 57, "expat_score": 42, "composite": 60}, {"id": 2555, "name": "Olten", "canton": "SO", "pop": 19200, "tax": 23800, "rent": 1350, "transport": 5, "schools": 68, "nature": 62, "city_min": 18, "foreign_pct": 22, "urban": 1, "lang": "de", "tax_score": 25, "rent_score": 87, "transport_score": 80, "schools_score": 68, "nature_score": 62, "city_score": 72, "expat_score": 26, "composite": 60}, {"id": 218, "name": "Uster", "canton": "ZH", "pop": 36800, "tax": 20900, "rent": 1780, "transport": 5, "schools": 72, "nature": 65, "city_min": 22, "foreign_pct": 24, "urban": 2, "lang": "de", "tax_score": 41, "rent_score": 59, "transport_score": 80, "schools_score": 72, "nature_score": 65, "city_score": 66, "expat_score": 32, "composite": 59}, {"id": 164, "name": "Richterswil", "canton": "ZH", "pop": 14800, "tax": 17500, "rent": 1950, "transport": 5, "schools": 66, "nature": 82, "city_min": 24, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 59, "rent_score": 48, "transport_score": 80, "schools_score": 66, "nature_score": 82, "city_score": 63, "expat_score": 16, "composite": 59}, {"id": 157, "name": "Meilen", "canton": "ZH", "pop": 12400, "tax": 16200, "rent": 2200, "transport": 5, "schools": 70, "nature": 82, "city_min": 22, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 66, "rent_score": 32, "transport_score": 80, "schools_score": 70, "nature_score": 82, "city_score": 66, "expat_score": 16, "composite": 59}, {"id": 295, "name": "Zollikon", "canton": "ZH", "pop": 13200, "tax": 16500, "rent": 2600, "transport": 5, "schools": 75, "nature": 75, "city_min": 10, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 64, "rent_score": 6, "transport_score": 80, "schools_score": 75, "nature_score": 75, "city_score": 85, "expat_score": 26, "composite": 59}, {"id": 563, "name": "Ittigen", "canton": "BE", "pop": 11400, "tax": 24200, "rent": 1520, "transport": 5, "schools": 65, "nature": 62, "city_min": 5, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 23, "rent_score": 76, "transport_score": 80, "schools_score": 65, "nature_score": 62, "city_score": 92, "expat_score": 16, "composite": 59}, {"id": 1360, "name": "Schwyz", "canton": "SZ", "pop": 15800, "tax": 14200, "rent": 1600, "transport": 4, "schools": 65, "nature": 88, "city_min": 38, "foreign_pct": 15, "urban": 2, "lang": "de", "tax_score": 76, "rent_score": 71, "transport_score": 60, "schools_score": 65, "nature_score": 88, "city_score": 42, "expat_score": 8, "composite": 59}, {"id": 4151, "name": "Spreitenbach", "canton": "AG", "pop": 12200, "tax": 19800, "rent": 1520, "transport": 4, "schools": 62, "nature": 52, "city_min": 18, "foreign_pct": 30, "urban": 2, "lang": "de", "tax_score": 47, "rent_score": 76, "transport_score": 60, "schools_score": 62, "nature_score": 52, "city_score": 72, "expat_score": 47, "composite": 59}, {"id": 5401, "name": "Yverdon-les-Bains", "canton": "VD", "pop": 30200, "tax": 25800, "rent": 1480, "transport": 5, "schools": 72, "nature": 70, "city_min": 38, "foreign_pct": 32, "urban": 1, "lang": "fr", "tax_score": 14, "rent_score": 79, "transport_score": 80, "schools_score": 72, "nature_score": 70, "city_score": 42, "expat_score": 53, "composite": 59}, {"id": 2208, "name": "Villars-sur-Glâne", "canton": "FR", "pop": 14200, "tax": 23200, "rent": 1520, "transport": 4, "schools": 65, "nature": 65, "city_min": 4, "foreign_pct": 22, "urban": 2, "lang": "fr", "tax_score": 28, "rent_score": 76, "transport_score": 60, "schools_score": 65, "nature_score": 65, "city_score": 94, "expat_score": 26, "composite": 59}, {"id": 3101, "name": "Herisau", "canton": "AR", "pop": 16200, "tax": 21800, "rent": 1380, "transport": 4, "schools": 65, "nature": 72, "city_min": 12, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 36, "rent_score": 85, "transport_score": 60, "schools_score": 65, "nature_score": 72, "city_score": 82, "expat_score": 16, "composite": 59}, {"id": 1401, "name": "Sarnen", "canton": "OW", "pop": 10200, "tax": 17200, "rent": 1380, "transport": 3, "schools": 58, "nature": 90, "city_min": 18, "foreign_pct": 14, "urban": 2, "lang": "de", "tax_score": 60, "rent_score": 85, "transport_score": 40, "schools_score": 58, "nature_score": 90, "city_score": 72, "expat_score": 5, "composite": 59}, {"id": 294, "name": "Wetzikon", "canton": "ZH", "pop": 28100, "tax": 20200, "rent": 1700, "transport": 5, "schools": 68, "nature": 70, "city_min": 30, "foreign_pct": 22, "urban": 2, "lang": "de", "tax_score": 44, "rent_score": 65, "transport_score": 80, "schools_score": 68, "nature_score": 70, "city_score": 54, "expat_score": 26, "composite": 58}, {"id": 942, "name": "Biel/Bienne", "canton": "BE", "pop": 55200, "tax": 25900, "rent": 1400, "transport": 5, "schools": 75, "nature": 62, "city_min": 35, "foreign_pct": 30, "urban": 1, "lang": "de", "tax_score": 14, "rent_score": 84, "transport_score": 80, "schools_score": 75, "nature_score": 62, "city_score": 46, "expat_score": 47, "composite": 58}, {"id": 3340, "name": "Wil", "canton": "SG", "pop": 24500, "tax": 21800, "rent": 1520, "transport": 5, "schools": 68, "nature": 65, "city_min": 30, "foreign_pct": 22, "urban": 1, "lang": "de", "tax_score": 36, "rent_score": 76, "transport_score": 80, "schools_score": 68, "nature_score": 65, "city_score": 54, "expat_score": 26, "composite": 58}, {"id": 6002, "name": "Brig-Glis", "canton": "VS", "pop": 13800, "tax": 22800, "rent": 1280, "transport": 5, "schools": 65, "nature": 90, "city_min": 45, "foreign_pct": 20, "urban": 2, "lang": "de", "tax_score": 30, "rent_score": 92, "transport_score": 80, "schools_score": 65, "nature_score": 90, "city_score": 31, "expat_score": 21, "composite": 58}, {"id": 6421, "name": "Le Locle", "canton": "NE", "pop": 10500, "tax": 25200, "rent": 1150, "transport": 4, "schools": 62, "nature": 72, "city_min": 28, "foreign_pct": 26, "urban": 2, "lang": "fr", "tax_score": 18, "rent_score": 100, "transport_score": 60, "schools_score": 62, "nature_score": 72, "city_score": 57, "expat_score": 37, "composite": 58}, {"id": 371, "name": "Burgdorf", "canton": "BE", "pop": 16800, "tax": 25100, "rent": 1350, "transport": 5, "schools": 68, "nature": 65, "city_min": 22, "foreign_pct": 19, "urban": 2, "lang": "de", "tax_score": 18, "rent_score": 87, "transport_score": 80, "schools_score": 68, "nature_score": 65, "city_score": 66, "expat_score": 18, "composite": 57}, {"id": 2761, "name": "Aesch", "canton": "BL", "pop": 10200, "tax": 20800, "rent": 1550, "transport": 4, "schools": 62, "nature": 70, "city_min": 14, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 41, "rent_score": 74, "transport_score": 60, "schools_score": 62, "nature_score": 70, "city_score": 78, "expat_score": 16, "composite": 57}, {"id": 3232, "name": "Rapperswil-Jona", "canton": "SG", "pop": 27800, "tax": 21200, "rent": 1680, "transport": 5, "schools": 72, "nature": 78, "city_min": 35, "foreign_pct": 20, "urban": 1, "lang": "de", "tax_score": 39, "rent_score": 66, "transport_score": 80, "schools_score": 72, "nature_score": 78, "city_score": 46, "expat_score": 21, "composite": 57}, {"id": 152, "name": "Herrliberg", "canton": "ZH", "pop": 5800, "tax": 14200, "rent": 2550, "transport": 4, "schools": 68, "nature": 82, "city_min": 18, "foreign_pct": 20, "urban": 2, "lang": "de", "tax_score": 76, "rent_score": 10, "transport_score": 60, "schools_score": 68, "nature_score": 82, "city_score": 72, "expat_score": 21, "composite": 56}, {"id": 4471, "name": "Arbon", "canton": "TG", "pop": 14800, "tax": 20200, "rent": 1380, "transport": 4, "schools": 62, "nature": 72, "city_min": 40, "foreign_pct": 24, "urban": 2, "lang": "de", "tax_score": 44, "rent_score": 85, "transport_score": 60, "schools_score": 62, "nature_score": 72, "city_score": 38, "expat_score": 32, "composite": 56}, {"id": 6014, "name": "Visp", "canton": "VS", "pop": 8800, "tax": 22000, "rent": 1250, "transport": 4, "schools": 58, "nature": 90, "city_min": 38, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 35, "rent_score": 94, "transport_score": 60, "schools_score": 58, "nature_score": 90, "city_score": 42, "expat_score": 16, "composite": 56}, {"id": 158, "name": "Männedorf", "canton": "ZH", "pop": 8200, "tax": 17200, "rent": 1980, "transport": 4, "schools": 65, "nature": 80, "city_min": 26, "foreign_pct": 18, "urban": 2, "lang": "de", "tax_score": 60, "rent_score": 46, "transport_score": 60, "schools_score": 65, "nature_score": 80, "city_score": 60, "expat_score": 16, "composite": 55}, {"id": 786, "name": "Spiez", "canton": "BE", "pop": 13100, "tax": 23500, "rent": 1450, "transport": 5, "schools": 62, "nature": 92, "city_min": 35, "foreign_pct": 12, "urban": 2, "lang": "de", "tax_score": 27, "rent_score": 81, "transport_score": 80, "schools_score": 62, "nature_score": 92, "city_score": 46, "expat_score": 0, "composite": 55}, {"id": 5890, "name": "Aigle", "canton": "VD", "pop": 11200, "tax": 24500, "rent": 1420, "transport": 4, "schools": 62, "nature": 88, "city_min": 45, "foreign_pct": 28, "urban": 2, "lang": "fr", "tax_score": 21, "rent_score": 83, "transport_score": 60, "schools_score": 62, "nature_score": 88, "city_score": 31, "expat_score": 42, "composite": 55}, {"id": 5056, "name": "Ascona", "canton": "TI", "pop": 5800, "tax": 24000, "rent": 1850, "transport": 3, "schools": 55, "nature": 92, "city_min": 38, "foreign_pct": 42, "urban": 3, "lang": "it", "tax_score": 24, "rent_score": 55, "transport_score": 40, "schools_score": 55, "nature_score": 92, "city_score": 42, "expat_score": 79, "composite": 55}, {"id": 290, "name": "Zumikon", "canton": "ZH", "pop": 5800, "tax": 15200, "rent": 2700, "transport": 4, "schools": 68, "nature": 78, "city_min": 14, "foreign_pct": 20, "urban": 2, "lang": "de", "tax_score": 71, "rent_score": 0, "transport_score": 60, "schools_score": 68, "nature_score": 78, "city_score": 78, "expat_score": 21, "composite": 54}, {"id": 3981, "name": "Davos", "canton": "GR", "pop": 11500, "tax": 21800, "rent": 1650, "transport": 4, "schools": 60, "nature": 98, "city_min": 65, "foreign_pct": 28, "urban": 3, "lang": "de", "tax_score": 36, "rent_score": 68, "transport_score": 60, "schools_score": 60, "nature_score": 98, "city_score": 0, "expat_score": 42, "composite": 52}];
+
+const i18n = {
+  en: {
+    nav_tools:'Tools', nav_blog:'Insights', nav_about:'About', nav_contact:'Contact', nav_disclaimer:'Disclaimer',
+    bc_this:'Municipality Finder',
+    h1:'Where should you live <em>in Switzerland?</em>',
+    desc:'Compare 105 Swiss municipalities across taxes, rent, transport, schools, nature, city access, and expat-friendliness. Filter by what matters to you — find your ideal place to live.',
+    badge_data:'105 municipalities · 7 dimensions',
+    filter_title:'Filter by what matters to you',
+    dim_tax:'Low taxes', dim_rent:'Affordable rent', dim_transport:'Transport',
+    dim_schools:'Schools', dim_nature:'Nature & outdoors', dim_city:'City proximity', dim_expat:'Expat-friendly',
+    search_placeholder:'Search municipality...',
+    lang_de:'German-speaking', lang_fr:'French-speaking', lang_it:'Italian-speaking',
+    type_city:'City', type_agglom:'Agglomeration', type_rural:'Rural / resort',
+    no_results:'No municipalities match your filters. Try adjusting your search.',
+    disclaimer:'Data sources: Tax burden — Federal Tax Administration 2024 effective rates · Rent — FSO structural rent survey 2024 · Transport — ARE ÖV-Güteklassen 2024 · All scores are relative rankings within this dataset. For guidance only.',
+    score_lbl:'score', pop_lbl:'Population', tax_lbl:'Tax burden (CHF 100k)', rent_lbl:'Avg rent 3.5 rooms',
+    transport_lbl:'Transport', schools_lbl:'Schools', nature_lbl:'Nature', city_lbl:'City access', expat_lbl:'Expat-friendly',
+    city_access_lbl:'Min to city', canton_lbl:'Canton', lang_spoken:'Language', size_lbl:'Type',
+    urban_types:['','City','Agglomeration','Rural / resort'],
+    lang_labels:{de:'German',fr:'French',it:'Italian'},
+    results_of: (n,t) => n===t ? `${n} municipalities` : `${n} of ${t} municipalities`,
+        assumptions_title:'Assumptions &amp; how scores work',
+    assumptions_body:"All scores are based on a <strong>single adult</strong> profile. Tax burden uses a gross income of <strong>CHF 100,000/year</strong> — adjust your expectations up or down if your income differs significantly. Rent is the average for a <strong>3.5-room apartment</strong>. Scores are relative rankings within this dataset of 104 municipalities — a score of 100 means best in dataset, not perfect.",
+    g_tax_title:'🏦 Low taxes',
+    g_tax_body:'Effective income tax burden in CHF for a single adult earning CHF 100k gross/year, including federal, cantonal, and municipal tax. Lower = higher score.',
+    g_rent_title:'🏠 Affordable rent',
+    g_rent_body:'Average monthly rent for a 3.5-room apartment (approx. 2 bedrooms). Source: FSO structural rent survey 2024. Lower rent = higher score.',
+    g_transport_title:'🚆 Transport',
+    g_transport_body:'Public transport quality class (ARE ÖV-Güteklassen). Class A = intercity rail every 15 min or better. Class F = bus once per hour or less. Better connections = higher score.',
+    g_schools_title:'🎓 Schools',
+    g_schools_body:'Composite score based on number of schools per capita, proximity to a Gymnasium, and access to vocational training. Public schooling in Switzerland is free and high quality.',
+    g_nature_title:'🏔 Nature &amp; outdoors',
+    g_nature_body:'Access to lakes, forests, mountains, and open landscape. Based on ARE recreation accessibility index and elevation. Higher = more outdoor activity options on your doorstep.',
+    g_city_title:'🏙 City proximity',
+    g_city_body:'Travel time in minutes by public transport to the nearest major city centre. Under 10 minutes scores near 100.',
+    g_expat_title:'🌍 Expat-friendly',
+    g_expat_body:'Proportion of foreign residents. A higher share signals a more international community and greater English language presence. Source: FSO 2024.',
+    all_cantons:'All cantons', all_langs:'All languages', all_types:'All sizes',
+  },
+  de: {
+    nav_tools:'Tools', nav_blog:'Einblicke', nav_about:'Über uns', nav_contact:'Kontakt', nav_disclaimer:'Haftungsausschluss',
+    bc_this:'Gemeinde-Finder',
+    h1:'Wo sollten Sie in der Schweiz <em>leben?</em>',
+    desc:'Vergleichen Sie 105 Schweizer Gemeinden nach Steuern, Miete, Verkehr, Schulen, Natur, Stadtanbindung und Internationalität.',
+    badge_data:'105 Gemeinden · 7 Dimensionen',
+    filter_title:'Filtern Sie nach Ihren Prioritäten',
+    dim_tax:'Niedrige Steuern', dim_rent:'Günstige Miete', dim_transport:'Öffentlicher Verkehr',
+    dim_schools:'Schulen', dim_nature:'Natur & Freizeit', dim_city:'Stadtnähe', dim_expat:'Expat-freundlich',
+    search_placeholder:'Gemeinde suchen...',
+    lang_de:'Deutschsprachig', lang_fr:'Französischsprachig', lang_it:'Italienischsprachig',
+    type_city:'Stadt', type_agglom:'Agglomeration', type_rural:'Ländlich / Kurort',
+    no_results:'Keine Gemeinden gefunden. Passen Sie Ihre Filter an.',
+    disclaimer:'Datenquellen: Steuerbelastung — ESTV 2024 · Miete — BFS Strukturerhebung 2024 · ÖV — ARE Güteklassen 2024. Nur zur Orientierung.',
+    score_lbl:'Punkte', pop_lbl:'Einwohner', tax_lbl:'Steuerbelastung (CHF 100k)', rent_lbl:'Ø Miete 3,5-Zimmer',
+    transport_lbl:'ÖV', schools_lbl:'Schulen', nature_lbl:'Natur', city_lbl:'Stadtnähe', expat_lbl:'Expat-freundlich',
+    city_access_lbl:'Min zur Stadt', canton_lbl:'Kanton', lang_spoken:'Sprache', size_lbl:'Typ',
+    urban_types:['','Stadt','Agglomeration','Ländlich / Kurort'],
+    lang_labels:{de:'Deutsch',fr:'Französisch',it:'Italienisch'},
+    results_of: (n,t) => n===t ? `${n} Gemeinden` : `${n} von ${t} Gemeinden`,
+    assumptions_title:'Annahmen &amp; Berechnungsmethodik',
+    assumptions_body:'Alle Scores basieren auf einem <strong>Einzelpersonen</strong>-Profil. Steuerbelastung bei einem Bruttoeinkommen von <strong>CHF 100.000/Jahr</strong>. Miete für eine <strong>3,5-Zimmer-Wohnung</strong>. Scores sind relative Rankings innerhalb dieser 104 Gemeinden.',
+    g_tax_title:'🏦 Niedrige Steuern', g_tax_body:'Effektive Steuerbelastung in CHF für eine Einzelperson mit CHF 100k Bruttoeinkommen/Jahr, inkl. Bundes-, Kantons- und Gemeindesteuer. Tiefer = höherer Score.',
+    g_rent_title:'🏠 Günstige Miete', g_rent_body:'Durchschnittliche Monatsmiete für eine 3,5-Zimmer-Wohnung. Quelle: BFS Strukturerhebung 2024. Niedrigere Miete = höherer Score.',
+    g_transport_title:'🚆 Öffentlicher Verkehr', g_transport_body:'ÖV-Güteklasse des ARE. Klasse A = Fernverkehr alle 15 Min. oder besser. Klasse F = Bus einmal pro Stunde. Bessere Verbindung = höherer Score.',
+    g_schools_title:'🎓 Schulen', g_schools_body:'Score basierend auf Schulen pro Kopf, Nähe zu einem Gymnasium und Zugang zur Berufsbildung. Öffentliche Schulen in der Schweiz sind gratis und qualitativ hochwertig.',
+    g_nature_title:'🏔 Natur &amp; Freizeit', g_nature_body:'Zugang zu Seen, Wäldern, Bergen und offener Landschaft. Basierend auf dem ARE-Erholungsindex und der Höhenlage. Höher = mehr Freizeitmöglichkeiten.',
+    g_city_title:'🏙 Stadtnähe', g_city_body:'Reisezeit in Minuten mit dem ÖV zum nächsten Stadtzentrum. Unter 10 Minuten = Score nahe 100.',
+    g_expat_title:'🌍 Expat-freundlich', g_expat_body:'Anteil ausländischer Einwohner. Ein höherer Anteil signalisiert eine internationalere Gemeinschaft. Quelle: BFS 2024.',
+    all_cantons:'Alle Kantone', all_langs:'Alle Sprachen', all_types:'Alle Typen',
+  },
+  fr: {
+    nav_tools:'Outils', nav_blog:'Analyses', nav_about:'À propos', nav_contact:'Contact', nav_disclaimer:'Avertissement',
+    bc_this:'Trouvez votre commune',
+    h1:'Où devriez-vous vivre <em>en Suisse ?</em>',
+    desc:'Comparez 105 communes suisses selon les impôts, le loyer, les transports, les écoles, la nature, la proximité des villes et l\'accueil des expatriés.',
+    badge_data:'105 communes · 7 dimensions',
+    filter_title:'Filtrez selon vos priorités',
+    dim_tax:'Impôts bas', dim_rent:'Loyer abordable', dim_transport:'Transports publics',
+    dim_schools:'Écoles', dim_nature:'Nature & plein air', dim_city:'Proximité ville', dim_expat:'Accueil expatriés',
+    search_placeholder:'Rechercher une commune...',
+    lang_de:'Germanophone', lang_fr:'Francophone', lang_it:'Italophone',
+    type_city:'Ville', type_agglom:'Agglomération', type_rural:'Rural / station',
+    no_results:'Aucune commune ne correspond à vos filtres.',
+    disclaimer:'Sources: Charge fiscale — AFC 2024 · Loyers — OFS 2024 · Transports — ARE 2024. À titre indicatif uniquement.',
+    score_lbl:'score', pop_lbl:'Population', tax_lbl:'Charge fiscale (CHF 100k)', rent_lbl:'Loyer moy. 3,5 pièces',
+    transport_lbl:'Transports', schools_lbl:'Écoles', nature_lbl:'Nature', city_lbl:'Accès ville', expat_lbl:'Expatriés',
+    city_access_lbl:'Min jusqu\'à la ville', canton_lbl:'Canton', lang_spoken:'Langue', size_lbl:'Type',
+    urban_types:['','Ville','Agglomération','Rural / station'],
+    lang_labels:{de:'Allemand',fr:'Français',it:'Italien'},
+    results_of: (n,t) => n===t ? `${n} communes` : `${n} sur ${t} communes`,
+    assumptions_title:'Hypothèses &amp; méthodologie',
+    assumptions_body:'Tous les scores sont basés sur un profil de <strong>célibataire</strong>. Charge fiscale calculée sur un revenu brut de <strong>CHF 100 000/an</strong>. Loyer moyen pour un <strong>appartement de 3,5 pièces</strong>. Scores = classements relatifs parmi 104 communes.',
+    g_tax_title:'🏦 Impôts bas', g_tax_body:'Charge fiscale effective en CHF pour un célibataire gagnant CHF 100k brut/an, incluant les impôts fédéraux, cantonaux et communaux. Bas = score élevé.',
+    g_rent_title:'🏠 Loyer abordable', g_rent_body:'Loyer mensuel moyen pour un appartement de 3,5 pièces (env. 2 chambres). Source: OFS 2024. Loyer bas = score élevé.',
+    g_transport_title:'🚆 Transports publics', g_transport_body:'Classe de qualité TP (ARE). Classe A = train intercity toutes les 15 min. Classe F = bus une fois par heure. Meilleure desserte = score plus élevé.',
+    g_schools_title:'🎓 Écoles', g_schools_body:'Score composite basé sur le nombre d&#39;écoles par habitant, la proximité d&#39;un gymnase et l&#39;accès à la formation professionnelle.',
+    g_nature_title:'🏔 Nature &amp; plein air', g_nature_body:'Accès aux lacs, forêts, montagnes et paysages ouverts. Basé sur l&#39;indice de récréation ARE et l&#39;altitude.',
+    g_city_title:'🏙 Proximité de la ville', g_city_body:'Temps de trajet en transports publics jusqu&#39;au centre-ville le plus proche. Moins de 10 minutes = score proche de 100.',
+    g_expat_title:'🌍 Accueil expatriés', g_expat_body:'Part des résidents étrangers. Une part plus élevée indique une communauté plus internationale. Source: OFS 2024.',
+    all_cantons:'Tous les cantons', all_langs:'Toutes les langues', all_types:'Tous les types',
+  },
+  it: {
+    nav_tools:'Strumenti', nav_blog:'Approfondimenti', nav_about:'Chi siamo', nav_contact:'Contatto', nav_disclaimer:'Dichiarazione',
+    bc_this:'Trovatore di comuni',
+    h1:'Dove dovreste vivere <em>in Svizzera?</em>',
+    desc:'Confrontate 105 comuni svizzeri per imposte, affitto, trasporti, scuole, natura, accesso alla città e accoglienza degli expat.',
+    badge_data:'105 comuni · 7 dimensioni',
+    filter_title:'Filtrate secondo le vostre priorità',
+    dim_tax:'Imposte basse', dim_rent:'Affitto accessibile', dim_transport:'Trasporti pubblici',
+    dim_schools:'Scuole', dim_nature:'Natura & outdoor', dim_city:'Vicinanza città', dim_expat:'Accoglienza expat',
+    search_placeholder:'Cerca un comune...',
+    lang_de:'Germanofono', lang_fr:'Francofono', lang_it:'Italofono',
+    type_city:'Città', type_agglom:'Agglomerazione', type_rural:'Rurale / stazione',
+    no_results:'Nessun comune corrisponde ai filtri.',
+    disclaimer:'Fonti: Onere fiscale — AFC 2024 · Affitti — UST 2024 · Trasporti — ARE 2024. Solo a scopo orientativo.',
+    score_lbl:'punteggio', pop_lbl:'Popolazione', tax_lbl:'Onere fiscale (CHF 100k)', rent_lbl:'Affitto medio 3,5 locali',
+    transport_lbl:'Trasporti', schools_lbl:'Scuole', nature_lbl:'Natura', city_lbl:'Accesso città', expat_lbl:'Expat-friendly',
+    city_access_lbl:'Min alla città', canton_lbl:'Cantone', lang_spoken:'Lingua', size_lbl:'Tipo',
+    urban_types:['','Città','Agglomerazione','Rurale / stazione'],
+    lang_labels:{de:'Tedesco',fr:'Francese',it:'Italiano'},
+    results_of: (n,t) => n===t ? `${n} comuni` : `${n} su ${t} comuni`,
+    assumptions_title:'Ipotesi &amp; metodologia',
+    assumptions_body:'Tutti i punteggi si basano su un profilo <strong>single</strong>. L&#39;onere fiscale utilizza un reddito lordo di <strong>CHF 100.000/anno</strong>. L&#39;affitto è la media per un <strong>appartamento di 3,5 locali</strong>. I punteggi sono classifiche relative tra 104 comuni.',
+    g_tax_title:'🏦 Imposte basse', g_tax_body:'Onere fiscale effettivo in CHF per un single con CHF 100k lordi/anno, incluse imposte federali, cantonali e comunali. Basso = punteggio alto.',
+    g_rent_title:'🏠 Affitto accessibile', g_rent_body:'Affitto mensile medio per un appartamento di 3,5 locali. Fonte: UST 2024. Affitto basso = punteggio alto.',
+    g_transport_title:'🚆 Trasporti pubblici', g_transport_body:'Classe di qualità TP (ARE). Classe A = treno intercity ogni 15 min. Classe F = autobus una volta all&#39;ora. Migliore connessione = punteggio più alto.',
+    g_schools_title:'🎓 Scuole', g_schools_body:'Punteggio composito basato su scuole pro capite, vicinanza a un Ginnasio e accesso alla formazione professionale.',
+    g_nature_title:'🏔 Natura &amp; outdoor', g_nature_body:'Accesso a laghi, foreste, montagne e paesaggi aperti. Basato sull&#39;indice di ricreazione ARE e l&#39;altitudine.',
+    g_city_title:'🏙 Vicinanza alla città', g_city_body:'Tempo di viaggio in trasporto pubblico fino al centro città più vicino. Meno di 10 minuti = punteggio vicino a 100.',
+    g_expat_title:'🌍 Accoglienza expat', g_expat_body:'Quota di residenti stranieri. Una quota più alta indica una comunità più internazionale. Fonte: UST 2024.',
+    all_cantons:'Tutti i cantoni', all_langs:'Tutte le lingue', all_types:'Tutti i tipi',
+  }
+};
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+let activeDims = new Set(['tax_score','rent_score','transport_score','schools_score','nature_score','city_score','expat_score']);
+let searchQ = '', cantonF = '', langF = '', typeF = '', expandedId = null;
+const dims = ['tax_score','rent_score','transport_score','schools_score','nature_score','city_score','expat_score'];
+const dimColors = {tax_score:'tax',rent_score:'rent',transport_score:'transport',schools_score:'schools',nature_score:'nature',city_score:'city',expat_score:'expat'};
+const dimKeys = {tax_score:'dim_tax',rent_score:'dim_rent',transport_score:'dim_transport',schools_score:'dim_schools',nature_score:'dim_nature',city_score:'dim_city',expat_score:'dim_expat'};
+
+const SHORT_LABELS = {
+  tax_score:       {en:'Taxes',     de:'Steuern',   fr:'Impôts',    it:'Imposte'},
+  rent_score:      {en:'Rent',      de:'Miete',     fr:'Loyer',     it:'Affitto'},
+  transport_score: {en:'Transport', de:'ÖV',        fr:'Transports',it:'Trasporti'},
+  schools_score:   {en:'Schools',   de:'Schulen',   fr:'Écoles',    it:'Scuole'},
+  nature_score:    {en:'Nature',    de:'Natur',     fr:'Nature',    it:'Natura'},
+  city_score:      {en:'City',      de:'Stadt',     fr:'Ville',     it:'Città'},
+  expat_score:     {en:'Expats',    de:'Expats',    fr:'Expatriés', it:'Expat'},
+};
+function shortLabel(dim) { return (SHORT_LABELS[dim]||{})[currentLang] || dim; }
+
+function computeScore(m) {
+  if (activeDims.size === 0) return m.composite;
+  const vals = [...activeDims].map(d => m[d]);
+  return Math.round(vals.reduce((a,b)=>a+b,0) / vals.length);
+}
+
+function filtered() {
+  return MUNIS.filter(m => {
+    if (searchQ && !m.name.toLowerCase().includes(searchQ.toLowerCase()) && !m.canton.toLowerCase().includes(searchQ.toLowerCase())) return false;
+    if (cantonF && m.canton !== cantonF) return false;
+    if (langF && m.lang !== langF) return false;
+    if (typeF && m.urban !== +typeF) return false;
+    return true;
+  }).map(m => ({...m, score: computeScore(m)}))
+    .sort((a,b) => b.score - a.score);
+}
+
+function scoreColor(s) {
+  if (s >= 70) return '#2d5a3d';
+  if (s >= 55) return '#8a6d3b';
+  return '#7a756c';
+}
+
+function render() {
+  const t = i18n[currentLang];
+  const data = filtered();
+  const grid = document.getElementById('results-grid');
+  const empty = document.getElementById('empty-state');
+  document.getElementById('results-count').textContent = t.results_of(data.length, MUNIS.length);
+
+  if (data.length === 0) { grid.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+
+  grid.innerHTML = data.map((m, idx) => {
+    const isExp = m.id === expandedId && m.name === (MUNIS.find(x=>x.id===expandedId)||{}).name;
+    const langTag = `<span class="detail-tag tag-${m.lang}">${t.lang_labels[m.lang]}</span>`;
+    const urbanTag = `<span class="detail-tag tag-${['','city','agglom','rural'][m.urban]}">${t.urban_types[m.urban]}</span>`;
+    const barsHtml = dims.map(d => {
+      const label = t[dimKeys[d]];
+      const val = m[d];
+      const active = activeDims.has(d) ? '' : 'opacity:0.35;';
+      return `<div class="bar-row" style="${active}">
+        <span class="bar-label">${shortLabel(d)}</span>
+        <div class="bar-bg"><div class="bar-fill ${dimColors[d]}" style="width:${val}%"></div></div>
+        <span class="bar-val">${val}</span>
+      </div>`;
+    }).join('');
+    return `<div class="muni-card${isExp?' expanded':''}" data-id="${m.id}" data-name="${m.name}">
+      <div class="card-top">
+        <div>
+          <div class="card-rank">#${idx+1}</div>
+          <div class="card-name">${m.name}</div>
+          <div class="card-canton">${m.canton} · ${t.urban_types[m.urban]}</div>
+        </div>
+        <div class="card-score-wrap">
+          <div class="card-score" style="color:${scoreColor(m.score)}">${m.score}</div>
+          <div class="card-score-label">${t.score_lbl}</div>
+        </div>
+      </div>
+      <div class="card-bars">${barsHtml}</div>
+      <div class="card-detail">
+        <div class="detail-grid">
+          <div class="detail-stat"><div class="detail-stat-label">${t.pop_lbl}</div><div class="detail-stat-value">${m.pop.toLocaleString('de-CH')}</div></div>
+          <div class="detail-stat"><div class="detail-stat-label">${t.canton_lbl}</div><div class="detail-stat-value">${m.canton}</div></div>
+          <div class="detail-stat"><div class="detail-stat-label">${t.tax_lbl}</div><div class="detail-stat-value">CHF ${m.tax.toLocaleString('de-CH')}</div></div>
+          <div class="detail-stat"><div class="detail-stat-label">${t.rent_lbl}</div><div class="detail-stat-value">CHF ${m.rent.toLocaleString('de-CH')}/mo</div></div>
+          <div class="detail-stat"><div class="detail-stat-label">${t.city_access_lbl}</div><div class="detail-stat-value">${m.city_min} min</div></div>
+          <div class="detail-stat"><div class="detail-stat-label">Foreign residents</div><div class="detail-stat-value">${m.foreign_pct}%</div></div>
+        </div>
+        <div class="detail-tags">${langTag}${urbanTag}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  grid.querySelectorAll('.muni-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = +card.dataset.id, name = card.dataset.name;
+      expandedId = (expandedId === id && MUNIS.find(x=>x.id===expandedId)?.name===name) ? null : id;
+      render();
+    });
+  });
+}
+
+// ── Canton dropdown ───────────────────────────────────────────────────────────
+const cantons = [...new Set(MUNIS.map(m=>m.canton))].sort();
+const cantonSel = document.getElementById('canton-filter');
+cantons.forEach(c => { const o=document.createElement('option'); o.value=c; o.textContent=c; cantonSel.appendChild(o); });
+
+// ── Event listeners ───────────────────────────────────────────────────────────
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('change', () => {
+    const dim = chip.dataset.dim;
+    if (chip.querySelector('input').checked) { activeDims.add(dim); chip.classList.add('active'); }
+    else { activeDims.delete(dim); chip.classList.remove('active'); }
+    render();
+  });
+});
+document.getElementById('search-input').addEventListener('input', e => { searchQ=e.target.value; render(); });
+cantonSel.addEventListener('change', e => { cantonF=e.target.value; render(); });
+document.getElementById('lang-filter').addEventListener('change', e => { langF=e.target.value; render(); });
+document.getElementById('type-filter').addEventListener('change', e => { typeF=e.target.value; render(); });
+
+// ── Language ──────────────────────────────────────────────────────────────────
+function setLang(lang) {
+  currentLang=lang; localStorage.setItem('bs_lang',lang); document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+lang).classList.add('active');
+  const t=i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(t[k]!==undefined && typeof t[k]==='string') el.innerHTML=t[k];
+  });
+  document.getElementById('search-input').placeholder = t.search_placeholder;
+  // Update canton select label
+  cantonSel.options[0].textContent = t.all_cantons;
+  document.getElementById('lang-filter').options[0].textContent = t.all_langs;
+  document.getElementById('type-filter').options[0].textContent = t.all_types;
+  document.querySelectorAll('[data-i18n-opt]').forEach(el => {
+    const k=el.getAttribute('data-i18n-opt'); if(t[k]) el.textContent=t[k];
+  });
+  render();
+}
+document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
+setLang(currentLang);
+</script>
+</body>
+</html>
