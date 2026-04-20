@@ -18,13 +18,13 @@
     :root { --stone:#f5f2ed; --stone-3:#d8d2c8; --ink:#1a1916; --ink-2:#3d3a35; --ink-3:#7a756c; --alpine:#2d5a3d; --alpine-2:#3d7a52; --white:#ffffff; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); overflow-x: hidden; }
-    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
-    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
-    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: space-between; align-items: center; padding: 0 4rem; height: 44px; border-bottom: 1px solid #2a2825; }
+    .lang-label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8a857e; font-weight: 400; }
+    .lang-btn { background: none; border: none; color: #8a857e; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; padding: 0 1.1rem; height: 44px; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
     .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
-    .lang-btn:hover { color: var(--white); background: #2a2825; }
-    .lang-btn.active { color: var(--alpine-2); }
-    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .lang-btn:hover { color: var(--white); background: #252320; }
+    .lang-btn.active { color: var(--alpine-2); background: rgba(61,122,82,0.1); font-weight: 600; }
+    nav { position: fixed; top: 44px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
     .nav-logo span { color: var(--alpine); }
     .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
@@ -138,11 +138,16 @@
 </head>
 <body>
   <div class="lang-bar">
-    <span class="lang-label">Language</span>
-    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
-    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
-    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
-    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    <div class="lang-bar-left" style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="color:#4a4742;font-size:0.9rem;">🌐</span>
+      <span class="lang-label">Select language</span>
+    </div>
+    <div style="display:flex;height:100%;">
+      <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+      <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+      <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    </div>
   </div>
   <nav>
     <a href="/" class="nav-logo">Berg<span>Sight</span></a>
@@ -205,13 +210,14 @@
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('btn-' + lang).classList.add('active');
       var iframe = document.getElementById('tool-iframe');
-      iframe.src = 'https://tools.bergsight.com/salary/?lang=' + lang;
+      var newSrc = 'https://tools.bergsight.com/salary/?lang=' + lang;
+      if (iframe.src !== newSrc) iframe.src = newSrc;
     }
     var currentLang = localStorage.getItem('bs_lang') || 'en';
-    document.getElementById('btn-' + currentLang).classList.add('active');
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => setLang(btn.dataset.lang));
     });
+    setLang(currentLang);
   </script>
 </body>
 </html>
