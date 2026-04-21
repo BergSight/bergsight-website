@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/insights">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="BergSight Insights — articles on Swiss retirement planning, salaries, investing, and financial products. Written for residents and expats in Switzerland.">
   <meta property="og:title" content="Insights & Articles | BergSight">
@@ -28,20 +29,20 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); overflow-x: hidden; }
     /* ── Nav ── */
-    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
-    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
-    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: space-between; align-items: center; padding: 0 4rem; height: 44px; border-bottom: 1px solid #2a2825; }
+    .lang-label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8a857e; font-weight: 400; }
+    .lang-btn { background: none; border: none; color: #8a857e; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; padding: 0 1.1rem; height: 44px; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
     .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
-    .lang-btn:hover { color: var(--white); background: #2a2825; }
-    .lang-btn.active { color: var(--alpine-2); }
-    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    .lang-btn:hover { color: var(--white); background: #252320; }
+    .lang-btn.active { color: var(--alpine-2); background: rgba(61,122,82,0.1); font-weight: 600; }
+    nav { position: fixed; top: 44px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
     .nav-logo span { color: var(--alpine); }
     .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
     .nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--alpine); }
     /* ── Header ── */
-    .page-header { padding: 9rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
+    .page-header { padding: 9.5rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
     .page-header-peaks { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; opacity: 0.12; }
     .page-header-inner { position: relative; max-width: 860px; }
     .page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--alpine-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
@@ -100,7 +101,7 @@
     .footer-disclaimer { font-size: 0.72rem; color: #4a4742; line-height: 1.6; max-width: 560px; text-align: right; }
     @media (max-width: 900px) {
       .lang-bar { padding: 0 1.5rem; } nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
-      .page-header { padding: 7rem 1.5rem 3rem; }
+      .page-header { padding: 7.5rem 1.5rem 3rem; }
       .filter-inner { padding: 0 1.5rem; }
       .insights-wrap { padding: 3rem 1.5rem 4rem; }
       footer { padding: 3rem 1.5rem 2rem; } .footer-top { grid-template-columns: 1fr 1fr; } .footer-disclaimer { text-align: left; } .lang-label { display: none; }
@@ -111,11 +112,16 @@
 <body>
 
   <div class="lang-bar">
-    <span class="lang-label">Language</span>
-    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
-    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
-    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
-    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    <div class="lang-bar-left" style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="color:#4a4742;font-size:0.9rem;">🌐</span>
+      <span class="lang-label">Select language</span>
+    </div>
+    <div style="display:flex;height:100%;">
+      <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+      <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+      <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    </div>
   </div>
 
   <nav>
@@ -258,9 +264,16 @@
           <div class="cat-title"   data-i18n="cat_products">Products & Platforms</div>
         </div>
       </div>
-      <div class="cat-coming-soon">
-        <div class="coming-soon-title" data-i18n="coming_soon_title">Articles coming soon</div>
-        <div class="coming-soon-desc"  data-i18n="coming_soon_desc">Reviews and comparisons of Swiss financial products and platforms — robo-advisers, Pillar 3a providers, banking apps, and more.</div>
+      <div class="article-grid">
+
+        <a href="/insights/best-pillar-3a-providers-switzerland" class="article-card">
+          <svg class="card-arrow" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16 L16 4 M8 4 L16 4 L16 12"/></svg>
+          <span class="card-tag tag-products" data-i18n="tag_products">Products &amp; Platforms</span>
+          <div class="card-title" data-i18n="art8_title">A comparison of Pillar 3a providers in Switzerland (2026)</div>
+          <div class="card-excerpt" data-i18n="art8_excerpt">An objective look at every type of provider — from digital fintechs to traditional banks and insurance companies. Fees, pros and cons.</div>
+          <div class="card-meta">10 min · <span data-i18n="art8_date">April 2026</span></div>
+        </a>
+
       </div>
     </div>
 
@@ -294,7 +307,7 @@
           <li><a href="/faq"         data-i18n="nav_faq">FAQ</a></li>
           <li><a href="/privacy"     data-i18n="footer_privacy">Privacy</a></li>
           <li><a href="/disclaimer"  data-i18n="footer_disclaimer_link">Disclaimer</a></li>
-          <li><a href="mailto:hello@bergsight.com" data-i18n="footer_contact">Contact</a></li>
+          <li><a href="/contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -344,8 +357,8 @@ const i18n = {
     art4_title:`Comparison is the thief of joy`, art4_excerpt:`We know we should not compare ourselves to others. But when it comes to salary, a little context goes a long way.`, art4_date:`April 2026`,
     art5_title:`Is CHF 7,000 a good salary in Switzerland?`, art5_excerpt:`It sits right around the national median. But whether it is enough depends heavily on where you live and your household situation.`, art5_date:`April 2026`,
     art6_title:`Compound growth — it's not magic, it's simple mathematics`, art6_excerpt:`The difference between starting at 25 and starting at 35 is not ten years. It is often the difference between financial freedom and stress in retirement.`, art6_date:`April 2026`,
-    art7_title:`Pillar 3a vs 3b: what's the difference and which one do you need?`, art7_excerpt:`One gives you a tax break in exchange for restrictions. The other is fully flexible but offers no tax incentive. Here is how to choose.`, art7_date:`April 2026`, coming_soon_title:`Articles coming soon`,
-    coming_soon_desc:`Reviews and comparisons of Swiss financial products and platforms — robo-advisers, Pillar 3a providers, banking apps, and more.`
+    art7_title:`Pillar 3a vs 3b: what's the difference and which one do you need?`, art7_excerpt:`One gives you a tax break in exchange for restrictions. The other is fully flexible but offers no tax incentive. Here is how to choose.`, art7_date:`April 2026`,
+    art8_title:`A comparison of Pillar 3a providers in Switzerland (2026)`, art8_excerpt:`An objective look at every type of provider — from digital fintechs to traditional banks and insurance companies. Fees, pros and cons.`, art8_date:`April 2026`, cat_products_count:`1 article`
   },
   de: {
     nav_tools:`Tools`, nav_blog:`Blog & Einblicke`, nav_about:`Über uns`, nav_faq:`FAQ`,
@@ -368,8 +381,8 @@ const i18n = {
     art4_title:`Vergleich ist der Dieb der Freude`, art4_excerpt:`Wir wissen, dass wir uns nicht mit anderen vergleichen sollten. Aber beim Gehalt kann ein wenig Kontext weit führen.`, art4_date:`April 2026`,
     art5_title:`Ist CHF 7.000 ein gutes Gehalt in der Schweiz?`, art5_excerpt:`Es liegt genau um den nationalen Median. Ob es reicht, hängt stark vom Wohnort und der Haushaltssituation ab.`, art5_date:`April 2026`,
     art6_title:`Zinseszins — kein Zauber, nur einfache Mathematik`, art6_excerpt:`Der Unterschied zwischen dem Start mit 25 und 35 sind nicht nur zehn Jahre. Es ist oft der Unterschied zwischen finanzieller Freiheit und Stress im Ruhestand.`, art6_date:`April 2026`,
-    art7_title:`Säule 3a vs. 3b: Was ist der Unterschied und was brauchen Sie?`, art7_excerpt:`Die eine bietet einen Steuervorteil mit Einschränkungen. Die andere ist flexibel, aber ohne Steueranreiz. So wählen Sie richtig.`, art7_date:`April 2026`, coming_soon_title:`Artikel folgen in Kürze`,
-    coming_soon_desc:`Reviews und Vergleiche von Schweizer Finanzprodukten und Plattformen — Robo-Advisor, Säule-3a-Anbieter, Banking-Apps und mehr.`
+    art7_title:`Säule 3a vs. 3b: Was ist der Unterschied und was brauchen Sie?`, art7_excerpt:`Die eine bietet einen Steuervorteil mit Einschränkungen. Die andere ist flexibel, aber ohne Steueranreiz. So wählen Sie richtig.`, art7_date:`April 2026`,
+    art8_title:`Ein Vergleich der Säule-3a-Anbieter in der Schweiz (2026)`, art8_excerpt:`Ein objektiver Blick auf jeden Anbietertyp — von digitalen Fintechs über Banken bis zu Versicherungen. Gebühren, Vor- und Nachteile.`, art8_date:`April 2026`, cat_products_count:`1 Artikel`
   },
   fr: {
     nav_tools:`Outils`, nav_blog:`Blog & Analyses`, nav_about:`À propos`, nav_faq:`FAQ`,
@@ -392,8 +405,8 @@ const i18n = {
     art4_title:`La comparaison est le voleur de joie`, art4_excerpt:`Nous savons que nous ne devrions pas nous comparer aux autres. Mais en matière de salaire, un peu de contexte aide beaucoup.`, art4_date:`Avril 2026`,
     art5_title:`CHF 7'000 est-il un bon salaire en Suisse ?`, art5_excerpt:`Il se situe juste autour de la médiane nationale. Mais s'il suffit dépend fortement de l'endroit où l'on vit.`, art5_date:`Avril 2026`,
     art6_title:`La croissance composée — pas de magie, juste des mathématiques`, art6_excerpt:`La différence entre commencer à 25 ans et à 35 ans n'est pas seulement dix ans. C'est souvent la différence entre la liberté financière et le stress.`, art6_date:`Avril 2026`,
-    art7_title:`Pilier 3a vs 3b : quelle est la différence et lequel vous convient ?`, art7_excerpt:`L'un offre un avantage fiscal avec des restrictions. L'autre est flexible mais sans incitation fiscale. Voici comment choisir.`, art7_date:`Avril 2026`, coming_soon_title:`Articles à venir`,
-    coming_soon_desc:`Avis et comparaisons de produits et plateformes financiers suisses — robo-conseillers, prestataires du pilier 3a, applications bancaires et plus.`
+    art7_title:`Pilier 3a vs 3b : quelle est la différence et lequel vous convient ?`, art7_excerpt:`L'un offre un avantage fiscal avec des restrictions. L'autre est flexible mais sans incitation fiscale. Voici comment choisir.`, art7_date:`Avril 2026`,
+    art8_title:`Comparatif des prestataires du pilier 3a en Suisse (2026)`, art8_excerpt:`Un regard objectif sur chaque type de prestataire — des fintechs numériques aux banques et assurances. Frais, avantages et inconvénients.`, art8_date:`Avril 2026`, cat_products_count:`1 article`
   },
   it: {
     nav_tools:`Strumenti`, nav_blog:`Blog & Approfondimenti`, nav_about:`Chi siamo`, nav_faq:`FAQ`,
@@ -416,8 +429,8 @@ const i18n = {
     art4_title:`Il confronto è il ladro della gioia`, art4_excerpt:`Sappiamo che non dovremmo paragonarci agli altri. Ma per gli stipendi, un po' di contesto è prezioso.`, art4_date:`Aprile 2026`,
     art5_title:`CHF 7'000 è uno stipendio buono in Svizzera?`, art5_excerpt:`Si colloca proprio intorno alla mediana nazionale. Ma se è sufficiente dipende molto da dove si vive.`, art5_date:`Aprile 2026`,
     art6_title:`La crescita composta — non è magia, è matematica semplice`, art6_excerpt:`La differenza tra iniziare a 25 anni e a 35 anni non sono solo dieci anni. Spesso è la differenza tra libertà finanziaria e stress.`, art6_date:`Aprile 2026`,
-    art7_title:`Pilastro 3a vs 3b: qual è la differenza e quale vi serve?`, art7_excerpt:`Uno offre un vantaggio fiscale con restrizioni. L'altro è flessibile ma senza incentivi fiscali. Ecco come scegliere.`, art7_date:`Aprile 2026`, coming_soon_title:`Articoli in arrivo`,
-    coming_soon_desc:`Recensioni e confronti di prodotti e piattaforme finanziarie svizzere — robo-advisor, fornitori di pilastro 3a, app bancarie e altro.`
+    art7_title:`Pilastro 3a vs 3b: qual è la differenza e quale vi serve?`, art7_excerpt:`Uno offre un vantaggio fiscale con restrizioni. L'altro è flessibile ma senza incentivi fiscali. Ecco come scegliere.`, art7_date:`Aprile 2026`,
+    art8_title:`Confronto tra fornitori del pilastro 3a in Svizzera (2026)`, art8_excerpt:`Uno sguardo obiettivo su ogni tipo di fornitore — dalle fintech digitali alle banche e assicurazioni. Commissioni, pro e contro.`, art8_date:`Aprile 2026`, cat_products_count:`1 articolo`
   }
 };
 
