@@ -1,35 +1,58 @@
-# Clean URL redirects — ensures /path serves /path/index.html without redirect errors
-/faq                                    /faq/index.html                         200
-/about                                  /about/index.html                       200
-/contact                                /contact/index.html                     200
-/disclaimer                             /disclaimer/index.html                  200
-/privacy                                /privacy/index.html                     200
-/insights                               /insights/index.html                    200
-/compound                               /compound/index.html                    200
-/salary                                 /salary/index.html                      200
-/retirement                             /retirement/index.html                  200
-/rent-vs-buy                            /rent-vs-buy/index.html                 200
-/millionaire                            /millionaire/index.html                 200
-/cost-of-living                         /cost-of-living/index.html              200
-/insights/compound-interest-explained   /insights/compound-interest-explained/index.html   200
-/insights/retirement-planning-switzerland /insights/retirement-planning-switzerland/index.html 200
-/insights/comparison-thief-of-joy       /insights/comparison-thief-of-joy/index.html       200
-/insights/pillar-3a-2026                /insights/pillar-3a-2026/index.html                200
-/insights/is-7000-chf-good-salary-switzerland /insights/is-7000-chf-good-salary-switzerland/index.html 200
-/insights/13th-ahv-pension-switzerland-2026 /insights/13th-ahv-pension-switzerland-2026/index.html 200
-/insights/pillar-3a-vs-3b-switzerland   /insights/pillar-3a-vs-3b-switzerland/index.html   200
+# Clean URL rewrites — both trailing-slash and no-slash versions for every path
+# This prevents Cloudflare Pages issuing 307s before _redirects rules run
 
-/municipality-finder                     /municipality-finder/index.html                 200
+/faq/                                     /faq/index.html                                                   200
+/faq                                      /faq/index.html                                                   200
+/about/                                   /about/index.html                                                 200
+/about                                    /about/index.html                                                 200
+/contact/                                 /contact/index.html                                               200
+/contact                                  /contact/index.html                                               200
+/disclaimer/                              /disclaimer/index.html                                            200
+/disclaimer                               /disclaimer/index.html                                            200
+/privacy/                                 /privacy/index.html                                               200
+/privacy                                  /privacy/index.html                                               200
 
-/salary-reality-check                    /salary-reality-check/index.html                200
+/insights/                                /insights/index.html                                              200
+/insights                                 /insights/index.html                                              200
 
-/insights/how-to-optimise-swiss-taxes        /insights/how-to-optimise-swiss-taxes/index.html        200
+/compound/                                /compound/index.html                                              200
+/compound                                 /compound/index.html                                              200
+/salary/                                  /salary/index.html                                                200
+/salary                                   /salary/index.html                                                200
+/retirement/                              /retirement/index.html                                            200
+/retirement                               /retirement/index.html                                            200
+/rent-vs-buy/                             /rent-vs-buy/index.html                                           200
+/rent-vs-buy                              /rent-vs-buy/index.html                                           200
+/millionaire/                             /millionaire/index.html                                           200
+/millionaire                              /millionaire/index.html                                           200
+/cost-of-living/                          /cost-of-living/index.html                                        200
+/cost-of-living                           /cost-of-living/index.html                                        200
+/municipality-finder/                     /municipality-finder/index.html                                   200
+/municipality-finder                      /municipality-finder/index.html                                   200
+/salary-reality-check/                    /salary-reality-check/index.html                                  200
+/salary-reality-check                     /salary-reality-check/index.html                                  200
+/marriage-tax-calculator/                 /marriage-tax-calculator/index.html                               200
+/marriage-tax-calculator                  /marriage-tax-calculator/index.html                               200
+/financial-guide/                         /financial-guide/index.html                                       200
+/financial-guide                          /financial-guide/index.html                                       200
 
-/marriage-tax-calculator                  /marriage-tax-calculator/index.html             200
-
-/insights/leaving-switzerland-pension      /insights/leaving-switzerland-pension/index.html      200
-
-/insights/best-pillar-3a-providers-switzerland   /insights/best-pillar-3a-providers-switzerland/index.html   200
-
-
-/financial-guide      /financial-guide/index.html      200
+/insights/compound-interest-explained/    /insights/compound-interest-explained/index.html                  200
+/insights/compound-interest-explained     /insights/compound-interest-explained/index.html                  200
+/insights/retirement-planning-switzerland/ /insights/retirement-planning-switzerland/index.html             200
+/insights/retirement-planning-switzerland  /insights/retirement-planning-switzerland/index.html             200
+/insights/comparison-thief-of-joy/        /insights/comparison-thief-of-joy/index.html                      200
+/insights/comparison-thief-of-joy         /insights/comparison-thief-of-joy/index.html                      200
+/insights/pillar-3a-2026/                 /insights/pillar-3a-2026/index.html                               200
+/insights/pillar-3a-2026                  /insights/pillar-3a-2026/index.html                               200
+/insights/is-7000-chf-good-salary-switzerland/ /insights/is-7000-chf-good-salary-switzerland/index.html    200
+/insights/is-7000-chf-good-salary-switzerland  /insights/is-7000-chf-good-salary-switzerland/index.html    200
+/insights/13th-ahv-pension-switzerland-2026/   /insights/13th-ahv-pension-switzerland-2026/index.html      200
+/insights/13th-ahv-pension-switzerland-2026    /insights/13th-ahv-pension-switzerland-2026/index.html      200
+/insights/pillar-3a-vs-3b-switzerland/    /insights/pillar-3a-vs-3b-switzerland/index.html                  200
+/insights/pillar-3a-vs-3b-switzerland     /insights/pillar-3a-vs-3b-switzerland/index.html                  200
+/insights/how-to-optimise-swiss-taxes/    /insights/how-to-optimise-swiss-taxes/index.html                  200
+/insights/how-to-optimise-swiss-taxes     /insights/how-to-optimise-swiss-taxes/index.html                  200
+/insights/leaving-switzerland-pension/    /insights/leaving-switzerland-pension/index.html                  200
+/insights/leaving-switzerland-pension     /insights/leaving-switzerland-pension/index.html                  200
+/insights/best-pillar-3a-providers-switzerland/ /insights/best-pillar-3a-providers-switzerland/index.html  200
+/insights/best-pillar-3a-providers-switzerland  /insights/best-pillar-3a-providers-switzerland/index.html  200
