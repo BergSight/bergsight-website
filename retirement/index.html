@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/retirement">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free Swiss retirement readiness calculator. See your projected retirement income vs what you need — including AHV, pension fund, and Pillar 3a. No account required.">
   <title>Retirement Readiness Calculator Switzerland — Free Tool | BergSight</title>
@@ -44,11 +45,16 @@
 </head>
 <body>
   <div class="lang-bar">
-    <span class="lang-label">Language</span>
-    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
-    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
-    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
-    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    <div class="lang-bar-left" style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="color:#4a4742;font-size:0.9rem;">🌐</span>
+      <span class="lang-label">Select language</span>
+    </div>
+    <div style="display:flex;height:100%;">
+      <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+      <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+      <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    </div>
   </div>
   <nav>
     <a href="/" class="nav-logo">Berg<span>Sight</span></a>
@@ -69,7 +75,41 @@
     </div>
   </div>
   <iframe id="tool-iframe" src="" title="Retirement Readiness Calculator" style="border:none;display:block;width:100%;height:840px;min-height:600px;"></iframe>
-  <footer>
+  <div class="static-example">
+  <div class="static-example-inner">
+    <div class="se-eyebrow">Example outputs</div>
+    <div class="se-title">What the Retirement Readiness Calculator shows</div>
+    <div class="se-grid">
+      <div class="se-card">
+        <div class="se-card-label">Profile</div>
+        <div class="se-card-input">Age 40 · CHF 120,000 salary · CHF 80,000 Pillar 2 · CHF 30,000 Pillar 3a</div>
+        <div class="se-card-result-label">Projected retirement income</div>
+        <div class="se-card-result">CHF 5,200/month</div>
+      </div>
+      <div class="se-card">
+        <div class="se-card-label">Profile</div>
+        <div class="se-card-input">Age 50 · CHF 90,000 salary · CHF 200,000 Pillar 2 · CHF 60,000 Pillar 3a</div>
+        <div class="se-card-result-label">Projected retirement income</div>
+        <div class="se-card-result">CHF 4,800/month</div>
+      </div>
+      <div class="se-card">
+        <div class="se-card-label">Key insight</div>
+        <div class="se-card-input">Maximum AHV pension for a single person (2026)</div>
+        <div class="se-card-result-label">Monthly AHV amount</div>
+        <div class="se-card-result">CHF 2,520</div>
+      </div>
+      <div class="se-card">
+        <div class="se-card-label">Key insight</div>
+        <div class="se-card-input">Typical Pillar 2 conversion rate applied to retirement capital</div>
+        <div class="se-card-result-label">Conversion rate (2026)</div>
+        <div class="se-card-result">6.8%</div>
+      </div>
+    </div>
+    <div class="se-note">Projections are illustrative estimates based on 2026 Swiss pension figures. Actual retirement income depends on your full contribution history, employer fund rules, and investment choices. Results do not constitute financial advice.</div>
+  </div>
+</div>
+
+<footer>
     <a href="/" class="footer-logo">Berg<span>Sight</span></a>
     <ul class="footer-links-row">
       <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
