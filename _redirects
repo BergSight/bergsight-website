@@ -1,37 +1,20 @@
-# Top-level tool and page rewrites only
-# Cloudflare Pages handles /insights/article-name/ natively — no rules needed for articles
+# Redirect no-slash → slash for all tool and page paths
+# Cloudflare Pages serves folder/index.html natively at the /slash/ version
+# These 301s ensure the no-slash version redirects cleanly rather than 307ing
 
-/faq/                      /faq/index.html                      200
-/faq                       /faq/index.html                      200
-/about/                    /about/index.html                    200
-/about                     /about/index.html                    200
-/contact/                  /contact/index.html                  200
-/contact                   /contact/index.html                  200
-/disclaimer/               /disclaimer/index.html               200
-/disclaimer                /disclaimer/index.html               200
-/privacy/                  /privacy/index.html                  200
-/privacy                   /privacy/index.html                  200
-
-/insights/                 /insights/index.html                 200
-/insights                  /insights/index.html                 200
-
-/compound/                 /compound/index.html                 200
-/compound                  /compound/index.html                 200
-/salary/                   /salary/index.html                   200
-/salary                    /salary/index.html                   200
-/retirement/               /retirement/index.html               200
-/retirement                /retirement/index.html               200
-/rent-vs-buy/              /rent-vs-buy/index.html              200
-/rent-vs-buy               /rent-vs-buy/index.html              200
-/millionaire/              /millionaire/index.html              200
-/millionaire               /millionaire/index.html              200
-/cost-of-living/           /cost-of-living/index.html           200
-/cost-of-living            /cost-of-living/index.html           200
-/municipality-finder/      /municipality-finder/index.html      200
-/municipality-finder       /municipality-finder/index.html      200
-/salary-reality-check/     /salary-reality-check/index.html     200
-/salary-reality-check      /salary-reality-check/index.html     200
-/marriage-tax-calculator/  /marriage-tax-calculator/index.html  200
-/marriage-tax-calculator   /marriage-tax-calculator/index.html  200
-/financial-guide/          /financial-guide/index.html          200
-/financial-guide           /financial-guide/index.html          200
+/faq                       /faq/                      301
+/about                     /about/                    301
+/contact                   /contact/                  301
+/disclaimer                /disclaimer/               301
+/privacy                   /privacy/                  301
+/insights                  /insights/                 301
+/compound                  /compound/                 301
+/salary                    /salary/                   301
+/retirement                /retirement/               301
+/rent-vs-buy               /rent-vs-buy/              301
+/millionaire               /millionaire/              301
+/cost-of-living            /cost-of-living/           301
+/municipality-finder       /municipality-finder/      301
+/salary-reality-check      /salary-reality-check/     301
+/marriage-tax-calculator   /marriage-tax-calculator/  301
+/financial-guide           /financial-guide/          301
