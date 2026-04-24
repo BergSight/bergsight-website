@@ -1,1 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/gross-to-net/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Swiss gross to net salary calculator 2025. See your take-home pay after AHV, ALV, pension fund, and income tax deductions. Free, instant, built for Switzerland.">
+  <meta property="og:title" content="Swiss Gross to Net Salary Calculator 2025 | BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/gross-to-net/">
+  <title>Swiss Gross to Net Salary Calculator 2025 | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KPHRGJL1WW');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Swiss Gross to Net Salary Calculator","description":"Calculate your Swiss take-home pay after all mandatory deductions including AHV, ALV, pension fund, and cantonal income tax.","url":"https://bergsight.com/gross-to-net/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}}</script>
+  <style>
+    :root{--stone:#f5f2ed;--stone-2:#ece8e1;--stone-3:#d8d2c8;--ink:#1a1916;--ink-2:#3d3a35;--ink-3:#7a756c;--alpine:#2d5a3d;--alpine-2:#3d7a52;--alpine-3:#e8f0eb;--gold:#8a6d3b;--gold-2:#f5ead8;--red:#8a2d2d;--white:#fff;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--ink);overflow-x:hidden;}
 
+    /* lang bar */
+    .lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--ink);display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:44px;border-bottom:1px solid #2a2825;}
+    .lang-label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#8a857e;}
+    .lang-btn{background:none;border:none;color:#8a857e;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:0 1.1rem;height:44px;border-right:1px solid #2a2825;transition:color .15s,background .15s;}
+    .lang-btn:first-of-type{border-left:1px solid #2a2825;}
+    .lang-btn:hover{color:#fff;background:#252320;}
+    .lang-btn.active{color:var(--alpine-2);background:rgba(61,122,82,.1);font-weight:600;}
+
+    /* nav */
+    nav{position:fixed;top:44px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(245,242,237,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone-3);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--ink);text-decoration:none;}
+    .nav-logo span{color:var(--alpine);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:.82rem;color:var(--ink-2);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;}
+    .nav-links a:hover{color:var(--alpine);}
+
+    /* hero */
+    .page-hero{padding:8rem 4rem 2.5rem;background:var(--ink);position:relative;overflow:hidden;}
+    .hero-grid{position:absolute;top:0;left:0;right:0;bottom:0;opacity:.04;background-image:linear-gradient(var(--stone-3) 1px,transparent 1px),linear-gradient(90deg,var(--stone-3) 1px,transparent 1px);background-size:40px 40px;}
+    .hero-inner{position:relative;max-width:780px;}
+    .hero-eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--alpine-2);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+    .hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--alpine-2);}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:500;color:var(--stone);line-height:1.12;margin-bottom:.8rem;}
+    .page-hero h1 em{font-style:italic;color:#b8c9be;}
+    .hero-sub{font-size:.92rem;color:#9a958e;font-weight:300;line-height:1.75;max-width:580px;}
+
+    /* main layout */
+    .main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 5rem;}
+
+    /* calculator card */
+    .calc-card{background:var(--white);border:1px solid var(--stone-3);padding:2rem 2.4rem;margin-bottom:1.5rem;}
+    .calc-section-title{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--alpine);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+    .calc-section-title::before{content:'';display:block;width:12px;height:1px;background:var(--alpine);}
+
+    /* form grid */
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;}
+    .form-group{display:flex;flex-direction:column;gap:.4rem;}
+    .form-group.full{grid-column:1/-1;}
+    label{font-size:.75rem;font-weight:500;color:var(--ink-2);letter-spacing:.03em;}
+    .label-hint{font-size:.68rem;color:var(--ink-3);font-weight:300;margin-top:.1rem;}
+    .input-wrap{position:relative;}
+    .input-prefix{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink-3);pointer-events:none;}
+    .input-suffix{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);font-family:'DM Mono',monospace;font-size:.75rem;color:var(--ink-3);pointer-events:none;}
+    input[type=number],select{width:100%;padding:.65rem .75rem;border:1px solid var(--stone-3);background:var(--stone);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;}
+    input[type=number].has-prefix{padding-left:2.2rem;}
+    input[type=number].has-suffix{padding-right:2.8rem;}
+    input[type=number]:focus,select:focus{border-color:var(--alpine);}
+    select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a756c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;padding-right:2rem;cursor:pointer;}
+    .toggle-row{display:flex;gap:0;border:1px solid var(--stone-3);background:var(--stone);}
+    .toggle-btn{flex:1;padding:.55rem .5rem;border:none;background:none;font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--ink-3);cursor:pointer;transition:background .15s,color .15s;}
+    .toggle-btn.active{background:var(--alpine);color:#fff;font-weight:500;}
+
+    /* calculate button */
+    .calc-btn{width:100%;padding:.9rem;background:var(--ink);color:var(--stone);border:none;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:1rem;}
+    .calc-btn:hover{background:var(--alpine);}
+
+    /* results */
+    .results{display:none;}
+    .results.visible{display:block;}
+    .result-hero{background:var(--ink);padding:2rem 2.4rem;margin-bottom:1px;}
+    .result-hero-label{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--alpine-2);margin-bottom:.4rem;}
+    .result-hero-amount{font-family:'DM Mono',monospace;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--stone);font-weight:400;letter-spacing:-.02em;}
+    .result-hero-sub{font-size:.78rem;color:#6a6560;margin-top:.3rem;}
+    .result-hero-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#2a2825;margin-top:1.5rem;}
+    .result-hero-cell{background:var(--ink);padding:1rem 1.2rem;}
+    .rhc-label{font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6a6560;margin-bottom:.3rem;}
+    .rhc-val{font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--stone);}
+    .rhc-pct{font-size:.72rem;color:#9a958e;margin-top:.1rem;}
+
+    /* breakdown table */
+    .breakdown-card{background:var(--white);border:1px solid var(--stone-3);}
+    .breakdown-row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.4rem;border-bottom:1px solid var(--stone-2);font-size:.85rem;}
+    .breakdown-row:last-child{border-bottom:none;}
+    .breakdown-row.header{background:var(--stone);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding:.55rem 1.4rem;}
+    .breakdown-row.gross{background:var(--alpine-3);}
+    .breakdown-row.net{background:var(--alpine);color:#fff;font-weight:500;}
+    .breakdown-row.net .br-label,.breakdown-row.net .br-monthly,.breakdown-row.net .br-annual{color:#fff;}
+    .breakdown-row.subtotal{background:var(--stone-2);font-weight:500;}
+    .br-label{flex:1;color:var(--ink-2);font-weight:300;}
+    .br-label strong{font-weight:500;color:var(--ink);}
+    .br-pct{width:60px;text-align:right;font-family:'DM Mono',monospace;font-size:.78rem;color:var(--ink-3);}
+    .br-monthly{width:110px;text-align:right;font-family:'DM Mono',monospace;font-size:.82rem;color:var(--ink-2);}
+    .br-annual{width:120px;text-align:right;font-family:'DM Mono',monospace;font-size:.82rem;color:var(--ink-2);}
+    .deduction{color:var(--red);}
+
+    /* effective rate bar */
+    .rate-bar-wrap{margin:1.5rem 0;}
+    .rate-bar-label{font-size:.72rem;color:var(--ink-3);margin-bottom:.4rem;display:flex;justify-content:space-between;}
+    .rate-bar-track{height:8px;background:var(--stone-3);position:relative;}
+    .rate-bar-fill{height:100%;background:var(--alpine);transition:width .5s ease;}
+    .rate-bar-fill-tax{height:100%;background:var(--red);position:absolute;top:0;transition:width .5s ease,left .5s ease;}
+
+    /* disclaimer */
+    .disclaimer-box{background:var(--stone-2);border-left:3px solid var(--stone-3);padding:1rem 1.4rem;margin-top:1.5rem;font-size:.78rem;color:var(--ink-3);line-height:1.7;}
+    .disclaimer-box strong{color:var(--ink-2);font-weight:500;}
+
+    /* info pills */
+    .info-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+    .info-pill{font-size:.72rem;padding:.25rem .75rem;background:var(--alpine-3);color:var(--alpine);border:1px solid rgba(45,90,61,.2);}
+
+    /* related */
+    .related{max-width:900px;margin:0 auto;padding:0 2rem 4rem;}
+    .related-title{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--alpine);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+    .related-title::before{content:'';display:block;width:16px;height:1px;background:var(--alpine);}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stone-3);}
+    .related-card{background:var(--white);padding:1.2rem 1.4rem;text-decoration:none;display:block;transition:background .15s;}
+    .related-card:hover{background:var(--stone);}
+    .related-tag{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--alpine);margin-bottom:.35rem;}
+    .related-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:.3rem;}
+    .related-card p{font-size:.76rem;color:var(--ink-3);font-weight:300;line-height:1.5;}
+
+    /* footer */
+    footer{background:var(--ink);color:#9a958e;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--stone);text-decoration:none;}
+    .footer-logo span{color:var(--alpine-2);}
+    .footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+    .footer-links a{font-size:.78rem;color:#6a6560;text-decoration:none;}
+    .footer-links a:hover{color:var(--alpine-2);}
+    .footer-copy{font-size:.72rem;color:#4a4742;font-family:'DM Mono',monospace;}
+
+    @media(max-width:768px){
+      .lang-bar{padding:0 1.2rem;}.lang-label{display:none;}
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .page-hero{padding:7rem 1.5rem 2rem;}
+      .main{padding:1.5rem 1rem 4rem;}
+      .calc-card{padding:1.4rem 1.2rem;}
+      .form-grid{grid-template-columns:1fr;}
+      .result-hero{padding:1.4rem 1.2rem;}
+      .result-hero-grid{grid-template-columns:1fr 1fr;}
+      .result-hero-cell:last-child{display:none;}
+      .br-pct{display:none;}
+      .br-annual{display:none;}
+      .related{padding:0 1rem 3rem;}
+      .related-grid{grid-template-columns:1fr;}
+      footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <div style="display:flex;align-items:center;gap:.6rem;"><span style="color:#4a4742;font-size:.9rem;">&#127760;</span><span class="lang-label" data-i18n="lang_label">Select language</span></div>
+  <div style="display:flex;height:100%;">
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+  <ul class="nav-links">
+    <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+    <li><a href="/insights" data-i18n="nav_insights">Insights</a></li>
+    <li><a href="/about" data-i18n="nav_about">About</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="eyebrow">Swiss salary calculator</div>
+    <h1 data-i18n="h1">What do you actually<br>take home in <em>Switzerland?</em></h1>
+    <p class="hero-sub" data-i18n="sub">Enter your gross salary and see your net take-home pay after all mandatory Swiss deductions — AHV, ALV, pension fund, and cantonal income tax. Updated for 2025.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- INPUTS -->
+  <div class="calc-card">
+    <div class="calc-section-title" data-i18n="sect_salary">Your salary</div>
+    <div class="form-grid">
+
+      <div class="form-group full">
+        <label data-i18n="lbl_period">Salary period</label>
+        <div class="toggle-row" id="period-toggle">
+          <button class="toggle-btn active" data-val="annual" data-i18n="period_annual" onclick="setPeriod('annual',this)">Annual</button>
+          <button class="toggle-btn" data-val="monthly" data-i18n="period_monthly" onclick="setPeriod('monthly',this)">Monthly</button>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label data-i18n="lbl_gross">Gross salary (CHF)</label>
+        <div class="input-wrap">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="gross" class="has-prefix" value="100000" min="0" max="2000000" step="1000" oninput="calculate()">
+        </div>
+        <div class="label-hint" data-i18n="hint_gross">Your salary before any deductions</div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_canton">Canton</label>
+        <select id="canton" onchange="calculate()">
+          <option value="ZH">Zurich (ZH)</option>
+          <option value="BE">Bern (BE)</option>
+          <option value="LU">Lucerne (LU)</option>
+          <option value="UR">Uri (UR)</option>
+          <option value="SZ">Schwyz (SZ)</option>
+          <option value="OW">Obwalden (OW)</option>
+          <option value="NW">Nidwalden (NW)</option>
+          <option value="GL">Glarus (GL)</option>
+          <option value="ZG">Zug (ZG)</option>
+          <option value="FR">Fribourg (FR)</option>
+          <option value="SO">Solothurn (SO)</option>
+          <option value="BS">Basel-Stadt (BS)</option>
+          <option value="BL">Basel-Land (BL)</option>
+          <option value="SH">Schaffhausen (SH)</option>
+          <option value="AR">Appenzell AR (AR)</option>
+          <option value="AI">Appenzell AI (AI)</option>
+          <option value="SG">St. Gallen (SG)</option>
+          <option value="GR">Graubünden (GR)</option>
+          <option value="AG">Aargau (AG)</option>
+          <option value="TG">Thurgau (TG)</option>
+          <option value="TI">Ticino (TI)</option>
+          <option value="VD">Vaud (VD)</option>
+          <option value="VS">Valais (VS)</option>
+          <option value="NE">Neuchâtel (NE)</option>
+          <option value="GE">Geneva (GE)</option>
+          <option value="JU">Jura (JU)</option>
+        </select>
+        <div class="label-hint" data-i18n="hint_canton">Used for cantonal & municipal income tax estimate</div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_status">Civil status</label>
+        <select id="status" onchange="calculate()">
+          <option value="single" data-i18n="status_single">Single</option>
+          <option value="married" data-i18n="status_married">Married (one income)</option>
+          <option value="married2" data-i18n="status_married2">Married (two incomes)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_age">Age</label>
+        <input type="number" id="age" value="35" min="17" max="70" step="1" oninput="calculate()">
+        <div class="label-hint" data-i18n="hint_age">Affects AHV rate and pension fund contributions</div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_children">Children under 18</label>
+        <input type="number" id="children" value="0" min="0" max="10" step="1" oninput="calculate()">
+        <div class="label-hint" data-i18n="hint_children">Affects cantonal tax deductions</div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_church">Church tax</label>
+        <div class="toggle-row">
+          <button class="toggle-btn active" data-val="yes" data-i18n="church_yes" onclick="setChurch(true,this)">Yes</button>
+          <button class="toggle-btn" data-val="no" data-i18n="church_no" onclick="setChurch(false,this)">No</button>
+        </div>
+        <div class="label-hint" data-i18n="hint_church">Around 0.1–0.3% of income in most cantons</div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_13th">13th month salary</label>
+        <div class="toggle-row">
+          <button class="toggle-btn active" data-val="yes" data-i18n="th13_yes" onclick="set13th(true,this)">Included</button>
+          <button class="toggle-btn" data-val="no" data-i18n="th13_no" onclick="set13th(false,this)">Not included</button>
+        </div>
+        <div class="label-hint" data-i18n="hint_13th">If your gross already includes the 13th month, select Included</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+
+    <div class="result-hero">
+      <div class="result-hero-label" data-i18n="res_net_label">Monthly take-home pay</div>
+      <div class="result-hero-amount" id="res-net-monthly">CHF 0</div>
+      <div class="result-hero-sub" id="res-net-sub"></div>
+      <div class="result-hero-grid">
+        <div class="result-hero-cell">
+          <div class="rhc-label" data-i18n="res_gross_label">Gross monthly</div>
+          <div class="rhc-val" id="rhc-gross">CHF 0</div>
+          <div class="rhc-pct" id="rhc-gross-annual"></div>
+        </div>
+        <div class="result-hero-cell">
+          <div class="rhc-label" data-i18n="res_deductions_label">Total deductions</div>
+          <div class="rhc-val" id="rhc-deductions">CHF 0</div>
+          <div class="rhc-pct" id="rhc-deductions-pct"></div>
+        </div>
+        <div class="result-hero-cell">
+          <div class="rhc-label" data-i18n="res_effective_label">Effective tax rate</div>
+          <div class="rhc-val" id="rhc-effective">0%</div>
+          <div class="rhc-pct" data-i18n="res_effective_sub">Income tax only</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BREAKDOWN TABLE -->
+    <div class="breakdown-card">
+      <div class="breakdown-row header">
+        <span class="br-label" data-i18n="th_item">Item</span>
+        <span class="br-pct" data-i18n="th_rate">Rate</span>
+        <span class="br-monthly" data-i18n="th_monthly">Monthly</span>
+        <span class="br-annual" data-i18n="th_annual">Annual</span>
+      </div>
+      <div class="breakdown-row gross">
+        <span class="br-label"><strong data-i18n="row_gross">Gross salary</strong></span>
+        <span class="br-pct">—</span>
+        <span class="br-monthly" id="row-gross-m">—</span>
+        <span class="br-annual" id="row-gross-a">—</span>
+      </div>
+      <!-- Social insurance -->
+      <div class="breakdown-row" style="background:var(--stone);padding:.4rem 1.4rem;">
+        <span style="font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);" data-i18n="sect_social">Social insurance deductions</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="br-label" data-i18n="row_ahv">AHV/IV/EO (state pension &amp; disability)</span>
+        <span class="br-pct deduction" id="rate-ahv">—</span>
+        <span class="br-monthly deduction" id="row-ahv-m">—</span>
+        <span class="br-annual deduction" id="row-ahv-a">—</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="br-label" data-i18n="row_alv">ALV (unemployment insurance)</span>
+        <span class="br-pct deduction" id="rate-alv">—</span>
+        <span class="br-monthly deduction" id="row-alv-m">—</span>
+        <span class="br-annual deduction" id="row-alv-a">—</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="br-label" data-i18n="row_nbuv">NBUV (accident insurance, non-occupational)</span>
+        <span class="br-pct deduction" id="rate-nbuv">—</span>
+        <span class="br-monthly deduction" id="row-nbuv-m">—</span>
+        <span class="br-annual deduction" id="row-nbuv-a">—</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="br-label" data-i18n="row_pkasse">Pension fund / BVG (Pillar 2)</span>
+        <span class="br-pct deduction" id="rate-pk">—</span>
+        <span class="br-monthly deduction" id="row-pk-m">—</span>
+        <span class="br-annual deduction" id="row-pk-a">—</span>
+      </div>
+      <div class="breakdown-row subtotal">
+        <span class="br-label" data-i18n="row_social_total">Total social insurance</span>
+        <span class="br-pct deduction" id="rate-social-total">—</span>
+        <span class="br-monthly deduction" id="row-social-m">—</span>
+        <span class="br-annual deduction" id="row-social-a">—</span>
+      </div>
+      <!-- Tax -->
+      <div class="breakdown-row" style="background:var(--stone);padding:.4rem 1.4rem;">
+        <span style="font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);" data-i18n="sect_tax">Income tax deductions</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="br-label" data-i18n="row_federal">Federal income tax (direct federal tax)</span>
+        <span class="br-pct deduction" id="rate-federal">—</span>
+        <span class="br-monthly deduction" id="row-federal-m">—</span>
+        <span class="br-annual deduction" id="row-federal-a">—</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="br-label" id="cantonal-label" data-i18n="row_cantonal">Cantonal &amp; municipal income tax (estimate)</span>
+        <span class="br-pct deduction" id="rate-cantonal">—</span>
+        <span class="br-monthly deduction" id="row-cantonal-m">—</span>
+        <span class="br-annual deduction" id="row-cantonal-a">—</span>
+      </div>
+      <div class="breakdown-row" id="church-row">
+        <span class="br-label" data-i18n="row_church">Church tax (estimate)</span>
+        <span class="br-pct deduction" id="rate-church">—</span>
+        <span class="br-monthly deduction" id="row-church-m">—</span>
+        <span class="br-annual deduction" id="row-church-a">—</span>
+      </div>
+      <div class="breakdown-row subtotal">
+        <span class="br-label" data-i18n="row_tax_total">Total income tax</span>
+        <span class="br-pct deduction" id="rate-tax-total">—</span>
+        <span class="br-monthly deduction" id="row-tax-m">—</span>
+        <span class="br-annual deduction" id="row-tax-a">—</span>
+      </div>
+      <!-- Net -->
+      <div class="breakdown-row net">
+        <span class="br-label"><strong data-i18n="row_net">Net take-home pay</strong></span>
+        <span class="br-pct" id="rate-net">—</span>
+        <span class="br-monthly" id="row-net-m">—</span>
+        <span class="br-annual" id="row-net-a">—</span>
+      </div>
+    </div>
+
+    <!-- disclaimer -->
+    <div class="disclaimer-box">
+      <strong data-i18n="disc_title">Important notes on these estimates</strong><br>
+      <span data-i18n="disc_text">Cantonal and municipal tax figures are approximations based on 2024 published rates for a single person in the cantonal capital, using standard deductions. Actual tax bills depend on your municipality, full deduction profile, and individual circumstances. The pension fund (BVG/Pillar 2) contribution is estimated based on your age bracket — actual rates vary by employer and fund. This calculator does not account for health insurance premiums, which are paid separately in Switzerland. Results are for guidance only and do not constitute financial or tax advice.</span>
+    </div>
+
+    <div class="info-pills">
+      <span class="info-pill" data-i18n="pill_1">&#x2705; Federal rates 2025</span>
+      <span class="info-pill" data-i18n="pill_2">&#x2705; AHV/ALV 2025 rates</span>
+      <span class="info-pill" data-i18n="pill_3">&#x26A0;&#xFE0F; Cantonal tax estimated</span>
+      <span class="info-pill" data-i18n="pill_4">&#x26A0;&#xFE0F; Pension fund estimated</span>
+    </div>
+
+  </div><!-- end results -->
+
+</div><!-- end main -->
+
+<div class="related">
+  <div class="related-title" data-i18n="related_title">Related tools &amp; articles</div>
+  <div class="related-grid">
+    <a href="/salary" class="related-card">
+      <div class="related-tag" data-i18n="rel1_tag">Tool</div>
+      <h4 data-i18n="rel1_title">Swiss Salary Comparator</h4>
+      <p data-i18n="rel1_desc">See where your salary sits in the Swiss wage distribution, by region and sector.</p>
+    </a>
+    <a href="/insights/how-to-optimise-swiss-taxes" class="related-card">
+      <div class="related-tag" data-i18n="rel2_tag">Article</div>
+      <h4 data-i18n="rel2_title">How to Optimise Your Swiss Taxes</h4>
+      <p data-i18n="rel2_desc">Every deduction available in 2025 — Pillar 3a, BVG buybacks, commuting costs, and more.</p>
+    </a>
+    <a href="/salary-reality-check" class="related-card">
+      <div class="related-tag" data-i18n="rel3_tag">Tool</div>
+      <h4 data-i18n="rel3_title">Salary Reality Check</h4>
+      <p data-i18n="rel3_desc">After rent, health insurance, and taxes — how much do you actually have left each month?</p>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+  <ul class="footer-links">
+    <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+    <li><a href="/insights" data-i18n="nav_insights">Insights</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/disclaimer">Disclaimer</a></li>
+  </ul>
+  <div class="footer-copy">&#169; 2025 BergSight &#183; Z&#252;rich, Switzerland</div>
+</footer>
+
+<script>
+// ── State ────────────────────────────────────────────────────────────────────
+let period = 'annual';
+let churchTax = true;
+let has13th = true;
+
+function setPeriod(val, btn) {
+  period = val;
+  document.querySelectorAll('#period-toggle .toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  calculate();
+}
+function setChurch(val, btn) {
+  churchTax = val;
+  btn.parentElement.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  calculate();
+}
+function set13th(val, btn) {
+  has13th = val;
+  btn.parentElement.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  calculate();
+}
+
+// ── 2025 Federal direct tax brackets (CHF, annual) ───────────────────────────
+// Source: ESTV / FTA — tariff A (single), tariff B (married/single income)
+// tariff C (married, dual income) approximated as two single tariffs on split income
+const FED_BRACKETS_A = [
+  [0,      17800,  0,      0],
+  [17801,  31600,  0.77,   0],
+  [31601,  41400,  0.88,   106.3],
+  [41401,  55200,  2.64,   835.9],
+  [55201,  72500,  2.97,   2659.4],
+  [72501,  78100,  5.94,   4812.9],
+  [78101,  103600, 6.60,   5328.2],
+  [103601, 134600, 8.80,   7603.0],
+  [134601, 176000, 11.00,  10564.8],
+  [176001, 755200, 13.20,  15113.2],
+  [755201, 9999999,11.50,  91614.4],
+];
+const FED_BRACKETS_B = [
+  [0,      28300,  0,      0],
+  [28301,  50900,  1.00,   0],
+  [50901,  58400,  2.00,   226.0],
+  [58401,  75300,  3.00,   376.0],
+  [75301,  90300,  4.00,   881.0],
+  [90301,  103400, 5.00,   1480.8],
+  [103401, 114700, 6.00,   2136.5],
+  [114701, 124200, 7.00,   2813.0],
+  [124201, 131100, 8.00,   3478.5],
+  [131101, 141200, 9.00,   4037.5],
+  [141201, 154900,10.00,   4946.0],
+  [154901, 176100,11.00,   6317.0],
+  [176101, 755200,13.00,   9657.0],
+  [755201, 9999999,11.50,  93300.0],
+];
+
+function calcFedTax(income, brackets) {
+  let tax = 0;
+  for (const [lo, hi, rate, base] of brackets) {
+    if (income < lo) break;
+    if (income >= lo) {
+      const slice = Math.min(income, hi) - lo + 1;
+      tax = base + (Math.min(income, hi) - lo) * rate / 100;
+    }
+  }
+  return Math.max(0, tax);
+}
+
+// ── Cantonal effective income tax rates (2024, single, cantonal capital) ──────
+// Combined cantonal + municipal, as effective % of gross taxable income
+// Source: ESTV Tax Burden statistics, approximated at CHF 100k gross
+const CANTON_RATES = {
+  // [effective_rate_at_100k, church_pct, married_multiplier]
+  ZH:  [0.1512, 0.0072, 0.90],
+  BE:  [0.1580, 0.0110, 0.92],
+  LU:  [0.1320, 0.0090, 0.88],
+  UR:  [0.1050, 0.0060, 0.86],
+  SZ:  [0.0880, 0.0050, 0.85],
+  OW:  [0.0920, 0.0055, 0.85],
+  NW:  [0.0950, 0.0055, 0.86],
+  GL:  [0.1100, 0.0070, 0.87],
+  ZG:  [0.0750, 0.0045, 0.84],
+  FR:  [0.1480, 0.0100, 0.91],
+  SO:  [0.1420, 0.0090, 0.90],
+  BS:  [0.1780, 0.0080, 0.93],
+  BL:  [0.1550, 0.0080, 0.91],
+  SH:  [0.1380, 0.0075, 0.89],
+  AR:  [0.1250, 0.0075, 0.88],
+  AI:  [0.0980, 0.0060, 0.86],
+  SG:  [0.1320, 0.0080, 0.88],
+  GR:  [0.1200, 0.0075, 0.87],
+  AG:  [0.1300, 0.0070, 0.88],
+  TG:  [0.1280, 0.0070, 0.88],
+  TI:  [0.1450, 0.0000, 0.91],
+  VD:  [0.1620, 0.0110, 0.92],
+  VS:  [0.1350, 0.0090, 0.89],
+  NE:  [0.1700, 0.0120, 0.92],
+  GE:  [0.1850, 0.0065, 0.93],
+  JU:  [0.1720, 0.0110, 0.92],
+};
+
+// ── BVG/Pension fund contribution by age bracket (employee share) ────────────
+function getBVGRate(age) {
+  if (age < 25) return 0.000;
+  if (age < 35) return 0.035;
+  if (age < 45) return 0.050;
+  if (age < 55) return 0.075;
+  return 0.090;
+}
+
+// BVG coordination deduction 2025
+const BVG_COORD = 26460;
+const BVG_MAX = 90720;
+
+// ALV cap 2025
+const ALV_CAP = 148200;
+
+// ── Formatting ────────────────────────────────────────────────────────────────
+function fmt(n) {
+  return 'CHF\u00a0' + Math.round(n).toLocaleString('de-CH');
+}
+function fmtPct(n) {
+  return n.toFixed(2) + '%';
+}
+
+// ── Main calculation ──────────────────────────────────────────────────────────
+function calculate() {
+  const rawInput = parseFloat(document.getElementById('gross').value) || 0;
+  const canton   = document.getElementById('canton').value;
+  const status   = document.getElementById('status').value;
+  const age      = parseInt(document.getElementById('age').value) || 35;
+  const children = parseInt(document.getElementById('children').value) || 0;
+
+  // Convert to annual gross
+  let annualGross = period === 'monthly'
+    ? rawInput * (has13th ? 13 : 12)
+    : rawInput;
+
+  if (!has13th) annualGross = annualGross; // already annual
+
+  const monthlyGross = annualGross / 12;
+
+  // ── AHV/IV/EO 2025: employee share 6.35% (no cap) ────────────────────────
+  const AHV_RATE = 0.0635;
+  const ahvAnnual = annualGross * AHV_RATE;
+
+  // ── ALV 2025: 1.1% up to CHF 148,200; 0.5% on excess up to ~350k ─────────
+  const ALV_RATE_1 = 0.011;
+  const ALV_RATE_2 = 0.005;
+  const ALV_CAP2   = 350000;
+  let alvAnnual = 0;
+  if (annualGross <= ALV_CAP) {
+    alvAnnual = annualGross * ALV_RATE_1;
+  } else if (annualGross <= ALV_CAP2) {
+    alvAnnual = ALV_CAP * ALV_RATE_1 + (annualGross - ALV_CAP) * ALV_RATE_2;
+  } else {
+    alvAnnual = ALV_CAP * ALV_RATE_1 + (ALV_CAP2 - ALV_CAP) * ALV_RATE_2;
+  }
+
+  // ── NBUV (non-occupational accident): typical ~1.03% (varies by insurer) ──
+  const NBUV_RATE = 0.01030;
+  const nbuvAnnual = annualGross * NBUV_RATE;
+
+  // ── BVG / Pension fund ────────────────────────────────────────────────────
+  const bvgRate = getBVGRate(age);
+  const bvgBase = Math.max(0, Math.min(annualGross, BVG_MAX) - BVG_COORD);
+  const pkAnnual = bvgBase * bvgRate;
+
+  // ── Total social ──────────────────────────────────────────────────────────
+  const socialAnnual = ahvAnnual + alvAnnual + nbuvAnnual + pkAnnual;
+
+  // ── Federal income tax ────────────────────────────────────────────────────
+  // Taxable income: gross minus social deductions minus standard professional deduction
+  const profDeduction = Math.min(annualGross * 0.03, 4000); // capped at CHF 4,000
+  const childDeduction = children * 6700; // federal child deduction 2025
+  const taxableIncome = Math.max(0, annualGross - socialAnnual - profDeduction - childDeduction);
+
+  let fedTax = 0;
+  if (status === 'single') {
+    fedTax = calcFedTax(taxableIncome, FED_BRACKETS_A);
+  } else if (status === 'married') {
+    fedTax = calcFedTax(taxableIncome, FED_BRACKETS_B);
+  } else {
+    // married dual income: splitting — each partner taxed on half, then doubled
+    fedTax = calcFedTax(taxableIncome / 2, FED_BRACKETS_A) * 2;
+  }
+
+  // ── Cantonal & municipal tax ──────────────────────────────────────────────
+  const [cantonRate, churchRate, marriedMult] = CANTON_RATES[canton] || CANTON_RATES['ZH'];
+  let effectiveCantonRate = cantonRate;
+  if (status === 'married') effectiveCantonRate *= marriedMult;
+  if (status === 'married2') effectiveCantonRate *= (marriedMult + 0.03);
+  // Scale rate by income (lower at low incomes, higher at high incomes)
+  const incomeScalar = Math.min(1.4, Math.max(0.5, annualGross / 100000));
+  effectiveCantonRate *= incomeScalar;
+  // Add child deductions effect
+  effectiveCantonRate = Math.max(0, effectiveCantonRate - children * 0.004);
+  const cantonalAnnual = taxableIncome * effectiveCantonRate;
+
+  // ── Church tax ────────────────────────────────────────────────────────────
+  let churchAnnual = 0;
+  if (churchTax && churchRate > 0) {
+    churchAnnual = cantonalAnnual * (churchRate / cantonRate) * 0.15;
+    // simplified: church tax ~15% of cantonal tax
+    churchAnnual = fedTax * 0.08 + cantonalAnnual * 0.08;
+  }
+
+  // ── Totals ────────────────────────────────────────────────────────────────
+  const totalTaxAnnual = fedTax + cantonalAnnual + churchAnnual;
+  const totalDeductionsAnnual = socialAnnual + totalTaxAnnual;
+  const netAnnual = annualGross - totalDeductionsAnnual;
+  const netMonthly = netAnnual / 12;
+  const grossMonthly = annualGross / 12;
+
+  const effectiveTaxRate = annualGross > 0 ? totalTaxAnnual / annualGross * 100 : 0;
+  const totalDeductionRate = annualGross > 0 ? totalDeductionsAnnual / annualGross * 100 : 0;
+  const socialRate = annualGross > 0 ? socialAnnual / annualGross * 100 : 0;
+  const taxTotalRate = annualGross > 0 ? totalTaxAnnual / annualGross * 100 : 0;
+
+  // ── Render ────────────────────────────────────────────────────────────────
+  document.getElementById('results').classList.add('visible');
+
+  const T = i18n[currentLang] || i18n.en;
+
+  // hero
+  document.getElementById('res-net-monthly').textContent = fmt(netMonthly);
+  document.getElementById('res-net-sub').textContent = T.res_net_sub.replace('{a}', fmt(netAnnual));
+  document.getElementById('rhc-gross').textContent = fmt(grossMonthly);
+  document.getElementById('rhc-gross-annual').textContent = T.annual_label + ': ' + fmt(annualGross);
+  document.getElementById('rhc-deductions').textContent = fmt(totalDeductionsAnnual / 12);
+  document.getElementById('rhc-deductions-pct').textContent = fmtPct(totalDeductionRate) + ' ' + T.of_gross;
+  document.getElementById('rhc-effective').textContent = fmtPct(effectiveTaxRate);
+
+  // rows
+  const setRow = (rateId, mId, aId, rate, monthly, annual) => {
+    if (rateId) document.getElementById(rateId).textContent = rate !== null ? fmtPct(rate) : '—';
+    document.getElementById(mId).textContent = fmt(monthly);
+    document.getElementById(aId).textContent = fmt(annual);
+  };
+
+  document.getElementById('row-gross-m').textContent = fmt(grossMonthly);
+  document.getElementById('row-gross-a').textContent = fmt(annualGross);
+
+  setRow('rate-ahv',   'row-ahv-m',      'row-ahv-a',      AHV_RATE*100, ahvAnnual/12, ahvAnnual);
+  setRow('rate-alv',   'row-alv-m',      'row-alv-a',      null,         alvAnnual/12, alvAnnual);
+  document.getElementById('rate-alv').textContent = annualGross <= ALV_CAP ? '1.10%' : '1.10/0.50%';
+  setRow('rate-nbuv',  'row-nbuv-m',     'row-nbuv-a',     NBUV_RATE*100, nbuvAnnual/12, nbuvAnnual);
+  setRow('rate-pk',    'row-pk-m',       'row-pk-a',       bvgRate*100,  pkAnnual/12,  pkAnnual);
+  setRow('rate-social-total','row-social-m','row-social-a', socialRate,   socialAnnual/12, socialAnnual);
+
+  const fedRate = annualGross > 0 ? fedTax / annualGross * 100 : 0;
+  const cantonPct = annualGross > 0 ? cantonalAnnual / annualGross * 100 : 0;
+  const churchPct = annualGross > 0 ? churchAnnual / annualGross * 100 : 0;
+
+  setRow('rate-federal',   'row-federal-m',   'row-federal-a',   fedRate,    fedTax/12,         fedTax);
+  setRow('rate-cantonal',  'row-cantonal-m',  'row-cantonal-a',  cantonPct,  cantonalAnnual/12, cantonalAnnual);
+  setRow('rate-church',    'row-church-m',    'row-church-a',    churchPct,  churchAnnual/12,   churchAnnual);
+  document.getElementById('church-row').style.display = churchTax ? '' : 'none';
+  setRow('rate-tax-total', 'row-tax-m',       'row-tax-a',       taxTotalRate, totalTaxAnnual/12, totalTaxAnnual);
+
+  const netRate = annualGross > 0 ? netAnnual / annualGross * 100 : 0;
+  document.getElementById('rate-net').textContent = fmtPct(netRate) + T.of_gross_suffix;
+  document.getElementById('row-net-m').textContent = fmt(netMonthly);
+  document.getElementById('row-net-a').textContent = fmt(netAnnual);
+
+  // Update cantonal label with canton name
+  document.getElementById('cantonal-label').setAttribute('data-i18n-skip','1');
+  document.getElementById('cantonal-label').textContent =
+    T.row_cantonal.replace('{c}', document.getElementById('canton').options[document.getElementById('canton').selectedIndex].text.split(' (')[0]);
+}
+
+// ── i18n ─────────────────────────────────────────────────────────────────────
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+const i18n = {
+  en: {
+    lang_label:'Select language', nav_tools:'Tools', nav_insights:'Insights', nav_about:'About',
+    eyebrow:'Swiss salary calculator',
+    h1:'What do you actually<br>take home in <em>Switzerland?</em>',
+    sub:'Enter your gross salary and see your net take-home pay after all mandatory Swiss deductions \u2014 AHV, ALV, pension fund, and cantonal income tax. Updated for 2025.',
+    sect_salary:'Your salary', lbl_period:'Salary period', period_annual:'Annual', period_monthly:'Monthly',
+    lbl_gross:'Gross salary (CHF)', hint_gross:'Your salary before any deductions',
+    lbl_canton:'Canton', hint_canton:'Used for cantonal & municipal income tax estimate',
+    lbl_status:'Civil status', status_single:'Single', status_married:'Married (one income)', status_married2:'Married (two incomes)',
+    lbl_age:'Age', hint_age:'Affects AHV rate and pension fund contributions',
+    lbl_children:'Children under 18', hint_children:'Affects cantonal tax deductions',
+    lbl_church:'Church tax', church_yes:'Yes', church_no:'No', hint_church:'Around 0.1\u20130.3% of income in most cantons',
+    lbl_13th:'13th month salary', th13_yes:'Included', th13_no:'Not included', hint_13th:'If your gross already includes the 13th month, select Included',
+    res_net_label:'Monthly take-home pay', res_net_sub:'Annual net: {a}',
+    annual_label:'Annual gross', of_gross:' of gross', of_gross_suffix:' of gross',
+    res_gross_label:'Gross monthly', res_deductions_label:'Total deductions', res_effective_label:'Effective tax rate', res_effective_sub:'Income tax only',
+    th_item:'Item', th_rate:'Rate', th_monthly:'Monthly (CHF)', th_annual:'Annual (CHF)',
+    row_gross:'Gross salary',
+    sect_social:'Social insurance deductions',
+    row_ahv:'AHV/IV/EO (state pension & disability)',
+    row_alv:'ALV (unemployment insurance)',
+    row_nbuv:'NBUV (accident insurance, non-occupational)',
+    row_pkasse:'Pension fund / BVG (Pillar 2)',
+    row_social_total:'Total social insurance',
+    sect_tax:'Income tax deductions',
+    row_federal:'Federal income tax (direct federal tax)',
+    row_cantonal:'{c} cantonal & municipal income tax (estimate)',
+    row_church:'Church tax (estimate)',
+    row_tax_total:'Total income tax',
+    row_net:'Net take-home pay',
+    disc_title:'Important notes on these estimates',
+    disc_text:'Cantonal and municipal tax figures are approximations based on 2024 published rates for a single person in the cantonal capital, using standard deductions. Actual tax bills depend on your municipality, full deduction profile, and individual circumstances. The pension fund (BVG/Pillar 2) contribution is estimated based on your age bracket \u2014 actual rates vary by employer and fund. This calculator does not account for health insurance premiums, which are paid separately in Switzerland. Results are for guidance only and do not constitute financial or tax advice.',
+    pill_1:'\u2705 Federal rates 2025', pill_2:'\u2705 AHV/ALV 2025 rates', pill_3:'\u26a0\ufe0f Cantonal tax estimated', pill_4:'\u26a0\ufe0f Pension fund estimated',
+    related_title:'Related tools & articles',
+    rel1_tag:'Tool', rel1_title:'Swiss Salary Comparator', rel1_desc:'See where your salary sits in the Swiss wage distribution, by region and sector.',
+    rel2_tag:'Article', rel2_title:'How to Optimise Your Swiss Taxes', rel2_desc:'Every deduction available in 2025 \u2014 Pillar 3a, BVG buybacks, commuting costs, and more.',
+    rel3_tag:'Tool', rel3_title:'Salary Reality Check', rel3_desc:'After rent, health insurance, and taxes \u2014 how much do you actually have left each month?',
+  },
+  de: {
+    lang_label:'Sprache w\u00e4hlen', nav_tools:'Tools', nav_insights:'Einblicke', nav_about:'\u00dcber uns',
+    eyebrow:'Schweizer Gehaltsrechner',
+    h1:'Was bleibt Ihnen in der <em>Schweiz</em> wirklich?',
+    sub:'Geben Sie Ihr Bruttogehalt ein und sehen Sie Ihr Nettogehalt nach allen obligatorischen Schweizer Abz\u00fcgen \u2014 AHV, ALV, Pensionskasse und Kantonssteuer. Aktualisiert f\u00fcr 2025.',
+    sect_salary:'Ihr Gehalt', lbl_period:'Gehaltszeitraum', period_annual:'J\u00e4hrlich', period_monthly:'Monatlich',
+    lbl_gross:'Bruttogehalt (CHF)', hint_gross:'Ihr Gehalt vor allen Abz\u00fcgen',
+    lbl_canton:'Kanton', hint_canton:'F\u00fcr die Sch\u00e4tzung der kantonalen und kommunalen Einkommenssteuer',
+    lbl_status:'Zivilstand', status_single:'Ledig', status_married:'Verheiratet (ein Einkommen)', status_married2:'Verheiratet (zwei Einkommen)',
+    lbl_age:'Alter', hint_age:'Beeinflusst AHV-Satz und Pensionskassenbeitr\u00e4ge',
+    lbl_children:'Kinder unter 18', hint_children:'Beeinflusst kantonale Steuerabz\u00fcge',
+    lbl_church:'Kirchensteuer', church_yes:'Ja', church_no:'Nein', hint_church:'Ca. 0,1\u20130,3% des Einkommens in den meisten Kantonen',
+    lbl_13th:'13. Monatsgehalt', th13_yes:'Enthalten', th13_no:'Nicht enthalten', hint_13th:'W\u00e4hlen Sie \u201eEnthalten\u201c, wenn Ihr Bruttolohn das 13. Monatsgehalt bereits enth\u00e4lt',
+    res_net_label:'Monatliches Nettogehalt', res_net_sub:'J\u00e4hrliches Netto: {a}',
+    annual_label:'Jahresbrutto', of_gross:' des Brutto', of_gross_suffix:' des Brutto',
+    res_gross_label:'Bruttomonat', res_deductions_label:'Gesamtabz\u00fcge', res_effective_label:'Effektiver Steuersatz', res_effective_sub:'Nur Einkommenssteuer',
+    th_item:'Position', th_rate:'Satz', th_monthly:'Monatlich (CHF)', th_annual:'J\u00e4hrlich (CHF)',
+    row_gross:'Bruttogehalt',
+    sect_social:'Sozialversicherungsabz\u00fcge',
+    row_ahv:'AHV/IV/EO (Alters- und Invalidenversicherung)',
+    row_alv:'ALV (Arbeitslosenversicherung)',
+    row_nbuv:'NBUV (Nichtberufsunfallversicherung)',
+    row_pkasse:'Pensionskasse / BVG (S\u00e4ule 2)',
+    row_social_total:'Sozialversicherung total',
+    sect_tax:'Einkommenssteuerabz\u00fcge',
+    row_federal:'Direkte Bundessteuer',
+    row_cantonal:'{c} Kantons- und Gemeindesteuer (Sch\u00e4tzung)',
+    row_church:'Kirchensteuer (Sch\u00e4tzung)',
+    row_tax_total:'Einkommenssteuern total',
+    row_net:'Nettogehalt',
+    disc_title:'Wichtige Hinweise zu diesen Sch\u00e4tzungen',
+    disc_text:'Kantons- und Gemeindesteuern sind N\u00e4herungswerte basierend auf ver\u00f6ffentlichten S\u00e4tzen 2024 f\u00fcr eine Einzelperson am Kantonshauptort mit Standardabz\u00fcgen. Tats\u00e4chliche Steuerrechnungen h\u00e4ngen von Ihrer Gemeinde, Ihrem vollst\u00e4ndigen Abzugsprofil und Ihren pers\u00f6nlichen Verh\u00e4ltnissen ab. Der Pensionskassenbeitrag wird anhand Ihrer Altersklasse gesch\u00e4tzt. Krankenkassenpr\u00e4mien sind nicht ber\u00fccksichtigt. Diese Ergebnisse sind nur zur Orientierung und stellen keine Steuer- oder Finanzberatung dar.',
+    pill_1:'\u2705 Bundessteuers\u00e4tze 2025', pill_2:'\u2705 AHV/ALV-S\u00e4tze 2025', pill_3:'\u26a0\ufe0f Kantonssteuer gesch\u00e4tzt', pill_4:'\u26a0\ufe0f Pensionskasse gesch\u00e4tzt',
+    related_title:'Verwandte Tools & Artikel',
+    rel1_tag:'Tool', rel1_title:'Schweizer Gehaltsvergleich', rel1_desc:'Sehen Sie, wo Ihr Gehalt in der Schweizer Lohnverteilung liegt.',
+    rel2_tag:'Artikel', rel2_title:'Schweizer Steuern optimieren', rel2_desc:'Alle verf\u00fcgbaren Abz\u00fcge 2025 \u2014 S\u00e4ule 3a, BVG-Eink\u00e4ufe, Pendelkosten und mehr.',
+    rel3_tag:'Tool', rel3_title:'Gehalts-Realit\u00e4tscheck', rel3_desc:'Nach Miete, Krankenkasse und Steuern \u2014 was bleibt Ihnen wirklich monatlich?',
+  },
+  fr: {
+    lang_label:'Choisir la langue', nav_tools:'Outils', nav_insights:'Analyses', nav_about:'\u00c0 propos',
+    eyebrow:'Calculateur de salaire suisse',
+    h1:'Que touchez-vous vraiment<br>en <em>Suisse</em>\u00a0?',
+    sub:'Entrez votre salaire brut et d\u00e9couvrez votre salaire net apr\u00e8s toutes les d\u00e9ductions obligatoires suisses \u2014 AVS, AC, caisse de pension et imp\u00f4t cantonal. Mis \u00e0 jour pour 2025.',
+    sect_salary:'Votre salaire', lbl_period:'P\u00e9riode de salaire', period_annual:'Annuel', period_monthly:'Mensuel',
+    lbl_gross:'Salaire brut (CHF)', hint_gross:'Votre salaire avant toute d\u00e9duction',
+    lbl_canton:'Canton', hint_canton:'Utilis\u00e9 pour estimer l\u2019imp\u00f4t cantonal et communal',
+    lbl_status:'\u00c9tat civil', status_single:'C\u00e9libataire', status_married:'Mari\u00e9(e) (un revenu)', status_married2:'Mari\u00e9(e) (deux revenus)',
+    lbl_age:'\u00c2ge', hint_age:'Influence le taux AVS et les cotisations LPP',
+    lbl_children:'Enfants de moins de 18 ans', hint_children:'Influence les d\u00e9ductions fiscales cantonales',
+    lbl_church:'Imp\u00f4t eccl\u00e9siastique', church_yes:'Oui', church_no:'Non', hint_church:'Environ 0,1\u20130,3% du revenu dans la plupart des cantons',
+    lbl_13th:'13e mois de salaire', th13_yes:'Inclus', th13_no:'Non inclus', hint_13th:'S\u00e9lectionnez \u00abInclus\u00bb si votre salaire brut comprend d\u00e9j\u00e0 le 13e mois',
+    res_net_label:'Salaire net mensuel', res_net_sub:'Net annuel\u00a0: {a}',
+    annual_label:'Brut annuel', of_gross:' du brut', of_gross_suffix:' du brut',
+    res_gross_label:'Brut mensuel', res_deductions_label:'Total des d\u00e9ductions', res_effective_label:'Taux d\u2019imposition effectif', res_effective_sub:'Imp\u00f4t sur le revenu uniquement',
+    th_item:'\u00c9l\u00e9ment', th_rate:'Taux', th_monthly:'Mensuel (CHF)', th_annual:'Annuel (CHF)',
+    row_gross:'Salaire brut',
+    sect_social:'D\u00e9ductions d\u2019assurances sociales',
+    row_ahv:'AVS/AI/APG (retraite et invalidit\u00e9)',
+    row_alv:'AC (assurance-ch\u00f4mage)',
+    row_nbuv:'AANP (accident non professionnel)',
+    row_pkasse:'Caisse de pension / LPP (2e pilier)',
+    row_social_total:'Total assurances sociales',
+    sect_tax:'D\u00e9ductions fiscales',
+    row_federal:'Imp\u00f4t f\u00e9d\u00e9ral direct',
+    row_cantonal:'Imp\u00f4t cantonal et communal \u2014 {c} (estimation)',
+    row_church:'Imp\u00f4t eccl\u00e9siastique (estimation)',
+    row_tax_total:'Total imp\u00f4ts sur le revenu',
+    row_net:'Salaire net',
+    disc_title:'Notes importantes sur ces estimations',
+    disc_text:'Les chiffres fiscaux cantonaux et communaux sont des approximations bas\u00e9es sur les taux publi\u00e9s 2024 pour une personne seule au chef-lieu du canton, avec d\u00e9ductions standard. Les cotisations LPP sont estim\u00e9es selon votre tranche d\u2019\u00e2ge. Les primes d\u2019assurance maladie ne sont pas incluses. Ces r\u00e9sultats sont indicatifs et ne constituent pas un conseil fiscal ou financier.',
+    pill_1:'\u2705 Taux f\u00e9d\u00e9raux 2025', pill_2:'\u2705 Taux AVS/AC 2025', pill_3:'\u26a0\ufe0f Imp\u00f4t cantonal estim\u00e9', pill_4:'\u26a0\ufe0f LPP estim\u00e9e',
+    related_title:'Outils et articles associ\u00e9s',
+    rel1_tag:'Outil', rel1_title:'Comparateur de salaires suisses', rel1_desc:'Voyez o\u00f9 se situe votre salaire dans la distribution salariale suisse.',
+    rel2_tag:'Article', rel2_title:'Optimiser vos imp\u00f4ts suisses', rel2_desc:'Toutes les d\u00e9ductions disponibles en 2025 \u2014 pilier 3a, rachats LPP, frais de d\u00e9placement et plus.',
+    rel3_tag:'Outil', rel3_title:'R\u00e9alit\u00e9 du salaire', rel3_desc:'Apr\u00e8s le loyer, l\u2019assurance maladie et les imp\u00f4ts \u2014 que vous reste-t-il vraiment chaque mois\u00a0?',
+  },
+  it: {
+    lang_label:'Seleziona lingua', nav_tools:'Strumenti', nav_insights:'Approfondimenti', nav_about:'Chi siamo',
+    eyebrow:'Calcolatore stipendio svizzero',
+    h1:'Quanto vi rimane davvero<br>in <em>Svizzera</em>?',
+    sub:'Inserite il vostro stipendio lordo e scoprite il netto dopo tutte le deduzioni obbligatorie svizzere \u2014 AVS, AD, cassa pensioni e imposta cantonale. Aggiornato per il 2025.',
+    sect_salary:'Il vostro stipendio', lbl_period:'Periodo salariale', period_annual:'Annuale', period_monthly:'Mensile',
+    lbl_gross:'Stipendio lordo (CHF)', hint_gross:'Il vostro stipendio prima di qualsiasi deduzione',
+    lbl_canton:'Cantone', hint_canton:'Utilizzato per la stima dell\u2019imposta cantonale e comunale',
+    lbl_status:'Stato civile', status_single:'Celibe/nubile', status_married:'Coniugato/a (un reddito)', status_married2:'Coniugato/a (due redditi)',
+    lbl_age:'Et\u00e0', hint_age:'Influisce sul tasso AVS e sui contributi alla cassa pensioni',
+    lbl_children:'Figli di et\u00e0 inferiore a 18 anni', hint_children:'Influisce sulle deduzioni fiscali cantonali',
+    lbl_church:'Imposta ecclesiastica', church_yes:'S\u00ec', church_no:'No', hint_church:'Circa lo 0,1\u20130,3% del reddito nella maggior parte dei cantoni',
+    lbl_13th:'Tredicesima mensilit\u00e0', th13_yes:'Inclusa', th13_no:'Non inclusa', hint_13th:'Selezionate \u00abInclusa\u00bb se il vostro lordo comprende gi\u00e0 la tredicesima',
+    res_net_label:'Stipendio netto mensile', res_net_sub:'Netto annuale: {a}',
+    annual_label:'Lordo annuale', of_gross:' del lordo', of_gross_suffix:' del lordo',
+    res_gross_label:'Lordo mensile', res_deductions_label:'Deduzioni totali', res_effective_label:'Aliquota fiscale effettiva', res_effective_sub:'Solo imposta sul reddito',
+    th_item:'Voce', th_rate:'Aliquota', th_monthly:'Mensile (CHF)', th_annual:'Annuale (CHF)',
+    row_gross:'Stipendio lordo',
+    sect_social:'Deduzioni assicurazioni sociali',
+    row_ahv:'AVS/AI/IPG (pensione e invalidit\u00e0)',
+    row_alv:'AD (assicurazione contro la disoccupazione)',
+    row_nbuv:'AINP (infortuni non professionali)',
+    row_pkasse:'Cassa pensioni / LPP (2\u00b0 pilastro)',
+    row_social_total:'Totale assicurazioni sociali',
+    sect_tax:'Deduzioni fiscali',
+    row_federal:'Imposta federale diretta',
+    row_cantonal:'Imposta cantonale e comunale \u2014 {c} (stima)',
+    row_church:'Imposta ecclesiastica (stima)',
+    row_tax_total:'Totale imposte sul reddito',
+    row_net:'Stipendio netto',
+    disc_title:'Note importanti su queste stime',
+    disc_text:'Le cifre fiscali cantonali e comunali sono approssimazioni basate sulle aliquote pubblicate 2024 per una persona sola nel capoluogo cantonale. I contributi alla cassa pensioni sono stimati in base alla vostra fascia d\u2019et\u00e0. I premi dell\u2019assicurazione malattia non sono inclusi. I risultati sono indicativi e non costituiscono una consulenza fiscale o finanziaria.',
+    pill_1:'\u2705 Aliquote federali 2025', pill_2:'\u2705 Aliquote AVS/AD 2025', pill_3:'\u26a0\ufe0f Imposta cantonale stimata', pill_4:'\u26a0\ufe0f Cassa pensioni stimata',
+    related_title:'Strumenti e articoli correlati',
+    rel1_tag:'Strumento', rel1_title:'Comparatore stipendi svizzeri', rel1_desc:'Vedete dove si colloca il vostro stipendio nella distribuzione salariale svizzera.',
+    rel2_tag:'Articolo', rel2_title:'Come ottimizzare le vostre imposte svizzere', rel2_desc:'Tutte le deduzioni disponibili nel 2025 \u2014 pilastro 3a, riscatti LPP, spese di pendolarismo e altro.',
+    rel3_tag:'Strumento', rel3_title:'Verifica stipendio reale', rel3_desc:'Dopo affitto, assicurazione malattia e imposte \u2014 quanto vi resta davvero ogni mese?',
+  }
+};
+
+function setLang(l) {
+  currentLang = l;
+  localStorage.setItem('bs_lang', l);
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + l).classList.add('active');
+  const t = i18n[l];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  // re-apply select option translations
+  ['status_single','status_married','status_married2'].forEach(k => {
+    const opt = document.querySelector(`option[data-i18n="${k}"]`);
+    if (opt && t[k]) opt.textContent = t[k];
+  });
+  calculate();
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn =>
+  btn.addEventListener('click', () => setLang(btn.dataset.lang))
+);
+
+// Auto-calculate on load
+window.addEventListener('DOMContentLoaded', () => {
+  setLang(currentLang);
+  calculate();
+});
+</script>
+</body>
+</html>
