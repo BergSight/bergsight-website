@@ -1,1 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/wealth-check/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How does your wealth and savings compare to the Swiss average for your age? Free calculator based on FSO 2023 data (median values). Built for Swiss residents and expats.">
+  <meta property="og:title" content="Swiss Wealth & Savings Rate Checker | BergSight">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bergsight.com/wealth-check/">
+  <title>Average Swiss Wealth and Savings by Age | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KPHRGJL1WW');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Swiss Wealth & Savings Rate Checker","description":"Compare your net wealth and savings rate to the Swiss median for your age group. Based on FSO SILC 2023 data.","url":"https://bergsight.com/wealth-check/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}}</script>
+  <style>
+    :root{--stone:#f5f2ed;--stone-2:#ece8e1;--stone-3:#d8d2c8;--ink:#1a1916;--ink-2:#3d3a35;--ink-3:#7a756c;--alpine:#2d5a3d;--alpine-2:#3d7a52;--alpine-3:#e8f0eb;--gold:#8a6d3b;--gold-2:#f5ead8;--gold-3:#d4a853;--red:#8a2d2d;--red-2:#f5e8e8;--white:#fff;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--ink);overflow-x:hidden;}
 
+    .lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--ink);display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:44px;border-bottom:1px solid #2a2825;}
+    .lang-label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#8a857e;}
+    .lang-btn{background:none;border:none;color:#8a857e;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:0 1.1rem;height:44px;border-right:1px solid #2a2825;transition:color .15s,background .15s;}
+    .lang-btn:first-of-type{border-left:1px solid #2a2825;}
+    .lang-btn:hover{color:#fff;background:#252320;}
+    .lang-btn.active{color:var(--alpine-2);background:rgba(61,122,82,.1);font-weight:600;}
+
+    nav{position:fixed;top:44px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(245,242,237,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone-3);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--ink);text-decoration:none;}
+    .nav-logo span{color:var(--alpine);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:.82rem;color:var(--ink-2);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;}
+    .nav-links a:hover{color:var(--alpine);}
+
+    .page-hero{padding:8.5rem 4rem 3rem;background:var(--ink);position:relative;overflow:hidden;}
+    .hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--stone-3) 1px,transparent 1px),linear-gradient(90deg,var(--stone-3) 1px,transparent 1px);background-size:40px 40px;}
+    .hero-inner{position:relative;max-width:720px;}
+    .hero-eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--alpine-2);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+    .hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--alpine-2);}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:500;color:var(--stone);line-height:1.12;margin-bottom:.8rem;}
+    .page-hero h1 em{font-style:italic;color:var(--gold-3);}
+    .page-hero h1 .gold{color:var(--gold-3);font-style:normal;}
+    .hero-sub{font-size:.92rem;color:#9a958e;font-weight:300;line-height:1.75;max-width:560px;}
+
+    .main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 5rem;}
+
+    /* ── cards ── */
+    .card{background:var(--white);border:1px solid var(--stone-3);padding:1.8rem 2rem;margin-bottom:1.5rem;}
+    .card-title{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--alpine);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+    .card-title::before{content:'';display:block;width:12px;height:1px;background:var(--alpine);}
+
+    /* ── form ── */
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;}
+    .form-group{display:flex;flex-direction:column;gap:.4rem;}
+    .form-group.full{grid-column:1/-1;}
+    label{font-size:.75rem;font-weight:500;color:var(--ink-2);}
+    .label-hint{font-size:.68rem;color:var(--ink-3);font-weight:300;}
+    .input-wrap{position:relative;}
+    .input-prefix{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);font-family:'DM Mono',monospace;font-size:.8rem;color:var(--ink-3);pointer-events:none;}
+    input[type=number],select{width:100%;padding:.65rem .75rem;border:1px solid var(--stone-3);background:var(--stone);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;}
+    input[type=number].has-prefix{padding-left:2.2rem;}
+    input[type=number]:focus,select:focus{border-color:var(--alpine);}
+    select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a756c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;padding-right:2rem;cursor:pointer;}
+    .toggle-row{display:flex;border:1px solid var(--stone-3);background:var(--stone);}
+    .toggle-btn{flex:1;padding:.55rem .5rem;border:none;background:none;font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--ink-3);cursor:pointer;transition:background .15s,color .15s;}
+    .toggle-btn.active{background:var(--alpine);color:#fff;font-weight:500;}
+    .calc-btn{width:100%;padding:.9rem;background:var(--ink);color:var(--stone);border:none;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:1rem;}
+    .calc-btn:hover{background:var(--alpine);}
+
+    /* ── results ── */
+    .results{display:none;}
+    .results.visible{display:block;}
+
+    /* score panel */
+    .score-panel{background:var(--ink);padding:2rem 2.4rem;margin-bottom:1.5px;}
+    .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2a2825;margin-top:1.4rem;}
+    .score-cell{background:var(--ink);padding:1.1rem 1.4rem;}
+    .sc-label{font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6a6560;margin-bottom:.3rem;}
+    .sc-val{font-family:'DM Mono',monospace;font-size:1.2rem;color:var(--stone);}
+    .sc-sub{font-size:.72rem;color:#9a958e;margin-top:.2rem;}
+
+    /* verdict */
+    .verdict-bar{padding:1.2rem 1.6rem;margin-bottom:1.5px;display:flex;align-items:center;gap:1rem;}
+    .verdict-icon{font-size:1.4rem;flex-shrink:0;}
+    .verdict-text{font-size:.9rem;font-weight:300;line-height:1.65;}
+    .verdict-text strong{font-weight:500;}
+    .verdict-ahead{background:var(--alpine-3);border-left:3px solid var(--alpine);}
+    .verdict-on{background:var(--gold-2);border-left:3px solid var(--gold);}
+    .verdict-behind{background:var(--red-2);border-left:3px solid var(--red);}
+
+    /* benchmark bar chart */
+    .bench-card{background:var(--white);border:1px solid var(--stone-3);padding:1.6rem 1.8rem;margin-bottom:1.5px;}
+    .bench-title{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--alpine);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+    .bench-title::before{content:'';display:block;width:12px;height:1px;background:var(--alpine);}
+    .bench-row{margin-bottom:1.1rem;}
+    .bench-row:last-child{margin-bottom:0;}
+    .bench-row-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.35rem;}
+    .bench-row-label{font-size:.8rem;color:var(--ink-2);font-weight:300;}
+    .bench-row-val{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--ink-2);}
+    .bench-track{height:8px;background:var(--stone-3);position:relative;border-radius:1px;}
+    .bench-fill{height:100%;border-radius:1px;transition:width .6s ease;}
+    .bench-fill-median{background:var(--stone-3);}
+    .bench-fill-you{position:absolute;top:0;height:100%;background:var(--alpine);border-radius:1px;transition:width .6s ease;}
+    .bench-fill-you.behind{background:var(--red);}
+    .bench-marker{position:absolute;top:-4px;width:2px;height:16px;background:var(--ink-3);}
+    .bench-you-label{font-size:.62rem;color:var(--alpine);font-weight:500;margin-top:.25rem;}
+    .bench-you-label.behind{color:var(--red);}
+
+    /* savings section */
+    .savings-card{background:var(--white);border:1px solid var(--stone-3);padding:1.6rem 1.8rem;margin-bottom:1.5px;}
+    .rate-display{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--stone-3);border:1px solid var(--stone-3);margin:.8rem 0;}
+    .rate-cell{background:var(--white);padding:1rem 1.2rem;}
+    .rate-label{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.25rem;}
+    .rate-val{font-family:'DM Mono',monospace;font-size:1.3rem;color:var(--ink);}
+    .rate-val.good{color:var(--alpine);}
+    .rate-val.low{color:var(--red);}
+    .rate-note{font-size:.8rem;color:var(--ink-3);line-height:1.65;margin-top:.5rem;font-weight:300;}
+    .rate-note strong{font-weight:500;color:var(--ink-2);}
+
+    /* pillar 2 note */
+    .pillar2-note{background:var(--gold-2);border-left:3px solid var(--gold);padding:.9rem 1.2rem;font-size:.82rem;color:var(--ink-2);line-height:1.65;margin-bottom:1.5px;font-weight:300;}
+    .pillar2-note strong{font-weight:500;color:var(--ink);}
+
+    /* disclaimer */
+    .disclaimer{font-size:.75rem;color:var(--ink-3);line-height:1.7;padding:.8rem 1rem;border-left:2px solid var(--stone-3);margin-top:1rem;font-style:italic;}
+
+    /* data source */
+    .data-source{font-size:.7rem;color:var(--ink-3);margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--stone-2);display:flex;flex-wrap:wrap;gap:.5rem;}
+    .data-pill{background:var(--stone-2);padding:.2rem .6rem;font-size:.65rem;color:var(--ink-3);}
+
+    /* related */
+    .related{max-width:860px;margin:0 auto;padding:0 2rem 4rem;}
+    .related-title{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--alpine);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+    .related-title::before{content:'';display:block;width:16px;height:1px;background:var(--alpine);}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stone-3);}
+    .related-card{background:var(--white);padding:1.2rem 1.4rem;text-decoration:none;display:block;transition:background .15s;}
+    .related-card:hover{background:var(--stone);}
+    .related-tag{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--alpine);margin-bottom:.35rem;}
+    .related-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:.3rem;}
+    .related-card p{font-size:.76rem;color:var(--ink-3);font-weight:300;line-height:1.5;}
+
+    footer{background:var(--ink);color:#9a958e;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--stone);text-decoration:none;}
+    .footer-logo span{color:var(--alpine-2);}
+    .footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+    .footer-links a{font-size:.78rem;color:#6a6560;text-decoration:none;}
+    .footer-links a:hover{color:var(--alpine-2);}
+    .footer-copy{font-size:.72rem;color:#4a4742;font-family:'DM Mono',monospace;}
+
+    @media(max-width:768px){
+      .lang-bar{padding:0 1.2rem;}.lang-label{display:none;}
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .page-hero{padding:7.5rem 1.5rem 2.5rem;}
+      .main{padding:1.5rem 1rem 4rem;}
+      .form-grid{grid-template-columns:1fr;}
+      .score-grid{grid-template-columns:1fr;}
+      .rate-display{grid-template-columns:1fr;}
+      .related{padding:0 1rem 3rem;}
+      .related-grid{grid-template-columns:1fr;}
+      footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <div style="display:flex;align-items:center;gap:.6rem;"><span style="color:#4a4742;font-size:.9rem;">&#127760;</span><span class="lang-label">Select language</span></div>
+  <div style="display:flex;height:100%;">
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+  <ul class="nav-links">
+    <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+    <li><a href="/insights" data-i18n="nav_insights">Insights</a></li>
+    <li><a href="/about" data-i18n="nav_about">About</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="eyebrow">Swiss wealth benchmark</div>
+    <h1>Average Swiss <span class="gold">wealth</span> and <span class="gold">savings</span> by age</h1>
+    <p class="hero-sub" data-i18n="sub">See how your wealth and savings compare to the Swiss average for your age group. The averages shown are median values from FSO SILC 2023 data — the midpoint of the Swiss population, not the mean. No data is stored.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- INPUTS -->
+  <div class="card">
+    <div class="card-title" data-i18n="sect_you">About you</div>
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label data-i18n="lbl_age">Your age</label>
+        <input type="number" id="age" value="35" min="18" max="75" step="1" oninput="onInput()">
+        <div class="label-hint" data-i18n="hint_age">Between 18 and 75</div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_status">Household type</label>
+        <select id="hh_type" onchange="onInput()">
+          <option value="single" data-i18n="hh_single">Single person</option>
+          <option value="couple" data-i18n="hh_couple">Couple (combined)</option>
+        </select>
+        <div class="label-hint" data-i18n="hint_status">Affects benchmark — FSO data covers both</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" data-i18n="sect_wealth">Your wealth</div>
+    <div class="form-grid">
+
+      <div class="form-group full">
+        <label data-i18n="lbl_liquid">Net liquid wealth (CHF)</label>
+        <div class="input-wrap">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="liquid" class="has-prefix" value="50000" min="0" step="1000" oninput="onInput()">
+        </div>
+        <div class="label-hint" data-i18n="hint_liquid">Bank savings + investments + Pillar 3a + property equity, minus debts. Exclude your Pillar 2 pension fund.</div>
+      </div>
+
+      <div class="form-group full">
+        <label data-i18n="lbl_pillar2">Pillar 2 pension fund balance (CHF) <span style="font-weight:300;color:var(--ink-3)" data-i18n="optional_label">(optional)</span></label>
+        <div class="input-wrap">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="pillar2" class="has-prefix" value="0" min="0" step="1000" oninput="onInput()">
+        </div>
+        <div class="label-hint" data-i18n="hint_pillar2">Find this on your annual pension fund certificate (Vorsorgeausweis). Leave as 0 if unknown.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" data-i18n="sect_savings">Your savings rate</div>
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label data-i18n="lbl_income">Monthly gross income (CHF)</label>
+        <div class="input-wrap">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="income" class="has-prefix" value="7000" min="0" step="100" oninput="onInput()">
+        </div>
+        <div class="label-hint" data-i18n="hint_income">Your gross salary before deductions</div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="lbl_saved">Amount saved per month (CHF)</label>
+        <div class="input-wrap">
+          <span class="input-prefix">CHF</span>
+          <input type="number" id="saved" class="has-prefix" value="1000" min="0" step="100" oninput="onInput()">
+        </div>
+        <div class="label-hint" data-i18n="hint_saved">What you actually set aside each month (savings, investments, Pillar 3a contributions)</div>
+      </div>
+
+    </div>
+    <button class="calc-btn" onclick="calculate()" data-i18n="btn_calc">Calculate my position</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+
+    <!-- Score panel -->
+    <div class="score-panel">
+      <div style="font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#6a6560;" data-i18n="res_label">Your financial position</div>
+      <div class="score-grid">
+        <div class="score-cell">
+          <div class="sc-label" data-i18n="sc_liquid">Liquid wealth vs median</div>
+          <div class="sc-val" id="sc-liquid-val">&#8212;</div>
+          <div class="sc-sub" id="sc-liquid-sub"></div>
+        </div>
+        <div class="score-cell">
+          <div class="sc-label" data-i18n="sc_total">Total wealth (incl. Pillar 2)</div>
+          <div class="sc-val" id="sc-total-val">&#8212;</div>
+          <div class="sc-sub" id="sc-total-sub"></div>
+        </div>
+        <div class="score-cell">
+          <div class="sc-label" data-i18n="sc_rate">Your savings rate</div>
+          <div class="sc-val" id="sc-rate-val">&#8212;</div>
+          <div class="sc-sub" id="sc-rate-sub"></div>
+        </div>
+        <div class="score-cell">
+          <div class="sc-label" data-i18n="sc_median_wealth">Swiss median wealth (your age)</div>
+          <div class="sc-val" id="sc-median-val">&#8212;</div>
+          <div class="sc-sub" id="sc-median-sub"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wealth verdict -->
+    <div class="verdict-bar" id="wealth-verdict">
+      <span class="verdict-icon" id="wealth-icon">&#8212;</span>
+      <span class="verdict-text" id="wealth-text"></span>
+    </div>
+
+    <!-- Benchmark chart -->
+    <div class="bench-card">
+      <div class="bench-title" data-i18n="bench_title">Wealth benchmarks by age (FSO 2023)</div>
+
+      <div class="bench-row">
+        <div class="bench-row-top">
+          <span class="bench-row-label" data-i18n="bench_liquid">Your liquid wealth vs median (excluding Pillar 2)</span>
+          <span class="bench-row-val" id="bench-liquid-label">&#8212;</span>
+        </div>
+        <div class="bench-track">
+          <div class="bench-fill bench-fill-you" id="bench-liquid-bar" style="width:0%"></div>
+          <div class="bench-marker" id="bench-liquid-marker" style="left:50%"></div>
+        </div>
+        <div class="bench-you-label" id="bench-liquid-you"></div>
+      </div>
+
+      <div class="bench-row" id="bench-total-row">
+        <div class="bench-row-top">
+          <span class="bench-row-label" data-i18n="bench_total">Your total wealth (incl. Pillar 2) vs median</span>
+          <span class="bench-row-val" id="bench-total-label">&#8212;</span>
+        </div>
+        <div class="bench-track">
+          <div class="bench-fill bench-fill-you" id="bench-total-bar" style="width:0%"></div>
+          <div class="bench-marker" id="bench-total-marker" style="left:50%"></div>
+        </div>
+        <div class="bench-you-label" id="bench-total-you"></div>
+      </div>
+
+    </div>
+
+    <!-- Pillar 2 context note -->
+    <div class="pillar2-note" id="pillar2-note" style="display:none">
+      <strong data-i18n="p2_note_title">Note on Pillar 2:</strong> <span data-i18n="p2_note_text">The FSO wealth benchmarks exclude Pillar 2 pension fund assets, so the liquid wealth comparison is like-for-like. Pillar 2 is shown separately above because it is a significant asset but is illiquid, pre-tax, and only accessible under specific conditions (retirement, property purchase, leaving Switzerland, self-employment).</span>
+    </div>
+
+    <!-- Savings rate -->
+    <div class="savings-card">
+      <div class="bench-title" data-i18n="savings_title">Your savings rate vs Switzerland</div>
+      <div class="rate-display">
+        <div class="rate-cell">
+          <div class="rate-label" data-i18n="rate_yours">Your savings rate</div>
+          <div class="rate-val" id="rate-yours">&#8212;</div>
+        </div>
+        <div class="rate-cell">
+          <div class="rate-label" data-i18n="rate_swiss">Swiss average (FSO HBS 2023)</div>
+          <div class="rate-val">16.8%</div>
+        </div>
+      </div>
+
+      <!-- savings bar -->
+      <div style="margin:.4rem 0 .8rem;">
+        <div class="bench-track" style="height:10px;">
+          <div class="bench-fill bench-fill-you" id="savings-bar" style="width:0%;height:100%;"></div>
+          <div class="bench-marker" id="savings-marker" style="left:50%;top:-3px;height:16px;"></div>
+        </div>
+      </div>
+
+      <div class="rate-note" id="savings-verdict-text"></div>
+
+      <div class="rate-note" style="margin-top:.8rem;">
+        <strong data-i18n="savings_note_title">What counts as saving?</strong> <span data-i18n="savings_note_text">Monthly savings includes anything you deliberately set aside: bank transfers to savings, investment contributions, Pillar 3a deposits, and voluntary pension top-ups. Regular debt repayments beyond minimums also count. The Swiss average of 16.8% of gross income is from the FSO Household Budget Survey 2023.</span>
+      </div>
+    </div>
+
+    <!-- Savings verdict -->
+    <div class="verdict-bar" id="savings-verdict-bar">
+      <span class="verdict-icon" id="savings-icon">&#8212;</span>
+      <span class="verdict-text" id="savings-text"></span>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer" data-i18n="disclaimer">These results are benchmarks for general orientation only. Wealth and savings are highly personal and depend on many factors this tool cannot capture: inheritance, property values, self-employment income, family circumstances, and personal goals. Being above or below the median is not inherently good or bad. Use this as a starting point for reflection, not a judgment. Always consult a qualified financial adviser for personalised guidance.</div>
+
+    <div class="data-source">
+      <span style="font-size:.65rem;color:var(--ink-3);align-self:center;" data-i18n="source_label">Data sources:</span>
+      <a class="data-pill" href="https://www.bfs.admin.ch/bfs/en/home/statistics/economic-social-situation-population/surveys/silc.html" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink-3);">FSO SILC 2023 (wealth by age) &#8599;</a>
+      <a class="data-pill" href="https://www.bfs.admin.ch/bfs/en/home/statistics/economic-social-situation-population/income-consumption-wealth.html" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink-3);">FSO HBS 2023 (savings rate) &#8599;</a>
+      <a class="data-pill" href="https://www.bfs.admin.ch/bfs/en/home/statistics/economic-social-situation-population/income-consumption-wealth/wealth.html" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink-3);">FSO Wealth statistics &#8599;</a>
+    </div>
+
+  </div><!-- end results -->
+
+</div>
+
+<div class="related">
+  <div class="related-title" data-i18n="related_title">Related tools</div>
+  <div class="related-grid">
+    <a href="/gross-to-net" class="related-card">
+      <div class="related-tag" data-i18n="rel1_tag">Tool</div>
+      <h4 data-i18n="rel1_title">Gross to Net Salary Calculator</h4>
+      <p data-i18n="rel1_desc">See your Swiss take-home pay after all deductions.</p>
+    </a>
+    <a href="/compound" class="related-card">
+      <div class="related-tag" data-i18n="rel2_tag">Tool</div>
+      <h4 data-i18n="rel2_title">Compound Growth Projector</h4>
+      <p data-i18n="rel2_desc">See how your savings and investments grow over time.</p>
+    </a>
+    <a href="/retirement" class="related-card">
+      <div class="related-tag" data-i18n="rel3_tag">Tool</div>
+      <h4 data-i18n="rel3_title">Retirement Readiness Calculator</h4>
+      <p data-i18n="rel3_desc">Model your AHV, Pillar 2, and Pillar 3a against your retirement needs.</p>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+  <ul class="footer-links">
+    <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+    <li><a href="/insights" data-i18n="nav_insights">Insights</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/disclaimer">Disclaimer</a></li>
+  </ul>
+  <div class="footer-copy">&#169; 2025 BergSight &#183; Z&#252;rich, Switzerland</div>
+</footer>
+
+<script>
+// ── FSO SILC 2023 median net wealth by age (excluding Pillar 2) ───────────────
+// Source: FSO SILC, reported via schwiizerfranke.com / AXA blog (FSO data)
+// Single-person benchmarks. Couple multiplier ~1.6x applied separately.
+const WEALTH_BENCHMARKS = [
+  [21, 5500],   [23, 10000],  [25, 15000],  [26, 18000],
+  [28, 24000],  [31, 32000],  [35, 50000],  [38, 62000],
+  [41, 78000],  [45, 98000],  [51, 124000], [55, 140000],
+  [61, 162000], [65, 171000], [70, 180000], [75, 185000],
+];
+
+// Interpolate median wealth for a given age
+function getMedianWealth(age, isCouple) {
+  age = Math.max(21, Math.min(75, age));
+  let lo = WEALTH_BENCHMARKS[0], hi = WEALTH_BENCHMARKS[WEALTH_BENCHMARKS.length-1];
+  for (let i = 0; i < WEALTH_BENCHMARKS.length - 1; i++) {
+    if (age >= WEALTH_BENCHMARKS[i][0] && age <= WEALTH_BENCHMARKS[i+1][0]) {
+      lo = WEALTH_BENCHMARKS[i]; hi = WEALTH_BENCHMARKS[i+1]; break;
+    }
+  }
+  const t = (age - lo[0]) / (hi[0] - lo[0]);
+  const base = lo[1] + t * (hi[1] - lo[1]);
+  return Math.round(isCouple ? base * 1.6 : base);
+}
+
+// Swiss national savings rate benchmark (FSO HBS 2023)
+const CH_SAVINGS_RATE = 16.8;
+
+// ── Formatting ────────────────────────────────────────────────────────────────
+function fmt(n) {
+  if (n >= 1000000) return 'CHF\u00a0' + (n/1000000).toFixed(2).replace(/\.?0+$/,'') + 'M';
+  return 'CHF\u00a0' + Math.round(n).toLocaleString('de-CH');
+}
+function fmtPct(n) { return n.toFixed(1) + '%'; }
+function pct(val, max) { return Math.min(100, Math.max(0, val / max * 100)); }
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let resultsShown = false;
+
+function onInput() {
+  if (resultsShown) calculate();
+}
+
+function calculate() {
+  const age       = parseInt(document.getElementById('age').value) || 35;
+  const isCouple  = document.getElementById('hh_type').value === 'couple';
+  const liquid    = parseFloat(document.getElementById('liquid').value) || 0;
+  const pillar2   = parseFloat(document.getElementById('pillar2').value) || 0;
+  const income    = parseFloat(document.getElementById('income').value) || 0;
+  const saved     = parseFloat(document.getElementById('saved').value) || 0;
+
+  const medianWealth = getMedianWealth(age, isCouple);
+  const totalWealth  = liquid + pillar2;
+  const savingsRate  = income > 0 ? (saved / income * 100) : 0;
+
+  // ── Wealth ratio ──────────────────────────────────────────────────────────
+  const liquidRatio = medianWealth > 0 ? liquid / medianWealth : 0;
+  const totalRatio  = medianWealth > 0 ? totalWealth / medianWealth : 0;
+  const T = i18n[currentLang];
+
+  // Score panel
+  document.getElementById('sc-liquid-val').textContent = fmt(liquid);
+  document.getElementById('sc-liquid-sub').textContent =
+    fmtPct(liquidRatio * 100) + ' ' + T.of_median;
+  document.getElementById('sc-total-val').textContent = fmt(totalWealth);
+  document.getElementById('sc-total-sub').textContent = pillar2 > 0
+    ? T.incl_pillar2 : T.no_pillar2;
+  document.getElementById('sc-rate-val').textContent = fmtPct(savingsRate);
+  document.getElementById('sc-rate-sub').textContent =
+    T.swiss_avg + ' 16.8%';
+  document.getElementById('sc-median-val').textContent = fmt(medianWealth);
+  document.getElementById('sc-median-sub').textContent =
+    T.age_label + ' ' + age + (isCouple ? ' ' + T.couple_label : '');
+
+  // ── Wealth verdict ────────────────────────────────────────────────────────
+  const wv = document.getElementById('wealth-verdict');
+  const wi = document.getElementById('wealth-icon');
+  const wt = document.getElementById('wealth-text');
+  wv.className = 'verdict-bar';
+  const diff = liquid - medianWealth;
+  const diffFmt = fmt(Math.abs(diff));
+  if (liquidRatio >= 1.25) {
+    wv.classList.add('verdict-ahead');
+    wi.textContent = '\u2197';
+    wt.innerHTML = '<strong>' + T.w_ahead_title + '</strong> ' +
+      T.w_ahead_text.replace('{x}', diffFmt).replace('{pct}', fmtPct((liquidRatio-1)*100));
+  } else if (liquidRatio >= 0.8) {
+    wv.classList.add('verdict-on');
+    wi.textContent = '\u2192';
+    wt.innerHTML = '<strong>' + T.w_on_title + '</strong> ' +
+      T.w_on_text.replace('{median}', fmt(medianWealth));
+  } else {
+    wv.classList.add('verdict-behind');
+    wi.textContent = '\u2193';
+    wt.innerHTML = '<strong>' + T.w_behind_title + '</strong> ' +
+      T.w_behind_text.replace('{x}', diffFmt).replace('{median}', fmt(medianWealth));
+  }
+
+  // ── Benchmark bar chart ───────────────────────────────────────────────────
+  const chartMax = Math.max(medianWealth * 2.5, liquid * 1.2, totalWealth * 1.1);
+  const medianPct = pct(medianWealth, chartMax);
+
+  // Liquid bar
+  const liqPct = pct(liquid, chartMax);
+  const liqBar = document.getElementById('bench-liquid-bar');
+  const liqMarker = document.getElementById('bench-liquid-marker');
+  const liqYou = document.getElementById('bench-liquid-you');
+  const liqLabel = document.getElementById('bench-liquid-label');
+  liqBar.style.width = liqPct + '%';
+  liqBar.className = 'bench-fill bench-fill-you' + (liquid < medianWealth ? ' behind' : '');
+  liqMarker.style.left = medianPct + '%';
+  liqLabel.textContent = fmt(liquid) + ' vs ' + fmt(medianWealth) + ' ' + T.median_label;
+  liqYou.textContent = T.you_label + ' \u2022 ' + T.median_label + ': ' + fmt(medianWealth);
+  liqYou.className = 'bench-you-label' + (liquid < medianWealth ? ' behind' : '');
+
+  // Total bar
+  const totRow = document.getElementById('bench-total-row');
+  if (pillar2 > 0) {
+    totRow.style.display = '';
+    const totPct = pct(totalWealth, chartMax);
+    const totBar = document.getElementById('bench-total-bar');
+    const totMarker = document.getElementById('bench-total-marker');
+    const totYou = document.getElementById('bench-total-you');
+    const totLabel = document.getElementById('bench-total-label');
+    totBar.style.width = totPct + '%';
+    totBar.className = 'bench-fill bench-fill-you' + (totalWealth < medianWealth ? ' behind' : '');
+    totMarker.style.left = medianPct + '%';
+    totLabel.textContent = fmt(totalWealth) + ' vs ' + fmt(medianWealth) + ' ' + T.median_label;
+    totYou.textContent = T.you_label + ' (incl. Pillar 2) \u2022 ' + T.median_label + ': ' + fmt(medianWealth);
+    totYou.className = 'bench-you-label' + (totalWealth < medianWealth ? ' behind' : '');
+    document.getElementById('pillar2-note').style.display = '';
+  } else {
+    totRow.style.display = 'none';
+    document.getElementById('pillar2-note').style.display = 'none';
+  }
+
+  // ── Savings rate ──────────────────────────────────────────────────────────
+  const rateEl = document.getElementById('rate-yours');
+  rateEl.textContent = fmtPct(savingsRate);
+  rateEl.className = 'rate-val ' + (savingsRate >= CH_SAVINGS_RATE ? 'good' : 'low');
+
+  const rateMax = Math.max(CH_SAVINGS_RATE * 2, savingsRate * 1.2, 40);
+  const ratePct = pct(savingsRate, rateMax);
+  const swissPct = pct(CH_SAVINGS_RATE, rateMax);
+  document.getElementById('savings-bar').style.width = ratePct + '%';
+  document.getElementById('savings-bar').className = 'bench-fill bench-fill-you' +
+    (savingsRate < CH_SAVINGS_RATE ? ' behind' : '');
+  document.getElementById('savings-marker').style.left = swissPct + '%';
+
+  // savings verdict text inline
+  const svText = document.getElementById('savings-verdict-text');
+  if (savingsRate >= 25) {
+    svText.innerHTML = '<strong>' + T.s_high_title + '</strong> ' + T.s_high_text;
+  } else if (savingsRate >= CH_SAVINGS_RATE) {
+    svText.innerHTML = '<strong>' + T.s_good_title + '</strong> ' +
+      T.s_good_text.replace('{rate}', fmtPct(savingsRate));
+  } else if (savingsRate >= 10) {
+    svText.innerHTML = '<strong>' + T.s_low_title + '</strong> ' +
+      T.s_low_text.replace('{rate}', fmtPct(savingsRate)).replace('{swiss}', fmtPct(CH_SAVINGS_RATE));
+  } else {
+    svText.innerHTML = '<strong>' + T.s_very_low_title + '</strong> ' + T.s_very_low_text;
+  }
+
+  // savings verdict bar
+  const svb = document.getElementById('savings-verdict-bar');
+  const si  = document.getElementById('savings-icon');
+  const st  = document.getElementById('savings-text');
+  svb.className = 'verdict-bar';
+  if (savingsRate >= CH_SAVINGS_RATE) {
+    svb.classList.add('verdict-ahead');
+    si.textContent = '\u2197';
+    st.innerHTML = T.s_verdict_above.replace('{rate}', fmtPct(savingsRate));
+  } else {
+    svb.classList.add('verdict-behind');
+    si.textContent = '\u2193';
+    st.innerHTML = T.s_verdict_below
+      .replace('{rate}', fmtPct(savingsRate))
+      .replace('{gap}', fmtPct(CH_SAVINGS_RATE - savingsRate));
+  }
+
+  resultsShown = true;
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── i18n ──────────────────────────────────────────────────────────────────────
+let currentLang = localStorage.getItem('bs_lang') || 'en';
+
+const i18n = {
+  en: {
+    nav_tools:'Tools', nav_insights:'Insights', nav_about:'About',
+    eyebrow:'Swiss wealth & savings by age',
+    h1:'Average Swiss <span style="color:var(--gold-3)">wealth</span> and <span style="color:var(--gold-3)">savings</span> by age',
+    sub:'See how your wealth and savings compare to the Swiss average for your age group. The averages shown are median values from FSO SILC 2023 — the midpoint of the population, not the mean. No data is stored.',
+    sect_you:'About you', lbl_age:'Your age', hint_age:'Between 18 and 75',
+    lbl_status:'Household type',
+    hh_single:'Single person', hh_couple:'Couple (combined)',
+    hint_status:'Affects benchmark \u2014 FSO data covers both',
+    sect_wealth:'Your wealth',
+    lbl_liquid:'Net liquid wealth (CHF)',
+    hint_liquid:'Bank savings + investments + Pillar 3a + property equity, minus debts. Exclude your Pillar 2 pension fund.',
+    lbl_pillar2:'Pillar 2 pension fund balance (CHF)',
+    optional_label:'(optional)',
+    hint_pillar2:'Find this on your annual pension fund certificate (Vorsorgeausweis). Leave as 0 if unknown.',
+    sect_savings:'Your savings rate',
+    lbl_income:'Monthly gross income (CHF)', hint_income:'Your gross salary before deductions',
+    lbl_saved:'Amount saved per month (CHF)',
+    hint_saved:'What you set aside each month: savings, investments, Pillar 3a contributions',
+    btn_calc:'Calculate my position',
+    res_label:'Your financial position',
+    sc_liquid:'Liquid wealth vs average', sc_total:'Total wealth (incl. Pillar 2)',
+    sc_rate:'Your savings rate', sc_median_wealth:'Swiss average wealth (your age)',
+    of_median:'of average', incl_pillar2:'Includes Pillar 2',
+    no_pillar2:'Pillar 2 not included', swiss_avg:'Swiss avg:',
+    age_label:'Age', couple_label:'(couple)', median_label:'average', you_label:'You',
+    w_ahead_title:'Ahead of the median.', w_ahead_text:'Your liquid wealth is {x} ({pct}) above the Swiss median for your age. You\u2019re in a strong position relative to your peers.',
+    w_on_title:'Broadly on track.', w_on_text:'Your liquid wealth is close to the Swiss median of {median} for your age. Small consistent savings from here compound meaningfully.',
+    w_behind_title:'Below the median.', w_behind_text:'Your liquid wealth is {x} below the Swiss median of {median} for your age. This is common \u2014 especially for people who arrived in Switzerland mid-career or have had significant expenses.',
+    bench_title:'Swiss average wealth by age (FSO 2023)',
+    bench_liquid:'Your liquid wealth vs median (excl. Pillar 2)',
+    bench_total:'Your total wealth (incl. Pillar 2) vs median',
+    p2_note_title:'Note on Pillar 2:',
+    p2_note_text:'The FSO wealth benchmarks exclude Pillar 2 pension fund assets, so the liquid wealth comparison is like-for-like. Pillar 2 is shown separately because it is a significant asset but is illiquid, pre-tax, and only accessible under specific conditions.',
+    savings_title:'Your savings rate vs Switzerland',
+    rate_yours:'Your savings rate', rate_swiss:'Swiss average (FSO HBS 2023)',
+    s_high_title:'Excellent savings discipline.', s_high_text:'Saving 25%+ of gross income is well above the Swiss average and builds wealth meaningfully over time.',
+    s_good_title:'Above the Swiss average.', s_good_text:'Saving {rate} of gross income puts you ahead of the Swiss average of 16.8%. Keep it up.',
+    s_low_title:'Below the Swiss average.', s_low_text:'Your savings rate of {rate} is below the Swiss average of {swiss}. Even small increases \u2014 an extra CHF 200/month \u2014 compound significantly over a decade.',
+    s_very_low_title:'Very low savings rate.', s_very_low_text:'Saving less than 10% of gross income makes it difficult to build a financial buffer. Review your monthly expenses to find room to increase this.',
+    s_verdict_above:'Your savings rate of {rate} is above the Swiss average of 16.8%.',
+    s_verdict_below:'Your savings rate of {rate} is {gap} below the Swiss average of 16.8%.',
+    savings_note_title:'What counts as saving?',
+    savings_note_text:'Monthly savings includes anything deliberately set aside: transfers to savings accounts, investment contributions, Pillar 3a deposits, and voluntary pension top-ups. The Swiss average of 16.8% is from the FSO Household Budget Survey 2023.',
+    disclaimer:'These results are benchmarks for general orientation only. Wealth and savings are highly personal. Being above or below the median is not inherently good or bad \u2014 use this as a starting point for reflection, not a judgment. Always consult a qualified financial adviser for personalised guidance.',
+    source_label:'Data sources:',
+    related_title:'Related tools',
+    rel1_tag:'Tool', rel1_title:'Gross to Net Salary Calculator', rel1_desc:'See your Swiss take-home pay after all deductions.',
+    rel2_tag:'Tool', rel2_title:'Compound Growth Projector', rel2_desc:'See how your savings and investments grow over time.',
+    rel3_tag:'Tool', rel3_title:'Retirement Readiness Calculator', rel3_desc:'Model your AHV, Pillar 2, and Pillar 3a against your retirement needs.',
+  },
+  de: {
+    nav_tools:'Tools', nav_insights:'Einblicke', nav_about:'\u00dcber uns',
+    eyebrow:'Schweizer Verm\u00f6gensvergleich',
+    h1:'Durchschnittliches Schweizer <span style="color:var(--gold-3)">Vermögen</span> und <span style="color:var(--gold-3)">Sparen</span> nach Alter',
+    sub:'Geben Sie Ihr Nettoverm\u00f6gen und Ihre monatlichen Ersparnisse ein, um zu sehen, wie Sie im Vergleich zum Schweizer Median f\u00fcr Ihre Altersgruppe abschneiden. Basierend auf BFS SILC 2023.',
+    sect_you:'\u00dcber Sie', lbl_age:'Ihr Alter', hint_age:'Zwischen 18 und 75',
+    lbl_status:'Haushaltstyp',
+    hh_single:'Einzelperson', hh_couple:'Paar (kombiniert)',
+    hint_status:'Beeinflusst den Benchmark \u2014 BFS-Daten decken beide ab',
+    sect_wealth:'Ihr Verm\u00f6gen',
+    lbl_liquid:'Liquides Nettoverm\u00f6gen (CHF)',
+    hint_liquid:'Bankersparnisse + Investitionen + S\u00e4ule 3a + Immobilieneigenkapital, abz\u00fcglich Schulden. Pensionskasse (S\u00e4ule 2) ausschlie\u00dfen.',
+    lbl_pillar2:'Pensionskassenguthaben S\u00e4ule 2 (CHF)',
+    optional_label:'(optional)',
+    hint_pillar2:'Auf Ihrem j\u00e4hrlichen Vorsorgeausweis. Lassen Sie es auf 0, falls unbekannt.',
+    sect_savings:'Ihre Sparquote',
+    lbl_income:'Monatliches Bruttogehalt (CHF)', hint_income:'Ihr Bruttolohn vor Abz\u00fcgen',
+    lbl_saved:'Monatlich gesparter Betrag (CHF)',
+    hint_saved:'Was Sie monatlich zur\u00fccklegen: Ersparnisse, Investitionen, S\u00e4ule-3a-Beitr\u00e4ge',
+    btn_calc:'Meine Position berechnen',
+    res_label:'Ihre finanzielle Position',
+    sc_liquid:'Liquides Verm\u00f6gen vs. Median', sc_total:'Gesamtverm\u00f6gen (inkl. S\u00e4ule 2)',
+    sc_rate:'Ihre Sparquote', sc_median_wealth:'Schweizer Medianverm\u00f6gen (Ihr Alter)',
+    of_median:'des Durchschnitts', incl_pillar2:'Inkl. S\u00e4ule 2',
+    no_pillar2:'S\u00e4ule 2 nicht enthalten', swiss_avg:'CH-Durchschnitt:',
+    age_label:'Alter', couple_label:'(Paar)', median_label:'Durchschnitt', you_label:'Sie',
+    w_ahead_title:'\u00dcber dem Median.', w_ahead_text:'Ihr liquides Verm\u00f6gen liegt {x} ({pct}) \u00fcber dem Schweizer Median f\u00fcr Ihr Alter. Eine starke Position.',
+    w_on_title:'Im Rahmen des Medians.', w_on_text:'Ihr liquides Verm\u00f6gen liegt nahe am Schweizer Median von {median} f\u00fcr Ihr Alter.',
+    w_behind_title:'Unter dem Median.', w_behind_text:'Ihr liquides Verm\u00f6gen liegt {x} unter dem Schweizer Median von {median}. Das ist h\u00e4ufig, besonders f\u00fcr Menschen, die erst sp\u00e4ter in der Karriere in die Schweiz gezogen sind.',
+    bench_title:'Verm\u00f6gensbenchmarks nach Alter (BFS 2023)',
+    bench_liquid:'Ihr liquides Verm\u00f6gen vs. Median (ohne S\u00e4ule 2)',
+    bench_total:'Ihr Gesamtverm\u00f6gen (inkl. S\u00e4ule 2) vs. Median',
+    p2_note_title:'Hinweis zur S\u00e4ule 2:',
+    p2_note_text:'Die BFS-Verm\u00f6gensbenchmarks schlie\u00dfen Pensionskassenguthaben aus, sodass der Vergleich des liquiden Verm\u00f6gens einheitlich ist. Die S\u00e4ule 2 wird separat gezeigt, da sie illiquide und vorsteuerpflichtig ist.',
+    savings_title:'Ihre Sparquote im Vergleich',
+    rate_yours:'Ihre Sparquote', rate_swiss:'Schweizer Durchschnitt (BFS HBE 2023)',
+    s_high_title:'Ausgezeichnete Spardisziplin.', s_high_text:'Mehr als 25% des Bruttolohns zu sparen liegt weit \u00fcber dem Schweizer Durchschnitt.',
+    s_good_title:'\u00dcber dem Schweizer Durchschnitt.', s_good_text:'Eine Sparquote von {rate} liegt \u00fcber dem Schweizer Durchschnitt von 16,8%.',
+    s_low_title:'Unter dem Schweizer Durchschnitt.', s_low_text:'Ihre Sparquote von {rate} liegt unter dem Schweizer Durchschnitt von {swiss}. Selbst kleine Erh\u00f6hungen wirken sich langfristig erheblich aus.',
+    s_very_low_title:'Sehr niedrige Sparquote.', s_very_low_text:'Weniger als 10% zu sparen erschwert den Aufbau eines finanziellen Puffers. Pr\u00fcfen Sie Ihre Ausgaben.',
+    s_verdict_above:'Ihre Sparquote von {rate} liegt \u00fcber dem Schweizer Durchschnitt von 16,8%.',
+    s_verdict_below:'Ihre Sparquote von {rate} liegt {gap} unter dem Schweizer Durchschnitt von 16,8%.',
+    savings_note_title:'Was z\u00e4hlt als Sparen?',
+    savings_note_text:'Monatliche Ersparnisse umfassen alles, was bewusst zur\u00fcckgelegt wird: Transfers auf Sparkonten, Investitionsbeitr\u00e4ge, S\u00e4ule-3a-Einzahlungen und freiwillige Pensionskasseneink\u00e4ufe.',
+    disclaimer:'Diese Ergebnisse sind nur Richtwerte zur allgemeinen Orientierung. Verm\u00f6gen ist hochpers\u00f6nlich. Konsultieren Sie immer einen qualifizierten Finanzberater f\u00fcr pers\u00f6nliche Beratung.',
+    source_label:'Datenquellen:',
+    related_title:'Verwandte Tools',
+    rel1_tag:'Tool', rel1_title:'Brutto-Netto-Rechner', rel1_desc:'Berechnen Sie Ihr Nettolohn nach Schweizer Abz\u00fcgen.',
+    rel2_tag:'Tool', rel2_title:'Zinseszins-Projektor', rel2_desc:'Sehen Sie, wie Ihre Ersparnisse \u00fcber die Zeit wachsen.',
+    rel3_tag:'Tool', rel3_title:'Rentenrechner', rel3_desc:'Modellieren Sie Ihre AHV, S\u00e4ule 2 und 3a gegen\u00fcber Ihrem Rentenbedarf.',
+  },
+  fr: {
+    nav_tools:'Outils', nav_insights:'Analyses', nav_about:'\u00c0 propos',
+    eyebrow:'Patrimoine &amp; épargne suisses par âge',
+    h1:'Comment vous situez-vous<br>par rapport \u00e0 la <em>m\u00e9diane suisse\u00a0?</em>',
+    sub:'Entrez votre patrimoine net et votre \u00e9pargne mensuelle pour vous comparer \u00e0 la m\u00e9diane suisse de votre tranche d\u2019\u00e2ge. Bas\u00e9 sur les donn\u00e9es OFS SILC 2023.',
+    sect_you:'Vous concernant', lbl_age:'Votre \u00e2ge', hint_age:'Entre 18 et 75 ans',
+    lbl_status:'Type de m\u00e9nage',
+    hh_single:'Personne seule', hh_couple:'Couple (combin\u00e9)',
+    hint_status:'Influence le benchmark \u2014 les donn\u00e9es OFS couvrent les deux',
+    sect_wealth:'Votre patrimoine',
+    lbl_liquid:'Patrimoine net liquide (CHF)',
+    hint_liquid:'\u00c9pargne bancaire + investissements + pilier 3a + fonds propres immobiliers, moins les dettes. Exclure la caisse de pension (pilier 2).',
+    lbl_pillar2:'Solde caisse de pension pilier 2 (CHF)',
+    optional_label:'(optionnel)',
+    hint_pillar2:'Disponible sur votre certificat de pr\u00e9voyance annuel. Laissez \u00e0 0 si inconnu.',
+    sect_savings:'Votre taux d\u2019\u00e9pargne',
+    lbl_income:'Revenu brut mensuel (CHF)', hint_income:'Votre salaire brut avant d\u00e9ductions',
+    lbl_saved:'Montant \u00e9pargn\u00e9 par mois (CHF)',
+    hint_saved:'Ce que vous mettez de c\u00f4t\u00e9 chaque mois\u00a0: \u00e9pargne, investissements, cotisations pilier 3a',
+    btn_calc:'Calculer ma position',
+    res_label:'Votre position financi\u00e8re',
+    sc_liquid:'Patrimoine liquide vs m\u00e9diane', sc_total:'Patrimoine total (incl. pilier 2)',
+    sc_rate:'Votre taux d\u2019\u00e9pargne', sc_median_wealth:'M\u00e9diane suisse (votre \u00e2ge)',
+    of_median:'de la m\u00e9diane', incl_pillar2:'Incl. pilier 2',
+    no_pillar2:'Pilier 2 non inclus', swiss_avg:'Moy. CH\u00a0:',
+    age_label:'\u00c2ge', couple_label:'(couple)', median_label:'m\u00e9diane', you_label:'Vous',
+    w_ahead_title:'Au-dessus de la m\u00e9diane.', w_ahead_text:'Votre patrimoine liquide est {x} ({pct}) au-dessus de la m\u00e9diane suisse pour votre \u00e2ge.',
+    w_on_title:'Dans la moyenne.', w_on_text:'Votre patrimoine liquide est proche de la m\u00e9diane suisse de {median} pour votre \u00e2ge.',
+    w_behind_title:'En dessous de la m\u00e9diane.', w_behind_text:'Votre patrimoine liquide est {x} en dessous de la m\u00e9diane suisse de {median}. C\u2019est fr\u00e9quent, notamment pour les personnes arriv\u00e9es en Suisse en milieu de carri\u00e8re.',
+    bench_title:'Benchmarks de patrimoine par \u00e2ge (OFS 2023)',
+    bench_liquid:'Patrimoine liquide vs m\u00e9diane (excl. pilier 2)',
+    bench_total:'Patrimoine total (incl. pilier 2) vs m\u00e9diane',
+    p2_note_title:'Note sur le pilier 2\u00a0:',
+    p2_note_text:'Les benchmarks OFS excluent les avoirs LPP, donc la comparaison du patrimoine liquide est homog\u00e8ne. Le pilier 2 est montr\u00e9 s\u00e9par\u00e9ment car il est illiquide et impos\u00e9 \u00e0 la sortie.',
+    savings_title:'Votre taux d\u2019\u00e9pargne vs la Suisse',
+    rate_yours:'Votre taux d\u2019\u00e9pargne', rate_swiss:'Moyenne suisse (OFS EBM 2023)',
+    s_high_title:'Excellente discipline d\u2019\u00e9pargne.', s_high_text:'Epargner plus de 25% du revenu brut est bien au-dessus de la moyenne suisse.',
+    s_good_title:'Au-dessus de la moyenne.', s_good_text:'Un taux d\u2019\u00e9pargne de {rate} vous place au-dessus de la moyenne suisse de 16,8\u00a0%.',
+    s_low_title:'En dessous de la moyenne.', s_low_text:'Votre taux d\u2019\u00e9pargne de {rate} est inf\u00e9rieur \u00e0 la moyenne suisse de {swiss}. M\u00eame de petites augmentations ont un impact significatif sur le long terme.',
+    s_very_low_title:'Taux d\u2019\u00e9pargne tr\u00e8s faible.', s_very_low_text:'\u00c9pargner moins de 10% du revenu brut rend difficile la constitution d\u2019une r\u00e9serve financi\u00e8re.',
+    s_verdict_above:'Votre taux d\u2019\u00e9pargne de {rate} est au-dessus de la moyenne suisse de 16,8\u00a0%.',
+    s_verdict_below:'Votre taux d\u2019\u00e9pargne de {rate} est {gap} en dessous de la moyenne suisse de 16,8\u00a0%.',
+    savings_note_title:'Qu\u2019est-ce qui compte comme \u00e9pargne\u00a0?',
+    savings_note_text:'L\u2019\u00e9pargne mensuelle inclut tout ce que vous mettez de c\u00f4t\u00e9 d\u00e9lib\u00e9r\u00e9ment\u00a0: virements \u00e9pargne, investissements, cotisations pilier 3a et rachats volontaires LPP.',
+    disclaimer:'Ces r\u00e9sultats sont uniquement des points de rep\u00e8re. Le patrimoine est tr\u00e8s personnel. \u00catre au-dessus ou en dessous de la m\u00e9diane n\u2019est pas intrins\u00e8quement bon ou mauvais. Consultez un conseiller financier qualifi\u00e9 pour des conseils personnalis\u00e9s.',
+    source_label:'Sources\u00a0:',
+    related_title:'Outils associ\u00e9s',
+    rel1_tag:'Outil', rel1_title:'Calculateur brut-net', rel1_desc:'Votre salaire net apr\u00e8s toutes les d\u00e9ductions suisses.',
+    rel2_tag:'Outil', rel2_title:'Projecteur de croissance compos\u00e9e', rel2_desc:'Voyez comment votre \u00e9pargne cro\u00eet dans le temps.',
+    rel3_tag:'Outil', rel3_title:'Calculateur de retraite', rel3_desc:'Modelling AVS, LPP et pilier 3a face \u00e0 vos besoins de retraite.',
+  },
+  it: {
+    nav_tools:'Strumenti', nav_insights:'Approfondimenti', nav_about:'Chi siamo',
+    eyebrow:'Patrimonio e risparmio svizzeri per età',
+    h1:'Patrimonio e <span style="color:var(--gold-3)">risparmio</span> medi svizzeri<br>per età',
+    sub:'Inserite il vostro patrimonio netto e il risparmio mensile per confrontarvi con la mediana svizzera della vostra fascia d\u2019et\u00e0. Basato sui dati UST SILC 2023.',
+    sect_you:'Informazioni su di voi', lbl_age:'La vostra et\u00e0', hint_age:'Tra 18 e 75 anni',
+    lbl_status:'Tipo di nucleo familiare',
+    hh_single:'Persona singola', hh_couple:'Coppia (combinato)',
+    hint_status:'Influisce sul benchmark \u2014 i dati UST coprono entrambi',
+    sect_wealth:'Il vostro patrimonio',
+    lbl_liquid:'Patrimonio netto liquido (CHF)',
+    hint_liquid:'Risparmio bancario + investimenti + pilastro 3a + capitale proprio immobiliare, meno i debiti. Escludere la cassa pensioni (pilastro 2).',
+    lbl_pillar2:'Saldo cassa pensioni pilastro 2 (CHF)',
+    optional_label:'(facoltativo)',
+    hint_pillar2:'Disponibile sul vostro certificato di previdenza annuale. Lasciare a 0 se sconosciuto.',
+    sect_savings:'Il vostro tasso di risparmio',
+    lbl_income:'Reddito lordo mensile (CHF)', hint_income:'Il vostro stipendio lordo prima delle deduzioni',
+    lbl_saved:'Importo risparmiato al mese (CHF)',
+    hint_saved:'Quello che mettete da parte ogni mese: risparmi, investimenti, contributi pilastro 3a',
+    btn_calc:'Calcola la mia posizione',
+    res_label:'La vostra posizione finanziaria',
+    sc_liquid:'Patrimonio liquido vs media', sc_total:'Patrimonio totale (incl. pilastro 2)',
+    sc_rate:'Il vostro tasso di risparmio', sc_median_wealth:'Mediana svizzera (vostra et\u00e0)',
+    of_median:'della media', incl_pillar2:'Incl. pilastro 2',
+    no_pillar2:'Pilastro 2 non incluso', swiss_avg:'Media CH:',
+    age_label:'Et\u00e0', couple_label:'(coppia)', median_label:'media', you_label:'Voi',
+    w_ahead_title:'Sopra la mediana.', w_ahead_text:'Il vostro patrimonio liquido \u00e8 {x} ({pct}) al di sopra della mediana svizzera per la vostra et\u00e0.',
+    w_on_title:'In linea con la mediana.', w_on_text:'Il vostro patrimonio liquido \u00e8 vicino alla mediana svizzera di {median} per la vostra et\u00e0.',
+    w_behind_title:'Sotto la mediana.', w_behind_text:'Il vostro patrimonio liquido \u00e8 {x} al di sotto della mediana svizzera di {median}. \u00c8 comune, specialmente per chi \u00e8 arrivato in Svizzera a met\u00e0 carriera.',
+    bench_title:'Benchmark patrimoniali per et\u00e0 (UST 2023)',
+    bench_liquid:'Patrimonio liquido vs mediana (escl. pilastro 2)',
+    bench_total:'Patrimonio totale (incl. pilastro 2) vs mediana',
+    p2_note_title:'Nota sul pilastro 2:',
+    p2_note_text:'I benchmark UST escludono gli averi LPP, quindi il confronto del patrimonio liquido \u00e8 omogeneo. Il pilastro 2 \u00e8 mostrato separatamente perch\u00e9 illiquido e pre-tasse.',
+    savings_title:'Il vostro tasso di risparmio vs la Svizzera',
+    rate_yours:'Il vostro tasso di risparmio', rate_swiss:'Media svizzera (UST HBE 2023)',
+    s_high_title:'Eccellente disciplina di risparmio.', s_high_text:'Risparmiare oltre il 25% del reddito lordo \u00e8 ben al di sopra della media svizzera.',
+    s_good_title:'Sopra la media svizzera.', s_good_text:'Un tasso di risparmio del {rate} vi colloca sopra la media svizzera del 16,8%.',
+    s_low_title:'Sotto la media svizzera.', s_low_text:'Il vostro tasso di risparmio del {rate} \u00e8 inferiore alla media svizzera del {swiss}. Anche piccoli aumenti hanno un impatto significativo nel lungo termine.',
+    s_very_low_title:'Tasso di risparmio molto basso.', s_very_low_text:'Risparmiare meno del 10% del reddito lordo rende difficile costruire una riserva finanziaria.',
+    s_verdict_above:'Il vostro tasso di risparmio del {rate} \u00e8 superiore alla media svizzera del 16,8%.',
+    s_verdict_below:'Il vostro tasso di risparmio del {rate} \u00e8 {gap} al di sotto della media svizzera del 16,8%.',
+    savings_note_title:'Cosa conta come risparmio?',
+    savings_note_text:'Il risparmio mensile include tutto ci\u00f2 che viene deliberatamente messo da parte: trasferimenti su conti risparmio, investimenti, versamenti pilastro 3a e riscatti volontari LPP.',
+    disclaimer:'Questi risultati sono solo punti di riferimento per l\u2019orientamento generale. Il patrimonio \u00e8 molto personale. Consultate sempre un consulente finanziario qualificato per una consulenza personalizzata.',
+    source_label:'Fonti dati:',
+    related_title:'Strumenti correlati',
+    rel1_tag:'Strumento', rel1_title:'Calcolatore lordo-netto', rel1_desc:'Il vostro stipendio netto dopo tutte le deduzioni svizzere.',
+    rel2_tag:'Strumento', rel2_title:'Proiettore di crescita composta', rel2_desc:'Vedete come crescono i vostri risparmi nel tempo.',
+    rel3_tag:'Strumento', rel3_title:'Calcolatore pensione', rel3_desc:'Modellate AVS, pilastro 2 e 3a rispetto alle vostre esigenze pensionistiche.',
+  }
+};
+
+function setLang(l) {
+  currentLang = l;
+  localStorage.setItem('bs_lang', l);
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + l).classList.add('active');
+  const t = i18n[l];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  // re-apply select options
+  ['hh_single','hh_couple'].forEach(k => {
+    const opt = document.querySelector(`option[data-i18n="${k}"]`);
+    if (opt && t[k]) opt.textContent = t[k];
+  });
+  if (resultsShown) calculate();
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn =>
+  btn.addEventListener('click', () => setLang(btn.dataset.lang))
+);
+setLang(currentLang);
+</script>
+</body>
+</html>
