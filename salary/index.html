@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/salary">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Compare your salary to the Swiss average by region. Free tool based on FSO 2024 data — enter your gross salary and see your percentile instantly.">
   <meta property="og:title" content="Swiss Salary Comparator — See Where You Stand | BergSight">
@@ -37,6 +38,20 @@
     .page-intro p { font-size: 0.9rem; color: var(--ink-3); font-weight: 300; max-width: 620px; line-height: 1.7; }
     .tool-frame-wrap { padding: 0 2rem 3rem; }
     .tool-frame-wrap iframe { border: none; display: block; width: 100%; height: 620px; min-height: 500px; }
+    
+    .static-example{background:var(--stone,#f5f2ed);border-top:1px solid var(--stone-3,#d8d2c8);padding:2.5rem 4rem;}
+    .static-example-inner{max-width:860px;margin:0 auto;}
+    .se-eyebrow{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--alpine,#2d5a3d);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;}
+    .se-eyebrow::before{content:'';display:block;width:12px;height:1px;background:var(--alpine,#2d5a3d);}
+    .se-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink,#1a1916);margin-bottom:1.2rem;}
+    .se-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--stone-3,#d8d2c8);border:1px solid var(--stone-3,#d8d2c8);}
+    .se-card{background:#fff;padding:1.2rem 1.4rem;}
+    .se-card-label{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3,#7a756c);margin-bottom:.3rem;}
+    .se-card-input{font-size:.8rem;color:var(--ink-2,#3d3a35);font-weight:300;margin-bottom:.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--stone-2,#ece8e1);}
+    .se-card-result-label{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--alpine,#2d5a3d);margin-bottom:.2rem;}
+    .se-card-result{font-family:'DM Mono',monospace;font-size:1.1rem;color:var(--ink,#1a1916);}
+    .se-note{font-size:.75rem;color:var(--ink-3,#7a756c);margin-top:.9rem;line-height:1.6;font-style:italic;}
+    @media(max-width:768px){.static-example{padding:2rem 1.2rem;}.se-grid{grid-template-columns:1fr;}}
     footer { background: var(--ink); color: #9a958e; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2825; }
     .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #ece8e1; text-decoration: none; }
     .footer-logo span { color: var(--alpine-2); }
@@ -193,7 +208,41 @@
     <iframe id="tool-iframe" src="" title="Swiss Salary Comparator"
             style="border:none;display:block;width:100%;height:620px;min-height:500px;max-height:900px;"></iframe>
   </div>
-  <footer>
+  <div class="static-example">
+  <div class="static-example-inner">
+    <div class="se-eyebrow">Example outputs</div>
+    <div class="se-title">What the Swiss Salary Comparator shows</div>
+    <div class="se-grid">
+      <div class="se-card">
+        <div class="se-card-label">CHF 100,000 gross · Zurich region</div>
+        <div class="se-card-input">In the Swiss wage distribution</div>
+        <div class="se-card-result-label">Result</div>
+        <div class="se-card-result">Top 25% nationally</div>
+      </div>
+      <div class="se-card">
+        <div class="se-card-label">CHF 70,000 gross · Zurich region</div>
+        <div class="se-card-input">Compared to Swiss median (CHF 78,000)</div>
+        <div class="se-card-result-label">Result</div>
+        <div class="se-card-result">Slightly below median</div>
+      </div>
+      <div class="se-card">
+        <div class="se-card-label">CHF 130,000 gross · Lake Geneva region</div>
+        <div class="se-card-input">National percentile ranking</div>
+        <div class="se-card-result-label">Result</div>
+        <div class="se-card-result">Top 10%</div>
+      </div>
+      <div class="se-card">
+        <div class="se-card-label">National median salary (FSO 2024)</div>
+        <div class="se-card-input">For full-time employees across Switzerland</div>
+        <div class="se-card-result-label">Result</div>
+        <div class="se-card-result">CHF 78,000/year</div>
+      </div>
+    </div>
+    <div class="se-note">Based on FSO 2024 Earnings Structure Survey. Figures represent gross annual salary before deductions. Regional medians vary significantly — Zurich, Zug, and Lake Geneva regions have the highest median salaries in Switzerland.</div>
+  </div>
+</div>
+
+<footer>
     <a href="/" class="footer-logo">Berg<span>Sight</span></a>
     <ul class="footer-links-row">
       <li><a href="/#tools">Tools</a></li>
