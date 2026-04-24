@@ -1,1 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/marriage-tax-calculator">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Will you win or lose under Switzerland's new individual taxation system? Calculate your federal tax change when the marriage penalty is abolished in 2032.">
+  <meta property="og:title" content="Switzerland Marriage Tax Calculator 2032 | BergSight">
+  <meta property="og:url" content="https://bergsight.com/marriage-tax-calculator">
+  <title>Switzerland Marriage Tax Calculator — Will You Win or Lose in 2032? | BergSight</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPHRGJL1WW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-KPHRGJL1WW");</script>
+  <style>
+    :root{--stone:#f5f2ed;--stone-2:#ece8e1;--stone-3:#d8d2c8;--ink:#1a1916;--ink-2:#3d3a35;--ink-3:#7a756c;--alpine:#2d5a3d;--alpine-2:#3d7a52;--alpine-3:#e8f0eb;--gold:#8a6d3b;--gold-2:#f5ead8;--red:#8a2d2d;--red-2:#f5e8e8;--blue:#2d4a6a;--blue-2:#e8eef5;--white:#fff;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:"DM Sans",sans-serif;background:var(--stone);color:var(--ink);overflow-x:hidden;}
+    .lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--ink);display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:44px;border-bottom:1px solid #2a2825;}
+    .lang-label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#8a857e;}
+    .lang-btn{background:none;border:none;color:#8a857e;font-family:"DM Sans",sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:0 1.1rem;height:44px;border-right:1px solid #2a2825;transition:color .15s;}
+    .lang-btn:first-of-type{border-left:1px solid #2a2825;}
+    .lang-btn:hover{color:#fff;}
+    .lang-btn.active{color:var(--alpine-2);background:rgba(61,122,82,.1);font-weight:600;}
+    nav{position:fixed;top:44px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(245,242,237,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone-3);}
+    .nav-logo{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:600;color:var(--ink);text-decoration:none;}
+    .nav-logo span{color:var(--alpine);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{font-size:.82rem;color:var(--ink-2);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;}
+    .nav-links a:hover{color:var(--alpine);}
+    /* Hero */
+    .hero{padding:9.5rem 4rem 3.5rem;background:var(--ink);position:relative;overflow:hidden;}
+    .hero-accent{position:absolute;top:0;right:0;width:400px;height:100%;background:linear-gradient(135deg,transparent 60%,rgba(45,90,61,.15));pointer-events:none;}
+    .hero-inner{position:relative;max-width:820px;}
+    .breadcrumb{font-size:.72rem;color:#4a4742;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+    .breadcrumb a{color:#6a6560;text-decoration:none;}
+    .vote-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(45,90,61,.25);color:var(--alpine-2);font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;margin-bottom:1rem;}
+    .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;color:var(--stone);line-height:1.12;margin-bottom:.8rem;}
+    .hero h1 em{font-style:italic;color:var(--alpine-2);}
+    .hero-sub{font-size:.98rem;color:#9a958e;font-weight:300;line-height:1.75;max-width:640px;margin-bottom:1.2rem;}
+    .hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;}
+    .hero-badge{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;}
+    .badge-vote{background:rgba(61,122,82,.3);color:var(--alpine-2);}
+    .badge-info{background:rgba(255,255,255,.06);color:#9a958e;}
+    /* Context banner */
+    .context-bar{background:var(--blue-2);border-bottom:1px solid #c8d4e0;padding:1rem 4rem;}
+    .context-inner{max-width:860px;margin:0 auto;display:flex;gap:1rem;align-items:flex-start;}
+    .context-icon{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+    .context-text{font-size:.82rem;color:var(--blue);line-height:1.65;font-weight:300;}
+    .context-text strong{font-weight:500;color:var(--ink);}
+    /* Tool */
+    .tool-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+    /* Form */
+    .form-card{background:var(--white);border:1px solid var(--stone-3);padding:2rem 2.4rem;margin-bottom:1.5rem;}
+    .form-section{font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--alpine);margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;}
+    .form-section::before{content:"";display:block;width:16px;height:1px;background:var(--alpine);}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+    .form-group{display:flex;flex-direction:column;gap:.35rem;}
+    label{font-size:.73rem;font-weight:500;color:var(--ink-2);letter-spacing:.04em;text-transform:uppercase;}
+    select,input[type=number]{width:100%;border:1px solid var(--stone-3);background:var(--stone);font-family:"DM Sans",sans-serif;font-size:.9rem;color:var(--ink);padding:.65rem .9rem;outline:none;appearance:none;transition:border-color .15s;}
+    select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a756c'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.2rem;background-color:var(--stone);}
+    select:focus,input:focus{border-color:var(--alpine);background:var(--white);}
+    .pfx-wrap{position:relative;}
+    .pfx{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);font-size:.8rem;color:var(--ink-3);pointer-events:none;font-family:"DM Mono",monospace;}
+    .pfx-wrap input{padding-left:3rem;}
+    .hint{font-size:.7rem;color:var(--ink-3);font-style:italic;}
+    .calc-btn{width:100%;margin-top:1.2rem;background:var(--alpine);color:#fff;border:none;font-family:"DM Sans",sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.9rem 2rem;cursor:pointer;transition:background .2s;}
+    .calc-btn:hover{background:var(--alpine-2);}
+    /* Results */
+    #results{display:none;}
+    /* Verdict */
+    .verdict{padding:2rem 2.4rem;margin-bottom:1.5rem;border-left:4px solid;}
+    .v-win{background:var(--alpine-3);border-color:var(--alpine);}
+    .v-lose{background:var(--red-2);border-color:var(--red);}
+    .v-neutral{background:var(--gold-2);border-color:var(--gold);}
+    .v-icon{font-size:2rem;margin-bottom:.4rem;}
+    .v-h{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:600;line-height:1.2;margin-bottom:.5rem;}
+    .v-b{font-size:.9rem;color:var(--ink-2);line-height:1.7;font-weight:300;}
+    .v-b strong{font-weight:600;color:var(--ink);}
+    /* Big number strip */
+    .strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--stone-3);border:1px solid var(--stone-3);margin-bottom:1.5rem;}
+    .strip-cell{background:var(--white);padding:1.5rem 1.6rem;}
+    .strip-lbl{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.4rem;}
+    .strip-num{font-family:"DM Mono",monospace;font-size:1.9rem;font-weight:400;line-height:1;}
+    .strip-num.win{color:var(--alpine);}
+    .strip-num.lose{color:var(--red);}
+    .strip-num.neutral{color:var(--gold);}
+    .strip-sub{font-size:.7rem;color:var(--ink-3);margin-top:.3rem;}
+    /* Breakdown */
+    .breakdown{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--stone-3);border:1px solid var(--stone-3);margin-bottom:1.5rem;}
+    .bd-panel{background:var(--white);padding:1.4rem 1.6rem;}
+    .bd-title{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+    .bd-row{display:flex;justify-content:space-between;padding:.38rem 0;border-bottom:1px solid var(--stone-2);font-size:.82rem;gap:.5rem;}
+    .bd-row:last-child{border-bottom:none;font-weight:600;}
+    .bd-l{color:var(--ink-3);flex:1;}
+    .bd-v{font-family:"DM Mono",monospace;font-size:.8rem;white-space:nowrap;}
+    .bd-v.neg{color:var(--red);}
+    .bd-v.pos{color:var(--alpine);}
+    .bd-v.neu{color:var(--ink-2);}
+    /* 10-year projection */
+    .projection-box{background:var(--ink);padding:1.8rem 2.2rem;margin-bottom:1.5rem;}
+    .proj-eye{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#6a6560;margin-bottom:.4rem;}
+    .proj-num{font-family:"Cormorant Garamond",serif;font-size:3rem;font-weight:500;color:var(--stone);line-height:1;margin-bottom:.3rem;}
+    .proj-desc{font-size:.85rem;color:#9a958e;font-weight:300;line-height:1.65;}
+    .proj-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:1.2rem;background:var(--stone-3);}
+    .ps{background:#252320;padding:.9rem 1.1rem;}
+    .ps-l{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#6a6560;margin-bottom:.2rem;}
+    .ps-v{font-family:"DM Mono",monospace;font-size:.95rem;color:var(--stone);}
+    /* Explainer */
+    .explainer{background:var(--white);border:1px solid var(--stone-3);padding:1.6rem 2rem;margin-bottom:1.5rem;}
+    .exp-title{font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--alpine);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+    .exp-title::before{content:"";display:block;width:14px;height:1px;background:var(--alpine);}
+    .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .exp-item{font-size:.82rem;color:var(--ink-2);line-height:1.6;font-weight:300;}
+    .exp-item strong{display:block;font-weight:500;color:var(--ink);margin-bottom:.2rem;font-size:.8rem;}
+    /* Disclaimer */
+    .disclaimer{background:var(--stone-2);border-left:2px solid var(--stone-3);padding:.8rem 1rem;font-size:.7rem;color:var(--ink-3);line-height:1.65;}
+    footer{background:var(--ink);color:#9a958e;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:600;color:var(--stone);text-decoration:none;}
+    .footer-logo span{color:var(--alpine-2);}
+    .footer-links{display:flex;gap:2rem;list-style:none;}
+    .footer-links a{font-size:.78rem;color:#6a6560;text-decoration:none;}
+    .footer-links a:hover{color:var(--alpine-2);}
+    .footer-copy{font-size:.72rem;color:#4a4742;font-family:"DM Mono",monospace;}
+    @media(max-width:768px){
+      .lang-bar{padding:0 1.2rem;}.lang-label{display:none;}
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .hero{padding:7.5rem 1.5rem 2.5rem;}
+      .context-bar{padding:.8rem 1.2rem;}
+      .tool-body{padding:1.5rem 1rem 4rem;}
+      .form-grid{grid-template-columns:1fr;}
+      .strip{grid-template-columns:1fr;}
+      .breakdown{grid-template-columns:1fr;}
+      .proj-stats{grid-template-columns:1fr 1fr;}
+      .exp-grid{grid-template-columns:1fr;}
+      footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+<div class="lang-bar">
+  <div style="display:flex;align-items:center;gap:.6rem;"><span style="color:#4a4742;font-size:.9rem;">&#127760;</span><span class="lang-label">Select language</span></div>
+  <div style="display:flex;height:100%;">
+    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+  </div>
+</div>
+<nav>
+  <a href="/" class="nav-logo">Berg<span>Sight</span></a>
+  <ul class="nav-links">
+    <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+    <li><a href="/insights" data-i18n="nav_insights">Insights</a></li>
+    <li><a href="/about" data-i18n="nav_about">About</a></li>
+  </ul>
+</nav>
+<div class="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a><span>&#8594;</span><a href="/#tools" data-i18n="nav_tools">Tools</a><span>&#8594;</span><span data-i18n="bc_this">Marriage Tax Calculator</span></div>
+    <div class="vote-badge">&#127513; Voted YES &#183; 8 March 2026 &#183; 54.26%</div>
+    <h1 data-i18n="h1">Switzerland&#8217;s marriage tax is abolished.<br><em>Will you win or lose in 2032?</em></h1>
+    <p class="hero-sub" data-i18n="subtitle">Swiss voters approved individual taxation on 8 March 2026. From 2032, every person files their own tax return regardless of marital status. Enter your household incomes to see your estimated federal tax change.</p>
+    <div class="hero-meta">
+      <span class="hero-badge badge-vote" data-i18n="badge_reform">Reform approved &#183; In force 2032</span>
+      <span class="hero-badge badge-info" data-i18n="badge_scope">Federal direct tax only &#183; Free tool</span>
+    </div>
+  </div>
+</div>
+<div class="context-bar">
+  <div class="context-inner">
+    <span class="context-icon">&#8505;&#65039;</span>
+    <p class="context-text" data-i18n="context_note"><strong>Why federal tax only?</strong> The new individual tariff is set by federal law and is known. Cantonal and municipal taxes &#8212; which make up roughly 70&#8211;75% of your total tax bill &#8212; will also change, but the cantons have until 2032 to set their new rates. No calculator can accurately model what has not yet been decided. This tool shows your federal tax change, which is a genuine and often significant part of your total bill.</p>
+  </div>
+</div>
+<div class="tool-body">
+  <div class="form-card">
+    <div class="form-section" data-i18n="section_your">Your household</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label data-i18n="lbl_g1">Your gross salary (CHF / year)</label>
+        <div class="pfx-wrap"><span class="pfx">CHF</span><input type="number" id="g1" min="0" max="2000000" step="1000" placeholder="100000"></div>
+        <span class="hint" data-i18n="hint_gross">Annual gross before all deductions</span>
+      </div>
+      <div class="form-group">
+        <label data-i18n="lbl_g2">Partner&#8217;s gross salary (CHF / year)</label>
+        <div class="pfx-wrap"><span class="pfx">CHF</span><input type="number" id="g2" min="0" max="2000000" step="1000" placeholder="80000"></div>
+        <span class="hint" data-i18n="hint_g2">Enter 0 if partner does not work</span>
+      </div>
+      <div class="form-group">
+        <label data-i18n="lbl_children">Dependent children</label>
+        <select id="children">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4 or more</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-i18n="lbl_status">Current tax status</label>
+        <select id="status">
+          <option value="married" data-i18n="opt_married">Married / registered partnership</option>
+          <option value="cohabiting" data-i18n="opt_cohabiting">Unmarried couple (cohabiting)</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" id="calc-btn" data-i18n="btn_calc">Calculate my 2032 tax change &#8594;</button>
+  </div>
 
+  <div id="results">
+    <!-- Verdict -->
+    <div id="verdict" class="verdict">
+      <div id="v-icon" class="v-icon"></div>
+      <div id="v-h" class="v-h"></div>
+      <div id="v-b" class="v-b"></div>
+    </div>
+
+    <!-- Strip -->
+    <div class="strip">
+      <div class="strip-cell">
+        <div class="strip-lbl" data-i18n="strip_current">Federal tax today (joint)</div>
+        <div class="strip-num neutral" id="s-current"></div>
+        <div class="strip-sub" id="s-current-sub"></div>
+      </div>
+      <div class="strip-cell">
+        <div class="strip-lbl" data-i18n="strip_new">Federal tax from 2032 (individual)</div>
+        <div class="strip-num" id="s-new"></div>
+        <div class="strip-sub" id="s-new-sub"></div>
+      </div>
+      <div class="strip-cell">
+        <div class="strip-lbl" id="strip-diff-lbl"></div>
+        <div class="strip-num" id="s-diff"></div>
+        <div class="strip-sub" id="s-diff-sub"></div>
+      </div>
+    </div>
+
+    <!-- Breakdown -->
+    <div class="breakdown">
+      <div class="bd-panel">
+        <div class="bd-title" data-i18n="bd_current_title">&#128197; Today &#8212; Joint taxation</div>
+        <div id="bd-current"></div>
+      </div>
+      <div class="bd-panel">
+        <div class="bd-title" data-i18n="bd_new_title">&#128198; From 2032 &#8212; Individual taxation</div>
+        <div id="bd-new"></div>
+      </div>
+    </div>
+
+    <!-- 10-year projection -->
+    <div class="projection-box">
+      <div class="proj-eye" id="proj-eye"></div>
+      <div class="proj-num" id="proj-num"></div>
+      <div class="proj-desc" id="proj-desc"></div>
+      <div class="proj-stats">
+        <div class="ps"><div class="ps-l" id="ps1l"></div><div class="ps-v" id="ps1v"></div></div>
+        <div class="ps"><div class="ps-l" id="ps2l"></div><div class="ps-v" id="ps2v"></div></div>
+        <div class="ps"><div class="ps-l" id="ps3l"></div><div class="ps-v" id="ps3v"></div></div>
+      </div>
+    </div>
+
+    <!-- What changes explainer -->
+    <div class="explainer">
+      <div class="exp-title" data-i18n="exp_title">What exactly changes in 2032</div>
+      <div class="exp-grid">
+        <div class="exp-item"><strong data-i18n="exp_filing_h">Tax returns</strong><span data-i18n="exp_filing_b">Instead of one joint return, each spouse files their own. Income and assets are assessed separately. No more combining incomes for rate progression.</span></div>
+        <div class="exp-item"><strong data-i18n="exp_child_h">Child deduction doubles</strong><span data-i18n="exp_child_b">The federal child deduction increases from CHF 6,800 to CHF 12,000 per child, split equally between parents. A significant gain for families.</span></div>
+        <div class="exp-item"><strong data-i18n="exp_pension_h">Pension withdrawals separate</strong><span data-i18n="exp_pension_b">Pillar 2 and Pillar 3a withdrawals will be taxed per person independently. Staggering withdrawals between spouses in different years becomes more advantageous.</span></div>
+        <div class="exp-item"><strong data-i18n="exp_canton_h">Cantons follow by 2032</strong><span data-i18n="exp_canton_b">Cantonal and municipal taxes &#8212; roughly 70&#8211;75% of your total bill &#8212; will also shift to individual assessment, but rates are not yet known. Expect a similar directional effect.</span></div>
+      </div>
+    </div>
+
+    <div class="disclaimer" data-i18n="disclaimer">Federal direct tax only. Calculations based on published 2024 federal tariff brackets, adjusted for standard deductions (3% professional expenses, dual-earner deduction CHF 13,900 each under current system; CHF 12,000 child deduction under new system split equally). Results are indicative estimates — actual tax depends on personal deductions, cantonal rules, assets, and circumstances. Cantonal and municipal taxes are not modelled as implementing rates have not been set. The new system enters into force 1 January 2032 at the earliest. For personalised advice consult a Swiss tax professional.</div>
+  </div>
+</div>
+<footer>
+  <a href="/" class="footer-logo">Berg<span>Sight</span></a>
+  <ul class="footer-links">
+    <li><a href="/#tools" data-i18n="nav_tools">Tools</a></li>
+    <li><a href="/insights" data-i18n="nav_insights">Insights</a></li>
+    <li><a href="/contact" data-i18n="nav_contact">Contact</a></li>
+    <li><a href="/disclaimer" data-i18n="nav_disclaimer">Disclaimer</a></li>
+  </ul>
+  <div class="footer-copy">&#169; 2025 BergSight &#183; Z&#252;rich, Switzerland</div>
+</footer>
+<script>
+// ── Federal tax brackets ──────────────────────────────────────────────────────
+// Single / new universal tariff (2024 DBG)
+const SINGLE = [
+  [0,13600,0,0],[13601,29800,0,0.0077],[29801,39000,124.7,0.0088],
+  [39001,52000,205.65,0.0264],[52001,68300,548.85,0.0297],
+  [68301,73600,1032.95,0.0594],[73601,97700,1347.75,0.0660],
+  [97701,127100,2938.35,0.0880],[127101,166200,5525.55,0.1100],
+  [166201,712400,9826.55,0.1320],[712401,712500,81924.95,0],
+  [712501,1e9,81937.5,0.1150]
+];
+// Married tariff (current)
+const MARRIED = [
+  [0,26700,0,0],[26701,47900,0,0.01],[47901,54900,212,0.02],
+  [54901,70900,352,0.03],[70901,85100,832,0.04],[85101,97400,1400,0.05],
+  [97401,108100,2015,0.06],[108101,117000,2657,0.07],[117001,124000,3280,0.08],
+  [124001,129300,3840,0.09],[129301,132900,4317,0.10],[132901,141200,4677,0.11],
+  [141201,149800,5590,0.12],[149801,162700,6622,0.13],[162701,174700,8299,0.14],
+  [174701,185300,9979,0.15],[185301,197700,11569,0.16],[197701,209200,13553,0.17],
+  [209201,220300,15508,0.18],[220301,230300,17506,0.19],[230301,240300,19406,0.20],
+  [240301,1e9,21406,0.22]
+];
+
+function fedTax(income, brackets) {
+  if (income <= 0) return 0;
+  for (const [lo, hi, base, rate] of brackets) {
+    if (income <= hi) return base + (income - lo + 1) * rate;
+  }
+  const last = brackets[brackets.length-1];
+  return last[2] + (income - last[0] + 1) * last[3];
+}
+
+// Standard deductions
+function deductSingle(gross) {
+  return Math.min(Math.max(gross * 0.03, 2000), 4000);
+}
+
+// ── i18n ──────────────────────────────────────────────────────────────────────
+const T = {
+  en:{
+    nav_tools:"Tools", nav_insights:"Insights", nav_about:"About", nav_contact:"Contact", nav_disclaimer:"Disclaimer",
+    bc_this:"Marriage Tax Calculator",
+    h1:"Switzerland&#8217;s marriage tax is abolished.<br><em>Will you win or lose in 2032?</em>",
+    subtitle:"Swiss voters approved individual taxation on 8 March 2026. From 2032, every person files their own tax return regardless of marital status. Enter your household incomes to see your estimated federal tax change.",
+    badge_reform:"Reform approved &#183; In force 2032",
+    badge_scope:"Federal direct tax only &#183; Free tool",
+    context_note:"<strong>Why federal tax only?</strong> The new individual tariff is set by federal law and is known. Cantonal and municipal taxes &#8212; which make up roughly 70&#8211;75% of your total tax bill &#8212; will also change, but the cantons have until 2032 to set their new rates. No calculator can accurately model what has not yet been decided. This tool shows your federal tax change, which is a genuine and often significant part of your total bill.",
+    section_your:"Your household",
+    lbl_g1:"Your gross salary (CHF / year)", lbl_g2:"Partner&#8217;s gross salary (CHF / year)",
+    lbl_children:"Dependent children", lbl_status:"Current tax status",
+    opt_married:"Married / registered partnership", opt_cohabiting:"Unmarried couple (cohabiting)",
+    hint_gross:"Annual gross before all deductions", hint_g2:"Enter 0 if partner does not work",
+    btn_calc:"Calculate my 2032 tax change &#8594;",
+    strip_current:"Federal tax today (joint)", strip_new:"Federal tax from 2032 (individual)",
+    strip_diff_win:"Annual saving from 2032", strip_diff_lose:"Annual extra cost from 2032",
+    bd_current_title:"&#128197; Today &#8212; Joint taxation", bd_new_title:"&#128198; From 2032 &#8212; Individual taxation",
+    lbl_combined:"Combined gross", lbl_taxable:"Taxable income", lbl_tax:"Federal tax",
+    lbl_your:"Your gross", lbl_partner:"Partner gross",
+    lbl_your_tax:"Your federal tax", lbl_partner_tax:"Partner federal tax", lbl_total:"Total federal tax",
+    lbl_deductions:"Deductions applied",
+    proj_eye_win:"Over the 10 years from 2032 to 2041, your household saves an estimated",
+    proj_eye_lose:"Over the 10 years from 2032 to 2041, your household pays an estimated extra",
+    proj_desc_win:(a,y)=>`CHF ${a.toLocaleString()} per year in reduced federal direct tax. That is money that stays in your household. Note: cantonal tax changes will add further savings for most dual-income couples.`,
+    proj_desc_lose:(a,y)=>`CHF ${a.toLocaleString()} per year in additional federal direct tax. This reflects the loss of the married couple splitting advantage for single or very unequal income households.`,
+    ps1l:"Current annual federal tax", ps2l:"New annual federal tax (2032)", ps3l:"Annual change",
+    exp_title:"What exactly changes in 2032",
+    exp_filing_h:"Tax returns", exp_filing_b:"Instead of one joint return, each spouse files their own. Income and assets are assessed separately. No more combining incomes for rate progression.",
+    exp_child_h:"Child deduction doubles", exp_child_b:"The federal child deduction increases from CHF 6,800 to CHF 12,000 per child, split equally between parents. A significant gain for families.",
+    exp_pension_h:"Pension withdrawals separate", exp_pension_b:"Pillar 2 and Pillar 3a withdrawals will be taxed per person independently. Staggering withdrawals between spouses becomes more tax-efficient.",
+    exp_canton_h:"Cantons follow by 2032", exp_canton_b:"Cantonal and municipal taxes &#8212; roughly 70&#8211;75% of your total bill &#8212; will also shift to individual assessment, but rates are not yet known.",
+    verdict_win_h:(chf)=>`You save CHF ${chf.toLocaleString()} per year in federal tax`,
+    verdict_lose_h:(chf)=>`You pay CHF ${chf.toLocaleString()} more per year in federal tax`,
+    verdict_neutral_h:"Your federal tax changes only marginally",
+    verdict_win_b:(g1,g2,saving)=>`Both partners earning means both benefit from lower individual progression. Your household saves <strong>CHF ${saving.toLocaleString()}/year</strong> in federal direct tax alone. When cantonal taxes adjust in 2032, the total saving will likely be larger — typically 4&#8211;5&#215; the federal amount.`,
+    verdict_lose_b:(g1,g2,extra)=>`With one partner earning significantly more (or all the income), the current married tariff provides a splitting benefit that disappears under individual taxation. Your household pays <strong>CHF ${extra.toLocaleString()}/year more</strong> in federal tax. The child deduction increase partially offsets this if you have children.`,
+    verdict_neutral_b:"Your income split means the progression effects largely cancel out. You are close to the breakeven point where the reform has minimal impact.",
+    cohabiting_note:"As an unmarried couple, you are already taxed individually today. The reform has minimal direct impact on your federal tax — but it eliminates the disadvantage you would face if you married, which may affect your future plans.",
+    disclaimer:"Federal direct tax only. Calculations based on 2024 federal tariff brackets with standard deductions (3% professional expenses; dual-earner deduction CHF 13,900 each under current system; CHF 12,000 child deduction under new system split equally). Results are indicative estimates. Cantonal and municipal taxes are not modelled. New system in force 1 January 2032 at the earliest.",
+  },
+  de:{
+    nav_tools:"Tools", nav_insights:"Einblicke", nav_about:"&#220;ber uns", nav_contact:"Kontakt", nav_disclaimer:"Haftungsausschluss",
+    bc_this:"Heiratsstrafe-Rechner",
+    h1:"Die Schweizer Heiratsstrafe wird abgeschafft.<br><em>Gewinnen oder verlieren Sie 2032?</em>",
+    subtitle:"Am 8. M&#228;rz 2026 stimmten die Schweizer f&#252;r die Individualbesteuerung. Ab 2032 reicht jede Person ihre eigene Steuerkl&#228;rung ein. Geben Sie Ihre Haushaltseinkommen ein, um Ihre gesch&#228;tzte &#196;nderung bei der direkten Bundessteuer zu sehen.",
+    badge_reform:"Reform angenommen &#183; In Kraft 2032",
+    badge_scope:"Nur direkte Bundessteuer &#183; Kostenloses Tool",
+    context_note:"<strong>Warum nur Bundessteuer?</strong> Der neue Individualtarif ist durch Bundesgesetz festgelegt und bekannt. Kantons- und Gemeindesteuern &#8212; rund 70&#8211;75% Ihrer Gesamtsteuerlast &#8212; werden sich ebenfalls &#228;ndern, aber die Kantone haben bis 2032 Zeit, ihre neuen S&#228;tze festzulegen.",
+    section_your:"Ihr Haushalt",
+    lbl_g1:"Ihr Bruttogehalt (CHF / Jahr)", lbl_g2:"Bruttogehalt des Partners (CHF / Jahr)",
+    lbl_children:"Unterhaltsberechtigte Kinder", lbl_status:"Aktueller Steuerstatus",
+    opt_married:"Verheiratet / eingetragene Partnerschaft", opt_cohabiting:"Unverheiratetes Paar (Konkubinat)",
+    hint_gross:"J&#228;hrliches Brutto vor allen Abz&#252;gen", hint_g2:"0 eingeben, wenn Partner nicht arbeitet",
+    btn_calc:"Meine Steuerver&#228;nderung 2032 berechnen &#8594;",
+    strip_current:"Bundessteuer heute (gemeinsam)", strip_new:"Bundessteuer ab 2032 (individuell)",
+    strip_diff_win:"J&#228;hrliche Ersparnis ab 2032", strip_diff_lose:"J&#228;hrliche Mehrbelastung ab 2032",
+    bd_current_title:"&#128197; Heute &#8212; Gemeinsame Besteuerung", bd_new_title:"&#128198; Ab 2032 &#8212; Individualbesteuerung",
+    lbl_combined:"Kombiniertes Brutto", lbl_taxable:"Steuerbares Einkommen", lbl_tax:"Direkte Bundessteuer",
+    lbl_your:"Ihr Brutto", lbl_partner:"Brutto Partner",
+    lbl_your_tax:"Ihre Bundessteuer", lbl_partner_tax:"Bundessteuer Partner", lbl_total:"Gesamte Bundessteuer",
+    lbl_deductions:"Angewendete Abz&#252;ge",
+    proj_eye_win:"&#220;ber 10 Jahre (2032&#8211;2041) spart Ihr Haushalt voraussichtlich",
+    proj_eye_lose:"&#220;ber 10 Jahre (2032&#8211;2041) zahlt Ihr Haushalt voraussichtlich zus&#228;tzlich",
+    proj_desc_win:(a)=>`CHF ${a.toLocaleString()} pro Jahr weniger direkte Bundessteuer. Kantonssteuer&#228;nderungen werden die Gesamtersparnis f&#252;r die meisten Doppelverdiener-Paare weiter erh&#246;hen.`,
+    proj_desc_lose:(a)=>`CHF ${a.toLocaleString()} pro Jahr mehr direkte Bundessteuer. Dies spiegelt den Wegfall des Splitting-Vorteils f&#252;r Einverdiener-Haushalte wider.`,
+    ps1l:"Aktuelle j&#228;hrl. Bundessteuer", ps2l:"Neue j&#228;hrl. Bundessteuer (2032)", ps3l:"J&#228;hrliche &#196;nderung",
+    exp_title:"Was sich 2032 genau &#228;ndert",
+    exp_filing_h:"Steuerkl&#228;rungen", exp_filing_b:"Statt einer gemeinsamen Steuerkl&#228;rung reicht jeder Ehepartner seine eigene ein. Einkommen und Verm&#246;gen werden getrennt bewertet.",
+    exp_child_h:"Kinderabzug verdoppelt sich", exp_child_b:"Der Kinderabzug bei der direkten Bundessteuer steigt von CHF 6.800 auf CHF 12.000 pro Kind, h&#228;lftig aufgeteilt.",
+    exp_pension_h:"Pensionskassen-Bez&#252;ge separat", exp_pension_b:"Bez&#252;ge aus S&#228;ule 2 und 3a werden k&#252;nftig pro Person unabh&#228;ngig besteuert. Gestaffelte Bez&#252;ge werden vorteilhafter.",
+    exp_canton_h:"Kantone folgen bis 2032", exp_canton_b:"Kantons- und Gemeindesteuern &#8212; rund 70&#8211;75% Ihrer Gesamtrechnung &#8212; stellen ebenfalls auf individuelle Veranlagung um, aber die S&#228;tze stehen noch nicht fest.",
+    verdict_win_h:(chf)=>`Sie sparen CHF ${chf.toLocaleString()} pro Jahr an Bundessteuern`,
+    verdict_lose_h:(chf)=>`Sie zahlen CHF ${chf.toLocaleString()} mehr pro Jahr an Bundessteuern`,
+    verdict_neutral_h:"Ihre Bundessteuer &#228;ndert sich nur geringf&#252;gig",
+    verdict_win_b:(g1,g2,s)=>`Beide Partner verdienen, beide profitieren von der niedrigeren Individualprogression. Ihr Haushalt spart <strong>CHF ${s.toLocaleString()}/Jahr</strong> bei der direkten Bundessteuer. Mit den Kantonsteuer&#228;nderungen wird die Gesamtersparnis gr&#246;&#223;er sein &#8212; typischerweise das 4&#8211;5-fache des Bundesbetrags.`,
+    verdict_lose_b:(g1,g2,e)=>`Bei deutlich unterschiedlichen Einkommen verschwindet der Splitting-Vorteil des aktuellen Verheiratetenschaftstarifs. Ihr Haushalt zahlt <strong>CHF ${e.toLocaleString()}/Jahr mehr</strong> an Bundessteuer. Der erh&#246;hte Kinderabzug mildert dies teilweise.`,
+    verdict_neutral_b:"Ihre Einkommensaufteilung f&#252;hrt dazu, dass sich die Progressionseffekte weitgehend aufheben.",
+    cohabiting_note:"Als unverheiratetes Paar werden Sie heute bereits einzeln besteuert. Die Reform hat minimale direkte Auswirkungen auf Ihre Bundessteuer.",
+    disclaimer:"Nur direkte Bundessteuer. Berechnungen auf Basis der DBG-Tarife 2024 mit Standardabz&#252;gen. Kantons- und Gemeindesteuern werden nicht modelliert. Nur zur Orientierung.",
+  },
+  fr:{
+    nav_tools:"Outils", nav_insights:"Analyses", nav_about:"&#192; propos", nav_contact:"Contact", nav_disclaimer:"Avertissement",
+    bc_this:"Calculateur imposition individuelle",
+    h1:"La p&#233;nalit&#233; fiscale du mariage est abolie en Suisse.<br><em>Gagnerez-vous ou perdrez-vous en 2032&#160;?</em>",
+    subtitle:"Les Suisses ont approuv&#233; l&#8217;imposition individuelle le 8 mars 2026. D&#232;s 2032, chaque personne d&#233;pose sa propre d&#233;claration fiscale. Entrez vos revenus pour voir votre &#233;volution estim&#233;e d&#8217;imp&#244;t f&#233;d&#233;ral.",
+    badge_reform:"R&#233;forme approuv&#233;e &#183; En vigueur 2032",
+    badge_scope:"IFD uniquement &#183; Outil gratuit",
+    context_note:"<strong>Pourquoi uniquement l&#8217;IFD&#160;?</strong> Le nouveau tarif individuel est fix&#233; par la loi f&#233;d&#233;rale et est connu. Les imp&#244;ts cantonaux et communaux &#8212; environ 70&#8211;75% de votre charge totale &#8212; changeront &#233;galement, mais les cantons ont jusqu&#8217;en 2032 pour fixer leurs nouveaux taux.",
+    section_your:"Votre m&#233;nage",
+    lbl_g1:"Votre salaire brut (CHF / an)", lbl_g2:"Salaire brut du partenaire (CHF / an)",
+    lbl_children:"Enfants &#224; charge", lbl_status:"Statut fiscal actuel",
+    opt_married:"Mari&#233;(e) / partenariat enregistr&#233;", opt_cohabiting:"Couple non mari&#233; (concubinage)",
+    hint_gross:"Brut annuel avant toutes d&#233;ductions", hint_g2:"Entrez 0 si le partenaire ne travaille pas",
+    btn_calc:"Calculer mon changement fiscal 2032 &#8594;",
+    strip_current:"IFD aujourd&#8217;hui (commun)", strip_new:"IFD d&#232;s 2032 (individuel)",
+    strip_diff_win:"&#201;conomie annuelle d&#232;s 2032", strip_diff_lose:"Co&#251;t suppl. annuel d&#232;s 2032",
+    bd_current_title:"&#128197; Aujourd&#8217;hui &#8212; Imposition commune", bd_new_title:"&#128198; D&#232;s 2032 &#8212; Imposition individuelle",
+    lbl_combined:"Brut combin&#233;", lbl_taxable:"Revenu imposable", lbl_tax:"IFD",
+    lbl_your:"Votre brut", lbl_partner:"Brut partenaire",
+    lbl_your_tax:"Votre IFD", lbl_partner_tax:"IFD partenaire", lbl_total:"IFD total",
+    lbl_deductions:"D&#233;ductions appliqu&#233;es",
+    proj_eye_win:"Sur 10 ans (2032&#8211;2041), votre m&#233;nage &#233;conomise environ",
+    proj_eye_lose:"Sur 10 ans (2032&#8211;2041), votre m&#233;nage paie environ en plus",
+    proj_desc_win:(a)=>`CHF ${a.toLocaleString()} par an de moins en IFD. Les ajustements cantonaux amplifieront ces &#233;conomies.`,
+    proj_desc_lose:(a)=>`CHF ${a.toLocaleString()} par an de plus en IFD, suite &#224; la disparition de l&#8217;avantage du splitting.`,
+    ps1l:"IFD annuelle actuelle", ps2l:"Nouvelle IFD annuelle (2032)", ps3l:"Variation annuelle",
+    exp_title:"Ce qui change exactement en 2032",
+    exp_filing_h:"D&#233;clarations fiscales", exp_filing_b:"Au lieu d&#8217;une d&#233;claration commune, chaque conjoint d&#233;pose la sienne. Revenus et fortune &#233;valu&#233;s s&#233;par&#233;ment.",
+    exp_child_h:"D&#233;duction enfants doubl&#233;e", exp_child_b:"La d&#233;duction f&#233;d&#233;rale par enfant passe de CHF 6.800 &#224; CHF 12.000, r&#233;partie &#233;galement entre les parents.",
+    exp_pension_h:"Retraits de pension s&#233;par&#233;s", exp_pension_b:"Les retraits des piliers 2 et 3a seront tax&#233;s ind&#233;pendamment par personne. La r&#233;partition devient plus avantageuse.",
+    exp_canton_h:"Les cantons suivent d&#8217;ici 2032", exp_canton_b:"Les imp&#244;ts cantonaux et communaux &#8212; environ 70&#8211;75% de votre facture &#8212; basculeront &#233;galement vers l&#8217;imposition individuelle.",
+    verdict_win_h:(chf)=>`Vous &#233;conomisez CHF ${chf.toLocaleString()} par an d&#8217;IFD`,
+    verdict_lose_h:(chf)=>`Vous payez CHF ${chf.toLocaleString()} de plus par an d&#8217;IFD`,
+    verdict_neutral_h:"Votre IFD ne change que marginalement",
+    verdict_win_b:(g1,g2,s)=>`Les deux partenaires &#233;tant salari&#233;s, chacun b&#233;n&#233;ficie d&#8217;une progression individuelle plus faible. &#201;conomie de <strong>CHF ${s.toLocaleString()}/an</strong> en IFD. L&#8217;ajustement cantonal amplifiera ce r&#233;sultat.`,
+    verdict_lose_b:(g1,g2,e)=>`Avec un seul revenu ou des revenus tr&#232;s in&#233;gaux, l&#8217;avantage du splitting dispara&#238;t. Co&#251;t suppl&#233;mentaire de <strong>CHF ${e.toLocaleString()}/an</strong> en IFD. La d&#233;duction enfant augment&#233;e att&#233;nue partiellement cet effet.`,
+    verdict_neutral_b:"La r&#233;partition de vos revenus fait que les effets de progression se compensent largement.",
+    cohabiting_note:"En tant que couple non mari&#233;, vous &#234;tes d&#233;j&#224; impos&#233;s individuellement. La r&#233;forme a peu d&#8217;impact direct sur votre IFD.",
+    disclaimer:"IFD uniquement. Calculs bas&#233;s sur les barr&#232;mes DBG 2024 avec d&#233;ductions standard. Taxes cantonales non mod&#233;lis&#233;es. &#192; titre indicatif uniquement.",
+  },
+  it:{
+    nav_tools:"Strumenti", nav_insights:"Approfondimenti", nav_about:"Chi siamo", nav_contact:"Contatto", nav_disclaimer:"Dichiarazione",
+    bc_this:"Calcolatore imposta matrimoniale",
+    h1:"La penale fiscale del matrimonio &#232; abolita in Svizzera.<br><em>Guadagnerete o perderete nel 2032?</em>",
+    subtitle:"Gli svizzeri hanno approvato l&#8217;imposizione individuale l&#8217;8 marzo 2026. Dal 2032, ogni persona presenter&#224; la propria dichiarazione fiscale. Inserite i vostri redditi per vedere la variazione stimata dell&#8217;imposta federale.",
+    badge_reform:"Riforma approvata &#183; In vigore 2032",
+    badge_scope:"Solo IFD &#183; Strumento gratuito",
+    context_note:"<strong>Perch&#233; solo l&#8217;IFD?</strong> Il nuovo tariffario individuale &#232; definito dalla legge federale ed &#232; noto. Le imposte cantonali e comunali &#8212; circa il 70&#8211;75% del carico fiscale totale &#8212; cambieranno anch&#8217;esse, ma i cantoni hanno tempo fino al 2032 per fissare le nuove aliquote.",
+    section_your:"Il vostro nucleo familiare",
+    lbl_g1:"Il vostro salario lordo (CHF / anno)", lbl_g2:"Salario lordo del partner (CHF / anno)",
+    lbl_children:"Figli a carico", lbl_status:"Status fiscale attuale",
+    opt_married:"Coniugato/a / unione registrata", opt_cohabiting:"Coppia non sposata (convivenza)",
+    hint_gross:"Lordo annuo prima di tutte le detrazioni", hint_g2:"Inserire 0 se il partner non lavora",
+    btn_calc:"Calcola la mia variazione fiscale 2032 &#8594;",
+    strip_current:"IFD oggi (comune)", strip_new:"IFD dal 2032 (individuale)",
+    strip_diff_win:"Risparmio annuo dal 2032", strip_diff_lose:"Costo aggiuntivo annuo dal 2032",
+    bd_current_title:"&#128197; Oggi &#8212; Imposizione comune", bd_new_title:"&#128198; Dal 2032 &#8212; Imposizione individuale",
+    lbl_combined:"Lordo combinato", lbl_taxable:"Reddito imponibile", lbl_tax:"IFD",
+    lbl_your:"Vostro lordo", lbl_partner:"Lordo partner",
+    lbl_your_tax:"Vostra IFD", lbl_partner_tax:"IFD partner", lbl_total:"IFD totale",
+    lbl_deductions:"Detrazioni applicate",
+    proj_eye_win:"Nei 10 anni dal 2032 al 2041, il vostro nucleo risparmia circa",
+    proj_eye_lose:"Nei 10 anni dal 2032 al 2041, il vostro nucleo paga circa in pi&#249;",
+    proj_desc_win:(a)=>`CHF ${a.toLocaleString()} all&#8217;anno di IFD in meno. Gli adeguamenti cantonali amplieranno il risparmio totale.`,
+    proj_desc_lose:(a)=>`CHF ${a.toLocaleString()} all&#8217;anno di IFD in pi&#249;, per la scomparsa del vantaggio dello splitting.`,
+    ps1l:"IFD annuale attuale", ps2l:"Nuova IFD annuale (2032)", ps3l:"Variazione annuale",
+    exp_title:"Cosa cambia esattamente nel 2032",
+    exp_filing_h:"Dichiarazioni fiscali", exp_filing_b:"Al posto di una dichiarazione congiunta, ogni coniuge presenta la propria. Redditi e patrimonio valutati separatamente.",
+    exp_child_h:"Deduzione per i figli raddoppia", exp_child_b:"La deduzione federale per figlio passa da CHF 6.800 a CHF 12.000, divisa equamente tra i genitori.",
+    exp_pension_h:"Prelievi pensionistici separati", exp_pension_b:"I prelievi dal 2&#176; e 3&#176; pilastro saranno tassati indipendentemente per persona. La distribuzione diventa pi&#249; vantaggiosa.",
+    exp_canton_h:"I cantoni seguono entro il 2032", exp_canton_b:"Le imposte cantonali e comunali &#8212; circa il 70&#8211;75% del conto totale &#8212; passeranno anche all&#8217;imposizione individuale.",
+    verdict_win_h:(chf)=>`Risparmiate CHF ${chf.toLocaleString()} all&#8217;anno di IFD`,
+    verdict_lose_h:(chf)=>`Pagate CHF ${chf.toLocaleString()} in pi&#249; all&#8217;anno di IFD`,
+    verdict_neutral_h:"La vostra IFD cambia solo marginalmente",
+    verdict_win_b:(g1,g2,s)=>`Entrambi i partner guadagnano, entrambi beneficiano di una progressione individuale pi&#249; bassa. Il vostro nucleo risparmia <strong>CHF ${s.toLocaleString()}/anno</strong> di IFD. Gli adeguamenti cantonali amplieranno il risparmio totale.`,
+    verdict_lose_b:(g1,g2,e)=>`Con un solo reddito o redditi molto diversi, il vantaggio dello splitting scompare. Il nucleo paga <strong>CHF ${e.toLocaleString()}/anno in pi&#249;</strong> di IFD. La deduzione per figli aumentata mitiga parzialmente questo effetto.`,
+    verdict_neutral_b:"La distribuzione dei vostri redditi fa s&#236; che gli effetti di progressione si compensino largamente.",
+    cohabiting_note:"Come coppia non sposata, siete gi&#224; tassati individualmente. La riforma ha un impatto diretto minimo sulla vostra IFD.",
+    disclaimer:"Solo IFD. Calcoli basati sui tariffari DBG 2024 con detrazioni standard. Imposte cantonali non modellate. Solo a scopo orientativo.",
+  }
+};
+
+let lang = localStorage.getItem("bs_lang")||"en";
+
+function fmtCHF(n){ return "CHF "+Math.abs(Math.round(n)).toLocaleString("de-CH"); }
+function brow(label, val, cls){ return `<div class="bd-row"><span class="bd-l">${label}</span><span class="bd-v ${cls}">${val}</span></div>`; }
+
+function calculate() {
+  const t = T[lang];
+  const g1 = parseFloat(document.getElementById("g1").value)||0;
+  const g2 = parseFloat(document.getElementById("g2").value)||0;
+  const children = parseInt(document.getElementById("children").value)||0;
+  const status = document.getElementById("status").value;
+  if (g1 <= 0 && g2 <= 0) return;
+
+  const isMarried = status === "married";
+
+  // ── CURRENT TAX ────────────────────────────────────────────────────────────
+  let currentTax, currentTaxable, currentDeductions;
+  if (isMarried) {
+    const combined = g1 + g2;
+    const bothWorking = g1 > 0 && g2 > 0;
+    let ded = Math.min(Math.max(combined*0.03, bothWorking?4000:2000), bothWorking?8000:4000);
+    if (bothWorking) ded += 2*13900; // dual earner deduction
+    ded += children * 6800; // child deduction
+    currentTaxable = Math.max(0, combined - ded);
+    currentDeductions = ded;
+    currentTax = fedTax(currentTaxable, MARRIED);
+  } else {
+    // Already individual — each taxed separately at single rate
+    const ti1 = Math.max(0, g1 - Math.min(Math.max(g1*0.03,2000),4000) - Math.ceil(children/2)*6800);
+    const ti2 = g2 > 0 ? Math.max(0, g2 - Math.min(Math.max(g2*0.03,2000),4000) - Math.floor(children/2)*6800) : 0;
+    currentTax = fedTax(ti1, SINGLE) + fedTax(ti2, SINGLE);
+    currentTaxable = ti1 + ti2;
+    currentDeductions = (g1+g2) - currentTaxable;
+  }
+
+  // ── NEW TAX (2032) ─────────────────────────────────────────────────────────
+  // Each person taxed individually at single/universal rate
+  const childSplit1 = Math.ceil(children/2);
+  const childSplit2 = Math.floor(children/2);
+  const ded1 = Math.min(Math.max(g1*0.03,2000),4000) + childSplit1*12000;
+  const ded2 = g2 > 0 ? Math.min(Math.max(g2*0.03,2000),4000) + childSplit2*12000 : 0;
+  const ti1_new = Math.max(0, g1 - ded1);
+  const ti2_new = g2 > 0 ? Math.max(0, g2 - ded2) : 0;
+  const tax1_new = fedTax(ti1_new, SINGLE);
+  const tax2_new = fedTax(ti2_new, SINGLE);
+  const newTax = tax1_new + tax2_new;
+
+  const diff = currentTax - newTax; // positive = saving, negative = extra cost
+  const absDiff = Math.abs(diff);
+  const isWin = diff > 100;
+  const isLose = diff < -100;
+
+  // ── VERDICT ────────────────────────────────────────────────────────────────
+  const vEl = document.getElementById("verdict");
+  vEl.className = "verdict";
+  if (!isMarried) {
+    vEl.classList.add("v-neutral");
+    document.getElementById("v-icon").textContent = "ℹ️";
+    document.getElementById("v-h").textContent = "You are already taxed individually";
+    document.getElementById("v-b").innerHTML = t.cohabiting_note;
+  } else if (isWin) {
+    vEl.classList.add("v-win");
+    document.getElementById("v-icon").textContent = "✅";
+    document.getElementById("v-h").textContent = t.verdict_win_h(Math.round(absDiff));
+    document.getElementById("v-b").innerHTML = t.verdict_win_b(g1,g2,Math.round(absDiff));
+  } else if (isLose) {
+    vEl.classList.add("v-lose");
+    document.getElementById("v-icon").textContent = "⚠️";
+    document.getElementById("v-h").textContent = t.verdict_lose_h(Math.round(absDiff));
+    document.getElementById("v-b").innerHTML = t.verdict_lose_b(g1,g2,Math.round(absDiff));
+  } else {
+    vEl.classList.add("v-neutral");
+    document.getElementById("v-icon").textContent = "⚖️";
+    document.getElementById("v-h").textContent = t.verdict_neutral_h;
+    document.getElementById("v-b").textContent = t.verdict_neutral_b;
+  }
+
+  // ── STRIP ──────────────────────────────────────────────────────────────────
+  document.getElementById("s-current").textContent = fmtCHF(currentTax);
+  document.getElementById("s-current-sub").textContent = `${fmtCHF(g1+g2)} combined gross`;
+  const sNewEl = document.getElementById("s-new");
+  sNewEl.textContent = fmtCHF(newTax);
+  sNewEl.className = "strip-num " + (isWin?"win":isLose?"lose":"neutral");
+  document.getElementById("s-new-sub").textContent = `${fmtCHF(g1)} + ${fmtCHF(g2)} individual`;
+  document.getElementById("strip-diff-lbl").textContent = isWin ? t.strip_diff_win : t.strip_diff_lose;
+  const sDiffEl = document.getElementById("s-diff");
+  sDiffEl.textContent = (isWin?"-":"+") + fmtCHF(absDiff);
+  sDiffEl.className = "strip-num " + (isWin?"win":isLose?"lose":"neutral");
+  document.getElementById("s-diff-sub").textContent = isWin ? "per year from 2032" : "per year from 2032";
+
+  // ── BREAKDOWNS ─────────────────────────────────────────────────────────────
+  if (isMarried) {
+    document.getElementById("bd-current").innerHTML =
+      brow(t.lbl_combined,    fmtCHF(g1+g2),           "neu") +
+      brow(t.lbl_deductions,  `− ${fmtCHF(currentDeductions)}`, "neg") +
+      brow(t.lbl_taxable,     fmtCHF(currentTaxable),  "neu") +
+      brow(t.lbl_tax,         fmtCHF(currentTax),      "pos");
+  } else {
+    document.getElementById("bd-current").innerHTML =
+      brow(t.lbl_your,        fmtCHF(g1),              "neu") +
+      brow(t.lbl_partner,     fmtCHF(g2),              "neu") +
+      brow(t.lbl_your_tax,    fmtCHF(fedTax(Math.max(0,g1-Math.min(Math.max(g1*0.03,2000),4000)-Math.ceil(children/2)*6800),SINGLE)),"pos") +
+      brow(t.lbl_partner_tax, fmtCHF(g2>0?fedTax(Math.max(0,g2-Math.min(Math.max(g2*0.03,2000),4000)-Math.floor(children/2)*6800),SINGLE):0),"pos") +
+      brow(t.lbl_total,       fmtCHF(currentTax),      "pos");
+  }
+  document.getElementById("bd-new").innerHTML =
+    brow(t.lbl_your,        fmtCHF(g1),              "neu") +
+    brow(`${t.lbl_your} ${t.lbl_deductions}`, `− ${fmtCHF(ded1)}`, "neg") +
+    brow(t.lbl_your_tax,    fmtCHF(tax1_new),        "pos") +
+    (g2>0 ? brow(t.lbl_partner, fmtCHF(g2), "neu") +
+            brow(`${t.lbl_partner} ${t.lbl_deductions}`, `− ${fmtCHF(ded2)}`, "neg") +
+            brow(t.lbl_partner_tax, fmtCHF(tax2_new), "pos") : "") +
+    brow(t.lbl_total,       fmtCHF(newTax),          "pos");
+
+  // ── 10-YEAR PROJECTION ─────────────────────────────────────────────────────
+  const tenYear = Math.round(absDiff * 10);
+  document.getElementById("proj-eye").textContent = isWin ? t.proj_eye_win : t.proj_eye_lose;
+  document.getElementById("proj-num").textContent = fmtCHF(tenYear);
+  document.getElementById("proj-desc").textContent = isWin
+    ? t.proj_desc_win(Math.round(absDiff))
+    : t.proj_desc_lose(Math.round(absDiff));
+  document.getElementById("ps1l").textContent = t.ps1l;
+  document.getElementById("ps1v").textContent = fmtCHF(currentTax);
+  document.getElementById("ps2l").textContent = t.ps2l;
+  document.getElementById("ps2v").textContent = fmtCHF(newTax);
+  document.getElementById("ps3l").textContent = t.ps3l;
+  document.getElementById("ps3v").textContent = (isWin?"−":"+") + fmtCHF(absDiff) + "/yr";
+
+  document.getElementById("results").style.display = "block";
+  document.getElementById("results").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+document.getElementById("calc-btn").addEventListener("click", calculate);
+["g1","g2"].forEach(id => document.getElementById(id).addEventListener("keydown", e => { if(e.key==="Enter") calculate(); }));
+
+function setLang(l) {
+  lang=l; localStorage.setItem("bs_lang",l); document.documentElement.lang=l;
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById("btn-"+l).classList.add("active");
+  const t=T[l];
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(t[k]!==undefined && typeof t[k]==="string") el.innerHTML=t[k];
+  });
+}
+document.querySelectorAll(".lang-btn").forEach(btn=>btn.addEventListener("click",()=>setLang(btn.dataset.lang)));
+setLang(lang);
+</script>
+</body>
+</html>
