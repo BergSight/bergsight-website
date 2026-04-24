@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://bergsight.com/about">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="BergSight is an independent platform offering free financial planning tools for Swiss residents and expats. No agenda, no products to sell — just clarity.">
   <meta property="og:title" content="About BergSight — Independent Financial Tools for Switzerland">
@@ -35,15 +36,15 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
 
     /* ── LANG BAR ── */
-    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: flex-end; align-items: center; padding: 0 4rem; height: 34px; }
-    .lang-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6560; margin-right: 1rem; }
-    .lang-btn { background: none; border: none; color: #9a958e; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 0 0.8rem; height: 100%; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
+    .lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--ink); display: flex; justify-content: space-between; align-items: center; padding: 0 4rem; height: 44px; border-bottom: 1px solid #2a2825; }
+    .lang-label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8a857e; font-weight: 400; }
+    .lang-btn { background: none; border: none; color: #8a857e; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; padding: 0 1.1rem; height: 44px; border-right: 1px solid #2a2825; transition: color 0.15s, background 0.15s; }
     .lang-btn:first-of-type { border-left: 1px solid #2a2825; }
-    .lang-btn:hover { color: var(--white); background: #2a2825; }
-    .lang-btn.active { color: var(--alpine-2); }
+    .lang-btn:hover { color: var(--white); background: #252320; }
+    .lang-btn.active { color: var(--alpine-2); background: rgba(61,122,82,0.1); font-weight: 600; }
 
     /* ── NAV ── */
-    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
+    nav { position: fixed; top: 44px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(245,242,237,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--stone-3); }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
     .nav-logo span { color: var(--alpine); }
     .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
@@ -51,7 +52,7 @@
     .nav-links a:hover, .nav-links a.active { color: var(--alpine); }
 
     /* ── PAGE HEADER ── */
-    .page-header { padding: 9rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
+    .page-header { padding: 9.5rem 4rem 4rem; background: var(--ink); position: relative; overflow: hidden; }
     .page-header-bg { position: absolute; inset: 0; }
     .page-header-peaks { position: absolute; bottom: 0; left: 0; right: 0; height: 55%; opacity: 0.12; }
     .page-header-inner { position: relative; max-width: 760px; }
@@ -86,7 +87,7 @@
       .lang-bar { padding: 0 1.5rem; }
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .page-header { padding: 7rem 1.5rem 3rem; }
+      .page-header { padding: 7.5rem 1.5rem 3rem; }
       .content-wrap { padding: 3rem 1.5rem; }
       footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
       .lang-label { display: none; }
@@ -100,9 +101,7 @@
     gtag('js', new Date());
     gtag('config', 'G-KPHRGJL1WW');
   </script>
-
-<script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Lukas",
@@ -117,23 +116,29 @@
     "Swiss personal finance",
     "Pillar 3a",
     "Swiss pension system",
+    "AHV",
+    "BVG",
     "Expat finances in Switzerland",
     "Swiss taxation",
-    "Investment"
+    "Index fund investing",
+    "Swiss salary"
   ]
-}
-</script>
-  
+}</script>
 </head>
 <body>
 
   <!-- LANG BAR -->
   <div class="lang-bar">
-    <span class="lang-label">Language</span>
-    <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
-    <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
-    <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
-    <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    <div class="lang-bar-left" style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="color:#4a4742;font-size:0.9rem;">🌐</span>
+      <span class="lang-label">Select language</span>
+    </div>
+    <div style="display:flex;height:100%;">
+      <button class="lang-btn active" id="btn-en" data-lang="en">EN</button>
+      <button class="lang-btn" id="btn-de" data-lang="de">DE</button>
+      <button class="lang-btn" id="btn-fr" data-lang="fr">FR</button>
+      <button class="lang-btn" id="btn-it" data-lang="it">IT</button>
+    </div>
   </div>
 
   <!-- NAV -->
