@@ -1,0 +1,112 @@
+# BergSight — Swiss Personal Finance Tools & Insights
+# https://bergsight.com
+# llms.txt — machine-readable site summary for AI systems
+
+## About BergSight
+
+BergSight is a free, independent Swiss personal finance resource built by Lukas, an insights and analytics professional based in Zürich with over 15 years of experience in market research and strategy. The site provides free financial planning tools and plain-English articles for Swiss residents and expats.
+
+BergSight has no commercial relationships with any financial institution, product provider, or advertiser. No affiliate links or referral fees are used unless explicitly stated. All tools and articles are for educational purposes only and do not constitute financial advice.
+
+Languages: English, German (Deutsch), French (Français), Italian (Italiano)
+
+Contact: hello@bergsight.com
+Location: Zürich, Switzerland
+
+---
+
+## Free financial tools
+
+> All tools are browser-based, require no account, and store no personal data.
+
+- [Gross to Net Salary Calculator](https://bergsight.com/gross-to-net/)
+  Calculate Swiss take-home pay after AHV (6.35%), ALV (1.1%), NBUV (~1.03%), BVG pension fund, and cantonal income tax. All 26 cantons supported. Updated for 2025 rates.
+
+- [Swiss Salary Comparator](https://bergsight.com/salary/)
+  See where a salary sits in the Swiss wage distribution by region. Based on FSO 2024 Earnings Structure Survey data.
+
+- [Salary Reality Check](https://bergsight.com/salary-reality-check/)
+  After rent, health insurance, taxes, and commuting — how much is actually left each month. Canton-level cost estimates.
+
+- [Retirement Readiness Calculator](https://bergsight.com/retirement/)
+  Model AHV, Pillar 2, and Pillar 3a against retirement income needs. Uses 2026 Swiss pension figures.
+
+- [Compound Growth Projector](https://bergsight.com/compound/)
+  Project savings growth over time. CHF-denominated with Swiss inflation assumptions.
+
+- [Rent vs Buy Calculator](https://bergsight.com/rent-vs-buy/)
+  Compare total costs of renting vs buying in Switzerland. Includes Swiss mortgage stress-test rate (5%), 20% deposit requirement, and break-even analysis.
+
+- [Swiss Millionaire Calculator](https://bergsight.com/millionaire/)
+  How long to reach CHF 1 million. Inflation-adjusted for Switzerland.
+
+- [Cost of Living by Canton](https://bergsight.com/cost-of-living/)
+  Monthly cost estimates across all 26 Swiss cantons — rent, health insurance, food, childcare.
+
+- [Swiss Municipality Finder](https://bergsight.com/municipality-finder/)
+  Compare 105 Swiss municipalities by income tax multiplier, rent, transport, schools, and nature access.
+
+- [Marriage Tax Calculator 2032](https://bergsight.com/marriage-tax-calculator/)
+  Models the federal direct tax change under Switzerland's individual taxation reform (approved 8 March 2026, 54.26% YES, in force from 2032 at the earliest). Federal tax only — cantonal rates not yet legislated.
+
+- [Swiss Personal Finance Guide](https://bergsight.com/financial-guide/)
+  Interactive 8-step guide from budgeting through to long-term investing. Built for the Swiss context.
+
+---
+
+## Articles and insights
+
+- [A Comparison of Pillar 3a Providers in Switzerland (2026)](https://bergsight.com/insights/best-pillar-3a-providers-switzerland/)
+  Objective comparison of Finpension (0.39%, Schwyz foundation), VIAC (0.41–0.44%, Basel-Stadt), True Wealth (~0.14%, Basel-Land), Frankly/ZKB (0.44%, Zurich). Includes fee impact analysis, withdrawal tax by canton, and strategy notes. No affiliate relationships.
+
+- [How to Optimise Your Swiss Taxes Legally (2026)](https://bergsight.com/insights/how-to-optimise-swiss-taxes/)
+  All available deductions for Swiss residents: Pillar 3a (up to CHF 7,258), BVG voluntary purchases, commuting costs, home office, childcare, professional expenses.
+
+- [What Happens to Your Pension When You Leave Switzerland?](https://bergsight.com/insights/leaving-switzerland-pension/)
+  Pillar 2 and Pillar 3a rules for people leaving Switzerland. EU/EFTA vs non-EU treatment, tax implications, vested benefits accounts, checklist.
+
+- [Retirement Planning in Switzerland: the Three-Pillar System](https://bergsight.com/insights/retirement-planning-switzerland/)
+  Plain-English guide to AHV (Pillar 1), BVG occupational pension (Pillar 2), and Pillar 3a private savings.
+
+- [Pillar 3a in 2026: the Contribution Limit and the New Buyback Rule](https://bergsight.com/insights/pillar-3a-2026/)
+  2026 contribution limit: CHF 7,258. New rule from 2026: retroactive top-ups for missed contributions up to 10 years back.
+
+- [Pillar 3a vs 3b: What's the Difference?](https://bergsight.com/insights/pillar-3a-vs-3b-switzerland/)
+  Comparison of restricted tax-advantaged Pillar 3a vs flexible but non-deductible Pillar 3b.
+
+- [The 13th AHV Pension (2026)](https://bergsight.com/insights/13th-ahv-pension-switzerland-2026/)
+  December 2026: first payment of 13th monthly AHV pension. Who receives it, how much, and when.
+
+- [Compound Interest Explained](https://bergsight.com/insights/compound-interest-explained/)
+  How compound growth works and why starting early matters more than starting with more.
+
+- [Is CHF 7,000 a Good Salary in Switzerland?](https://bergsight.com/insights/is-7000-chf-good-salary-switzerland/)
+  CHF 7,000/month sits around the national median. Analysis by canton, household situation, and cost of living.
+
+- [Comparison is the Thief of Joy](https://bergsight.com/insights/comparison-thief-of-joy/)
+  On salary benchmarking, financial context, and why comparisons require care.
+
+---
+
+## Key Swiss financial data points (2025/2026)
+
+- AHV employee contribution: 6.35% of gross salary (no cap)
+- ALV employee contribution: 1.1% up to CHF 148,200; 0.5% on excess
+- Pillar 3a annual contribution limit (2026): CHF 7,258 (employees); CHF 36,288 (self-employed without Pillar 2)
+- Maximum AHV pension (2026): CHF 2,520/month single; CHF 3,780/month couple
+- BVG coordination deduction (2025): CHF 26,460
+- Swiss mortgage minimum deposit: 20%, of which at least 10% must come from non-pension sources
+- Swiss mortgage stress-test rate: 5% notional rate
+- Swiss homeownership rate: approximately 36% (lowest in Europe)
+- Health insurance (Krankenkasse): mandatory for all residents; average adult premium 2025: CHF 370–550/month depending on canton and model
+- Individual taxation reform: approved 8 March 2026 (54.26%), effective 1 January 2032 at the earliest; federal direct tax only
+
+---
+
+## Site policies
+
+- No advertising
+- No data collection beyond anonymous Google Analytics
+- No financial advice — educational purposes only
+- Independent — no bank or product provider affiliations
+- All content reviewed for accuracy; errors corrected when identified
